@@ -2,15 +2,15 @@ import { m } from 'framer-motion';
 import { Link as RouterLink } from 'react-router-dom';
 // @mui
 import { styled } from '@mui/material/styles';
-import { Button, Box, Link, Container, Typography, Stack } from '@mui/material';
+import { Button, Box, Container, Typography, Stack } from '@mui/material';
 // routes
 import { PATH_DASHBOARD } from '../../routes/paths';
 // components
-import Image from '../../components/Image';
 import Iconify from '../../components/Iconify';
-import TextIconLabel from '../../components/TextIconLabel';
 import { MotionContainer, varFade } from '../../components/animate';
 
+import tronscanLogo from '../../assets/images/logos/tronscan.svg';
+import usdtLogo from '../../assets/images/logos/usdt.svg';
 // ----------------------------------------------------------------------
 
 const RootStyle = styled(m.div)(({ theme }) => ({
@@ -29,7 +29,7 @@ const RootStyle = styled(m.div)(({ theme }) => ({
 
 const ContentStyle = styled((props) => <Stack spacing={5} {...props} />)(({ theme }) => ({
   zIndex: 10,
-  maxWidth: 520,
+  maxWidth: 600,
   margin: 'auto',
   textAlign: 'center',
   position: 'relative',
@@ -81,70 +81,38 @@ export default function HomeHero() {
         <Container>
           <ContentStyle>
             <m.div variants={varFade().inRight}>
-              <Typography variant="h1" sx={{ color: 'common.white' }}>
-                Start a <br />
-                new project <br /> with
-                <Typography component="span" variant="h1" sx={{ color: 'primary.main' }}>
-                  &nbsp;Minimal
+              <Typography variant="h2" sx={{ color: 'common.white' }}>
+                The First Decentralized <br />
+                <Typography component="span" variant="h2" sx={{ color: 'primary.main' }}>
+                  PAMM portfolio exclusive
                 </Typography>
+                <br /> for members of our community <br />
               </Typography>
             </m.div>
 
             <m.div variants={varFade().inRight}>
               <Typography sx={{ color: 'common.white' }}>
-                The starting point for your next project based on easy-to-customize MUI helps you build apps faster and
-                better.
+                Join  our trading Club and earn from the best FX traders in the world
               </Typography>
-            </m.div>
+            </m.div>           
 
-            <Stack spacing={2.5} alignItems="center" direction={{ xs: 'column', md: 'row' }}>
+            <Stack spacing={2.5}>
               <m.div variants={varFade().inRight}>
-                <TextIconLabel
-                  icon={
-                    <Image
-                      alt="sketch icon"
-                      src="https://minimal-assets-api-dev.vercel.app/assets/images/home/ic_sketch_small.svg"
-                      sx={{ width: 20, height: 20, mr: 1 }}
-                    />
-                  }
-                  value={
-                    <Link
-                      href="https://www.sketch.com/s/76388a4d-d6e5-4b7f-8770-e5446bfa1268"
-                      target="_blank"
-                      rel="noopener"
-                      color="common.white"
-                      sx={{ typography: 'body2' }}
-                    >
-                      Preview Sketch
-                    </Link>
-                  }
-                />
+                <Typography variant="overline" sx={{ color: 'primary.light' }}>
+                  POWER BY:
+                </Typography>
               </m.div>
 
-              <m.div variants={varFade().inRight}>
-                <TextIconLabel
-                  icon={
-                    <Image
-                      alt="sketch icon"
-                      src="https://minimal-assets-api-dev.vercel.app/assets/images/home/ic_figma_small.svg"
-                      sx={{ width: 20, height: 20, mr: 1 }}
-                    />
-                  }
-                  value={
-                    <Link
-                      href="https://www.figma.com/file/sI9fbKHIqlikUtfYCPb9lj/%5BPreview%5D-Minimal-Web.03.07.22?node-id=0%3A10803"
-                      target="_blank"
-                      rel="noopener"
-                      color="common.white"
-                      sx={{ typography: 'body2' }}
-                    >
-                      Preview Figma
-                    </Link>
-                  }
-                />
-              </m.div>
+              <Stack direction="row" spacing={1.5} justifyContent={{ xs: 'center', md: 'flex-start' }}>
+                {[tronscanLogo, usdtLogo].map((resource, i) => (
+                  <m.img
+                    key={i}
+                    variants={varFade().inRight}
+                    src={resource}
+                  />
+                ))}
+              </Stack>              
             </Stack>
-
             <m.div variants={varFade().inRight}>
               <Button
                 size="large"
@@ -153,27 +121,9 @@ export default function HomeHero() {
                 to={PATH_DASHBOARD.root}
                 startIcon={<Iconify icon={'eva:flash-fill'} width={20} height={20} />}
               >
-                Live Preview
+                See spots available
               </Button>
             </m.div>
-
-            <Stack spacing={2.5}>
-              <m.div variants={varFade().inRight}>
-                <Typography variant="overline" sx={{ color: 'primary.light' }}>
-                  Available For
-                </Typography>
-              </m.div>
-
-              <Stack direction="row" spacing={1.5} justifyContent={{ xs: 'center', md: 'flex-start' }}>
-                {['ic_sketch', 'ic_figma', 'ic_js', 'ic_ts', 'ic_nextjs'].map((resource) => (
-                  <m.img
-                    key={resource}
-                    variants={varFade().inRight}
-                    src={`https://minimal-assets-api-dev.vercel.app/assets/images/home/${resource}.svg`}
-                  />
-                ))}
-              </Stack>
-            </Stack>
           </ContentStyle>
         </Container>
       </RootStyle>

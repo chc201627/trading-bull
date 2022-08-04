@@ -32,7 +32,6 @@ export default function RegisterForm() {
   });
 
   const {
-    reset,
     setError,
     handleSubmit,
     formState: { errors, isSubmitting },
@@ -42,8 +41,6 @@ export default function RegisterForm() {
     try {
       await register(data.referralCode);
     } catch (error) {
-      console.error(error);
-      reset();
       if (isMountedRef.current) {
         setError('afterSubmit', { ...error, message: error.message });
       }
@@ -53,7 +50,7 @@ export default function RegisterForm() {
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={3}>
-        {!!errors.afterSubmit && <Alert severity="error">{errors.afterSubmit.message}</Alert>}
+        {!!errors.afterSubmit && <Alert severity="error" >{errors.afterSubmit.message}</Alert>}
 
         <RHFTextField name="referralCode" label="Referral code" />
 

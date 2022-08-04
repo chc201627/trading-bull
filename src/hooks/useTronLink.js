@@ -1,14 +1,50 @@
+import { useEffect } from 'react';
+
 const useTronLink = () => {
 
-    const hasTronLinkReady = () => window.tronLink !== undefined;
+    useEffect(() => {
+        window.addEventListener('message', eventHandler);
+
+        return () => {
+            window.removeEventListener('message', eventHandler);
+        }
+    }, []);
+
+    const eventHandler = (e) => {
+        if (e.data.message && e.data.message.action === 'setAccount') {
+            console.log('setAccount event', e.data.message)
+            console.log('current address:', e.data.message.data.address)
+
+        }
+
+        if (e.data.message && e.data.message.action === 'connect') {
+            console.log('connect event', e.data.message.isTronLink)
+        }
+
+        if (e.data.message && e.data.message.action === 'disconnect') {
+            console.log('disconnect event', e.data.message.isTronLink)
+        }
+
+        if (e.data.message && e.data.message.action === 'accountsChanged') {
+            console.log('accountsChanged event', e.data.message)
+            console.log('current address:', e.data.message.data.address)
+        }
+    }
+
+    const hasTronLinkReady = () => {
+        if (window.tronLink === undefined) return { status: false, message: 'TronLink Wallet is not available, please install it.' };
+        return { status: true };
+    };
 
     const tronLinkConnect = async () => {
-        if (!hasTronLinkReady()) return { status: false, message: 'TronLink is not available, please install it.' };
+        const tronLinkStatus = hasTronLinkReady();
+        if (!tronLinkStatus.status) return tronLinkStatus;
         try {
             const tronRequest = await window.tronLink.request({ method: 'tron_requestAccounts' });
+            if (!tronRequest) return { status: false, message: 'Please login to your TronLink wallet to connect.' };
             if (tronRequest.code === 200) {
                 const address = window.tronLink.tronWeb.defaultAddress;
-                return { status: false, message: tronRequest.message, address };
+                return { status: true, message: tronRequest.message, address };
             }
             return { status: false, ...tronRequest };
         } catch (error) {
@@ -17,7 +53,8 @@ const useTronLink = () => {
     }
 
     const tronSignMessage = async (messageObject) => {
-        if (!hasTronLinkReady()) return { status: false, message: 'TronLink is not available, please install it.' };
+        const tronLinkStatus = hasTronLinkReady();
+        if (!tronLinkStatus.status) return tronLinkStatus;
         if (!window.tronLink.ready) return { status: false, message: 'TronLink is not connected' };
 
         const deadline = Date.now() + 600000; // 1 minute deadline 

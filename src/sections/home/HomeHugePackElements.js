@@ -5,6 +5,7 @@ import { Box, Grid, Button, Container, Typography } from '@mui/material';
 // components
 import Image from '../../components/Image';
 import { MotionViewport, varFade } from '../../components/animate';
+import blockchainBackground from '../../assets/images/blockchain-background.svg';
 
 // ----------------------------------------------------------------------
 
@@ -25,11 +26,11 @@ const ContentStyle = styled('div')(({ theme }) => ({
 const ScreenStyle = styled(m.div)(({ theme }) => ({
   paddingRight: 2,
   paddingBottom: 1,
-  maxWidth: 160,
+  maxWidth: 150,
   borderRadius: 8,
   backgroundColor: theme.palette.grey[theme.palette.mode === 'light' ? 300 : 800],
   [theme.breakpoints.up('sm')]: {
-    maxWidth: 320,
+    maxWidth: 250,
     paddingRight: 4,
     borderRadius: 12,
   },
@@ -66,6 +67,18 @@ const variantScreenRight = {
   animate: { ...COMMON, translateX: '50%', translateY: -40, opacity: 1 },
 };
 
+const HeroImgStyle = styled(m.img)(() => ({
+  top: 0,
+  right: 0,
+  bottom: 0,
+  zIndex: 1,
+  width: '100%',
+  margin: 'auto',
+  position: 'absolute',
+  opacity: "0.2",
+  height: '100%',
+}));
+
 // ----------------------------------------------------------------------
 
 export default function HomeHugePackElements() {
@@ -82,33 +95,31 @@ export default function HomeHugePackElements() {
   const screenRightAnimate = variantScreenRight;
 
   return (
-    <MotionViewport disableAnimatedMobile={false}>
+    <MotionViewport disableAnimatedMobile={false} style={{position: 'relative'}}>
+      <HeroImgStyle
+          alt="hero"
+          src={blockchainBackground}
+        />
       <RootStyle>
-        <Container>
+        <Container>        
           <Grid container spacing={5} justifyContent="center">
-            <Grid item xs={12} md={4} sx={{ display: 'flex', alignItems: 'center' }}>
+            <Grid item xs={12} md={6} sx={{ display: 'flex', alignItems: 'center' }}>
               <ContentStyle>
                 <m.div variants={varFade().inUp}>
                   <Typography component="div" variant="overline" sx={{ mb: 2, color: 'text.disabled' }}>
-                    Interface Starter Kit
+                    Blockchain
                   </Typography>
                 </m.div>
 
                 <m.div variants={varFade().inUp}>
                   <Typography variant="h2" sx={{ mb: 3 }}>
-                    Huge pack <br />
-                    of elements
-                  </Typography>
-                </m.div>
-
-                <m.div variants={varFade().inUp}>
-                  <Typography
-                    sx={{
-                      mb: 5,
-                      color: isLight ? 'text.secondary' : 'common.white',
-                    }}
-                  >
-                    We collected most popular elements. Menu, sliders, buttons, inputs etc. are all here. Just dive in!
+                    Trading Bull is a <br /> Non-Custodial Wallet for
+                    <Typography component="span" variant="h2" sx={{ color: 'primary.main' }}>
+                      &nbsp;USDT
+                    </Typography> in the
+                    <Typography component="span" variant="h2" sx={{ color: 'primary.main' }}>
+                      &nbsp;Tron Blockchain
+                    </Typography>
                   </Typography>
                 </m.div>
 
@@ -121,13 +132,13 @@ export default function HomeHugePackElements() {
                     rel="noopener"
                     href="https://www.minimals.cc/components/"
                   >
-                    View All Components
+                    See details
                   </Button>
                 </m.div>
               </ContentStyle>
             </Grid>
 
-            <Grid item xs={12} md={8} dir="ltr">
+            <Grid item xs={12} md={6} dir="ltr">
               <Box
                 sx={{
                   display: 'flex',
@@ -165,9 +176,8 @@ export default function HomeHugePackElements() {
                     <Image
                       disabledEffect
                       alt={`screen ${index + 1}`}
-                      src={`https://minimal-assets-api-dev.vercel.app/assets/images/home/screen_${
-                        isLight ? 'light' : 'dark'
-                      }_${index + 1}.png`}
+                      src={`https://minimal-assets-api-dev.vercel.app/assets/images/home/screen_${isLight ? 'light' : 'dark'
+                        }_${index + 1}.png`}
                     />
                   </ScreenStyle>
                 ))}

@@ -12,13 +12,11 @@ import cssStyles from '../../utils/cssStyles';
 import { HEADER } from '../../config';
 // components
 import Logo from '../../components/Logo';
-import Label from '../../components/Label';
 //
 import MenuDesktop from './MenuDesktop';
 import MenuMobile from './MenuMobile';
 import navConfig from './MenuConfig';
-
-
+import Iconify from '../../components/Iconify';
 // ----------------------------------------------------------------------
 
 const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
@@ -80,20 +78,29 @@ export default function MainHeader() {
           <Logo />
 
           <Link href="https://docs-minimals.vercel.app/changelog" target="_blank" rel="noopener" underline="none">
-            <Label color="info" sx={{ ml: 1 }}>
+            {/* <Label color="info" sx={{ ml: 1 }}>
               v3.5.0
-            </Label>
+            </Label> */}
           </Link>
 
           <Box sx={{ flexGrow: 1 }} />
 
           {isDesktop && <MenuDesktop isOffset={isOffset} isHome={isHome} navConfig={navConfig} />}
+          <Button
+            variant="outlined"
+            onClick={() => navigate(PATH_AUTH.login)}
+          >
+            Login
+            <Iconify style={{marginLeft: '0.5em'}} icon={'clarity:wallet-solid'} width={20} height={20}/>
+          </Button>
 
           <Button
+          style={{marginLeft: '2em'}}
             variant="contained"
-            onClick={() => navigate(PATH_AUTH.registerUnprotected)}
+            onClick={() => navigate(PATH_AUTH.register)}
           >
-            Register
+            Sign up
+            <Iconify  style={{marginLeft: '0.5em'}} icon={'clarity:wallet-solid'} width={20} height={20}/>
           </Button>
 
           {!isDesktop && <MenuMobile isOffset={isOffset} isHome={isHome} navConfig={navConfig} />}

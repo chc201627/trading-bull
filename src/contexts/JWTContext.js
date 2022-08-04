@@ -70,35 +70,24 @@ function AuthProvider({ children }) {
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  useEffect(() => {
-    const initialize = async () => {
-      try {
-        const accessToken = localStorage.getItem('accessToken');
+  const initialize = async () => {
+    try {
+      const accessToken = localStorage.getItem('accessToken');
 
-        if (accessToken && isValidToken(accessToken)) {
-          setSession(accessToken);
+      if (accessToken && isValidToken(accessToken)) {
+        setSession(accessToken);
 
-          const response = await axios.get('/api/account/my-account');
-          const { user } = response.data;
+        const response = await axios.get('/api/account/my-account');
+        const { user } = response.data;
 
-          dispatch({
-            type: 'INITIALIZE',
-            payload: {
-              isAuthenticated: true,
-              user,
-            },
-          });
-        } else {
-          dispatch({
-            type: 'INITIALIZE',
-            payload: {
-              isAuthenticated: false,
-              user: null,
-            },
-          });
-        }
-      } catch (err) {
-        console.error(err);
+        dispatch({
+          type: 'INITIALIZE',
+          payload: {
+            isAuthenticated: true,
+            user,
+          },
+        });
+      } else {
         dispatch({
           type: 'INITIALIZE',
           payload: {
@@ -107,7 +96,20 @@ function AuthProvider({ children }) {
           },
         });
       }
-    };
+    } catch (err) {
+      console.error(err);
+      dispatch({
+        type: 'INITIALIZE',
+        payload: {
+          isAuthenticated: false,
+          user: null,
+        },
+      });
+    }
+  };
+
+  useEffect(() => {
+    
 
     initialize();
   }, []);
@@ -133,8 +135,8 @@ function AuthProvider({ children }) {
 
     // Connect Wallet
     const connectionResult = await tronLinkConnect();
-
-    if (connectionResult.status) {
+    
+    if (!connectionResult.status) {
       throw new Error(connectionResult.message);
     }
 
@@ -154,20 +156,20 @@ function AuthProvider({ children }) {
     
     console.log(signature, deadline);
 
-    // const response = await axios.post('/api/account/register', {
-    //   email,
-    //   password,
-    //   firstName,
-    //   lastName,
-    // });
-    // const { accessToken, user } = response.data;
+    const response = await axios.post('/api/account/register', {
+      email: 'test',
+      password: 'test',
+      firstName: 'test',
+      lastName: 'test',
+    });
+    const { accessToken, user } = response.data;
 
-    // localStorage.setItem('accessToken', accessToken);
-
+    setSession(accessToken);
+    
     dispatch({
       type: 'REGISTER',
       payload: {
-        user: body.address,
+        user,
       },
     });
   };
