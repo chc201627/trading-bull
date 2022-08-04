@@ -5,14 +5,9 @@ import Page from '../components/Page';
 // sections
 import {
   HomeHero,
-  HomeMinimal,
-  // HomeDarkMode,
-  // HomeLookingFor,
-  // HomeColorPresets,
-  // HomePricingPlans,
-  // HomeAdvertisement,
-  // HomeCleanInterfaces,
-  HomeHugePackElements,
+  ScopeData,
+  Spots,
+  Blockchain,
 } from '../sections/home';
 
 // ----------------------------------------------------------------------
@@ -29,23 +24,12 @@ export default function HomePage() {
   return (
     <Page title="The starting point for your next project">
       <HomeHero />
-
       <ContentStyle>
-        <HomeMinimal />
+        <ScopeData />
 
-        <HomeHugePackElements />
+        <Blockchain />
 
-        {/* <HomeDarkMode />
-
-        <HomeColorPresets />
-
-        <HomeCleanInterfaces />
-
-        <HomePricingPlans />
-
-        <HomeLookingFor />
-
-        <HomeAdvertisement /> */}
+        <Spots />
       </ContentStyle>
     </Page>
   );

@@ -42,12 +42,12 @@ export const colorPresets = [
   // ORANGE
   {
     name: 'orange',
-    lighter: '#FEF4D4',
-    light: '#FED680',
-    main: '#fda92d',
-    dark: '#B66816',
-    darker: '#793908',
-    contrastText: palette.light.grey[800],
+    lighter: '#FEC176',
+    light: '#FEBD57',
+    main: '#FEA61E',
+    dark: '#E48B01',
+    darker: '#9D6001',
+    contrastText: palette.light.grey[0],
   },
   // RED
   {

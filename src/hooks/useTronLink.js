@@ -73,6 +73,7 @@ const useTronLink = () => {
     return {
         tronLinkConnect,
         tronSignMessage,
+        hasTronLinkReady,
     }
 }
 

@@ -41,7 +41,7 @@ const CardStyle = styled('div')(({ theme }) => (
 
 // ----------------------------------------------------------------------
 
-export default function HomeMinimal() {
+export default function ScopeData() {
   const theme = useTheme();
 
   const isLight = theme.palette.mode === 'light';

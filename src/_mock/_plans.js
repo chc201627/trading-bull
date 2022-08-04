@@ -2,7 +2,7 @@ import { PlanFreeIcon, PlanStarterIcon, PlanPremiumIcon } from '../assets';
 
 // ----------------------------------------------------------------------
 
-const LICENSES = ['Standard', 'Standard Plus', 'Extended'];
+const LICENSES = ['July Spots', 'Semestral Spots', 'June Spots'];
 
 export const _homePlans = [...Array(3)].map((_, index) => ({
   license: LICENSES[index],

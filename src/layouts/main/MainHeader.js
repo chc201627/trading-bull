@@ -1,7 +1,8 @@
+import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 // @mui
 import { styled, useTheme } from '@mui/material/styles';
-import { Box, Button, AppBar, Toolbar, Container, Link } from '@mui/material';
+import { Box, Button, AppBar, Toolbar, Container, Link, Alert, Collapse } from '@mui/material';
 import { PATH_AUTH } from '../../routes/paths';
 // hooks
 import useOffSetTop from '../../hooks/useOffSetTop';
@@ -17,6 +18,7 @@ import MenuDesktop from './MenuDesktop';
 import MenuMobile from './MenuMobile';
 import navConfig from './MenuConfig';
 import Iconify from '../../components/Iconify';
+import useTronLink from '../../hooks/useTronLink';
 // ----------------------------------------------------------------------
 
 const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
@@ -57,8 +59,30 @@ export default function MainHeader() {
 
   const isHome = pathname === '/';
 
+  const [tronLinkAlert, setTronLinkAlert] = useState(undefined);
+
+  const {
+    hasTronLinkReady
+  } = useTronLink();
+
+  useEffect(() => {
+    const isTronlinkReady = hasTronLinkReady();
+    setTronLinkAlert(isTronlinkReady.status ? undefined : isTronlinkReady.message);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+
   return (
     <AppBar sx={{ boxShadow: 0, bgcolor: 'transparent' }}>
+      <Collapse in={tronLinkAlert}>
+        <Alert
+          severity="warning"
+          variant='outlined'
+          onClose={() => setTronLinkAlert(false)}
+
+        >{tronLinkAlert}</Alert>
+      </Collapse>
+
       <ToolbarStyle
         disableGutters
         sx={{
@@ -88,19 +112,19 @@ export default function MainHeader() {
           {isDesktop && <MenuDesktop isOffset={isOffset} isHome={isHome} navConfig={navConfig} />}
           <Button
             variant="outlined"
-            onClick={() => navigate(PATH_AUTH.login)}
+            onClick={() => { }}
           >
             Login
-            <Iconify style={{marginLeft: '0.5em'}} icon={'clarity:wallet-solid'} width={20} height={20}/>
+            <Iconify style={{ marginLeft: '0.5em' }} icon={'clarity:wallet-solid'} width={20} height={20} />
           </Button>
 
           <Button
-          style={{marginLeft: '2em'}}
+            style={{ marginLeft: '2em' }}
             variant="contained"
             onClick={() => navigate(PATH_AUTH.register)}
           >
             Sign up
-            <Iconify  style={{marginLeft: '0.5em'}} icon={'clarity:wallet-solid'} width={20} height={20}/>
+            <Iconify style={{ marginLeft: '0.5em' }} icon={'clarity:wallet-solid'} width={20} height={20} />
           </Button>
 
           {!isDesktop && <MenuMobile isOffset={isOffset} isHome={isHome} navConfig={navConfig} />}

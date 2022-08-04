@@ -11,6 +11,7 @@ import blockchainBackground from '../../assets/images/blockchain-background.svg'
 
 const RootStyle = styled('div')(({ theme }) => ({
   padding: theme.spacing(24, 0),
+  position: 'relative',
 }));
 
 const ContentStyle = styled('div')(({ theme }) => ({
@@ -73,15 +74,15 @@ const HeroImgStyle = styled(m.img)(() => ({
   bottom: 0,
   zIndex: 1,
   width: '100%',
-  margin: 'auto',
+  // margin: 'auto',
   position: 'absolute',
   opacity: "0.2",
-  height: '100%',
+  height: '90%',
 }));
 
 // ----------------------------------------------------------------------
 
-export default function HomeHugePackElements() {
+export default function Blockchain() {
   const theme = useTheme();
 
   const isLight = theme.palette.mode === 'light';
@@ -95,12 +96,12 @@ export default function HomeHugePackElements() {
   const screenRightAnimate = variantScreenRight;
 
   return (
-    <MotionViewport disableAnimatedMobile={false} style={{position: 'relative'}}>
+    <MotionViewport disableAnimatedMobile={false}>      
+      <RootStyle>
       <HeroImgStyle
           alt="hero"
           src={blockchainBackground}
         />
-      <RootStyle>
         <Container>        
           <Grid container spacing={5} justifyContent="center">
             <Grid item xs={12} md={6} sx={{ display: 'flex', alignItems: 'center' }}>
