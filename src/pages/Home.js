@@ -24,11 +24,9 @@ export default function HomePage() {
   return (
     <Page title="The starting point for your next project">
       <HomeHero />
-      <ContentStyle>
+      <ContentStyle >
         <ScopeData />
-
         <Blockchain />
-
         <Spots />
       </ContentStyle>
     </Page>
