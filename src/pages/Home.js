@@ -1,4 +1,5 @@
 // @mui
+import { Container, Typography, Grid } from '@mui/material';
 import { styled } from '@mui/material/styles';
 // components
 import Page from '../components/Page';
@@ -8,6 +9,10 @@ import {
   ScopeData,
   Spots,
   Blockchain,
+  Advantages,
+  Benefits,
+  FaqsForm,
+  FaqsList
 } from '../sections/home';
 
 // ----------------------------------------------------------------------
@@ -28,6 +33,23 @@ export default function HomePage() {
         <ScopeData />
         <Blockchain />
         <Spots />
+        <Advantages />
+        <Benefits />
+
+        <Container sx={{ mt: 15, mb: 10, position: 'relative' }}>
+          <Typography variant="h3" sx={{ mb: 5 }}>
+            Frequently asked questions
+          </Typography>
+
+          <Grid container spacing={10}>
+            <Grid item xs={12} md={6}>
+              <FaqsList />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <FaqsForm />
+            </Grid>
+          </Grid>
+        </Container>
       </ContentStyle>
     </Page>
   );
