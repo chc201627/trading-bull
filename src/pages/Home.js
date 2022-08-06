@@ -9,8 +9,8 @@ import {
   ScopeData,
   Spots,
   Blockchain,
-  Advantages,
-  Benefits,
+  Invest,
+  RefererProgram,
   FaqsForm,
   FaqsList
 } from '../sections/home';
@@ -33,8 +33,8 @@ export default function HomePage() {
         <ScopeData />
         <Blockchain />
         <Spots />
-        <Advantages />
-        <Benefits />
+        <Invest />
+        <RefererProgram />
 
         <Container sx={{ mt: 15, mb: 10, position: 'relative' }}>
           <Typography variant="h3" sx={{ mb: 5 }}>

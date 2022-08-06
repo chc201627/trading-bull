@@ -19,6 +19,7 @@ import MenuMobile from './MenuMobile';
 import navConfig from './MenuConfig';
 import Iconify from '../../components/Iconify';
 import useTronLink from '../../hooks/useTronLink';
+import useAuth from '../../hooks/useAuth';
 // ----------------------------------------------------------------------
 
 const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
@@ -60,17 +61,33 @@ export default function MainHeader() {
   const isHome = pathname === '/';
 
   const [tronLinkAlert, setTronLinkAlert] = useState(undefined);
+  const [tronLinkReady, setTronLinkReady] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const {
     hasTronLinkReady
   } = useTronLink();
 
+  const { login } = useAuth();
+
   useEffect(() => {
     const isTronlinkReady = hasTronLinkReady();
     setTronLinkAlert(isTronlinkReady.status ? undefined : isTronlinkReady.message);
+    setTronLinkReady(isTronlinkReady.status);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  const handleLogin = async () => {
+    setIsSubmitting(true);
+    try {
+      await login();
+      navigate(PATH_AUTH.login);
+    } catch (error) {
+      setTronLinkAlert(error.message);
+    }
+    
+    setIsSubmitting(false);
+  }
 
   return (
     <AppBar sx={{ boxShadow: 0, bgcolor: 'transparent' }}>
@@ -112,7 +129,8 @@ export default function MainHeader() {
           {isDesktop && <MenuDesktop isOffset={isOffset} isHome={isHome} navConfig={navConfig} />}
           <Button
             variant="outlined"
-            onClick={() => { }}
+            onClick={handleLogin}
+            disabled={isSubmitting || !tronLinkReady}
           >
             Login
             <Iconify style={{ marginLeft: '0.5em' }} icon={'clarity:wallet-solid'} width={20} height={20} />
@@ -122,6 +140,7 @@ export default function MainHeader() {
             style={{ marginLeft: '2em' }}
             variant="contained"
             onClick={() => navigate(PATH_AUTH.register)}
+            disabled={isSubmitting}
           >
             Sign up
             <Iconify style={{ marginLeft: '0.5em' }} icon={'clarity:wallet-solid'} width={20} height={20} />

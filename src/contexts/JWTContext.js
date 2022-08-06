@@ -115,12 +115,42 @@ function AuthProvider({ children }) {
   }, []);
 
   const login = async (email, password) => {
-    const response = await axios.post('/api/account/login', {
-      email,
-      password,
-    });
-    const { accessToken, user } = response.data;
 
+    const defaultValues = {
+      email: 'demo@minimals.cc',
+      password: 'demo1234',
+      remember: true,
+    };
+
+    // Connect Wallet
+    const connectionResult = await tronLinkConnect();
+    
+    if (!connectionResult.status) {
+      throw new Error(connectionResult.message);
+    }
+
+    const body = {
+      address: connectionResult.address,
+    }
+
+    // Sign request body
+    const signatureResponse = await tronSignMessage(body);
+
+    if (!signatureResponse.status) {
+      throw new Error(signatureResponse.message);
+    }
+
+    const { signature, deadline } = signatureResponse;
+
+    console.log(signature, deadline);
+
+    const response = await axios.post('/api/account/login', {
+      email: defaultValues.email,
+      password: defaultValues.password,
+    });
+
+    const { accessToken, user } = response.data;
+    console.log(response.data);
     setSession(accessToken);
 
     dispatch({
