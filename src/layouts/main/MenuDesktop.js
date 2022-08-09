@@ -1,8 +1,10 @@
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { NavLink as RouterLink, useLocation } from 'react-router-dom';
 // @mui
 import { styled } from '@mui/material/styles';
 import { Box, Link, Stack } from '@mui/material';
+import { SettingsContext } from '../../contexts/SettingsContext';
 // components
 
 // ----------------------------------------------------------------------
@@ -29,10 +31,11 @@ MenuDesktop.propTypes = {
 export default function MenuDesktop({ navConfig }) {
   return (
     <Stack direction="row">
-      {navConfig.map((link) => (
+      {navConfig.map((link, i) => (
         <MenuDesktopItem
           key={link.title}
           item={link}
+          index={i}
         />
       ))}
     </Stack>
@@ -42,6 +45,7 @@ export default function MenuDesktop({ navConfig }) {
 // ----------------------------------------------------------------------
 
 MenuDesktopItem.propTypes = {
+  index: PropTypes.number,
   item: PropTypes.shape({
     path: PropTypes.string,
     title: PropTypes.string,
@@ -49,7 +53,9 @@ MenuDesktopItem.propTypes = {
   }),
 };
 
-function MenuDesktopItem({ item }) {
+function MenuDesktopItem({ item, index }) {
+
+  const { scrollToRef } = useContext(SettingsContext);
   const { pathname, hash } = useLocation();
 
   const { title, path } = item;
@@ -59,6 +65,7 @@ function MenuDesktopItem({ item }) {
   return (
     <LinkStyle
       to={path}
+      onClick={() => scrollToRef(index)}
       component={RouterLink}
       end={path === '/'}
       sx={{

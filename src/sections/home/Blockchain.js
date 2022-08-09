@@ -80,7 +80,6 @@ const HeroImgStyle = styled(m.img)(() => ({
   height: '90%',
 }));
 
-// ----------------------------------------------------------------------
 
 export default function Blockchain() {
   const theme = useTheme();

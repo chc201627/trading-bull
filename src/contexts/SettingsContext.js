@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useEffect, createContext } from 'react';
+import { useEffect, createContext, useState } from 'react';
 // hooks
 import useLocalStorage from '../hooks/useLocalStorage';
 // utils
@@ -57,6 +57,8 @@ function SettingsProvider({ children }) {
     themeDirection: initialState.themeDirection,
     themeColorPresets: initialState.themeColorPresets,
   });
+
+  const [ navRefs, setNavRefs ] = useState([]);
 
   const isArabic = localStorage.getItem('i18nextLng') === 'ar';
 
@@ -169,6 +171,10 @@ function SettingsProvider({ children }) {
     });
   };
 
+  const scrollToRef = (refIndex) => {
+    navRefs[refIndex]?.current.scrollIntoView({ behavior: 'smooth'})
+  };  
+
   return (
     <SettingsContext.Provider
       value={{
@@ -204,6 +210,11 @@ function SettingsProvider({ children }) {
 
         // Reset
         onResetSetting,
+
+        // Custom
+        scrollToRef,
+        setNavRefs,
+        navRefs,
       }}
     >
       {children}

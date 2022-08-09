@@ -47,7 +47,7 @@ export default function ScopeData() {
   const isLight = theme.palette.mode === 'light';
 
   return (
-    <RootStyle>
+    <RootStyle >
       <Container component={MotionViewport}>
         <Box
           sx={{
