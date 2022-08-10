@@ -1,8 +1,8 @@
 const es = {
     clientNav: {
-        home: 'Inicio',
-        about: 'Sobre Nosotros',
-        faqs: 'Soporte',
+        Home: 'Inicio',
+        About: 'Sobre Nosotros',
+        FAQs: 'Soporte',
         login: 'Iniciar sesión',
         signup: 'Registrarse',
     },

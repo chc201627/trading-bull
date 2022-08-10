@@ -54,8 +54,7 @@ export default function MainHeader() {
 
   const theme = useTheme();
 
-  const { currentLang, onChangeLang } = useLocales();
-  console.log(currentLang)
+  const { currentLang, onChangeLang, translate } = useLocales();
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
@@ -135,7 +134,7 @@ export default function MainHeader() {
             onClick={handleLogin}
             disabled={isSubmitting || !tronLinkReady}
           >
-            Login
+            {translate('clientNav.login')}
             <Iconify style={{ marginLeft: '0.5em' }} icon={'clarity:wallet-solid'} width={20} height={20} />
           </Button>
 
@@ -145,7 +144,7 @@ export default function MainHeader() {
             onClick={() => navigate(PATH_AUTH.register)}
             disabled={isSubmitting}
           >
-            Sign up
+            {translate('clientNav.signup')}
             <Iconify style={{ marginLeft: '0.5em' }} icon={'clarity:wallet-solid'} width={20} height={20} />
           </Button>
 

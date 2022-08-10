@@ -5,6 +5,7 @@ import { NavLink as RouterLink, useLocation } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import { Box, Link, Stack } from '@mui/material';
 import { SettingsContext } from '../../contexts/SettingsContext';
+import useLocales from '../../hooks/useLocales';
 // components
 
 // ----------------------------------------------------------------------
@@ -57,7 +58,7 @@ function MenuDesktopItem({ item, index }) {
 
   const { scrollToRef } = useContext(SettingsContext);
   const { pathname, hash } = useLocation();
-
+  const { translate } = useLocales();
   const { title, path } = item;
 
   const isActive = (path) => pathname + hash === path;
@@ -72,7 +73,7 @@ function MenuDesktopItem({ item, index }) {
         ...(isActive(item.path) && { color: 'primary.main' }),
       }}
     >
-      {title}
+      {translate(`clientNav.${title}`)}
     </LinkStyle>
   );
 }

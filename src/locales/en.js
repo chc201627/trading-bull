@@ -6,6 +6,13 @@
 // ----------------------------------------------------------------------
 
 const en = {
+  clientNav: {
+    Home: 'Home',
+    About: 'About us',
+    FAQs: 'FAQs',
+    login: 'Login',
+    signup: 'Sign up',
+},
   home: {
 
   },
