@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 // @mui
 import { styled, useTheme } from '@mui/material/styles';
-import { Box, Button, AppBar, Toolbar, Container, Link, Alert, Collapse } from '@mui/material';
+import { Box, Button, AppBar, Toolbar, Container, Link, Alert, Collapse, IconButton } from '@mui/material';
 import { PATH_AUTH } from '../../routes/paths';
 // hooks
 import useOffSetTop from '../../hooks/useOffSetTop';
@@ -20,6 +20,7 @@ import navConfig from './MenuConfig';
 import Iconify from '../../components/Iconify';
 import useTronLink from '../../hooks/useTronLink';
 import useAuth from '../../hooks/useAuth';
+import useLocales from '../../hooks/useLocales';
 // ----------------------------------------------------------------------
 
 const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
@@ -53,6 +54,8 @@ export default function MainHeader() {
 
   const theme = useTheme();
 
+  const { currentLang, onChangeLang } = useLocales();
+  console.log(currentLang)
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
@@ -85,7 +88,7 @@ export default function MainHeader() {
     } catch (error) {
       setTronLinkAlert(error.message);
     }
-    
+
     setIsSubmitting(false);
   }
 
@@ -145,6 +148,24 @@ export default function MainHeader() {
             Sign up
             <Iconify style={{ marginLeft: '0.5em' }} icon={'clarity:wallet-solid'} width={20} height={20} />
           </Button>
+
+          {
+            isDesktop &&
+            <Box style={{ marginLeft: '2em' }}>
+              <IconButton
+                onClick={() => onChangeLang('en')}
+                color='primary'
+                style={{ outline: currentLang.value === 'en' ? '1px solid' : undefined }}>
+                <Iconify icon={'circle-flags:uk'} width={20} height={20} />
+              </IconButton>
+              <IconButton
+                onClick={() => onChangeLang('es')}
+                color='primary'
+                style={{ marginLeft: '0.5em',  outline: currentLang.value === 'es' ? '1px solid' : undefined }}>
+                <Iconify icon={'circle-flags:es'} width={20} height={20} />
+              </IconButton>
+            </Box>
+          }
 
           {!isDesktop && <MenuMobile isOffset={isOffset} isHome={isHome} navConfig={navConfig} />}
         </Container>

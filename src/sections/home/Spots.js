@@ -61,6 +61,7 @@ PlanCard.propTypes = {
     icons: PropTypes.arrayOf(PropTypes.string),
     options: PropTypes.arrayOf(PropTypes.string),
   }),
+  last: PropTypes.bool,
 };
 
 function PlanCard({ plan, last }) {
