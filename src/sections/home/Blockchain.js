@@ -6,6 +6,7 @@ import { Box, Grid, Button, Container, Typography } from '@mui/material';
 import Image from '../../components/Image';
 import { MotionViewport, varFade } from '../../components/animate';
 import blockchainBackground from '../../assets/images/blockchain-background.svg';
+import useLocales from '../../hooks/useLocales';
 
 // ----------------------------------------------------------------------
 
@@ -84,6 +85,8 @@ const HeroImgStyle = styled(m.img)(() => ({
 export default function Blockchain() {
   const theme = useTheme();
 
+  const { translate } = useLocales();
+
   const isLight = theme.palette.mode === 'light';
 
   const isRTL = theme.direction === 'rtl';
@@ -107,18 +110,20 @@ export default function Blockchain() {
               <ContentStyle>
                 <m.div variants={varFade().inUp}>
                   <Typography component="div" variant="overline" sx={{ mb: 2, color: 'text.disabled' }}>
-                    Blockchain
+                    {translate('home.blockchain.title')}
                   </Typography>
                 </m.div>
 
                 <m.div variants={varFade().inUp}>
                   <Typography variant="h2" sx={{ mb: 3 }}>
-                    Trading Bull is a <br /> Non-Custodial Wallet for
+                    {translate('home.blockchain.description1')}
+                    <br /> 
+                    {translate('home.blockchain.description2')}
                     <Typography component="span" variant="h2" sx={{ color: 'primary.main' }}>
-                      &nbsp;USDT
-                    </Typography> in the
+                      &nbsp;{translate('home.blockchain.description3')}
+                    </Typography> {translate('home.blockchain.description4')}
                     <Typography component="span" variant="h2" sx={{ color: 'primary.main' }}>
-                      &nbsp;Tron Blockchain
+                      &nbsp;{translate('home.blockchain.description5')}
                     </Typography>
                   </Typography>
                 </m.div>
@@ -132,7 +137,7 @@ export default function Blockchain() {
                     rel="noopener"
                     href="https://www.minimals.cc/components/"
                   >
-                    See details
+                    {translate('home.blockchain.seeDetails')}
                   </Button>
                 </m.div>
               </ContentStyle>

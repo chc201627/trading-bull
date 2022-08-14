@@ -4,21 +4,22 @@ import { useTheme, styled } from '@mui/material/styles';
 import { Box, Container, Typography } from '@mui/material';
 // components
 import { MotionViewport, varFade } from '../../components/animate';
+import useLocales from '../../hooks/useLocales';
 
 // ----------------------------------------------------------------------
 
 const infoCards = [
   {
     title: '+15',
-    description: 'PAMM Profitable Trading Systems ',
+    description: 'home.scopeData.card0Description',
   },
   {
     title: '+24',
-    description: 'Months with an APY greater than 8.5% monthly and an standard deviation of 3% ',
+    description: 'home.scopeData.card1Description',
   },
   {
     title: '+30 K',
-    description: 'Active subscribers to the PAMM strategies ',
+    description: 'home.scopeData.card2Description',
   }
 ]
 
@@ -46,6 +47,8 @@ export default function ScopeData() {
 
   const isLight = theme.palette.mode === 'light';
 
+  const { translate } = useLocales();
+
   return (
     <RootStyle >
       <Container component={MotionViewport}>
@@ -57,14 +60,14 @@ export default function ScopeData() {
         >
           <m.div variants={varFade().inUp}>
             <Typography component="div" variant="overline" sx={{ mb: 2, color: 'text.disabled' }}>
-              SCOPE AND DATA
+              {translate('home.scopeData.title')}
             </Typography>
           </m.div>
           <m.div variants={varFade().inDown}>
-            <Typography variant="h2">Achieve your growth goals with</Typography>
+            <Typography variant="h2">{translate('home.scopeData.description')}</Typography>
           </m.div>
           <Typography component="span" variant="h2" sx={{ color: 'primary.main' }}>
-            NAME PLATFORM
+            {translate('home.scopeData.namePlatform')}
           </Typography>
         </Box>
         <Box
@@ -80,7 +83,7 @@ export default function ScopeData() {
                 <Typography variant="h2" paragraph>
                   {card.title}
                 </Typography>
-                <Typography sx={{ color: isLight ? 'text.secondary' : 'common.white' }}>{card.description}</Typography>
+                <Typography sx={{ color: isLight ? 'text.secondary' : 'common.white' }}>{translate(card.description)}</Typography>
               </CardStyle>
             </m.div>
           ))}

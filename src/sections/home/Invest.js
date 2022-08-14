@@ -6,6 +6,7 @@ import { Box, Grid, Container, Typography, LinearProgress, Card } from '@mui/mat
 // hooks
 import Slider from 'react-slick';
 import useResponsive from '../../hooks/useResponsive';
+import useLocales from '../../hooks/useLocales';
 // utils
 import { fPercent } from '../../utils/formatNumber';
 // _mock_
@@ -25,12 +26,12 @@ const RootStyle = styled('div')(({ theme }) => ({
   },
 }));
 
-
-
 // ----------------------------------------------------------------------
 
 export default function Invest() {
   const theme = useTheme();
+
+  const { translate } = useLocales();
 
   const settings = {
     dots: true,
@@ -48,7 +49,7 @@ export default function Invest() {
       <Container component={MotionViewport}>
         <m.div variants={varFade().inUp} style={{ textAlign: 'right' }}>
           <Typography component="div" variant="overline" sx={{ mb: 2, color: 'text.disabled' }}>
-            Invest
+            {translate('home.invest.title')}
           </Typography>
         </m.div>
         <Grid container spacing={3}>
@@ -72,11 +73,11 @@ export default function Invest() {
           <Grid item xs={12} md={6} lg={5}>
             <m.div variants={varFade().inRight} style={{ textAlign: 'right' }}>
               <Typography variant="h2" sx={{ mb: 3 }}>
-                The Advantage of <br />
+                {translate('home.invest.description1')} <br />
                 <Typography component="span" variant="h2" sx={{ color: 'primary.main' }}>
-                  crypto&nbsp;
+                  {translate('home.invest.description2')}&nbsp;
                 </Typography>
-                in trading
+                {translate('home.invest.description3')}
               </Typography>
             </m.div>
 
@@ -86,19 +87,18 @@ export default function Invest() {
                   color: (theme) => (theme.palette.mode === 'light' ? 'text.secondary' : 'common.white'),
                 }}
               >
-                Here you can Send, Receive and Invest USDT in the PAMM strategies once you become a member with a lot of benefits :
+                {translate('home.invest.caption')}
               </Typography>
             </m.div>
-            
+
 
             <Box sx={{ my: 5 }}>
-              {_skills.map((progress) => (
+              {_skills.map((progress, i) => (
                 <m.div key={progress.label} variants={varFade().inRight}>
-                  <ProgressItem progress={progress} />
+                  <ProgressItem progress={{ label: translate(`home.invest.skill${i}`), value: 0 }} />
                 </m.div>
               ))}
             </Box>
-
           </Grid>
         </Grid>
       </Container>

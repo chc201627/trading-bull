@@ -9,6 +9,7 @@ import { _homePlans } from '../../_mock';
 // components
 import Iconify from '../../components/Iconify';
 import { varFade, MotionViewport } from '../../components/animate';
+import useLocales from '../../hooks/useLocales';
 
 // ----------------------------------------------------------------------
 
@@ -23,18 +24,23 @@ const RootStyle = styled('div')(({ theme }) => ({
 
 export default function Spots() {
 
+  const { translate } = useLocales();
+
   return (
     <RootStyle>
       <Container component={MotionViewport}>
         <Box sx={{ mb: 10, textAlign: 'center' }}>
           <m.div variants={varFade().inUp}>
             <Typography component="div" variant="overline" sx={{ mb: 2, color: 'text.disabled' }}>
-              Spots
+              {translate('home.spots.title')}
             </Typography>
           </m.div>
           <m.div variants={varFade().inDown}>
             <Typography variant="h2" sx={{ mb: 3 }}>
-              Spots for Invest
+              {translate('home.spots.description')}
+              <Typography variant="h2" sx={{ color: 'primary.main' }}>
+                {translate('home.spots.invest')}
+              </Typography>
             </Typography>
           </m.div>
         </Box>
@@ -177,7 +183,7 @@ function PlanCard({ plan, last }) {
             last &&
             <Box display='flex' flexDirection='column'>
               <Typography component="span" sx={{ color: 'text.disabled' }}>
-              Time Remaining
+                Time Remaining
               </Typography>
               <Typography component="span" sx={{ color: 'white' }}>
                 12 Days

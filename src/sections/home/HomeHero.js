@@ -11,6 +11,7 @@ import { MotionContainer, varFade } from '../../components/animate';
 
 import tronscanLogo from '../../assets/images/logos/tronscan.svg';
 import usdtLogo from '../../assets/images/logos/usdt.svg';
+import useLocales from '../../hooks/useLocales';
 // ----------------------------------------------------------------------
 
 const RootStyle = styled(m.div)(({ theme }) => ({
@@ -67,6 +68,8 @@ const HeroImgStyle = styled(m.img)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function HomeHero() {
+
+  const { translate } = useLocales();
   return (
     <MotionContainer>
       <RootStyle>
@@ -82,24 +85,23 @@ export default function HomeHero() {
           <ContentStyle>
             <m.div variants={varFade().inRight}>
               <Typography variant="h2" sx={{ color: 'common.white' }}>
-                The First Decentralized <br />
+                {translate('home.hero.content1')} <br />
                 <Typography component="span" variant="h2" sx={{ color: 'primary.main' }}>
-                  PAMM portfolio exclusive
+                {translate('home.hero.content2')}
                 </Typography>
-                <br /> for members of our community <br />
+                <br /> {translate('home.hero.content3')} <br />
               </Typography>
             </m.div>
 
             <m.div variants={varFade().inRight}>
               <Typography sx={{ color: 'common.white' }}>
-                Join  our trading Club and earn from the best FX traders in the world
-              </Typography>
+                {translate('home.hero.description')}              </Typography>
             </m.div>           
 
             <Stack spacing={2.5}>
               <m.div variants={varFade().inRight}>
                 <Typography variant="overline" sx={{ color: 'primary.light' }}>
-                  POWER BY:
+                {translate('home.hero.powerBy')}
                 </Typography>
               </m.div>
 
@@ -121,7 +123,7 @@ export default function HomeHero() {
                 to={PATH_DASHBOARD.root}
                 startIcon={<Iconify icon={'eva:flash-fill'} width={20} height={20} />}
               >
-                See spots available
+                {translate('home.hero.seeSpotsAvailable')}
               </Button>
             </m.div>
           </ContentStyle>

@@ -1,4 +1,4 @@
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useEffect, useMemo } from 'react';
 import { Navigate, useRoutes, useLocation } from 'react-router-dom';
 // layouts
 import MainLayout from '../layouts/main';
@@ -12,6 +12,7 @@ import AuthGuard from '../guards/AuthGuard';
 import { PATH_AFTER_LOGIN } from '../config';
 // components
 import LoadingScreen from '../components/LoadingScreen';
+import useLocales from '../hooks/useLocales';
 
 // ----------------------------------------------------------------------
 
@@ -26,7 +27,27 @@ const Loadable = (Component) => (props) => {
   );
 };
 
+function useQuery() {
+  const { search } = useLocation();
+
+  return useMemo(() => new URLSearchParams(search), [search]);
+}
+
 export default function Router() {
+
+  const query = useQuery();
+
+  const { onChangeLang } = useLocales();
+
+  useEffect(() => {
+    const lang =  query.get('lang');
+    if (lang) {
+      onChangeLang(lang);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+
   return useRoutes([
     {
       path: 'auth',
