@@ -57,14 +57,14 @@ const useTronLink = () => {
         if (!tronLinkStatus.status) return tronLinkStatus;
         if (!window.tronLink.ready) return { status: false, message: 'TronLink is not connected' };
 
-        const deadline = Date.now() + 600000; // 1 minute deadline 
+        const deadline = Date.now() + 60000000; // 600000 = 1 minute deadline 
 
         const messageString = JSON.stringify({ ...messageObject, deadline });
 
         try {
             const hexStr = window.tronLink.tronWeb.toHex(messageString);
             const signature = await window.tronLink.tronWeb.trx.sign(hexStr);
-            return { status: true, signature, deadline };
+            return { status: true, data: {signature, deadline} };
         } catch (error) {
             return { status: false, message: error };
         }
