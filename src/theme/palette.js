@@ -8,16 +8,16 @@ function createGradient(color1, color2) {
 
 // SETUP COLORS
 const PRIMARY = {
-  lighter: '#FEC176',
-  light: '#FEBD57',
-  main: '#FEA61E',
-  dark: '#E48B01',
-  darker: '#9D6001',
+  lighter: '#A964DA',
+  light: '#9438D6',
+  main: '#7524AF',
+  dark: '#631E94',
+  darker: '#4A176E',
 };
 const SECONDARY = {
   lighter: '#D6E4FF',
   light: '#84A9FF',
-  main: '#3366FF',
+  main: '#A964DA',
   dark: '#1939B7',
   darker: '#091A7A',
 };

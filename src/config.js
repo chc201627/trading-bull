@@ -68,7 +68,7 @@ export const defaultSettings = {
   themeDirection: 'ltr',
   themeContrast: 'default',
   themeLayout: 'horizontal',
-  themeColorPresets: 'orange',
+  themeColorPresets: 'purple',
   themeStretch: false,
 };
 

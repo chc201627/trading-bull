@@ -70,7 +70,7 @@ function MenuDesktopItem({ item, index }) {
       component={RouterLink}
       end={path === '/'}
       sx={{
-        ...(isActive(item.path) && { color: 'primary.main' }),
+        ...(isActive(item.path) && { color: 'primary.lighter' }),
       }}
     >
       {translate(`clientNav.${title}`)}

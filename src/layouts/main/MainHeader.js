@@ -133,6 +133,7 @@ export default function MainHeader() {
             variant="outlined"
             onClick={handleLogin}
             disabled={isSubmitting || !tronLinkReady}
+            color='secondary'
           >
             {translate('clientNav.login')}
             <Iconify style={{ marginLeft: '0.5em' }} icon={'clarity:wallet-solid'} width={20} height={20} />
@@ -153,13 +154,13 @@ export default function MainHeader() {
             <Box style={{ marginLeft: '2em' }}>
               <IconButton
                 onClick={() => onChangeLang('en')}
-                color='primary'
+                color='secondary'
                 style={{ outline: currentLang.value === 'en' ? '1px solid' : undefined }}>
                 <Iconify icon={'circle-flags:uk'} width={20} height={20} />
               </IconButton>
               <IconButton
                 onClick={() => onChangeLang('es')}
-                color='primary'
+                color='secondary'
                 style={{ marginLeft: '0.5em',  outline: currentLang.value === 'es' ? '1px solid' : undefined }}>
                 <Iconify icon={'circle-flags:es'} width={20} height={20} />
               </IconButton>
