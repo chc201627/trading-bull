@@ -6,10 +6,10 @@ export default function Alert(theme) {
   const isLight = theme.palette.mode === 'light';
 
   const standardStyle = (color) => ({
-    color: theme.palette[color][isLight ? 'darker' : 'lighter'],
-    backgroundColor: theme.palette[color][isLight ? 'lighter' : 'darker'],
+    color: 'white',
+    backgroundColor: theme.palette[color][isLight ? 'lighter' : 'main'],
     '& .MuiAlert-icon': {
-      color: theme.palette[color][isLight ? 'main' : 'light'],
+      color: 'white',
     },
   });
 

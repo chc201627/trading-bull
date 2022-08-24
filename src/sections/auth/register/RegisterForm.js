@@ -7,6 +7,7 @@ import { Stack, Alert } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 // hooks
 import useAuth from '../../../hooks/useAuth';
+import useLocales from '../../../hooks/useLocales';
 import useIsMountedRef from '../../../hooks/useIsMountedRef';
 // components
 import { FormProvider, RHFTextField } from '../../../components/hook-form';
@@ -15,11 +16,12 @@ import { FormProvider, RHFTextField } from '../../../components/hook-form';
 
 export default function RegisterForm() {
   const { register } = useAuth();
+  const { translate } = useLocales();
 
   const isMountedRef = useIsMountedRef();
 
   const RegisterSchema = Yup.object().shape({
-    referralCode: Yup.string().required('Referral code required'),
+    referralCode: Yup.string().required(translate('register.errorCodeRequired')),
   });
 
   const defaultValues = {
@@ -52,10 +54,10 @@ export default function RegisterForm() {
       <Stack spacing={3}>
         {!!errors.afterSubmit && <Alert severity="error" >{errors.afterSubmit.message}</Alert>}
 
-        <RHFTextField name="referralCode" label="Referral code" />
+        <RHFTextField name="referralCode" label={translate('register.referCode')} />
 
         <LoadingButton fullWidth size="large" type="submit" variant="contained" loading={isSubmitting}>
-          Register
+          {translate('register.register')}
         </LoadingButton>
       </Stack>
     </FormProvider>

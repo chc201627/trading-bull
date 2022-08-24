@@ -1,11 +1,10 @@
-import { capitalCase } from 'change-case';
 import { Link as RouterLink } from 'react-router-dom';
 // @mui
 import { styled } from '@mui/material/styles';
-import { Box, Card, Link, Container, Typography, Tooltip } from '@mui/material';
+import { Box, Card, Link, Container, Typography, Divider, Alert, Button } from '@mui/material';
 // hooks
-import useAuth from '../../hooks/useAuth';
 import useResponsive from '../../hooks/useResponsive';
+import useLocales from '../../hooks/useLocales';
 // routes
 import { PATH_AUTH } from '../../routes/paths';
 // components
@@ -14,6 +13,7 @@ import Logo from '../../components/Logo';
 import Image from '../../components/Image';
 // sections
 import { RegisterForm } from '../../sections/auth/register';
+import ChangeLanguaje from '../../components/ChangeLanguaje';
 
 // ----------------------------------------------------------------------
 
@@ -61,7 +61,7 @@ const ContentStyle = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function Register() {
-  const { method } = useAuth();
+  const { translate } = useLocales();
 
   const smUp = useResponsive('up', 'sm');
 
@@ -72,20 +72,25 @@ export default function Register() {
       <RootStyle>
         <HeaderStyle>
           <Logo />
-          {/* {smUp && (
-            <Typography variant="body2" sx={{ mt: { md: -2 } }}>
-              Already have an account? {''}
-              <Link variant="subtitle2" component={RouterLink} to={PATH_AUTH.login}>
-                Login
-              </Link>
-            </Typography>
-          )} */}
+          {smUp && (
+            <Box display='flex' alignItems='center' >
+              <Typography variant="body2" >
+                Already have an account? {''}
+                <Link variant="subtitle2" component={RouterLink} to={PATH_AUTH.login}>
+                  Login
+                </Link>
+              </Typography>
+              <Box sx={{ ml: 2 }}>
+                <ChangeLanguaje />
+              </Box>
+            </Box>
+          )}
         </HeaderStyle>
 
         {mdUp && (
           <SectionStyle>
             <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
-              Manage the job more effectively with Minimal
+              {translate('register.pageCaption')}
             </Typography>
             <Image
               visibleByDefault
@@ -101,20 +106,22 @@ export default function Register() {
             <Box sx={{ mb: 5, display: 'flex', alignItems: 'center' }}>
               <Box sx={{ flexGrow: 1 }}>
                 <Typography variant="h4" gutterBottom>
-                  Get started absolutely free.
+                  {translate('register.title')}
                 </Typography>
-                <Typography sx={{ color: 'text.secondary' }}>Free forever. No credit card needed.</Typography>
+                <Typography sx={{ color: 'text.secondary' }}>{translate('register.description')}</Typography>
               </Box>
-              <Tooltip title={capitalCase(method)}>
-                <>
-                  <Image
-                    disabledEffect
-                    src={`https://minimal-assets-api-dev.vercel.app/assets/icons/auth/ic_${method}.png`}
-                    sx={{ width: 32, height: 32 }}
-                  />
-                </>
-              </Tooltip>
             </Box>
+
+            <Divider />
+
+            <Alert severity='info' sx={{ mt: 2, mb: 2 }}>
+              {translate('register.faqs')}
+              <Button color='inherit' variant='outlined' size='small' sx={{ ml: 1 }}>
+                {translate('register.goToFaqs')}
+              </Button>
+            </Alert>
+
+            <Divider sx={{ mt: 2, mb: 2 }} />
 
             <RegisterForm />
 
@@ -131,12 +138,17 @@ export default function Register() {
             </Typography>
 
             {!smUp && (
-              <Typography variant="body2" sx={{ mt: 3, textAlign: 'center' }}>
-                Already have an account?{' '}
-                <Link variant="subtitle2" to={PATH_AUTH.login} component={RouterLink}>
-                  Login
-                </Link>
-              </Typography>
+              <>
+                <Typography variant="body2" sx={{ mt: 3, textAlign: 'center' }}>
+                  Already have an account?{' '}
+                  <Link variant="subtitle2" to={PATH_AUTH.login} component={RouterLink}>
+                    Login
+                  </Link>
+                </Typography>
+                <Box display='flex' justifyContent='center' sx={{mt: 2}}>
+                  <ChangeLanguaje />
+                </Box>
+              </>
             )}
           </ContentStyle>
         </Container>

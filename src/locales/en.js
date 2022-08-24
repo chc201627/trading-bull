@@ -55,6 +55,16 @@ const en = {
             skill2: 'Prior Acess to new offers in the platform',
         },
     },
+    register: {
+        pageCaption: 'You are to near to be part of a poweful investor community',
+        title: 'Put the code of your refer partner',
+        description: 'This community only allow verify members to connect with other members. Please write your code refer.',
+        faqs: 'Don’t you have a refer code? See our FAQs page',
+        goToFaqs: 'Go to FAQs',
+        referCode: 'Referral Code',
+        register: 'Register',
+        errorCodeRequired: 'Referral code required',        
+    },
     demo: {
         title: `English`,
         introduction: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,

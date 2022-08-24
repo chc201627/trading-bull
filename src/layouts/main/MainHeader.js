@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 // @mui
 import { styled, useTheme } from '@mui/material/styles';
-import { Box, Button, AppBar, Toolbar, Container, Link, Alert, Collapse, IconButton } from '@mui/material';
+import { Box, Button, AppBar, Toolbar, Container, Link, Alert, Collapse } from '@mui/material';
 import { PATH_AUTH } from '../../routes/paths';
 // hooks
 import useOffSetTop from '../../hooks/useOffSetTop';
@@ -21,6 +21,7 @@ import Iconify from '../../components/Iconify';
 import useTronLink from '../../hooks/useTronLink';
 import useAuth from '../../hooks/useAuth';
 import useLocales from '../../hooks/useLocales';
+import ChangeLanguaje from '../../components/ChangeLanguaje';
 // ----------------------------------------------------------------------
 
 const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
@@ -152,18 +153,7 @@ export default function MainHeader() {
           {
             isDesktop &&
             <Box style={{ marginLeft: '2em' }}>
-              <IconButton
-                onClick={() => onChangeLang('en')}
-                color='secondary'
-                style={{ outline: currentLang.value === 'en' ? '1px solid' : undefined }}>
-                <Iconify icon={'circle-flags:uk'} width={20} height={20} />
-              </IconButton>
-              <IconButton
-                onClick={() => onChangeLang('es')}
-                color='secondary'
-                style={{ marginLeft: '0.5em',  outline: currentLang.value === 'es' ? '1px solid' : undefined }}>
-                <Iconify icon={'circle-flags:es'} width={20} height={20} />
-              </IconButton>
+              <ChangeLanguaje />
             </Box>
           }
 
