@@ -4,9 +4,10 @@ import { MenuItem, Stack } from '@mui/material';
 // hooks
 import useLocales from '../../../hooks/useLocales';
 // components
-import Image from '../../../components/Image';
+// import Image from '../../../components/Image';
 import MenuPopover from '../../../components/MenuPopover';
 import { IconButtonAnimate } from '../../../components/animate';
+import Iconify from '../../../components/Iconify';
 
 // ----------------------------------------------------------------------
 
@@ -38,7 +39,7 @@ export default function LanguagePopover() {
           ...(open && { bgcolor: 'action.selected' }),
         }}
       >
-        <Image disabledEffect src={currentLang.icon} alt={currentLang.label} />
+        <Iconify icon={`circle-flags:${currentLang.value}`} width={20} height={20} />
       </IconButtonAnimate>
 
       <MenuPopover
@@ -59,7 +60,8 @@ export default function LanguagePopover() {
               selected={option.value === currentLang.value}
               onClick={() => handleChangeLang(option.value)}
             >
-              <Image disabledEffect alt={option.label} src={option.icon} sx={{ width: 28, mr: 2 }} />
+              <Iconify icon={`circle-flags:${option.value}`} width={20} height={20} sx={{mr: 2}} />
+              {/* <Image disabledEffect alt={option.label} src={option.icon} sx={{ width: 28, mr: 2 }} /> */}
 
               {option.label}
             </MenuItem>

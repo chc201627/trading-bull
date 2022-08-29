@@ -4,7 +4,7 @@ import useLocales from '../hooks/useLocales';
 import Iconify from './Iconify';
 
 const ChangeLanguaje = () => {
-    const { onChangeLang, currentLang } = useLocales();
+    const { allLangs, onChangeLang, currentLang } = useLocales();
     return (
         <>
             <IconButton

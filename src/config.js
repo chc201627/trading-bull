@@ -84,7 +84,7 @@ export const allLangs = [
     icon: '/assets/icons/flags/ic_flag_en.svg',
   },
   {
-    label: 'Estañol',
+    label: 'Español',
     value: 'es',
     systemValue: esES,
     icon: '/assets/icons/flags/ic_flag_fr.svg',

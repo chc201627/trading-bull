@@ -130,7 +130,7 @@ function AuthProvider({ children }) {
     }
 
     const body = {
-      address: connectionResult.address,
+      address: connectionResult.address.base58,
     }
 
     // Sign request body
@@ -140,9 +140,7 @@ function AuthProvider({ children }) {
       throw new Error(signatureResponse.message);
     }
 
-    const { signature, deadline } = signatureResponse;
-
-    console.log(signature, deadline);
+    console.log({... signatureResponse.data, ...body});
 
     const response = await axios.post('/api/account/login', {
       email: defaultValues.email,
