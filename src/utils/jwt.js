@@ -34,7 +34,7 @@ const handleTokenExpired = (exp) => {
 
     localStorage.removeItem('accessToken');
 
-    window.location.href = PATH_AUTH.login;
+    // window.location.href = PATH_AUTH.login;
   }, timeLeft);
 };
 
@@ -45,6 +45,7 @@ const setSession = (accessToken) => {
 
     // This function below will handle when token is expired
     const { exp } = jwtDecode(accessToken); // ~3 days by minimals server
+    
     handleTokenExpired(exp);
   } else {
     localStorage.removeItem('accessToken');

@@ -2,224 +2,216 @@ import PropTypes from 'prop-types';
 import { createContext, useEffect, useReducer } from 'react';
 import useTronLink from '../hooks/useTronLink';
 // utils
-import axios from '../utils/axios';
+import { auth } from '../api';
 import { isValidToken, setSession } from '../utils/jwt';
 
 // ----------------------------------------------------------------------
 
 const initialState = {
-  isAuthenticated: false,
-  isInitialized: false,
-  user: null,
+    isAuthenticated: false,
+    isInitialized: false,
+    user: null,
 };
 
 const handlers = {
-  INITIALIZE: (state, action) => {
-    const { isAuthenticated, user } = action.payload;
-    return {
-      ...state,
-      isAuthenticated,
-      isInitialized: true,
-      user,
-    };
-  },
-  LOGIN: (state, action) => {
-    const { user } = action.payload;
+    INITIALIZE: (state, action) => {
+        const { isAuthenticated, user } = action.payload;
+        return {
+            ...state,
+            isAuthenticated,
+            isInitialized: true,
+            user,
+        };
+    },
+    LOGIN: (state, action) => {
+        const { user } = action.payload;
 
-    return {
-      ...state,
-      isAuthenticated: true,
-      user,
-    };
-  },
-  LOGOUT: (state) => ({
-    ...state,
-    isAuthenticated: false,
-    user: null,
-  }),
-  REGISTER: (state, action) => {
-    const { user } = action.payload;
+        return {
+            ...state,
+            isAuthenticated: true,
+            user,
+        };
+    },
+    LOGOUT: (state) => ({
+        ...state,
+        isAuthenticated: false,
+        user: null,
+    }),
+    REGISTER: (state, action) => {
+        const { user } = action.payload;
 
-    return {
-      ...state,
-      isAuthenticated: true,
-      user,
-    };
-  },
+        return {
+            ...state,
+            isAuthenticated: true,
+            user,
+        };
+    },
 };
 
 const reducer = (state, action) => (handlers[action.type] ? handlers[action.type](state, action) : state);
 
 const AuthContext = createContext({
-  ...initialState,
-  method: 'jwt',
-  login: () => Promise.resolve(),
-  logout: () => Promise.resolve(),
-  register: () => Promise.resolve(),
+    ...initialState,
+    method: 'jwt',
+    login: () => Promise.resolve(),
+    logout: () => Promise.resolve(),
+    register: () => Promise.resolve(),
 });
 
 // ----------------------------------------------------------------------
 
 AuthProvider.propTypes = {
-  children: PropTypes.node,
+    children: PropTypes.node,
 };
 
 function AuthProvider({ children }) {
 
-  const { tronLinkConnect, tronSignMessage } = useTronLink();
+    const { tronLinkConnect, tronSignMessage } = useTronLink();
 
-  const [state, dispatch] = useReducer(reducer, initialState);
+    const [state, dispatch] = useReducer(reducer, initialState);
 
-  const initialize = async () => {
-    try {
-      const accessToken = localStorage.getItem('accessToken');
+    const initialize = async () => {
+        try {
+            const accessToken = localStorage.getItem('accessToken');
 
-      if (accessToken && isValidToken(accessToken)) {
-        setSession(accessToken);
+            if (accessToken && isValidToken(accessToken)) {
+                setSession(accessToken);
 
-        const response = await axios.get('/api/account/my-account');
-        const { user } = response.data;
+                // const response = await axios.get('/api/account/my-account');
+                // const { user } = response.data;
 
-        dispatch({
-          type: 'INITIALIZE',
-          payload: {
-            isAuthenticated: true,
-            user,
-          },
-        });
-      } else {
-        dispatch({
-          type: 'INITIALIZE',
-          payload: {
-            isAuthenticated: false,
-            user: null,
-          },
-        });
-      }
-    } catch (err) {
-      console.error(err);
-      dispatch({
-        type: 'INITIALIZE',
-        payload: {
-          isAuthenticated: false,
-          user: null,
-        },
-      });
-    }
-  };
-
-  useEffect(() => {
-    
-
-    initialize();
-  }, []);
-
-  const login = async (email, password) => {
-
-    const defaultValues = {
-      email: 'demo@minimals.cc',
-      password: 'demo1234',
-      remember: true,
+                dispatch({
+                    type: 'INITIALIZE',
+                    payload: {
+                        isAuthenticated: true,
+                        user: {},
+                    },
+                });
+            } else {
+                dispatch({
+                    type: 'INITIALIZE',
+                    payload: {
+                        isAuthenticated: false,
+                        user: null,
+                    },
+                });
+            }
+        } catch (err) {
+            console.error(err);
+            dispatch({
+                type: 'INITIALIZE',
+                payload: {
+                    isAuthenticated: false,
+                    user: null,
+                },
+            });
+        }
     };
 
-    // Connect Wallet
-    const connectionResult = await tronLinkConnect();
-    
-    if (!connectionResult.status) {
-      throw new Error(connectionResult.message);
-    }
-
-    const body = {
-      address: connectionResult.address.base58,
-    }
-
-    // Sign request body
-    const signatureResponse = await tronSignMessage(body);
-
-    if (!signatureResponse.status) {
-      throw new Error(signatureResponse.message);
-    }
-
-    console.log({... signatureResponse.data, ...body});
-
-    const response = await axios.post('/api/account/login', {
-      email: defaultValues.email,
-      password: defaultValues.password,
-    });
-
-    const { accessToken, user } = response.data;
-    console.log(response.data);
-    setSession(accessToken);
-
-    dispatch({
-      type: 'LOGIN',
-      payload: {
-        user,
-      },
-    });
-  };
-
-  const register = async (referralCode) => {
-
-    // Connect Wallet
-    const connectionResult = await tronLinkConnect();
-    
-    if (!connectionResult.status) {
-      throw new Error(connectionResult.message);
-    }
-
-    const body = {
-      referralCode,
-      address: connectionResult.address.base58,
-    }
-
-    // Sign request body
-    const signatureResponse = await tronSignMessage(body);
-
-    if (!signatureResponse.status) {
-      throw new Error(signatureResponse.message);
-    }
+    useEffect(() => {
 
 
-    
-    console.log({...signatureResponse.data, ...body});
+        initialize();
+    }, []);
 
-    const response = await axios.post('/api/account/register', {
-      email: 'test',
-      password: 'test',
-      firstName: 'test',
-      lastName: 'test',
-    });
-    const { accessToken, user } = response.data;
+    const login = async () => {
 
-    setSession(accessToken);
-    
-    dispatch({
-      type: 'REGISTER',
-      payload: {
-        user,
-      },
-    });
-  };
+        // Connect Wallet
+        const connectionResult = await tronLinkConnect();
 
-  const logout = async () => {
-    setSession(null);
-    dispatch({ type: 'LOGOUT' });
-  };
+        if (!connectionResult.status) {
+            throw new Error(connectionResult.message);
+        }
 
-  return (
-    <AuthContext.Provider
-      value={{
-        ...state,
-        method: 'jwt',
-        login,
-        logout,
-        register,
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
-  );
+        const body = {
+            address: connectionResult.address.base58,
+        }
+
+        // Sign request body
+        const signatureResponse = await tronSignMessage(body);
+
+        if (!signatureResponse.status) {
+            throw new Error(signatureResponse.message);
+        }
+
+        try {
+            const response = await auth.login({ ...signatureResponse.data, ...body })
+            console.log(response);
+            const { jwt, user } = response.data;
+
+            setSession(jwt);
+
+            dispatch({
+                type: 'LOGIN',
+                payload: {
+                    user,
+                },
+            });
+        } catch (error) {
+            console.log(error)
+            throw new Error(error.error ? error.error.message : error.message);
+        }
+    };
+
+    const register = async (referralCode) => {
+
+        // Connect Wallet
+        const connectionResult = await tronLinkConnect();
+
+        if (!connectionResult.status) {
+            throw new Error(connectionResult.message);
+        }
+
+        const body = {
+            referralCode,
+            address: connectionResult.address.base58,
+        }
+
+        // Sign request body
+        const signatureResponse = await tronSignMessage(body);
+
+        if (!signatureResponse.status) {
+            throw new Error(signatureResponse.message);
+        }
+
+        try {
+            const response = await auth.signUp({ ...signatureResponse.data, ...body });
+
+            console.log(response.data);
+
+            const { jwt, user } = response.data;
+
+            setSession(jwt);
+
+            dispatch({
+                type: 'REGISTER',
+                payload: {
+                    user,
+                },
+            });
+        } catch (error) {
+            throw new Error(error.error ? error.error.message : error.message);
+        }
+    };
+
+    const logout = async () => {
+        setSession(null);
+        dispatch({ type: 'LOGOUT' });
+    };
+
+    return (
+        <AuthContext.Provider
+            value={{
+                ...state,
+                method: 'jwt',
+                login,
+                logout,
+                register,
+            }}
+        >
+            {children}
+        </AuthContext.Provider>
+    );
 }
 
 export { AuthContext, AuthProvider };

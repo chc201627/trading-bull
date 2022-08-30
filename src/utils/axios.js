@@ -6,6 +6,10 @@ import { HOST_API } from '../config';
 
 const axiosInstance = axios.create({
   baseURL: HOST_API,
+  responseType: 'json',
+  headers: {
+    'Content-Type': 'application/json'
+  },
 });
 
 axiosInstance.interceptors.response.use(
