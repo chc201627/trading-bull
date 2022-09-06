@@ -54,6 +54,82 @@ const en = {
             skill1: 'Referral Program acess',
             skill2: 'Prior Acess to new offers in the platform',
         },
+        refererProgram: {
+            title: 'REFERER PROGRAM',
+            content1: 'Benefits for',
+            content2: 'introducing your friends',
+            description: `You'll be a guest in special events, conferences and have access to educational content to enhance your trading performance while you enrich your social circle.`,
+            detail1: '*Trading Chair: Positions in a portfolio monthly.',
+            detail2: '*Shares boughts will depend on the performance of the trading chair and the time of the investment.',
+            steps: [
+                {
+                    label: 'Get the refer code membership for a member',
+                    description: `For each ad campaign that you create, you can control how much
+                            you're willing to spend on clicks and conversions, which networks
+                            and geographical locations you want your ads to show on, and more.`,
+                },
+                {
+                    label: 'Create a wallet or Registe it in the platform',
+                    description:
+                        'An ad group contains one or more ads which target a shared set of keywords.',
+                },
+                {
+                    label: 'Buy a trading chair*  $1,000 dollars in portfolio monthly',
+                    description: `Try out different ad text to see what brings in the most customers,
+                            and learn how to enhance your ads using features like ad extensions.
+                            If you run into any problems with your ads, find out how to tell if
+                            they're running and how to resolve approval issues.`,
+                },
+                {
+                    label: 'Get an additional 1.5% - 2.0%* of the Shares bought by your referred members ',
+                    description: `Try out different ad text to see what brings in the most customers,
+                            and learn how to enhance your ads using features like ad extensions.
+                            If you run into any problems with your ads, find out how to tell if
+                            they're running and how to resolve approval issues.`,
+                },
+            ]
+        },
+        faqs: {
+            title: 'Frequently asked questions',
+            questions: [
+                {
+                    title: 'What is a PAMM System?',
+                    answer: 'Percentage allocation management module, also known as percentage allocation money management or PAMM, is a form of pooled money forex trading. An investor gets to allocate their money in the desired proportion to the qualified trader(s)/money manager(s) of their choice.'
+                },
+                {
+                    title: 'What can be the risks?',
+                    answer: ''
+                },
+                {
+                    title: 'Can you review the history of the operations?',
+                    answer: ''
+                },
+                {
+                    title: 'How do you handle my data?',
+                    answer: ''
+                },
+                {
+                    title: 'Is there any guarantee on the crypto invested?',
+                    answer: ''
+                },
+                {
+                    title: 'What is the Max drawdown?',
+                    answer: ''
+                },
+                {
+                    title: `What's the leverage of the positions?`,
+                    answer: ''
+                }
+            ],
+            form:{
+                need_help: `Haven't found the right help? Write us`,
+                name: 'Name',
+                email: 'Email',
+                subject: 'Subject',
+                enter_message: 'Enter your message here',
+                submit: 'Submit Now'
+            }
+        }
     },
     register: {
         pageCaption: 'You are to near to be part of a poweful investor community',
@@ -63,7 +139,7 @@ const en = {
         goToFaqs: 'Go to FAQs',
         referCode: 'Referral Code',
         register: 'Register',
-        errorCodeRequired: 'Referral code required',        
+        errorCodeRequired: 'Referral code required',
     },
     demo: {
         title: `English`,

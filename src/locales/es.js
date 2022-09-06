@@ -48,11 +48,80 @@ const es = {
             skill2: 'Acceso prioritario a nuevos beneficios en la plataforma',
         },
         refererProgram: {
-            title: 'Programa de Referidos',
-            
+            title: 'PROGRAMA DE REFERIDOS',
+            content1: 'Beneficios de',
+            content2: 'introducir a tus amigos',
+            description: 'Usted será un invitado en eventos especiales, conferencias y tener acceso a contenido educativo para mejorar su rendimiento comercial, mientras que enriquece a su círculo social.',
+            detail1: '*Trading Chair: Posiciones disponibles en cupo.',
+            detail2: '*Acciones compartidas dependerá del rendimiento del Trading Chair y el tiempo de la inversión',
+            steps: [
+                {
+                    label: 'Obtén el código de referido para un miembro',
+                    description: `For each ad campaign that you create, you can control how much
+                            you're willing to spend on clicks and conversions, which networks
+                            and geographical locations you want your ads to show on, and more.`,
+                },
+                {
+                    label: 'Enviaselo a tus conocidos y que se registren en la plataforma',
+                    description:
+                        'An ad group contains one or more ads which target a shared set of keywords.',
+                },
+                {
+                    label: 'Haz que compren un trading chair*  por  $1,000 dolarés en los cupos abiertos',
+                    description: `Try out different ad text to see what brings in the most customers,
+                            and learn how to enhance your ads using features like ad extensions.
+                            If you run into any problems with your ads, find out how to tell if
+                            they're running and how to resolve approval issues.`,
+                },
+                {
+                    label: 'Obtén adicionalmente 1.5% - 2.0%* de acciones compartidas por cada compra de tus referidos',
+                    description: `Try out different ad text to see what brings in the most customers,
+                            and learn how to enhance your ads using features like ad extensions.
+                            If you run into any problems with your ads, find out how to tell if
+                            they're running and how to resolve approval issues.`,
+                },
+            ]
         },
         faqs: {
-
+            title: 'Preguntas frecuentes',
+            questions: [
+                {
+                    title: '¿Qué es un sistema PAMM?',
+                    answer: ''
+                },
+                {
+                    title: '¿Cuales pueden ser los riesgos?',
+                    answer: ''
+                },
+                {
+                    title: '¿Puede revisar el histórico de las operaciones?',
+                    answer: ''
+                },
+                {
+                    title: '¿Como manejan mis datos?',
+                    answer: ''
+                },
+                {
+                    title: '¿Hay alguna garantía sobre la cripto invertida?',
+                    answer: ''
+                },
+                {
+                    title: '¿Cual es la reducción máxima?',
+                    answer: ''
+                },
+                {
+                    title: '¿Cual esla influencia de las posiciones?',
+                    answer: ''
+                }
+            ],
+            form:{
+                need_help: '¿Necesitas Ayuda? Escribenos',
+                name: 'Nombre',
+                email: 'Correo',
+                subject: 'Asunto',
+                enter_message: 'Escribe tu mensaje aqui',
+                submit: 'Enviar'
+            }
         }
     }
 }
