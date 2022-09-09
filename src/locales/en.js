@@ -98,27 +98,27 @@ const en = {
                 },
                 {
                     title: 'What can be the risks?',
-                    answer: ''
+                    answer: 'Fx trading carries a high risk due to leverage and market volatility, always invest what you can afford to lose.'
                 },
                 {
                     title: 'Can you review the history of the operations?',
-                    answer: ''
+                    answer: 'The trading book is managed in the Rebalancing Trading Desk which is not displayed in the platform, however user can see allocation ratios as when investing in an ETF, as well as the AUM.'
                 },
                 {
                     title: 'How do you handle my data?',
-                    answer: ''
+                    answer: 'No user data is captured nor managed by Trading Bull, only the blockchain information of your wallet and its transactions.'
                 },
                 {
                     title: 'Is there any guarantee on the crypto invested?',
-                    answer: ''
+                    answer: 'Due to the nature of the high risk investment environment of Forex, Trading Bull does not guarantee any past performance as a future return, you’re buying a Share of a portfolio of money to trade in Forex, Commodities and Indices, the portfolio value may vary over the time.'
                 },
                 {
                     title: 'What is the Max drawdown?',
-                    answer: ''
+                    answer: 'The max Drawdown in a day has been 67% the average drawdown per trade is 0.75% with a VaR of 1% per trade.'
                 },
                 {
                     title: `What's the leverage of the positions?`,
-                    answer: ''
+                    answer: 'It may vary between the different PAMMS but the average is 500.'
                 }
             ],
             form:{

@@ -1,19 +1,19 @@
 import PropTypes from 'prop-types';
 import { m } from 'framer-motion';
 // @mui
-import { useTheme, styled } from '@mui/material/styles';
-import { Box, Grid, Container, Typography, LinearProgress, Card } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { Box, Grid, Container, Typography, LinearProgress } from '@mui/material';
 // hooks
-import Slider from 'react-slick';
+
 import useResponsive from '../../hooks/useResponsive';
 import useLocales from '../../hooks/useLocales';
-// utils
-import { fPercent } from '../../utils/formatNumber';
 // _mock_
 import { _skills } from '../../_mock';
 // components
 import { MotionViewport, varFade } from '../../components/animate';
-import { CarouselDots } from '../../components/carousel';
+// assets
+import InvestImg1 from '../../assets/images/photos/img-invest-1.svg';
+import InvestImg2 from '../../assets/images/photos/img-invest-2.svg';
 
 // ----------------------------------------------------------------------
 
@@ -29,18 +29,8 @@ const RootStyle = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function Invest() {
-  const theme = useTheme();
 
   const { translate } = useLocales();
-
-  const settings = {
-    dots: true,
-    arrows: false,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    rtl: Boolean(theme.direction === 'rtl'),
-    ...CarouselDots({ position: 'absolute', right: 16, bottom: 16 }),
-  };
 
   const isDesktop = useResponsive('up', 'md');
 
@@ -55,18 +45,10 @@ export default function Invest() {
         <Grid container spacing={3}>
           {isDesktop && (
             <Grid item xs={12} md={6} lg={7} sx={{ pr: { md: 7 } }} style={{ position: 'relative' }}>
-              <Slider {...settings}>
-                {['', '', ''].map((card, i) => (
-                  <Card
-                    key={i}>
-                    <div style={{ height: '40vh' }}>
-                      Slide
-                    </div>
-                    Prueba
-                    <br />
-                  </Card>
-                ))}
-              </Slider>
+              <Box display='flex' justifyContent='space-between' alignItems='center' width={'100%'} height={'100%'}>
+                <img src={InvestImg1} alt='Invest 1' style={{width: '18rem'}} />
+                <img src={InvestImg2} alt='Invest 2' style={{width: '18rem', marginTop: '6rem'}}/>
+              </Box>
             </Grid>
           )}
 
@@ -95,7 +77,7 @@ export default function Invest() {
             <Box sx={{ my: 5 }}>
               {_skills.map((progress, i) => (
                 <m.div key={progress.label} variants={varFade().inRight}>
-                  <ProgressItem progress={{ label: translate(`home.invest.skill${i}`), value: 0 }} />
+                  <ProgressItem progress={{ label: translate(`home.invest.skill${i}`), value: 70 }} />
                 </m.div>
               ))}
             </Box>
@@ -121,10 +103,7 @@ function ProgressItem({ progress }) {
   return (
     <Box sx={{ mt: 3 }}>
       <Box sx={{ mb: 1.5, display: 'flex', alignItems: 'center' }}>
-        <Typography variant="subtitle2">{label}&nbsp;-&nbsp;</Typography>
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-          {fPercent(value)}
-        </Typography>
+        <Typography variant="subtitle2">{label}&nbsp;</Typography>
       </Box>
       <LinearProgress
         variant="determinate"

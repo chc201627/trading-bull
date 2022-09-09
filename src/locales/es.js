@@ -87,19 +87,19 @@ const es = {
             questions: [
                 {
                     title: '¿Qué es un sistema PAMM?',
-                    answer: ''
+                    answer: 'El módulo de administración de asignación de porcentaje, también conocido como administración de asignación de porcentaje de dinero o PAMM, es una forma de comercio de divisas de dinero agrupado. Un inversor puede asignar su dinero en la proporción deseada a los comerciantes/administradores de dinero de su elección.'
                 },
                 {
                     title: '¿Cuales pueden ser los riesgos?',
-                    answer: ''
+                    answer: 'El comercio de divisas conlleva un alto riesgo debido al apalancamiento y la volatilidad del mercado, invierte siempre lo que puedas permitirte perder.'
                 },
                 {
                     title: '¿Puede revisar el histórico de las operaciones?',
-                    answer: ''
+                    answer: 'El libro de negociación se administra en la Mesa de negociación de reequilibrio que no se muestra en la plataforma, sin embargo, el usuario puede ver los índices de asignación como cuando invierte en un ETF, así como el AUM.'
                 },
                 {
                     title: '¿Como manejan mis datos?',
-                    answer: ''
+                    answer: 'Trading Bull no captura ningún dato del usuario, solo la información de la blockchain de su billetera y sus transacciones.'
                 },
                 {
                     title: '¿Hay alguna garantía sobre la cripto invertida?',
@@ -107,11 +107,11 @@ const es = {
                 },
                 {
                     title: '¿Cual es la reducción máxima?',
-                    answer: ''
+                    answer: 'El Drawdown máximo en un día ha sido del 67 %, el drawdown medio por operación es del 0,75 % con un VaR del 1 % por operación.'
                 },
                 {
-                    title: '¿Cual esla influencia de las posiciones?',
-                    answer: ''
+                    title: '¿Cual es la influencia de las posiciones?',
+                    answer: 'Puede variar entre los diferentes PAMMS pero la media es de 500.'
                 }
             ],
             form:{
