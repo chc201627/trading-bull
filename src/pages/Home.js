@@ -16,6 +16,8 @@ import {
   FaqsList
 } from '../sections/home';
 import { SettingsContext } from '../contexts/SettingsContext';
+// hooks
+import useLocales from '../hooks/useLocales'
 
 // ----------------------------------------------------------------------
 
@@ -34,6 +36,8 @@ export default function HomePage() {
   const homeRef = useRef();
   const aboutRef = useRef();
   const faqsRef = useRef();
+
+  const { translate } = useLocales();
 
 
   useEffect(() => {
@@ -58,7 +62,7 @@ export default function HomePage() {
         <div ref={faqsRef}>{}</div>
         <Container sx={{ mt: 15, mb: 10, position: 'relative' }}>
           <Typography variant="h3" sx={{ mb: 5 }}>
-            Frequently asked questions
+            { translate('home.faqs.title')}
           </Typography>
 
           <Grid container spacing={10}>

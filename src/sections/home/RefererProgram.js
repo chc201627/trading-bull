@@ -10,35 +10,9 @@ import { fDate } from '../../utils/formatTime';
 // components
 import { MotionViewport, varFade } from '../../components/animate';
 
+import useLocales from '../../hooks/useLocales';
 // ----------------------------------------------------------------------
 
-const steps = [
-  {
-    label: 'Get the refer code membership for a member',
-    description: `For each ad campaign that you create, you can control how much
-              you're willing to spend on clicks and conversions, which networks
-              and geographical locations you want your ads to show on, and more.`,
-  },
-  {
-    label: 'Create a wallet or Registe it in the platform',
-    description:
-      'An ad group contains one or more ads which target a shared set of keywords.',
-  },
-  {
-    label: 'Buy a trading chair*  $1,000 dollars in portfolio monthly',
-    description: `Try out different ad text to see what brings in the most customers,
-              and learn how to enhance your ads using features like ad extensions.
-              If you run into any problems with your ads, find out how to tell if
-              they're running and how to resolve approval issues.`,
-  },
-  {
-    label: 'Get an additional 1.5% - 2.0%* of the Shares bought by your referred members ',
-    description: `Try out different ad text to see what brings in the most customers,
-              and learn how to enhance your ads using features like ad extensions.
-              If you run into any problems with your ads, find out how to tell if
-              they're running and how to resolve approval issues.`,
-  },
-];
 
 const RootStyle = styled('div')(({ theme }) => ({
   textAlign: 'center',
@@ -59,8 +33,10 @@ const RootStyle = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function RefererProgram() {
-
+  const { translate } = useLocales()
   const [step, setStep] = useState(0);
+
+  const steps = translate('home.refererProgram.steps', {returnObjects: true});
 
   return (
     <RootStyle>
@@ -76,27 +52,27 @@ export default function RefererProgram() {
             <Box sx={{ maxWidth: { md: 360 } }}>
               <m.div variants={varFade().inUp}>
                 <Typography component="p" variant="overline" sx={{ mb: 2, color: 'text.secondary' }}>
-                  Referer program
+                  {translate('home.refererProgram.title')}
                 </Typography>
               </m.div>
 
               <m.div variants={varFade().inUp}>
                 <Typography variant="h2" sx={{ mb: 3, color: 'common.white' }}>
-                  Benefits for <br />introduce your friends
+                  {translate('home.refererProgram.content1')} <br />{translate('home.refererProgram.content2')}
                 </Typography>
               </m.div>
 
               <m.div variants={varFade().inUp}>
                 <Typography sx={{ color: 'common.white', mb: 2 }}>
-                  you'll be a guest in special events, conferences and have access to educational content to enhance your trading performance while you enrich your social circle
+                  {translate('home.refererProgram.description')}
                 </Typography>
               </m.div>
 
               <m.div variants={varFade().inUp}>
                 <Typography variant="caption" sx={{ color: 'grey.500' }}>
-                  *Trading Chair: Positions in a portfolio monthly
+                  {translate('home.refererProgram.detail1')}
                   <br /><br />
-                  *Shares boughts will depend on the performance of the trading chair and the time of the investment
+                  {translate('home.refererProgram.detail2')}
                 </Typography>
               </m.div>
             </Box>
@@ -120,7 +96,9 @@ export default function RefererProgram() {
                       <StepLabel
                         style={{ maxWidth: 400 }}
                       >
-                        <Typography variant="caption" sx={{ color: 'grey.500', fontSize: 24 }}>{step.label}</Typography>
+                        <Typography variant="caption" sx={{ color: 'grey.500', fontSize: 24 }}>
+                          {step.label}
+                        </Typography>
                       </StepLabel>
                     </Step>
                   ))}
