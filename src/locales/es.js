@@ -37,8 +37,15 @@ const es = {
             options: 'Opciones de',
             invest: 'Inversión',
             tradingSpot: {
+                title: 'TRADING.SPOT',
                 goal: 'Meta',
-                lacking_amount: 'Monto faltante'
+                lacking_amount: 'Monto faltante',
+                inversation_rate: 'Tasa de inversión',
+                rentability: 'Rentabilidad',
+                total_investors: 'Inversores Totales',
+                deposits_buy: 'Deposits Buy',
+                next_activation: 'Siguiente Activación',
+                learn_more: 'Conoce mas'
             }
         },
         invest: {
