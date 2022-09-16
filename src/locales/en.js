@@ -41,8 +41,12 @@ const en = {
         },
         spots: {
             title: 'Spots',
-            description: 'Spots for',
+            options: 'Options',
             invest: 'Invest',
+            tradingSpot: {
+                goal: 'Goal',
+                lacking_amount: 'Lacking amount',
+            }
         },
         invest: {
             title: 'Invest',
