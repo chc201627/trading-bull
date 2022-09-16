@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { m } from 'framer-motion';
 // @mui
 import { styled } from '@mui/material/styles';
-import { Box, Grid, Card, Link, Stack, Button, Divider, Container, Typography, LinearProgress } from '@mui/material';
+import { Box, Grid, Card, Link, Stack, Button, Divider, Container, Typography } from '@mui/material';
+import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
 // _mock_
 import { _homePlans } from '../../_mock';
 // components
@@ -28,8 +29,13 @@ export default function Spots() {
 
   const mockOption = {
     name: "TRADING GOLD S&P 500",
-    goal: 10_000,
-    lacking_amount: 4_000
+    goal: 10000,
+    lacking_amount: 4000,
+    inversation_rate: '$1,000-3,000',
+    rentability: 13.5,
+    total_investors: 23,
+    deposits_buy: 6000,
+    next_activation: '30/08/2022'
   }
 
   const isEng = currentLang.value === 'en'
@@ -68,7 +74,12 @@ TradingSpotCard.propTypes = {
   option: PropTypes.shape({
     name: PropTypes.string,
     goal: PropTypes.number,
-    lacking_amount: PropTypes.number
+    lacking_amount: PropTypes.number,
+    inversation_rate: PropTypes.string,
+    rentability: PropTypes.number,
+    total_investors: PropTypes.number,
+    deposits_buy: PropTypes.number,
+    next_activation: PropTypes.string
   })
 }
 
@@ -100,7 +111,7 @@ function TradingSpotCard({ option }) {
           {translate('home.spots.tradingSpot.goal')}
         </Typography>
         <Typography variant="subtitle1" >
-          {`$${option.goal.toLocaleString()}`}
+          {`$${option.goal.toLocaleString('en-US')}`}
         </Typography>
       </Box>
       <Grid
@@ -114,7 +125,10 @@ function TradingSpotCard({ option }) {
             value={progress}
             variant='determinate'
             sx={{
-              height: 10,
+              height: 13,
+              [`&.${linearProgressClasses.colorPrimary}`]: {
+                backgroundColor: 'primary.lighter'
+              }
             }} />
         </Grid>
         <Grid
@@ -123,47 +137,96 @@ function TradingSpotCard({ option }) {
           sm={1}
           justifyContent="flex-end"
           alignItems="center">
-          <Typography variant="caption" sx={{ color: 'text.disabled' }}>
+          <Typography variant="caption"
+            sx={{
+              color: 'text.disabled'
+            }}>
             {`${progress}%`}
           </Typography>
         </Grid>
       </Grid>
       <Grid container>
-        <Grid item sm={6} >
-          <Box display="flex" justifyContent="space-between">
+        <Grid item sm={6}  >
+          <Box display="flex" justifyContent="flex-start" alignItems='center' mb={1}>
             <Typography variant="subtitle2" sx={{ color: 'text.disabled' }} >
-              {translate('home.spots.tradingSpot.lacking_amount')}
+              {`${translate('home.spots.tradingSpot.lacking_amount')}:`}
             </Typography>
-            <Typography variant="h5" >
-              {option.lacking_amount}
+            <Typography variant="h5" sx={{ ml: 2, mr: 1 }} >
+              {`$${option.lacking_amount.toLocaleString('en-US')}`}
+            </Typography>
+            <Iconify icon={'eva:inbox-fill'} width={20} height={20} />
+          </Box>
+
+          <Box display="flex" justifyContent="flex-start" alignItems='center' mb={1}>
+            <Typography variant="subtitle2" sx={{ color: 'text.disabled' }}>
+              {`${translate('home.spots.tradingSpot.inversation_rate')}:`}
+            </Typography>
+            <Typography variant="h5" sx={{ ml: 2, mr: 1 }} >
+              {option.inversation_rate}
+            </Typography>
+            <Iconify icon={'bx:calendar-alt'} width={20} height={20} />
+          </Box>
+
+          <Box display="flex" justifyContent="flex-start" alignItems='center' mb={1}>
+            <Typography variant="subtitle2" sx={{ color: 'text.disabled' }}>
+              {translate('home.spots.tradingSpot.rentability')}
+            </Typography>
+            <Typography variant="subtitle2" sx={{ ml: 2, mr: 1 }} >
+              {`${option.rentability}%`}
             </Typography>
           </Box>
-          <Typography variant="subtitle2" sx={{ color: 'text.disabled' }}>
-            {translate('home.spots.tradingSpot.goal')}
-          </Typography>
-          <Typography variant="subtitle2" sx={{ color: 'text.disabled' }}>
-            {translate('home.spots.tradingSpot.goal')}
-          </Typography>
         </Grid>
-        <Grid item sm={6} >
-          <Grid item container justifyContent="flex-end">
+
+        <Grid item sm={6} spacing={2}  >
+          <Box display="flex" justifyContent="flex-end" alignItems='center' mb={1} >
             <Typography variant="subtitle2" sx={{ color: 'text.disabled' }} >
-              {translate('home.spots.tradingSpot.goal')}
+              {translate('home.spots.tradingSpot.total_investors')}
             </Typography>
-          </Grid>
-          <Grid item container justifyContent="flex-end">
+            <Typography variant="h5" sx={{ ml: 2, mr: 1 }} >
+              {option.total_investors}
+            </Typography>
+            <Iconify icon="bi:file-person-fill" width={20} height={20} />
+          </Box>
+
+          <Box display="flex" justifyContent="flex-end" alignItems='center' mb={1} >
             <Typography variant="subtitle2" sx={{ color: 'text.disabled' }} >
-              {translate('home.spots.tradingSpot.goal')}
+              {translate('home.spots.tradingSpot.deposits_buy')}
             </Typography>
-          </Grid>
-          <Grid item container justifyContent="flex-end">
+            <Typography variant="h5" sx={{ ml: 2, mr: 1 }} >
+              {`$${option.deposits_buy.toLocaleString('en-US')}`}
+            </Typography>
+            <Iconify icon={'bx:calendar-alt'} width={20} height={20} />
+          </Box>
+
+          <Box display="flex" justifyContent="flex-end" alignItems='center' mb={1} >
             <Typography variant="subtitle2" sx={{ color: 'text.disabled' }} >
-              {translate('home.spots.tradingSpot.goal')}
+              {`${translate('home.spots.tradingSpot.next_activation')}:`}
             </Typography>
-          </Grid>
+            <Typography variant="subtitle2" sx={{ ml: 2, mr: 1 }} >
+              {option.next_activation}
+            </Typography>
+          </Box>
+
         </Grid>
       </Grid>
-    </Card>
+      <Box display="flex" justifyContent="flex-end" alignItems="center" mt={1} mb={2}>
+        <Typography variant="subtitle2" sx={{ color: 'text.disabled' }} >
+          {translate('home.spots.tradingSpot.learn_more')}
+        </Typography>
+        <Iconify icon='akar-icons:chevron-right' width={15} height={15} sx={{ ml: 2, color: 'text.disabled' }} />
+      </Box>
+      <Button
+          size="large"
+          fullWidth
+          variant="contained"
+          target="_blank"
+          rel="noopener"
+          href="#"
+          endIcon={<Iconify icon="ic:outline-add-shopping-cart" width={20} height={20}/>}
+        >
+          Invest
+        </Button>
+    </Card >
   )
 }
 

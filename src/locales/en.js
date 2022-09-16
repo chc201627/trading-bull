@@ -44,8 +44,15 @@ const en = {
             options: 'Options',
             invest: 'Invest',
             tradingSpot: {
+                title: 'TRADING.SPOT',
                 goal: 'Goal',
                 lacking_amount: 'Lacking amount',
+                inversation_rate: 'Inversation Rate',
+                rentability: 'Rentability',
+                total_investors: 'Total Investors',
+                deposits_buy: 'Deposits Buy',
+                next_activation: 'Next Activation',
+                learn_more: 'Learn more'
             }
         },
         invest: {
