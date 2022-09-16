@@ -24,7 +24,16 @@ const RootStyle = styled('div')(({ theme }) => ({
 
 export default function Spots() {
 
-  const { translate } = useLocales();
+  const { translate, currentLang } = useLocales();
+
+  const mockOption = {
+    name: "TRADING GOLD S&P 500",
+    goal: 10_000,
+    lacking_amount: 4_000
+  }
+
+  const isEng = currentLang.value === 'en'
+
 
   return (
     <RootStyle>
@@ -36,26 +45,126 @@ export default function Spots() {
             </Typography>
           </m.div>
           <m.div variants={varFade().inDown}>
-            <Typography variant="h2" sx={{ mb: 3 }}>
-              {translate('home.spots.description')}
-              <Typography variant="h2" sx={{ color: 'primary.main' }}>
-                {translate('home.spots.invest')}
+            <Typography variant="h2" sx={{ mb: 3 }} component="div">
+              <Typography variant="h2" component="span" sx={isEng && { color: 'primary.main' }}>
+                {isEng ? translate('home.spots.invest') : translate('home.spots.options')}
+              </Typography>
+              &nbsp;
+              <Typography variant="h2" component="span" sx={!isEng && { color: 'primary.main' }}>
+                {isEng ? translate('home.spots.options') : translate('home.spots.invest')}
               </Typography>
             </Typography>
           </m.div>
         </Box>
-        <Grid container spacing={5}>
-          {_homePlans.map((plan, i) => (
-            <Grid key={plan.license} item xs={12} md={4}>
-              <m.div variants={plan.license === 'Standard Plus' ? varFade().inDown : varFade().inUp}>
-                <PlanCard plan={plan} last={_homePlans.length - 1 === i} />
-              </m.div>
-            </Grid>
-          ))}
-        </Grid>
+        <m.div variants={varFade().inUp}>
+          <TradingSpotCard option={mockOption} />
+        </m.div>
       </Container>
     </RootStyle>
   );
+}
+//-----------------------------------------------------------------------
+TradingSpotCard.propTypes = {
+  option: PropTypes.shape({
+    name: PropTypes.string,
+    goal: PropTypes.number,
+    lacking_amount: PropTypes.number
+  })
+}
+
+function TradingSpotCard({ option }) {
+
+  const { translate } = useLocales();
+
+  const progress = ((option.goal - option.lacking_amount) * 100) / option.goal
+
+  return (
+    <Card
+      sx={{
+        p: 5,
+        boxShadow: 0,
+        backgroundImage: 'linear-gradient(0deg, rgba(33, 43, 54, 1), rgba(33, 43, 54, 0.75)), url(https://minimal-assets-api-dev.vercel.app/assets/images/about/testimonials.jpg);',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+      }}
+    >
+      <Typography component="div" variant="overline" sx={{ mb: 2, color: 'text.disabled' }}>
+        {translate('home.spots.title')}
+      </Typography>
+      <Typography variant="h4">
+        {option.name}
+      </Typography>
+      <Box display='flex' justifyContent="space-between" mt={3}>
+        <Typography variant="subtitle1" >
+          {translate('home.spots.tradingSpot.goal')}
+        </Typography>
+        <Typography variant="subtitle1" >
+          {`$${option.goal.toLocaleString()}`}
+        </Typography>
+      </Box>
+      <Grid
+        container
+        alignItems="center"
+        mt={3}
+        mb={2}
+      >
+        <Grid item sm={11} >
+          <LinearProgress
+            value={progress}
+            variant='determinate'
+            sx={{
+              height: 10,
+            }} />
+        </Grid>
+        <Grid
+          item
+          container
+          sm={1}
+          justifyContent="flex-end"
+          alignItems="center">
+          <Typography variant="caption" sx={{ color: 'text.disabled' }}>
+            {`${progress}%`}
+          </Typography>
+        </Grid>
+      </Grid>
+      <Grid container>
+        <Grid item sm={6} >
+          <Box display="flex" justifyContent="space-between">
+            <Typography variant="subtitle2" sx={{ color: 'text.disabled' }} >
+              {translate('home.spots.tradingSpot.lacking_amount')}
+            </Typography>
+            <Typography variant="h5" >
+              {option.lacking_amount}
+            </Typography>
+          </Box>
+          <Typography variant="subtitle2" sx={{ color: 'text.disabled' }}>
+            {translate('home.spots.tradingSpot.goal')}
+          </Typography>
+          <Typography variant="subtitle2" sx={{ color: 'text.disabled' }}>
+            {translate('home.spots.tradingSpot.goal')}
+          </Typography>
+        </Grid>
+        <Grid item sm={6} >
+          <Grid item container justifyContent="flex-end">
+            <Typography variant="subtitle2" sx={{ color: 'text.disabled' }} >
+              {translate('home.spots.tradingSpot.goal')}
+            </Typography>
+          </Grid>
+          <Grid item container justifyContent="flex-end">
+            <Typography variant="subtitle2" sx={{ color: 'text.disabled' }} >
+              {translate('home.spots.tradingSpot.goal')}
+            </Typography>
+          </Grid>
+          <Grid item container justifyContent="flex-end">
+            <Typography variant="subtitle2" sx={{ color: 'text.disabled' }} >
+              {translate('home.spots.tradingSpot.goal')}
+            </Typography>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Card>
+  )
 }
 
 // ----------------------------------------------------------------------

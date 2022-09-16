@@ -34,8 +34,12 @@ const es = {
         },
         spots: {
             title: 'Cupos',
-            description: 'Cupos para',
-            invest: 'Invertir',
+            options: 'Opciones de',
+            invest: 'Inversión',
+            tradingSpot: {
+                goal: 'Meta',
+                lacking_amount: 'Monto faltante'
+            }
         },
         invest: {
             title: 'Invertir',
