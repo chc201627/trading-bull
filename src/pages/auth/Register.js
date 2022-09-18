@@ -126,13 +126,13 @@ export default function Register() {
             <RegisterForm />
 
             <Typography variant="body2" align="center" sx={{ color: 'text.secondary', mt: 3 }}>
-              By registering, I agree to Minimal&nbsp;
+              By registering, I agree to Streak Bull&nbsp;
               <Link underline="always" color="text.primary" href="#">
                 Terms of Service &nbsp;
               </Link>
               {''}and{''}&nbsp;
               <Link underline="always" color="text.primary" href="#">
-                Privacy Policy
+                Disclaimer Conditions
               </Link>
               .
             </Typography>
