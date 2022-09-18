@@ -8,13 +8,15 @@ import { Box } from '@mui/material';
 Logo.propTypes = {
   disabledLink: PropTypes.bool,
   sx: PropTypes.object,
+  svgWidth: PropTypes.number,
+  svgHeight: PropTypes.number,
 };
 
-export default function Logo({ disabledLink = false, sx }) {
+export default function Logo({ disabledLink = false, sx, svgWidth = 140, svgHeight = 40}) {
 
   const logo = (
     <Box sx={{ width: 40, height: 40, ...sx }}>
-      <svg width="140" height="42" viewBox="0 0 140 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width={svgWidth} height={svgHeight} viewBox="0 0 140 42" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M107.28 32.0726C108.642 31.3689 109.413 30.1428 109.413 28.6222C109.413 26.17 107.37 24.4683 103.194 24.4683H95.0652V40.3595H103.647C107.914 40.3595 110.185 38.7467 110.185 36.0001C110.185 34.0703 109.072 32.7083 107.278 32.0726H107.28ZM99.5168 27.7131H102.605C104.103 27.7131 104.876 28.2356 104.876 29.2337C104.876 30.2317 104.104 30.7769 102.605 30.7769H99.5168V27.7115V27.7131ZM103.284 37.1114H99.5168V33.8875H103.284C104.827 33.8875 105.646 34.41 105.646 35.5002C105.646 36.5905 104.827 37.1114 103.284 37.1114Z" fill="#7524AF" />
         <path d="M120.945 28.0542V33.9794C120.945 36.0451 119.902 36.8862 118.63 36.8862C117.359 36.8862 116.587 36.1373 116.587 34.2302V28.0558H112.273V34.9338C112.273 38.8387 114.475 40.5646 117.495 40.5646C118.902 40.5646 120.219 40.0648 121.149 39.0441V40.3608H125.257V28.0558H120.945V28.0542Z" fill="#7524AF" />
         <path d="M128.028 25.7849V40.3594H132.341V25.7849H128.028Z" fill="#7524AF" />
