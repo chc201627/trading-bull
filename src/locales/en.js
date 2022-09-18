@@ -18,21 +18,20 @@ const en = {
             content1: 'The First Decentralized',
             content2: 'PAMM portfolio exclusive',
             content3: 'for members of our community',
-            description: 'Join  our trading Club and earn from the best FX traders in the world',
+            description: 'Join our trading Club and earn from the best FX traders in the world',
             powerBy: 'POWER BY:',
             seeSpotsAvailable: 'See spots available',
         },
         scopeData: {
             title: 'SCOPE AND DATA',
             description: 'Achieve your growth goals with',
-            namePlatform: 'NAME PLATFORM',
             card0Description: 'PAMM Profitable Trading Systems ',
             card1Description: 'Months with an APY greater than 8.5% monthly and an standard deviation of 3% ',
             card2Description: 'Active subscribers to the PAMM strategies ',
         },
         blockchain: {
             title: 'Blockchain',
-            description1: `Trading Bull is a`,
+            description1: `Streak Bull is a`,
             description2: 'Non-Custodial Wallet for',
             description3: 'USDT',
             description4: 'in the',
@@ -49,18 +48,18 @@ const en = {
             description1: 'The advantage of',
             description2: 'crypto',
             description3: 'in trading',
-            caption: 'Here you can Send, Receive and Invest USDT in the PAMM strategies once you become a member with a lot of benefits :',
-            skill0: 'Notifations of the next trading chair',
-            skill1: 'Referral Program acess',
-            skill2: 'Prior Acess to new offers in the platform',
+            caption: 'Here you can Invest USDT in the PAMM strategies once you become a member with a lot of benefits :',
+            skill0: 'Notifations of the next trading positions',
+            skill1: 'Referral Program access',
+            skill2: 'Prior Access to new offers in the platform',
         },
         refererProgram: {
-            title: 'REFERER PROGRAM',
+            title: 'REFERRAL PROGRAM',
             content1: 'Benefits for',
             content2: 'introducing your friends',
             description: `You'll be a guest in special events, conferences and have access to educational content to enhance your trading performance while you enrich your social circle.`,
-            detail1: '*Trading Chair: Positions in a portfolio monthly.',
-            detail2: '*Shares boughts will depend on the performance of the trading chair and the time of the investment.',
+            detail1: '*Trading Positions: Positions in a portfolio monthly.',
+            detail2: '*Shares boughts will depend on the performance of the trading position and the time of the investment.',
             steps: [
                 {
                     label: 'Get the refer code membership for a member',
@@ -106,7 +105,7 @@ const en = {
                 },
                 {
                     title: 'How do you handle my data?',
-                    answer: 'No user data is captured nor managed by Trading Bull, only the blockchain information of your wallet and its transactions.'
+                    answer: 'No user data is captured nor managed by Streak Bull, only the blockchain information of your wallet and its transactions.'
                 },
                 {
                     title: 'Is there any guarantee on the crypto invested?',
