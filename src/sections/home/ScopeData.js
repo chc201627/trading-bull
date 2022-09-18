@@ -4,6 +4,7 @@ import { useTheme, styled } from '@mui/material/styles';
 import { Box, Container, Typography } from '@mui/material';
 // components
 import { MotionViewport, varFade } from '../../components/animate';
+import Logo from '../../components/Logo';
 import useLocales from '../../hooks/useLocales';
 
 // ----------------------------------------------------------------------
@@ -66,9 +67,7 @@ export default function ScopeData() {
           <m.div variants={varFade().inDown}>
             <Typography variant="h2">{translate('home.scopeData.description')}</Typography>
           </m.div>
-          <Typography component="span" variant="h2" sx={{ color: 'primary.main' }}>
-            {translate('home.scopeData.namePlatform')}
-          </Typography>
+          <Logo sx={{width: '40', height: '80', marginTop: '20px'}} svgWidth={280} svgHeight={80}/>
         </Box>
         <Box
           sx={{
