@@ -18,14 +18,13 @@ const es = {
         scopeData: {
             title: 'ALCANCE & DATA',
             description: 'Alcanza tu metas de crecimiento con',
-            namePlatform: 'NAME PLATFORM',
             card0Description: 'Sistemas de Trading Rentables PAMM ',
             card1Description: 'Meses con una APY superior al 8,5% mensual y una desviación estándar del 3% ',
             card2Description: 'Suscriptores activos a las estrategias PAMM ',
         },
         blockchain: {
             title: 'Blockchain',
-            description1: `Trading Bull es una`,
+            description1: `Streak Bull es una`,
             description2: 'Billetera No-Custodiada para',
             description3: 'USDT',
             description4: 'en la red',
@@ -53,7 +52,7 @@ const es = {
             description1: 'Las ventajas del mundo',
             description2: 'crypto',
             description3: 'en trading',
-            caption: 'Aquí puede enviar, recibir e invertir USDT en las estrategias PAMM  desde que se convierte en un miembro con una gran cantidad de beneficios :',
+            caption: 'Aquí puede invertir USDT en las estrategias PAMM  desde que se convierte en un miembro con una gran cantidad de beneficios :',
             skill0: 'Notificaciones para los próximos cupos disponibes',
             skill1: 'Acceso al programa de referidos',
             skill2: 'Acceso prioritario a nuevos beneficios en la plataforma',
@@ -63,8 +62,8 @@ const es = {
             content1: 'Beneficios de',
             content2: 'introducir a tus amigos',
             description: 'Usted será un invitado en eventos especiales, conferencias y tener acceso a contenido educativo para mejorar su rendimiento comercial, mientras que enriquece a su círculo social.',
-            detail1: '*Trading Chair: Posiciones disponibles en cupo.',
-            detail2: '*Acciones compartidas dependerá del rendimiento del Trading Chair y el tiempo de la inversión',
+            detail1: '*Trading Positions: Posiciones disponibles en cupo.',
+            detail2: '*Acciones compartidas dependerá del rendimiento del Trading Position y el tiempo de la inversión',
             steps: [
                 {
                     label: 'Obtén el código de referido para un miembro',
@@ -110,11 +109,11 @@ const es = {
                 },
                 {
                     title: '¿Como manejan mis datos?',
-                    answer: 'Trading Bull no captura ningún dato del usuario, solo la información de la blockchain de su billetera y sus transacciones.'
+                    answer: 'Streak Bull no captura ningún dato del usuario, solo la información de la blockchain de su billetera y sus transacciones.'
                 },
                 {
                     title: '¿Hay alguna garantía sobre la cripto invertida?',
-                    answer: ''
+                    answer: 'Debido a la naturaleza del entorno de inversión de alto riesgo de Forex, Streak Bull no garantiza ningún rendimiento pasado como un retorno futuro, usted está comprando una parte de una cartera de dinero para el comercio en Forex, materias primas e índices, el valor de la cartera puede variar con el tiempo.'
                 },
                 {
                     title: '¿Cual es la reducción máxima?',
