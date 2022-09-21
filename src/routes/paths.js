@@ -40,7 +40,7 @@ export const PATH_DASHBOARD = {
     app: path(ROOTS_DASHBOARD, '/app'),
     ecommerce: path(ROOTS_DASHBOARD, '/ecommerce'),
     analytics: path(ROOTS_DASHBOARD, '/analytics'),
-    banking: path(ROOTS_DASHBOARD, '/banking'),
+    wallet: path(ROOTS_DASHBOARD, '/wallet'),
     booking: path(ROOTS_DASHBOARD, '/booking'),
   },
   mail: {
