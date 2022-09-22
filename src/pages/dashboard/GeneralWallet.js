@@ -8,16 +8,7 @@ import { _bankingContacts, _bankingCreditCard, _bankingRecentTransitions } from 
 // components
 import Page from '../../components/Page';
 // sections
-import {
-  BankingContacts,
-  BankingWidgetSummary,
-  BankingInviteFriends,
-  BankingQuickTransfer,
-  BankingCurrentBalance,
-  BankingBalanceStatistics,
-  BankingRecentTransitions,
-  BankingExpensesCategories,
-} from '../../sections/@dashboard/general/banking';
+import { BankingWidgetSummary, WalletQRbalance } from '../../sections/@dashboard/general/wallet';
 
 // ----------------------------------------------------------------------
 
@@ -31,6 +22,9 @@ export default function GeneralWallet() {
       <Container maxWidth={themeStretch ? false : 'xl'}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={7}>
+            <WalletQRbalance list={_bankingCreditCard} />
+          </Grid>
+          <Grid item xs={12} md={5}>
             <Stack direction={{ xs: 'column', sm: 'row' }} spacing={3}>
               <BankingWidgetSummary
                 title="Income"
@@ -39,20 +33,7 @@ export default function GeneralWallet() {
                 total={18765}
                 chartData={[111, 136, 76, 108, 74, 54, 57, 84]}
               />
-
-              <BankingWidgetSummary
-                title="Expenses"
-                color="warning"
-                icon={'eva:diagonal-arrow-right-up-fill'}
-                percent={-0.5}
-                total={8938}
-                chartData={[111, 136, 76, 108, 74, 54, 57, 84]}
-              />
             </Stack>
-          </Grid>
-
-          <Grid item xs={12} md={5}>
-            <BankingCurrentBalance list={_bankingCreditCard} />
           </Grid>
         </Grid>
       </Container>
