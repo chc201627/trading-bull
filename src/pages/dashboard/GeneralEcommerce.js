@@ -24,7 +24,7 @@ import {
   EcommerceLatestProducts,
   EcommerceCurrentBalance,
 } from '../../sections/@dashboard/general/e-commerce';
-import { AppWelcome } from '../../sections/@dashboard/general/app';
+import { AppWelcome } from '../../sections/@dashboard/general/home';
 // assets
 import { MotivationIllustration } from '../../assets';
 

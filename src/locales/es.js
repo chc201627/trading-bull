@@ -134,7 +134,14 @@ const es = {
                 submit: 'Enviar'
             }
         }
-    }
+    },
+    dashboard:{
+        title: 'Dashboard',
+        home:{
+            news:'Novedades',
+            
+        }
+    },
 }
 
 export default es;
