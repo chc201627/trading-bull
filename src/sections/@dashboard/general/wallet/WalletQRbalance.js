@@ -60,11 +60,6 @@ export default function WalletQRbalance({ list, sx }) {
     <RootStyle sx={sx}>
       <Box sx={{ ...shadowStyle }}>
         <CardItem key={list[0].id} card={list[0]} />
-        sdsdd
-        <div style={{ height: 'auto', margin: '0 auto', maxWidth: 64, width: '100%' }}>
-          sdsd
-          <QRCode value="Hola Mundo" size={256} bgColor="#282c34" fgColor="#fff" level="H" />
-        </div>
       </Box>
     </RootStyle>
   );
@@ -92,11 +87,38 @@ function CardItem({ card }) {
 
   return (
     <CardItemStyle>
-      <Box sx={{ position: 'absolute', top: 16, right: 16, zIndex: 9 }}>
-        <div style={{ height: 'auto', margin: '0 auto', maxWidth: 64, width: '100%' }}>
-          sdsd
-          <QRCode value="Hola Mundo" size={256} bgColor="#282c34" fgColor="#fff" level="H" />
-        </div>
+      <Box sx={{ position: 'absolute', top: 20, left: 20, zIndex: 9 }}>
+        <QRCode value="Hola Mundo" size={184} bgColor="transparent" fgColor="#fff" level="H" />
+      </Box>
+      <Box sx={{ position: 'absolute', top: 30, left: 250, zIndex: 9, color: '#fff' }}>
+        <p>{balance}</p>
+      </Box>
+      <Box sx={{ position: 'absolute', top: 50, left: 250, zIndex: 9, color: '#fff' }}>
+        <p>{balance}</p>
+      </Box>
+      <Box sx={{ position: 'absolute', top: 50, left: 250, zIndex: 9, color: '#fff' }}>
+        <p>{balance}</p>
+        <input
+          type="text"
+          value={balance}
+          style={{
+            /* 01 Primary/05 Darker */
+
+            background: '#4A176E',
+            /* 02 Secondary/03 Main */
+
+            border: '1px solid #3366FF',
+            /* 01 Shadows/Color/02 Secondary */
+
+            boxShadow: '0px 8px 16px rgba(51, 102, 255, 0.24)',
+            borderRadius: '8px',
+            color: '#fff',
+            flex: 'none',
+            order: 3,
+            alignSelf: 'stretch',
+            flexGrow: 0,
+          }}
+        />
       </Box>
     </CardItemStyle>
   );
