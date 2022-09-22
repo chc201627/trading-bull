@@ -1,9 +1,10 @@
 // @mui
 import { useTheme } from '@mui/material/styles';
-import { Container, Grid, Stack, Button } from '@mui/material';
+import { Container, Grid, Stack, Button, Typography } from '@mui/material';
 // hooks
 import useAuth from '../../hooks/useAuth';
 import useSettings from '../../hooks/useSettings';
+import useLocales from '../../hooks/useLocales';
 // _mock_
 import { _appFeatured, _appAuthors, _appInstalled, _appRelated, _appInvoices } from '../../_mock';
 // components
@@ -11,7 +12,7 @@ import Page from '../../components/Page';
 // sections
 import {
   AppWidget,
-  AppWelcome,
+  AppSpots,
   AppFeatured,
   AppNewInvoice,
   AppTopAuthors,
@@ -20,9 +21,9 @@ import {
   AppWidgetSummary,
   AppCurrentDownload,
   AppTopInstalledCountries,
-} from '../../sections/@dashboard/general/app';
+} from '../../sections/@dashboard/general/home';
 // assets
-import { SeoIllustration } from '../../assets';
+import { MotivationIllustration } from '../../assets';
 
 // ----------------------------------------------------------------------
 
@@ -30,31 +31,36 @@ export default function GeneralApp() {
   const { user } = useAuth();
 
   const theme = useTheme();
+  const { translate } = useLocales();
 
   const { themeStretch } = useSettings();
 
   return (
     <Page title="General: App">
       <Container maxWidth={themeStretch ? false : 'xl'}>
+        <Typography variant='h6'>
+          {translate('dashboard.home.news')}
+        </Typography>
         <Grid container spacing={3}>
-          <Grid item xs={12} md={8}>
-            <AppWelcome
+          <Grid item xs={12} >
+            <AppSpots
               title={`Welcome back! \n ${user?.displayName}`}
               description="If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything."
               img={
-                <SeoIllustration
+                <MotivationIllustration
                   sx={{
                     p: 3,
-                    width: 360,
+                    width: 320,
                     margin: { xs: 'auto', md: 'inherit' },
                   }}
                 />
               }
               action={<Button variant="contained">Go Now</Button>}
+              sx={{ backgroundColor: '#211D35', color: '#F6F6F6' }}
             />
           </Grid>
 
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={12}>
             <AppFeatured list={_appFeatured} />
           </Grid>
 
