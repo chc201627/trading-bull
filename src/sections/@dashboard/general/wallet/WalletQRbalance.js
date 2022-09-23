@@ -3,11 +3,11 @@ import { useState } from 'react';
 import QRCode from 'react-qr-code';
 // @mui
 import { styled, useTheme } from '@mui/material/styles';
-import { Box, Typography, Stack, MenuItem, IconButton } from '@mui/material';
+import { Box } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
-const HEIGHT = 276;
+const HEIGHT = '31vh';
 
 const RootStyle = styled('div')(({ theme }) => ({
   position: 'relative',
