@@ -3,11 +3,11 @@ import { useState } from 'react';
 import QRCode from 'react-qr-code';
 // @mui
 import { styled, useTheme } from '@mui/material/styles';
-import { Box } from '@mui/material';
-
+import { Box, Tooltip, TextField, IconButton, InputAdornment } from '@mui/material';
+import CopyClipboard from '../../../../components/CopyClipboardQR';
 // ----------------------------------------------------------------------
 
-const HEIGHT = '31vh';
+const HEIGHT = '100%';
 
 const RootStyle = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -21,23 +21,20 @@ const CardItemStyle = styled('div')(({ theme }) => ({
   position: 'relative',
   height: HEIGHT - 16,
   backgroundSize: 'cover',
-  padding: theme.spacing(3),
+  padding: theme.spacing(6),
   backgroundRepeat: 'no-repeat',
   color: theme.palette.common.white,
   display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'space-between',
+  flexDirection: 'row',
+  justifyContent: 'flex-start',
 }));
 
 const shadowStyle = {
   mx: 'auto',
   width: 'calc(100% - 16px)',
-  position: 'absolute',
   height: HEIGHT,
   zIndex: 8,
-  bottom: 8,
-  left: 0,
-  right: 0,
+
   bgcolor: 'grey.500',
   background: 'linear-gradient(135deg, #A964DA 0%, #631E94 100%)',
   /* 01 Shadows/Dark/zCard */
@@ -46,20 +43,27 @@ const shadowStyle = {
   borderRadius: '16px',
 };
 
+const qrDesriptionbox = {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-around',
+  paddingLeft: '6%',
+  width: '-webkit-fill-available',
+};
+
 // ----------------------------------------------------------------------
 
 WalletQRbalance.propTypes = {
-  list: PropTypes.array.isRequired,
+  tron: PropTypes.object.isRequired,
   sx: PropTypes.object,
 };
 
-export default function WalletQRbalance({ list, sx }) {
+export default function WalletQRbalance({ tron, sx }) {
   const theme = useTheme();
-  console.log(list);
   return (
     <RootStyle sx={sx}>
       <Box sx={{ ...shadowStyle }}>
-        <CardItem key={list[0].id} card={list[0]} />
+        <CardItem card={tron} />
       </Box>
     </RootStyle>
   );
@@ -68,57 +72,51 @@ export default function WalletQRbalance({ list, sx }) {
 // ----------------------------------------------------------------------
 
 CardItem.propTypes = {
-  card: PropTypes.shape({
-    id: PropTypes.string,
-    balance: PropTypes.number,
-    cardHolder: PropTypes.string,
-    cardNumber: PropTypes.string,
-    cardType: PropTypes.string,
-    cardValid: PropTypes.string,
-  }),
+  card: PropTypes.object.isRequired,
 };
 
 function CardItem({ card }) {
-  const { id, cardType, balance, cardHolder, cardNumber, cardValid } = card;
-
+  const { balance, currency, value } = card;
   const [open, setOpen] = useState(null);
 
   const [showCurrency, setShowCurrency] = useState(true);
 
   return (
     <CardItemStyle>
-      <Box sx={{ position: 'absolute', top: 20, left: 20, zIndex: 9 }}>
-        <QRCode value="Hola Mundo" size={184} bgColor="transparent" fgColor="#fff" level="H" />
+      <Box>
+        <QRCode value={value} size={250} bgColor="transparent" fgColor="#97A8B9" level="H" />
       </Box>
-      <Box sx={{ position: 'absolute', top: 30, left: 250, zIndex: 9, color: '#fff' }}>
-        <p>{balance}</p>
-      </Box>
-      <Box sx={{ position: 'absolute', top: 50, left: 250, zIndex: 9, color: '#fff' }}>
-        <p>{balance}</p>
-      </Box>
-      <Box sx={{ position: 'absolute', top: 50, left: 250, zIndex: 9, color: '#fff' }}>
-        <p>{balance}</p>
-        <input
-          type="text"
-          value={balance}
+      <Box sx={qrDesriptionbox}>
+        <p
           style={{
-            /* 01 Primary/05 Darker */
+            /* H3 */
 
-            background: '#4A176E',
-            /* 02 Secondary/03 Main */
+            fontFamily: 'Public Sans',
+            fontStyle: 'normal',
+            fontWeight: 700,
+            fontSize: '32px',
+            lineHeight: '48px',
 
-            border: '1px solid #3366FF',
-            /* 01 Shadows/Color/02 Secondary */
-
-            boxShadow: '0px 8px 16px rgba(51, 102, 255, 0.24)',
-            borderRadius: '8px',
-            color: '#fff',
-            flex: 'none',
-            order: 3,
-            alignSelf: 'stretch',
-            flexGrow: 0,
+            color: ' #FFFFFF',
           }}
-        />
+        >
+          {balance} {currency.value}
+        </p>
+        <p
+          style={{
+            fontFamily: 'Public Sans',
+            fontStyle: 'normal',
+            fontHeight: 700,
+            fontSize: '20px',
+            lineHeight: '30px',
+            color: '#FFFFFF',
+          }}
+        >
+          {' '}
+          {currency.value} {currency.label}
+        </p>
+
+        <CopyClipboard value={value} />
       </Box>
     </CardItemStyle>
   );
