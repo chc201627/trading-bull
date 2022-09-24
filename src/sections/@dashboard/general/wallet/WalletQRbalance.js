@@ -77,14 +77,12 @@ CardItem.propTypes = {
 
 function CardItem({ card }) {
   const { balance, currency, value } = card;
-  const [open, setOpen] = useState(null);
-
-  const [showCurrency, setShowCurrency] = useState(true);
+  const [show, setShow] = useState(null);
 
   return (
     <CardItemStyle>
       <Box>
-        <QRCode value={value} size={250} bgColor="transparent" fgColor="#97A8B9" level="H" />
+        <QRCode value={value} size={250} bgColor="transparent" fgColor="#97A8B9" level="L" />
       </Box>
       <Box sx={qrDesriptionbox}>
         <p
