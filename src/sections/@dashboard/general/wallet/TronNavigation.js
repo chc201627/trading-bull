@@ -56,7 +56,7 @@ const linkTronScan = {
 
 TronNavigation.propTypes = {
   link: PropTypes.string.isRequired,
-  logout: PropTypes.string.isRequired,
+  handleLogout: PropTypes.func.isRequired,
 };
 
 export default function TronNavigation({ link, handleLogout }) {
