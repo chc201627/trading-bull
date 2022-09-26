@@ -13,13 +13,13 @@ CopyClipboard.propTypes = {
   value: PropTypes.string,
 };
 
-export default function CopyClipboard({ value, ...other }) {
+export default function CopyClipboard({ value, show, ...other }) {
   const { enqueueSnackbar } = useSnackbar();
   const [state, setState] = useState({
     value,
     copied: false,
   });
-
+  const showValue = show ? state.value : '************************';
   const handleChange = (event) => {
     setState({ value: event.target.value, copied: false });
   };
@@ -34,7 +34,7 @@ export default function CopyClipboard({ value, ...other }) {
   return (
     <TextField
       fullWidth
-      value={state.value}
+      value={showValue}
       onChange={handleChange}
       sx={{
         background: '#4A176E',

@@ -3,9 +3,10 @@ import { useState } from 'react';
 import QRCode from 'react-qr-code';
 // @mui
 import { styled, useTheme } from '@mui/material/styles';
-import { Box, Tooltip, TextField, IconButton, InputAdornment } from '@mui/material';
+import { Box, Tooltip, IconButton } from '@mui/material';
 import CopyClipboard from '../../../../components/CopyClipboardQR';
 // ----------------------------------------------------------------------
+import Iconify from '../../../../components/Iconify';
 
 const HEIGHT = '100%';
 
@@ -34,11 +35,8 @@ const shadowStyle = {
   width: 'calc(100% - 16px)',
   height: HEIGHT,
   zIndex: 8,
-
   bgcolor: 'grey.500',
   background: 'linear-gradient(135deg, #A964DA 0%, #631E94 100%)',
-  /* 01 Shadows/Dark/zCard */
-
   boxShadow: '0px 0px 2px rgba(0, 0, 0, 0.2), 0px 12px 24px -4px rgba(0, 0, 0, 0.12)',
   borderRadius: '16px',
 };
@@ -49,6 +47,12 @@ const qrDesriptionbox = {
   justifyContent: 'space-around',
   paddingLeft: '6%',
   width: '-webkit-fill-available',
+};
+
+const eyeButton = {
+  position: 'absolute',
+  top: '20px',
+  right: '20px',
 };
 
 // ----------------------------------------------------------------------
@@ -77,10 +81,14 @@ CardItem.propTypes = {
 
 function CardItem({ card }) {
   const { balance, currency, value } = card;
-  const [show, setShow] = useState(null);
-
+  const [show, setShow] = useState(false);
   return (
     <CardItemStyle>
+      <Tooltip title="Show">
+        <IconButton sx={eyeButton} onClick={() => setShow(!show)}>
+          <Iconify icon={'eva:eye-fill'} width={24} height={24} />
+        </IconButton>
+      </Tooltip>
       <Box>
         <QRCode value={value} size={250} bgColor="transparent" fgColor="#97A8B9" level="L" />
       </Box>
@@ -98,7 +106,7 @@ function CardItem({ card }) {
             color: ' #FFFFFF',
           }}
         >
-          {balance} {currency.value}
+          {show ? balance : '******'} {currency.value}
         </p>
         <p
           style={{
@@ -114,7 +122,7 @@ function CardItem({ card }) {
           {currency.value} {currency.label}
         </p>
 
-        <CopyClipboard value={value} />
+        <CopyClipboard value={value} show={show} />
       </Box>
     </CardItemStyle>
   );
