@@ -13,7 +13,8 @@ import {
   Invest,
   RefererProgram,
   FaqsForm,
-  FaqsList
+  FaqsList,
+  Disclaimer
 } from '../sections/home';
 import { SettingsContext } from '../contexts/SettingsContext';
 // hooks
@@ -74,6 +75,7 @@ export default function HomePage() {
             </Grid>
           </Grid>
         </Container>
+        <Disclaimer />
       </ContentStyle>
     </Page>
   );

@@ -6,4 +6,5 @@ export { default as Invest } from './Invest';
 export { default as RefererProgram } from './RefererProgram';
 export { default as FaqsList } from './faqs/FaqsList';
 export { default as FaqsForm } from './faqs/FaqsForm';
+export { default as Disclaimer} from './Disclaimer';
 

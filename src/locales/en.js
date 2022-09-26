@@ -139,6 +139,13 @@ const en = {
                 enter_message: 'Enter your message here',
                 submit: 'Submit Now'
             }
+        },
+        disclaimer: {
+            title: 'Disclaimer',
+            description1: 'Risks and',
+            description2: 'concerns',
+            caption1: 'This website is not directed at any jurisdiction and is not intended for any use that would be contrary to local law or regulation.',
+            caption2: 'Risk Warning: Trading leveraged products such as Forex may not be suitable for all investors as they carry a degree of risk to your capital. Please ensure that you fully understand the risks involved, taking into account your investments objectives and level of experience, before trading, and if necessary seek independent advice.'
         }
     },
     register: {
