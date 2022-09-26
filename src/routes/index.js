@@ -34,19 +34,17 @@ function useQuery() {
 }
 
 export default function Router() {
-
   const query = useQuery();
 
   const { onChangeLang } = useLocales();
 
   useEffect(() => {
-    const lang =  query.get('lang');
+    const lang = query.get('lang');
     if (lang) {
       onChangeLang(lang);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
+  }, []);
 
   return useRoutes([
     {
@@ -88,8 +86,8 @@ export default function Router() {
         { element: <Navigate to={PATH_AFTER_LOGIN} replace />, index: true },
         { path: 'app', element: <GeneralApp /> },
         { path: 'ecommerce', element: <GeneralEcommerce /> },
-        { path: 'analytics', element: <GeneralAnalytics /> },
-        { path: 'banking', element: <GeneralBanking /> },
+        { path: 'analytics', element: <GeneralWallet /> },
+        { path: 'wallet', element: <GeneralWallet /> },
         { path: 'booking', element: <GeneralBooking /> },
 
         {
@@ -200,6 +198,8 @@ const VerifyCode = Loadable(lazy(() => import('../pages/auth/VerifyCode')));
 const GeneralApp = Loadable(lazy(() => import('../pages/dashboard/GeneralApp')));
 const GeneralEcommerce = Loadable(lazy(() => import('../pages/dashboard/GeneralEcommerce')));
 const GeneralAnalytics = Loadable(lazy(() => import('../pages/dashboard/GeneralAnalytics')));
+const GeneralWallet = Loadable(lazy(() => import('../pages/dashboard/GeneralWallet')));
+
 const GeneralBanking = Loadable(lazy(() => import('../pages/dashboard/GeneralBanking')));
 const GeneralBooking = Loadable(lazy(() => import('../pages/dashboard/GeneralBooking')));
 
