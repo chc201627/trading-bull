@@ -132,6 +132,13 @@ const es = {
                 enter_message: 'Escribe tu mensaje aqui',
                 submit: 'Enviar'
             }
+        },
+        disclaimer: {
+            title: 'Aviso Legal',
+            description1: 'Riesgos y',
+            description2: 'Precauciones',
+            caption1: 'Este sitio web no está dirigido a ninguna jurisdicción y no está destinado a ningún uso que sea contrario a la ley o regulación local.',
+            caption2: 'Advertencia de riesgo: El comercio de productos apalancados como Forex puede no ser adecuado para todos los inversores, ya que conllevan un grado de riesgo para su capital. Asegúrese de que comprende completamente los riesgos involucrados, teniendo en cuenta sus objetivos de inversión y el nivel de experiencia, antes de operar y, si es necesario, busque asesoramiento independiente.'
         }
     }
 }
