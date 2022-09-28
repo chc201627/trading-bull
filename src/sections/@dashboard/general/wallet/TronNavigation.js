@@ -4,6 +4,7 @@ import { styled, useTheme } from '@mui/material/styles';
 import { Box, Card, Button } from '@mui/material';
 
 import background from '../../../../assets/images/photos/link-tron.svg';
+import useLocales from '../../../../hooks/useLocales';
 
 // ----------------------------------------------------------------------
 
@@ -61,11 +62,13 @@ TronNavigation.propTypes = {
 
 export default function TronNavigation({ link, handleLogout }) {
   const theme = useTheme();
+  const { translate } = useLocales();
+
   return (
     <CardItemStyle>
       <Card sx={{ ...cardStyle }}>
         <h2 style={title}>TRONSCAN</h2>
-        <h5 style={title}>Transction Movements History</h5>
+        <h5 style={title}> {translate('wallet.navigation.history')}</h5>
         <p
           style={{
             fontFamily: 'Public Sans',
@@ -83,7 +86,7 @@ export default function TronNavigation({ link, handleLogout }) {
           {link}
         </p>
         <a style={linkTronScan} href={link} target="_blank" rel="noreferrer">
-          Open Tronscan
+          {translate('wallet.navigation.openButton')}
         </a>
       </Card>
       <Button
@@ -91,7 +94,7 @@ export default function TronNavigation({ link, handleLogout }) {
         sx={{ background: '#0C53B7', borderRadius: '8px', height: '18%', width: '90%' }}
         variant="contained"
       >
-        Sign out
+        {translate('wallet.navigation.signOut')}
       </Button>
     </CardItemStyle>
   );
