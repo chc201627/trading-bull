@@ -25,6 +25,7 @@ const _tronMock = {
   balance: '1,464.356',
   value: '0XD4FGFGHDHDBDFDGSDFGF...464GHGGHFGHGFDFE3R5',
 };
+
 export default function GeneralWallet() {
   const navigate = useNavigate();
 
