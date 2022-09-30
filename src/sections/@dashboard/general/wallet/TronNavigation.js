@@ -61,7 +61,6 @@ TronNavigation.propTypes = {
 };
 
 export default function TronNavigation({ link, handleLogout }) {
-  const theme = useTheme();
   const { translate } = useLocales();
 
   return (

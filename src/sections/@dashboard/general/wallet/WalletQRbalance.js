@@ -80,7 +80,7 @@ CardItem.propTypes = {
 };
 
 function CardItem({ card }) {
-  const { balance, currency, value } = card;
+  const { balance, currency, address } = card;
   const [show, setShow] = useState(false);
   return (
     <CardItemStyle>
@@ -90,7 +90,7 @@ function CardItem({ card }) {
         </IconButton>
       </Tooltip>
       <Box>
-        <QRCode value={value} size={250} bgColor="transparent" fgColor="#97A8B9" level="L" />
+        <QRCode value={address} size={250} bgColor="transparent" fgColor="#000" level="L" />
       </Box>
       <Box sx={qrDesriptionbox}>
         <p
@@ -122,7 +122,7 @@ function CardItem({ card }) {
           {currency.value} {currency.label}
         </p>
 
-        <CopyClipboard value={value} show={show} />
+        <CopyClipboard value={address} show={show} />
       </Box>
     </CardItemStyle>
   );

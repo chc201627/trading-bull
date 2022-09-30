@@ -19,14 +19,15 @@ export default function CopyClipboard({ value, show, ...other }) {
     value,
     copied: false,
   });
-  const showValue = show ? state.value : '************************';
+
+  const showValue = show ? value : '************************';
   const handleChange = (event) => {
     setState({ value: event.target.value, copied: false });
   };
 
   const onCopy = () => {
     setState({ ...state, copied: true });
-    if (state.value) {
+    if (value) {
       enqueueSnackbar('Copied!');
     }
   };
@@ -51,7 +52,7 @@ export default function CopyClipboard({ value, show, ...other }) {
       InputProps={{
         endAdornment: (
           <InputAdornment position="end">
-            <CopyToClipboard text={state.value} onCopy={onCopy}>
+            <CopyToClipboard text={value} onCopy={onCopy}>
               <Tooltip title="Copy">
                 <IconButton>
                   <Iconify icon={'eva:copy-fill'} width={24} height={24} />
