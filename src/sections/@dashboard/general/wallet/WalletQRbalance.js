@@ -7,6 +7,7 @@ import { Box, Tooltip, IconButton } from '@mui/material';
 import CopyClipboard from '../../../../components/CopyClipboardQR';
 // ----------------------------------------------------------------------
 import Iconify from '../../../../components/Iconify';
+import tronIcon from '../../../../assets/icons/ic_tron.svg';
 
 const HEIGHT = '100%';
 
@@ -108,7 +109,7 @@ function CardItem({ card }) {
         >
           {show ? balance : '******'} {currency.value}
         </p>
-        <p
+        <span
           style={{
             fontFamily: 'Public Sans',
             fontStyle: 'normal',
@@ -116,11 +117,21 @@ function CardItem({ card }) {
             fontSize: '20px',
             lineHeight: '30px',
             color: '#FFFFFF',
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'flex-start',
           }}
         >
-          {' '}
+          <img
+            alt="trinicon"
+            width="5%"
+            src={tronIcon}
+            style={{
+              marginRight: '2%',
+            }}
+          />
           {currency.value} {currency.label}
-        </p>
+        </span>
 
         <CopyClipboard value={address} show={show} />
       </Box>
