@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Grid, Container } from '@mui/material';
@@ -14,23 +16,23 @@ import useIsMountedRef from '../../hooks/useIsMountedRef';
 import Page from '../../components/Page';
 // sections
 import { TronNavigation, WalletQRbalance } from '../../sections/@dashboard/general/wallet';
+import useTronLink from '../../hooks/useTronLink';
 
 // ----------------------------------------------------------------------
 
-const _tronMock = {
-  currency: {
-    value: 'USDT',
-    label: '(TRON)',
-  },
-  balance: '1,464.356',
-  value: '0XD4FGFGHDHDBDFDGSDFGF...464GHGGHFGHGFDFE3R5',
-};
 export default function GeneralWallet() {
   const navigate = useNavigate();
 
-  const { user, logout } = useAuth();
+  const { logout } = useAuth();
+  const { getCurrentWalletAddress, getUsdtBalance } = useTronLink();
 
-  const isMountedRef = useIsMountedRef();
+  const [currency, setCurrency] = useState({
+    value: 'USDT',
+    label: '(TRON)',
+  });
+  const [balance, setBalance] = useState('0');
+  const [address, setAddress] = useState('');
+
   const { themeStretch } = useSettings();
   const handleLogout = async () => {
     try {
@@ -45,19 +47,30 @@ export default function GeneralWallet() {
       // enqueueSnackbar('Unable to logout!', { variant: 'error' });
     }
   };
-
+  useEffect(() => {
+    async function getAddress() {
+      const address = await getCurrentWalletAddress();
+      setAddress(address);
+    }
+    getAddress();
+  }, []);
+  useEffect(() => {
+    async function getBalance() {
+      const res = await getUsdtBalance(window.tronLink.tronWeb.defaultAddress.hex);
+      const balance = parseInt(res?.data?._hex, 16);
+      setBalance(balance);
+    }
+    getBalance();
+  }, []);
   return (
     <Page title="General: Wallet">
       <Container maxWidth={themeStretch ? false : 'xl'}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={8}>
-            <WalletQRbalance tron={_tronMock} />
+            <WalletQRbalance tron={{ currency, balance, address }} />
           </Grid>
           <Grid item xs={12} md={4}>
-            <TronNavigation
-              link="https://tronscan.org/#/address/TK31z3tznepy4DRKk7v2vQGkLqZ2Q6yZUW"
-              handleLogout={handleLogout}
-            />
+            <TronNavigation link={`https://tronscan.org/#/address/${address}`} handleLogout={handleLogout} />
           </Grid>
         </Grid>
       </Container>
