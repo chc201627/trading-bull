@@ -13,14 +13,15 @@ import Page from '../../components/Page';
 import {
   AppWidget,
   AppSpots,
-  AppFeatured,
+  // AppFeatured,
+  // AppWidgetSummary,
   AppNewInvoice,
   AppTopAuthors,
   AppTopRelated,
   AppAreaInstalled,
-  AppWidgetSummary,
   AppCurrentDownload,
   AppTopInstalledCountries,
+  AppTotalInvestments
 } from '../../sections/@dashboard/general/home';
 // assets
 import { MotivationIllustration } from '../../assets';
@@ -38,14 +39,14 @@ export default function GeneralApp() {
   return (
     <Page title="General: App">
       <Container maxWidth={themeStretch ? false : 'xl'}>
-        <Typography variant='h6'>
-          {translate('dashboard.home.news')}
+        <Typography variant='h6' sx={{color: 'grey.500'}}>
+          {translate('dashboard.home.news.title')}
         </Typography>
         <Grid container spacing={3}>
           <Grid item xs={12} >
             <AppSpots
-              title={`Welcome back! \n ${user?.displayName}`}
-              description="If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything."
+              title={translate('dashboard.home.news.cardTitle')}
+              description={translate('dashboard.home.news.cardContent')}
               img={
                 <MotivationIllustration
                   sx={{
@@ -60,7 +61,7 @@ export default function GeneralApp() {
             />
           </Grid>
 
-          <Grid item xs={12} md={12}>
+          {/* <Grid item xs={12} md={12}>
             <AppFeatured list={_appFeatured} />
           </Grid>
 
@@ -91,6 +92,11 @@ export default function GeneralApp() {
               total={678}
               chartColor={theme.palette.chart.red[0]}
               chartData={[8, 9, 31, 8, 16, 37, 8, 33, 46, 31]}
+            />
+          </Grid> */}
+          <Grid item xs={12} md={6}>
+            <AppTotalInvestments
+              title={'Total Investments'}
             />
           </Grid>
 
