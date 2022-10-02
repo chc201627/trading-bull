@@ -169,7 +169,11 @@ const en = {
   dashboard: {
     title: 'dashboard',
     home: {
-      news: 'News',
+      news: {
+        title: 'News',
+        cardTitle: 'New Spots Available',
+        cardContent:`August come with many surprises \n Including new Spots, monthly and semestral, let's take a look`
+      },
     },
   },
   wallet: {

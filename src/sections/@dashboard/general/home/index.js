@@ -9,3 +9,4 @@ export { default as AppWidgetSummary } from './AppWidgetSummary';
 export { default as AppCurrentDownload } from './AppCurrentDownload';
 export { default as AppTopInstalledCountries } from './AppTopInstalledCountries';
 export { default as AppSpots} from './AppSpots';
+export { default as AppTotalInvestments } from './AppTotalInvestments';
