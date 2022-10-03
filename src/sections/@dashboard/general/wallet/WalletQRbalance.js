@@ -90,8 +90,8 @@ function CardItem({ card }) {
           <Iconify icon={'eva:eye-fill'} width={24} height={24} />
         </IconButton>
       </Tooltip>
-      <Box>
-        <QRCode value={address} size={250} bgColor="transparent" fgColor="#000" level="L" />
+      <Box sx={{padding: 2, backgroundColor: 'common.white', borderRadius: 2}}>
+        <QRCode value={address} size={200} bgColor="white" fgColor="#000" level="L" />
       </Box>
       <Box sx={qrDesriptionbox}>
         <p
@@ -107,7 +107,7 @@ function CardItem({ card }) {
             color: ' #FFFFFF',
           }}
         >
-          {show ? balance : '******'} {currency.value}
+          {show ? balance / 1000000 : '******'} {currency.value}
         </p>
         <span
           style={{

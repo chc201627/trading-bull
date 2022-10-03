@@ -81,7 +81,7 @@ const useTronLink = () => {
         }
     }
 
-    const trimAddress = (address = '', charSize = 8) => address.slice(0, charSize) + address.slice(address.length - charSize, address.length)
+    const trimAddress = (address = '', charSize = 8) => `${address.slice(0, charSize)}...${address.slice(address.length - charSize, address.length)}`
 
     // Return BIGINT usdt balance
     const getUsdtBalance = async (address) => {

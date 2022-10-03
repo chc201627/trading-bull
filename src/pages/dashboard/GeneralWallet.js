@@ -24,7 +24,7 @@ export default function GeneralWallet() {
   const navigate = useNavigate();
 
   const { logout } = useAuth();
-  const { getCurrentWalletAddress, getUsdtBalance } = useTronLink();
+  const { getCurrentWalletAddress, getUsdtBalance, trimAddress } = useTronLink();
 
   const [currency, setCurrency] = useState({
     value: 'USDT',
@@ -47,21 +47,20 @@ export default function GeneralWallet() {
       // enqueueSnackbar('Unable to logout!', { variant: 'error' });
     }
   };
+
   useEffect(() => {
-    async function getAddress() {
-      const address = await getCurrentWalletAddress();
-      setAddress(address);
-    }
-    getAddress();
-  }, []);
-  useEffect(() => {
+    const address = getCurrentWalletAddress();
+    setAddress(address);
+
     async function getBalance() {
       const res = await getUsdtBalance(window.tronLink.tronWeb.defaultAddress.hex);
       const balance = parseInt(res?.data?._hex, 16);
       setBalance(balance);
     }
+
     getBalance();
   }, []);
+
   return (
     <Page title="General: Wallet">
       <Container maxWidth={themeStretch ? false : 'xl'}>

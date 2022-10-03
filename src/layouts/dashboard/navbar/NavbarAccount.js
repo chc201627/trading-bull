@@ -9,6 +9,7 @@ import useAuth from '../../../hooks/useAuth';
 import { PATH_DASHBOARD } from '../../../routes/paths';
 // components
 import MyAvatar from '../../../components/MyAvatar';
+import useTronLink from '../../../hooks/useTronLink';
 
 // ----------------------------------------------------------------------
 
@@ -32,38 +33,41 @@ NavbarAccount.propTypes = {
 export default function NavbarAccount({ isCollapse }) {
   const { user } = useAuth();
 
+  const {
+    trimAddress
+  } = useTronLink();
+
   return (
-    <Link underline="none" color="inherit" component={RouterLink} to={PATH_DASHBOARD.user.account}>
-      <RootStyle
+    <RootStyle
+      sx={{
+        ...(isCollapse && {
+          bgcolor: 'transparent',
+        }),
+      }}
+    >
+      <MyAvatar />
+
+      <Box
         sx={{
+          ml: 2,
+          transition: (theme) =>
+            theme.transitions.create('width', {
+              duration: theme.transitions.duration.shorter,
+            }),
           ...(isCollapse && {
-            bgcolor: 'transparent',
+            ml: 0,
+            width: 0,
           }),
         }}
       >
-        <MyAvatar />
+        <Typography variant="subtitle2" noWrap>
 
-        <Box
-          sx={{
-            ml: 2,
-            transition: (theme) =>
-              theme.transitions.create('width', {
-                duration: theme.transitions.duration.shorter,
-              }),
-            ...(isCollapse && {
-              ml: 0,
-              width: 0,
-            }),
-          }}
-        >
-          <Typography variant="subtitle2" noWrap>
-            {user?.displayName}
-          </Typography>
-          <Typography variant="body2" noWrap sx={{ color: 'text.secondary' }}>
+          {trimAddress(user?.username, 6)}
+        </Typography>
+        {/* <Typography variant="body2" noWrap sx={{ color: 'text.secondary' }}>
             {user?.role}
-          </Typography>
-        </Box>
-      </RootStyle>
-    </Link>
+          </Typography> */}
+      </Box>
+    </RootStyle>
   );
 }

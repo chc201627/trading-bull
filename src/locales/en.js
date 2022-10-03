@@ -173,6 +173,7 @@ const en = {
     },
   },
   wallet: {
+    title: 'wallet',
     navigation: {
       history: 'Transction Movements History',
       openButton: 'Open Tronscan',
