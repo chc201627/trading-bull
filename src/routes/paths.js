@@ -43,6 +43,10 @@ export const PATH_DASHBOARD = {
     wallet: path(ROOTS_DASHBOARD, '/wallet'),
     booking: path(ROOTS_DASHBOARD, '/booking'),
   },
+  spot:{
+    root: path(ROOTS_DASHBOARD, '/spot'),
+    all: path(ROOTS_DASHBOARD, '/spot/all')
+  },
   mail: {
     root: path(ROOTS_DASHBOARD, '/mail'),
     all: path(ROOTS_DASHBOARD, '/mail/all'),
