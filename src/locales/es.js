@@ -91,6 +91,7 @@ const es = {
                             If you run into any problems with your ads, find out how to tell if
                             they're running and how to resolve approval issues.`,
         },
+<<<<<<< HEAD
       ],
     },
     faqs: {
@@ -172,6 +173,49 @@ const es = {
     },
     spot:{
       amount_invest: 'Cantidad de inversión'
+=======
+        faqs: {
+            title: 'Preguntas frecuentes',
+            questions: [
+                {
+                    title: '¿Qué es un sistema PAMM?',
+                    answer: 'El módulo de administración de asignación de porcentaje, también conocido como administración de asignación de porcentaje de dinero o PAMM, es una forma de comercio de divisas de dinero agrupado. Un inversor puede asignar su dinero en la proporción deseada a los comerciantes/administradores de dinero de su elección.'
+                },
+                {
+                    title: '¿Cuales pueden ser los riesgos?',
+                    answer: 'El comercio de divisas conlleva un alto riesgo debido al apalancamiento y la volatilidad del mercado, invierte siempre lo que puedas permitirte perder.'
+                },
+                {
+                    title: '¿Puede revisar el histórico de las operaciones?',
+                    answer: 'El libro de negociación se administra en la Mesa de negociación de reequilibrio que no se muestra en la plataforma, sin embargo, el usuario puede ver los índices de asignación como cuando invierte en un ETF, así como el AUM.'
+                },
+                {
+                    title: '¿Como manejan mis datos?',
+                    answer: 'Streak Bull no captura ningún dato del usuario, solo la información de la blockchain de su billetera y sus transacciones.'
+                },
+                {
+                    title: '¿Hay alguna garantía sobre la cripto invertida?',
+                    answer: 'Debido a la naturaleza del entorno de inversión de alto riesgo de Forex, Streak Bull no garantiza ningún rendimiento pasado como un retorno futuro, usted está comprando una parte de una cartera de dinero para el comercio en Forex, materias primas e índices, el valor de la cartera puede variar con el tiempo.'
+                },
+                {
+                    title: '¿Cual es la reducción máxima?',
+                    answer: 'El Drawdown máximo en un día ha sido del 67 %, el drawdown medio por operación es del 0,75 % con un VaR del 1 % por operación.'
+                },
+                {
+                    title: '¿Cual es la influencia de las posiciones?',
+                    answer: 'Puede variar entre los diferentes PAMMS pero la media es de 500.'
+                }
+            ],
+            form:{
+                need_help: '¿Necesitas Ayuda? Escribenos',
+                name: 'Nombre',
+                email: 'Correo',
+                subject: 'Asunto',
+                enter_message: 'Escribe tu mensaje aqui',
+                submit: 'Enviar'
+            }
+        }
+>>>>>>> 8e55afeccd956cd10ecf53d2d36c8d5d5b1d6433
     }
   },
   wallet: {
