@@ -28,7 +28,6 @@ export default function NavSectionVertical({ navConfig, isCollapse, ...other }) 
               }),
             }}
           >
-            {console.log(group)}
             {translate(group.subheader)}
           </ListSubheaderStyle>
 

@@ -1,3 +1,5 @@
+// React 
+import { Link as RouterLink } from 'react-router-dom';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Container, Grid, Stack, Button, Typography } from '@mui/material';
@@ -7,20 +9,22 @@ import useSettings from '../../hooks/useSettings';
 import useLocales from '../../hooks/useLocales';
 // _mock_
 import { _appFeatured, _appAuthors, _appInstalled, _appRelated, _appInvoices } from '../../_mock';
+// Routes
+import { PATH_DASHBOARD } from '../../routes/paths';
 // components
 import Page from '../../components/Page';
 // sections
 import {
   AppWidget,
-  AppSpots,
+  AppNews,
   // AppFeatured,
   // AppWidgetSummary,
-  AppNewInvoice,
-  AppTopAuthors,
-  AppTopRelated,
-  AppAreaInstalled,
-  AppCurrentDownload,
-  AppTopInstalledCountries,
+  // AppNewInvoice,
+  // AppTopAuthors,
+  // AppTopRelated,
+  // AppAreaInstalled,
+  // AppCurrentDownload,
+  // AppTopInstalledCountries,
   AppTotalInvestments
 } from '../../sections/@dashboard/general/home';
 // assets
@@ -39,12 +43,12 @@ export default function GeneralApp() {
   return (
     <Page title="General: App">
       <Container maxWidth={themeStretch ? false : 'xl'}>
-        <Typography variant='h6' sx={{color: 'grey.500'}}>
+        <Typography variant='h6' sx={{ color: 'grey.500', mb: 2 }}>
           {translate('dashboard.home.news.title')}
         </Typography>
         <Grid container spacing={3}>
           <Grid item xs={12} >
-            <AppSpots
+            <AppNews
               title={translate('dashboard.home.news.cardTitle')}
               description={translate('dashboard.home.news.cardContent')}
               img={
@@ -56,51 +60,26 @@ export default function GeneralApp() {
                   }}
                 />
               }
-              action={<Button variant="contained">Go Now</Button>}
+              action={
+                <RouterLink to={PATH_DASHBOARD.spot.all}>
+                  <Button variant="contained">
+                    {translate('dashboard.home.news.action')}
+                  </Button>
+                </RouterLink>
+              }
               sx={{ backgroundColor: '#211D35', color: '#F6F6F6' }}
             />
           </Grid>
-
-          {/* <Grid item xs={12} md={12}>
-            <AppFeatured list={_appFeatured} />
-          </Grid>
-
-          <Grid item xs={12} md={4}>
-            <AppWidgetSummary
-              title="Total Active Users"
-              percent={2.6}
-              total={18765}
-              chartColor={theme.palette.primary.main}
-              chartData={[5, 18, 12, 51, 68, 11, 39, 37, 27, 20]}
-            />
-          </Grid>
-
-          <Grid item xs={12} md={4}>
-            <AppWidgetSummary
-              title="Total Installed"
-              percent={0.2}
-              total={4876}
-              chartColor={theme.palette.chart.blue[0]}
-              chartData={[20, 41, 63, 33, 28, 35, 50, 46, 11, 26]}
-            />
-          </Grid>
-
-          <Grid item xs={12} md={4}>
-            <AppWidgetSummary
-              title="Total Downloads"
-              percent={-0.1}
-              total={678}
-              chartColor={theme.palette.chart.red[0]}
-              chartData={[8, 9, 31, 8, 16, 37, 8, 33, 46, 31]}
-            />
-          </Grid> */}
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={6} lg={8}>
             <AppTotalInvestments
-              title={'Total Investments'}
+              title={translate('dashboard.home.totalInvestments.title')}
             />
           </Grid>
-
           <Grid item xs={12} md={6} lg={4}>
+            <></>
+          </Grid>
+
+          {/* <Grid item xs={12} md={6} lg={4}>
             <AppCurrentDownload
               title="Current Download"
               chartColors={[
@@ -173,7 +152,7 @@ export default function GeneralApp() {
               <AppWidget title="Conversion" total={38566} icon={'eva:person-fill'} chartData={48} />
               <AppWidget title="Applications" total={55566} icon={'eva:email-fill'} color="warning" chartData={75} />
             </Stack>
-          </Grid>
+          </Grid> */}
         </Grid>
       </Container>
     </Page>

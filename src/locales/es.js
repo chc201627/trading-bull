@@ -156,17 +156,33 @@ const es = {
       news: {
         title: 'Novedades',
         cardTitle: 'New Spots Available',
-        cardContent:`August come with many surprises Including new Spots, monthly and semestral, let's take a look`
+        cardContent:`August come with many surprises Including new Spots, monthly and semestral, let's take a look`,
+        action: 'Ir ahora'
+      },
+      totalInvestments: {
+        title: 'Inversiones',
+        periods: [
+          'Todo',
+          'Año',
+          '6 meses',
+          '3 meses',
+          '1 mes'
+        ]
       }
     },
+    spot:{
+      amount_invest: 'Cantidad de inversión'
+    }
   },
   wallet: {
+    title: 'Billetera',
     navigation: {
       history: 'Movimiento historico de transacciones',
       openButton: 'Abrir Tronscan',
       signOut: 'Salir',
     },
   },
+  goBack: 'Volver'
 };
 
 export default es;
