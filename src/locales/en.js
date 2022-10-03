@@ -22,7 +22,6 @@ const en = {
       powerBy: 'POWER BY:',
       seeSpotsAvailable: 'See spots available',
     },
-<<<<<<< HEAD
     scopeData: {
       title: 'SCOPE AND DATA',
       description: 'Achieve your growth goals with',
@@ -76,70 +75,6 @@ const en = {
         {
           label: 'Get the refer code membership for a member',
           description: `For each ad campaign that you create, you can control how much
-=======
-    home: {
-        hero: {
-            content1: 'The First Decentralized',
-            content2: 'PAMM portfolio exclusive',
-            content3: 'for members of our community',
-            description: 'Join our trading Club and earn from the best FX traders in the world',
-            powerBy: 'POWER BY:',
-            seeSpotsAvailable: 'See spots available',
-        },
-        scopeData: {
-            title: 'SCOPE AND DATA',
-            description: 'Achieve your growth goals with',
-            card0Description: 'PAMM Profitable Trading Systems ',
-            card1Description: 'Months with an APY greater than 8.5% monthly and an standard deviation of 3% ',
-            card2Description: 'Active subscribers to the PAMM strategies ',
-        },
-        blockchain: {
-            title: 'Blockchain',
-            description1: `Streak Bull is a`,
-            description2: 'Non-Custodial Wallet for',
-            description3: 'USDT',
-            description4: 'in the',
-            description5: 'Tron Blockchain',
-            seeDetails: 'See details',
-        },
-        spots: {
-            title: 'Spots',
-            options: 'Options',
-            invest: 'Invest',
-            tradingSpot: {
-                title: 'TRADING.SPOT',
-                goal: 'Goal',
-                lacking_amount: 'Lacking amount',
-                inversation_rate: 'Inversation Rate',
-                rentability: 'Rentability',
-                total_investors: 'Total Investors',
-                deposits_buy: 'Deposits Buy',
-                next_activation: 'Next Activation',
-                learn_more: 'Learn more'
-            }
-        },
-        invest: {
-            title: 'Invest',
-            description1: 'The advantage of',
-            description2: 'crypto',
-            description3: 'in trading',
-            caption: 'Here you can Invest USDT in the PAMM strategies once you become a member with a lot of benefits :',
-            skill0: 'Notifations of the next trading positions',
-            skill1: 'Referral Program access',
-            skill2: 'Prior Access to new offers in the platform',
-        },
-        refererProgram: {
-            title: 'REFERRAL PROGRAM',
-            content1: 'Benefits for',
-            content2: 'introducing your friends',
-            description: `You'll be a guest in special events, conferences and have access to educational content to enhance your trading performance while you enrich your social circle.`,
-            detail1: '*Trading Positions: Positions in a portfolio monthly.',
-            detail2: '*Shares boughts will depend on the performance of the trading position and the time of the investment.',
-            steps: [
-                {
-                    label: 'Get the refer code membership for a member',
-                    description: `For each ad campaign that you create, you can control how much
->>>>>>> 8e55afeccd956cd10ecf53d2d36c8d5d5b1d6433
                             you're willing to spend on clicks and conversions, which networks
                             and geographical locations you want your ads to show on, and more.`,
         },
@@ -161,51 +96,7 @@ const en = {
                             If you run into any problems with your ads, find out how to tell if
                             they're running and how to resolve approval issues.`,
         },
-<<<<<<< HEAD
       ],
-=======
-        faqs: {
-            title: 'Frequently asked questions',
-            questions: [
-                {
-                    title: 'What is a PAMM System?',
-                    answer: 'Percentage allocation management module, also known as percentage allocation money management or PAMM, is a form of pooled money forex trading. An investor gets to allocate their money in the desired proportion to the qualified trader(s)/money manager(s) of their choice.'
-                },
-                {
-                    title: 'What can be the risks?',
-                    answer: 'Fx trading carries a high risk due to leverage and market volatility, always invest what you can afford to lose.'
-                },
-                {
-                    title: 'Can you review the history of the operations?',
-                    answer: 'The trading book is managed in the Rebalancing Trading Desk which is not displayed in the platform, however user can see allocation ratios as when investing in an ETF, as well as the AUM.'
-                },
-                {
-                    title: 'How do you handle my data?',
-                    answer: 'No user data is captured nor managed by Streak Bull, only the blockchain information of your wallet and its transactions.'
-                },
-                {
-                    title: 'Is there any guarantee on the crypto invested?',
-                    answer: 'Due to the nature of the high risk investment environment of Forex, Trading Bull does not guarantee any past performance as a future return, you’re buying a Share of a portfolio of money to trade in Forex, Commodities and Indices, the portfolio value may vary over the time.'
-                },
-                {
-                    title: 'What is the Max drawdown?',
-                    answer: 'The max Drawdown in a day has been 67% the average drawdown per trade is 0.75% with a VaR of 1% per trade.'
-                },
-                {
-                    title: `What's the leverage of the positions?`,
-                    answer: 'It may vary between the different PAMMS but the average is 500.'
-                }
-            ],
-            form:{
-                need_help: `Haven't found the right help? Write us`,
-                name: 'Name',
-                email: 'Email',
-                subject: 'Subject',
-                enter_message: 'Enter your message here',
-                submit: 'Submit Now'
-            }
-        }
->>>>>>> 8e55afeccd956cd10ecf53d2d36c8d5d5b1d6433
     },
     faqs: {
       title: 'Frequently asked questions',

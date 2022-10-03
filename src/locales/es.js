@@ -15,7 +15,6 @@ const es = {
       powerBy: 'Potenciado por:',
       seeSpotsAvailable: 'Mira los cupos disponibles',
     },
-<<<<<<< HEAD
     scopeData: {
       title: 'ALCANCE & DATA',
       description: 'Alcanza tu metas de crecimiento con',
@@ -71,70 +70,6 @@ const es = {
         {
           label: 'Obtén el código de referido para un miembro',
           description: `For each ad campaign that you create, you can control how much
-=======
-    home: {
-        hero: {
-            content1: 'El Primer Portafolio ',
-            content2: 'PAMM Descentralizado',
-            content3: 'exclusivo para miembros de nuestra comunidad',
-            description: 'Únete a nuestro Club de trading y gane de los mejores traders de Forex del mundo',
-            powerBy: 'Potenciado por:',
-            seeSpotsAvailable: 'Mira los cupos disponibles',
-        },
-        scopeData: {
-            title: 'ALCANCE & DATA',
-            description: 'Alcanza tu metas de crecimiento con',
-            card0Description: 'Sistemas de Trading Rentables PAMM ',
-            card1Description: 'Meses con una APY superior al 8,5% mensual y una desviación estándar del 3% ',
-            card2Description: 'Suscriptores activos a las estrategias PAMM ',
-        },
-        blockchain: {
-            title: 'Blockchain',
-            description1: `Streak Bull es una`,
-            description2: 'Billetera No-Custodiada para',
-            description3: 'USDT',
-            description4: 'en la red',
-            description5: 'Blockchain de Tron',
-            seeDetails: 'Más información',
-        },
-        spots: {
-            title: 'Cupos',
-            options: 'Opciones de',
-            invest: 'Inversión',
-            tradingSpot: {
-                title: 'TRADING.SPOT',
-                goal: 'Meta',
-                lacking_amount: 'Monto faltante',
-                inversation_rate: 'Tasa de inversión',
-                rentability: 'Rentabilidad',
-                total_investors: 'Inversores Totales',
-                deposits_buy: 'Deposits Buy',
-                next_activation: 'Siguiente Activación',
-                learn_more: 'Conoce mas'
-            }
-        },
-        invest: {
-            title: 'Invertir',
-            description1: 'Las ventajas del mundo',
-            description2: 'crypto',
-            description3: 'en trading',
-            caption: 'Aquí puede invertir USDT en las estrategias PAMM  desde que se convierte en un miembro con una gran cantidad de beneficios :',
-            skill0: 'Notificaciones para los próximos cupos disponibes',
-            skill1: 'Acceso al programa de referidos',
-            skill2: 'Acceso prioritario a nuevos beneficios en la plataforma',
-        },
-        refererProgram: {
-            title: 'PROGRAMA DE REFERIDOS',
-            content1: 'Beneficios de',
-            content2: 'introducir a tus amigos',
-            description: 'Usted será un invitado en eventos especiales, conferencias y tener acceso a contenido educativo para mejorar su rendimiento comercial, mientras que enriquece a su círculo social.',
-            detail1: '*Trading Positions: Posiciones disponibles en cupo.',
-            detail2: '*Acciones compartidas dependerá del rendimiento del Trading Position y el tiempo de la inversión',
-            steps: [
-                {
-                    label: 'Obtén el código de referido para un miembro',
-                    description: `For each ad campaign that you create, you can control how much
->>>>>>> 8e55afeccd956cd10ecf53d2d36c8d5d5b1d6433
                             you're willing to spend on clicks and conversions, which networks
                             and geographical locations you want your ads to show on, and more.`,
         },
