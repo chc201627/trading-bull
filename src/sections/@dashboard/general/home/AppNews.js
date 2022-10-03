@@ -20,14 +20,14 @@ const RootStyle = styled(Card)(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-AppSpots.propTypes = {
+AppNews.propTypes = {
     action: PropTypes.node,
     description: PropTypes.string,
     img: PropTypes.node,
     title: PropTypes.string,
 };
 
-export default function AppSpots({ title, description, action, img, ...other }) {
+export default function AppNews({ title, description, action, img, ...other }) {
     return (
         <RootStyle {...other}>
             <CardContent

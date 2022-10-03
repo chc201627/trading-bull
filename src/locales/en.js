@@ -172,11 +172,26 @@ const en = {
       news: {
         title: 'News',
         cardTitle: 'New Spots Available',
-        cardContent:`August come with many surprises \n Including new Spots, monthly and semestral, let's take a look`
+        cardContent: `August come with many surprises \n Including new Spots, monthly and semestral, let's take a look`,
+        action: 'Go Now'
       },
+      totalInvestments: {
+        title: 'Total Investments',
+        periods: [
+          'All time',
+          'Year',
+          '6 months',
+          '3 months',
+          '1 month'
+        ]
+      }
     },
+    spot:{
+      amount_invest: 'Amount Invest'
+    }
   },
   wallet: {
+    title: 'Wallet',
     navigation: {
       history: 'Transction Movements History',
       openButton: 'Open Tronscan',
@@ -233,6 +248,7 @@ const en = {
   other_cases: `other cases`,
   item_by_roles: `item by roles`,
   only_admin_can_see_this_item: `Only admin can see this item`,
+  goBack: 'Go Back'
 };
 
 export default en;

@@ -89,7 +89,13 @@ export default function Router() {
         { path: 'analytics', element: <GeneralWallet /> },
         { path: 'wallet', element: <GeneralWallet /> },
         { path: 'booking', element: <GeneralBooking /> },
-
+        {
+          path: 'spot',
+          children: [
+            { element: <Navigate to="/dashboard/spot/all" replace />, index: true },
+            { path: 'all', element: <SpotsAll /> }
+          ]
+        },
         {
           path: 'e-commerce',
           children: [
@@ -192,7 +198,8 @@ const ResetPassword = Loadable(lazy(() => import('../pages/auth/ResetPassword'))
 const NewPassword = Loadable(lazy(() => import('../pages/auth/NewPassword')));
 const VerifyCode = Loadable(lazy(() => import('../pages/auth/VerifyCode')));
 
-// DASHBOARD
+// SPOTS
+const SpotsAll = Loadable(lazy(() => import('../pages/dashboard/SpotsAll')));
 
 // GENERAL
 const GeneralApp = Loadable(lazy(() => import('../pages/dashboard/GeneralApp')));
