@@ -38,12 +38,12 @@ export const PATH_DASHBOARD = {
   root: ROOTS_DASHBOARD,
   general: {
     app: path(ROOTS_DASHBOARD, '/app'),
-    ecommerce: path(ROOTS_DASHBOARD, '/ecommerce'),
+    refers: path(ROOTS_DASHBOARD, '/refers'),
     analytics: path(ROOTS_DASHBOARD, '/analytics'),
     wallet: path(ROOTS_DASHBOARD, '/wallet'),
     booking: path(ROOTS_DASHBOARD, '/booking'),
   },
-  spot:{
+  spot: {
     root: path(ROOTS_DASHBOARD, '/spot'),
     all: path(ROOTS_DASHBOARD, '/spot/all')
   },
@@ -69,16 +69,16 @@ export const PATH_DASHBOARD = {
     edit: (name) => path(ROOTS_DASHBOARD, `/user/${name}/edit`),
     demoEdit: path(ROOTS_DASHBOARD, `/user/reece-chung/edit`),
   },
-  eCommerce: {
-    root: path(ROOTS_DASHBOARD, '/e-commerce'),
-    shop: path(ROOTS_DASHBOARD, '/e-commerce/shop'),
-    list: path(ROOTS_DASHBOARD, '/e-commerce/list'),
-    checkout: path(ROOTS_DASHBOARD, '/e-commerce/checkout'),
-    new: path(ROOTS_DASHBOARD, '/e-commerce/product/new'),
-    view: (name) => path(ROOTS_DASHBOARD, `/e-commerce/product/${name}`),
-    edit: (name) => path(ROOTS_DASHBOARD, `/e-commerce/product/${name}/edit`),
-    demoEdit: path(ROOTS_DASHBOARD, '/e-commerce/product/nike-blazer-low-77-vintage/edit'),
-    demoView: path(ROOTS_DASHBOARD, '/e-commerce/product/nike-air-force-1-ndestrukt'),
+  refers: {
+    root: path(ROOTS_DASHBOARD, '/refers'),
+    shop: path(ROOTS_DASHBOARD, '/refers/shop'),
+    list: path(ROOTS_DASHBOARD, '/refers/list'),
+    checkout: path(ROOTS_DASHBOARD, '/refers/checkout'),
+    new: path(ROOTS_DASHBOARD, '/refers/product/new'),
+    view: (name) => path(ROOTS_DASHBOARD, `/refers/product/${name}`),
+    edit: (name) => path(ROOTS_DASHBOARD, `/refers/product/${name}/edit`),
+    demoEdit: path(ROOTS_DASHBOARD, '/refers/product/nike-blazer-low-77-vintage/edit'),
+    demoView: path(ROOTS_DASHBOARD, '/refers/product/nike-air-force-1-ndestrukt'),
   },
   invoice: {
     root: path(ROOTS_DASHBOARD, '/invoice'),
