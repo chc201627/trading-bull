@@ -41,7 +41,7 @@ export default function GeneralEcommerce() {
     <Page title="General: E-commerce">
       <Container maxWidth={themeStretch ? false : 'xl'}>
         <Grid container spacing={3}>
-          <Grid item xs={12} md={8}>
+          {/* <Grid item xs={12} md={12}>
             <AppWelcome
               title={`Congratulations! \n ${user?.displayName}`}
               description="Best seller of the month You have done 57.6% more sales today."
@@ -56,8 +56,8 @@ export default function GeneralEcommerce() {
               }
               action={<Button variant="contained">Go Now</Button>}
             />
-          </Grid>
-
+          </Grid> 
+          
           <Grid item xs={12} md={4}>
             <EcommerceNewProducts list={_ecommerceNewProducts} />
           </Grid>
@@ -133,13 +133,13 @@ export default function GeneralEcommerce() {
 
           <Grid item xs={12} md={6} lg={8}>
             <EcommerceSalesOverview title="Sales Overview" data={_ecommerceSalesOverview} />
-          </Grid>
+          </Grid> */}
 
-          <Grid item xs={12} md={6} lg={4}>
+          <Grid item xs={12}>
             <EcommerceCurrentBalance title="Current Balance" currentBalance={187650} sentAmount={25500} />
           </Grid>
 
-          <Grid item xs={12} md={6} lg={8}>
+          <Grid item xs={12}>
             <EcommerceBestSalesman
               title="Best Salesman"
               tableData={_ecommerceBestSalesman}
@@ -153,9 +153,9 @@ export default function GeneralEcommerce() {
             />
           </Grid>
 
-          <Grid item xs={12} md={6} lg={4}>
+          {/* <Grid item xs={12} md={6} lg={4}>
             <EcommerceLatestProducts title="Latest Products" list={_ecommerceLatestProducts} />
-          </Grid>
+          </Grid> */}
         </Grid>
       </Container>
     </Page>
