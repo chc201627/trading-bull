@@ -174,6 +174,15 @@ const es = {
       amount_invest: 'Cantidad de inversión'
     }
   },
+  login: {
+    welcome: 'Hola, ¡Bienvenido de nuevo!',
+    title: 'Iniciar sesión',
+    message: 'Inicia sesión para acceder a tu cuenta',
+    alert: 'Asegúrate de que tienes la extensión de TronLink instalada y conectada a la red principal de Tron...',
+    button: 'Iniciar sesión con TronLink',
+    registerMessage: '¿No tienes una cuenta?',
+    registerAction: 'Regístrate',
+  },
   wallet: {
     title: 'Billetera',
     navigation: {
