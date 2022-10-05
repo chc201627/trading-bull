@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Container, Grid, Button, Divider, Typography, Stack } from '@mui/material';
@@ -27,6 +28,7 @@ import {
 import { AppWelcome } from '../../sections/@dashboard/general/home';
 // assets
 import { MotivationIllustration } from '../../assets';
+import { ReferralCode } from '../../middleware';
 
 // ----------------------------------------------------------------------
 
@@ -36,6 +38,15 @@ export default function GeneralEcommerce() {
   const theme = useTheme();
 
   const { themeStretch } = useSettings();
+
+  const getCountRefers = async () => {
+    const response = await ReferralCode.getTotalReferrals()
+    console.log("Contar:", response)
+  }
+
+  useEffect(()=>{
+    getCountRefers()
+  },[])
 
   return (
     <Page title="Refers">

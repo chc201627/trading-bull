@@ -7,6 +7,7 @@ const ReferralCode = {
   create: (body) => serverRequests.post('/referral-codes', body),
   update: (id, body) => serverRequests.put(`/referral-codes/${id}`, body),
   delete: (id) => serverRequests.del(`/referral-codes/${id}`),
+  getTotalReferrals: () => serverRequests.get('/referral-codes/countreferrals'),
 };
 
 export default ReferralCode;
