@@ -1,6 +1,6 @@
 // @mui
 import { useTheme } from '@mui/material/styles';
-import { Container, Grid, Button } from '@mui/material';
+import { Container, Grid, Button, Divider, Typography } from '@mui/material';
 // hooks
 import useAuth from '../../hooks/useAuth';
 import useSettings from '../../hooks/useSettings';
@@ -41,6 +41,11 @@ export default function GeneralEcommerce() {
     <Page title="Refers">
       <Container maxWidth={themeStretch ? false : 'xl'}>
         <Grid container spacing={3}>
+          <Typography
+            sx={{ fontSize: 20 }}
+          >
+            Refer Program
+          </Typography>
           {/* <Grid item xs={12} md={12}>
             <AppWelcome
               title={`Congratulations! \n ${user?.displayName}`}
@@ -137,6 +142,9 @@ export default function GeneralEcommerce() {
 
           <Grid item xs={12}>
             <EcommerceCurrentBalance title="Current Balance" currentBalance={187650} sentAmount={25500} />
+          </Grid>
+          <Grid item xs={12}>
+            <Divider sx={{ color: 'white' }} />
           </Grid>
 
           <Grid item xs={12}>
