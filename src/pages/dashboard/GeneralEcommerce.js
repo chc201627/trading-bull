@@ -1,6 +1,6 @@
 // @mui
 import { useTheme } from '@mui/material/styles';
-import { Container, Grid, Button, Divider, Typography } from '@mui/material';
+import { Container, Grid, Button, Divider, Typography, Stack } from '@mui/material';
 // hooks
 import useAuth from '../../hooks/useAuth';
 import useSettings from '../../hooks/useSettings';
@@ -41,11 +41,16 @@ export default function GeneralEcommerce() {
     <Page title="Refers">
       <Container maxWidth={themeStretch ? false : 'xl'}>
         <Grid container spacing={3}>
-          <Typography
-            sx={{ fontSize: 20 }}
-          >
-            Refer Program
-          </Typography>
+          <Grid item xs={12}>
+            <Stack direction="row" justifyContent="space-between">
+              <Typography
+                sx={{ fontSize: 20 }}
+              >
+                Refer Program
+              </Typography>
+              <Button variant='contained'>  Share in social web</Button>
+            </Stack>
+          </Grid>
           {/* <Grid item xs={12} md={12}>
             <AppWelcome
               title={`Congratulations! \n ${user?.displayName}`}
@@ -149,14 +154,15 @@ export default function GeneralEcommerce() {
 
           <Grid item xs={12}>
             <EcommerceBestSalesman
-              title="Best Salesman"
+              title="Referred Details"
               tableData={_ecommerceBestSalesman}
               tableLabels={[
-                { id: 'seller', label: 'Seller' },
-                { id: 'product', label: 'Product' },
-                { id: 'country', label: 'Country', align: 'center' },
-                { id: 'total', label: 'Total' },
-                { id: 'rank', label: 'Rank', align: 'right' },
+                { id: 'seller', label: 'Booker' },
+                { id: 'product', label: 'Money returned' },
+                { id: 'country', label: 'Arrive at', align: 'center' },
+                { id: 'total', label: 'Off Date', align: 'center' },
+                { id: 'rank', label: 'Average total return'},
+                { id: 'rank', label: 'Status', align: 'right' },
               ]}
             />
           </Grid>
