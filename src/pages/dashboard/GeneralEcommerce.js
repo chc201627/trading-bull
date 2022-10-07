@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Container, Grid, Button, Divider, Typography, Stack } from '@mui/material';
@@ -33,6 +33,11 @@ import { ReferralCode } from '../../middleware';
 // ----------------------------------------------------------------------
 
 export default function GeneralEcommerce() {
+
+  const [ totalReferrals,settotalReferrals] = useState(0);
+
+  const [ toalReturnReferrals,settotalReturnReferrals] = useState(0);
+
   const { user } = useAuth();
 
   const theme = useTheme();
@@ -40,14 +45,16 @@ export default function GeneralEcommerce() {
   const { themeStretch } = useSettings();
 
   const getCountRefers = async () => {
-    const response = await ReferralCode.getTotalReferrals()
-    console.log("Contar:", response)
+  const response = await ReferralCode.getTotalReferrals()
+  settotalReferrals(response.totalReferrals)
+  settotalReturnReferrals(response.totalReturnReferrals)
+  console.log (response)
   }
 
   useEffect(()=>{
     getCountRefers()
   },[])
-
+  
   return (
     <Page title="Refers">
       <Container maxWidth={themeStretch ? false : 'xl'}>
@@ -157,7 +164,7 @@ export default function GeneralEcommerce() {
           </Grid> */}
 
           <Grid item xs={12}>
-            <EcommerceCurrentBalance title="Current Balance" currentBalance={187650} sentAmount={25500} />
+            <EcommerceCurrentBalance title="Current Balance" totalReferrals={totalReferrals} toalReturnReferrals={toalReturnReferrals} />
           </Grid>
           <Grid item xs={12}>
             <Divider sx={{ color: 'white' }} />

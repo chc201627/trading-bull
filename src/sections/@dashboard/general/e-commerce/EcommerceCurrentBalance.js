@@ -15,8 +15,8 @@ EcommerceCurrentBalance.propTypes = {
   sx: PropTypes.any,
 };
 
-export default function EcommerceCurrentBalance({ title, sentAmount, currentBalance, sx, ...other }) {
-  const totalAmount = currentBalance - sentAmount;
+export default function EcommerceCurrentBalance({ title, totalReferrals, toalReturnReferrals, sx, ...other }) {
+ // const totalAmount = currentBalance - sentAmount;
 
   return (
     <Card sx={{ p: 3, ...sx }} {...other}>
@@ -25,7 +25,7 @@ export default function EcommerceCurrentBalance({ title, sentAmount, currentBala
           <Stack spacing={2} direction={{xs:'column', md:'row'}} justifyContent="space-around">
             <Stack>
               <Typography variant="h3" align='center'>
-                1000 usdt
+                {toalReturnReferrals} USDT
               </Typography>
               <Typography variant="body1" align='center'>
                 Total return for refers
@@ -36,7 +36,7 @@ export default function EcommerceCurrentBalance({ title, sentAmount, currentBala
             </Stack>
             <Stack>
               <Typography variant="h3" align='center'>
-                21
+                {totalReferrals}
               </Typography>
               <Typography variant="body1" align='center'>
                 Total refers
