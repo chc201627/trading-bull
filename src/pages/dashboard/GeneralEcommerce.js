@@ -29,12 +29,13 @@ import { AppWelcome } from '../../sections/@dashboard/general/home';
 // assets
 import { MotivationIllustration } from '../../assets';
 import { ReferralCode } from '../../middleware';
-
 // ----------------------------------------------------------------------
 
 export default function GeneralEcommerce() {
 
   const [ totalReferrals,settotalReferrals] = useState(0);
+
+  const [ referralCode,setreferralcode] = useState("");
 
   const [ toalReturnReferrals,settotalReturnReferrals] = useState(0);
 
@@ -48,13 +49,19 @@ export default function GeneralEcommerce() {
   const response = await ReferralCode.getTotalReferrals()
   settotalReferrals(response.totalReferrals)
   settotalReturnReferrals(response.totalReturnReferrals)
-  console.log (response)
   }
 
+  const createReferralCode = async () => {
+  const createCode = await ReferralCode.create({data:{}})
+  setreferralcode(createCode.attributes.code)
+  console.log(createCode)
+}
   useEffect(()=>{
     getCountRefers()
   },[])
   
+  
+
   return (
     <Page title="Refers">
       <Container maxWidth={themeStretch ? false : 'xl'}>
@@ -164,7 +171,7 @@ export default function GeneralEcommerce() {
           </Grid> */}
 
           <Grid item xs={12}>
-            <EcommerceCurrentBalance title="Current Balance" totalReferrals={totalReferrals} toalReturnReferrals={toalReturnReferrals} />
+            <EcommerceCurrentBalance title="Current Balance" totalReferrals={totalReferrals} toalReturnReferrals={toalReturnReferrals} createReferralCode={createReferralCode} referralCode={referralCode}/>
           </Grid>
           <Grid item xs={12}>
             <Divider sx={{ color: 'white' }} />

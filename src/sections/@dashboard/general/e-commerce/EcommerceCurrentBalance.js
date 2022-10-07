@@ -1,10 +1,12 @@
 // @mui
+import CopyToClipboard from 'react-copy-to-clipboard';
 import PropTypes from 'prop-types';
 import { Button, Card, Typography, Stack, Grid, TextField } from '@mui/material';
 import { InfoIcon } from '../../../../theme/overrides/CustomIcons';
 import Label from '../../../../components/Label';
 // utils
 import { fCurrency } from '../../../../utils/formatNumber';
+
 
 // ----------------------------------------------------------------------
 
@@ -15,7 +17,7 @@ EcommerceCurrentBalance.propTypes = {
   sx: PropTypes.any,
 };
 
-export default function EcommerceCurrentBalance({ title, totalReferrals, toalReturnReferrals, sx, ...other }) {
+export default function EcommerceCurrentBalance({ title, totalReferrals, toalReturnReferrals,createReferralCode,referralCode,sx, ...other }) {
  // const totalAmount = currentBalance - sentAmount;
 
   return (
@@ -60,9 +62,11 @@ export default function EcommerceCurrentBalance({ title, totalReferrals, toalRet
             </Stack>
 
             <Stack direction={{xs:'column', lg:'row'}} spacing={1}>
-              <Button fullWidth variant="contained" sx={{ fontWeight: 0, fontSize: 13 }}>
+              {/* <Button fullWidth variant="contained" sx={{ fontWeight: 0, fontSize: 13 }}> */}
+              <CopyToClipboard text={referralCode} onCopy={()=> {createReferralCode()}}>
                 Generate Code
-              </Button>
+                </CopyToClipboard>
+              {/* </Button> */}
 
               <Button fullWidth variant="contained" sx={{ fontWeight: 0, fontSize: 13 }}>
                 Generate Link
