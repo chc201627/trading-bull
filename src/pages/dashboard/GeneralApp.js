@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 // @mui
 import { useTheme } from '@mui/material/styles';
-import { Container, Grid, Stack, Button, Typography } from '@mui/material';
+import { Container, Grid, Stack, Button, Typography, Divider } from '@mui/material';
 // hooks
 import useAuth from '../../hooks/useAuth';
 import useSettings from '../../hooks/useSettings';
@@ -32,9 +32,12 @@ import {
 } from '../../sections/@dashboard/general/home';
 // assets
 import { MotivationIllustration } from '../../assets';
+
+import TradingDeskCard from '../../components/TradingDeskCard';
 import { EcommerceYearlySales } from '../../sections/@dashboard/general/e-commerce';
 import { WalletQRbalance } from '../../sections/@dashboard/general/wallet';
 import useTronLink from '../../hooks/useTronLink';
+
 
 // ----------------------------------------------------------------------
 
@@ -119,11 +122,33 @@ export default function GeneralApp() {
                 },
               ]}
             />
+
           </Grid>
+
 
           <Grid item xs={12} md={6} lg={6} xl={4}>
               <AppWalletInformation tron={{ currency, balance, address }} sx={{backgroundColor:'info'}} />
           </Grid>
+          
+          <Grid item xs={12} md={12} lg={12}>   
+            <Divider/>
+
+            <Typography py={2} variant="h5" sx={{color:'text.secondary'}}>
+              My Trading Desk
+            </Typography>
+          </Grid>
+        
+          <Grid item xs={12} md={4} lg={4}> 
+            <TradingDeskCard type={1}/>
+          </Grid>
+
+          <Grid item xs={12} md={4} lg={4}>   
+            <TradingDeskCard type={2}/>
+          </Grid>
+          <Grid item xs={12} md={4} lg={4}>   
+            <TradingDeskCard type={3}/>
+            
+           </Grid> 
 
           {/* <Grid item xs={12} md={6} lg={4}>
             <AppCurrentDownload
