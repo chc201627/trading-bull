@@ -10,3 +10,4 @@ export { default as AppCurrentDownload } from './AppCurrentDownload';
 export { default as AppTopInstalledCountries } from './AppTopInstalledCountries';
 export { default as AppNews} from './AppNews';
 export { default as AppTotalInvestments } from './AppTotalInvestments';
+export { default as AppWalletInformation } from './AppWalletInformation';

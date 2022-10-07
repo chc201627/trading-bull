@@ -36,6 +36,7 @@ export default function AppTotalInvestments({ title, ...other }) {
                         {
                             timePeriods.map((period, i) => (
                                 <Button 
+                                    sx={{fontSize:13}}
                                     variant={selectedPeriod === i ? 'contained': 'outlined'}
                                     key={`${i}-${period}`}
                                     onClick={()=> setSelectedPeriod(i)}

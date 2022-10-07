@@ -155,6 +155,15 @@ const en = {
         'Risk Warning: Trading leveraged products such as Forex may not be suitable for all investors as they carry a degree of risk to your capital. Please ensure that you fully understand the risks involved, taking into account your investments objectives and level of experience, before trading, and if necessary seek independent advice.',
     },
   },
+  login: {
+    welcome: 'Hi, Welcome back!',
+    title: 'Sign in',
+    message: 'Sign in to your account',
+    alert: 'Make sure you have the TronLink extension installed and connected to the Tron Mainnet Network...',
+    button: 'Sign in with TronLink',
+    registerMessage: 'Don’t have an account?',
+    registerAction: 'Get started',
+  },
   register: {
     pageCaption: 'You are to near to be part of a poweful investor community',
     title: 'Put the code of your refer partner',
@@ -173,22 +182,16 @@ const en = {
         title: 'News',
         cardTitle: 'New Spots Available',
         cardContent: `August come with many surprises \n Including new Spots, monthly and semestral, let's take a look`,
-        action: 'Go Now'
+        action: 'Go Now',
       },
       totalInvestments: {
         title: 'Total Investments',
-        periods: [
-          'All time',
-          'Year',
-          '6 months',
-          '3 months',
-          '1 month'
-        ]
-      }
+        periods: ['All time', 'Year', '6 months', '3 months', '1 month'],
+      },
     },
-    spot:{
-      amount_invest: 'Amount Invest'
-    }
+    spot: {
+      amount_invest: 'Amount Invest',
+    },
   },
   wallet: {
     title: 'wallet',
@@ -248,7 +251,7 @@ const en = {
   other_cases: `other cases`,
   item_by_roles: `item by roles`,
   only_admin_can_see_this_item: `Only admin can see this item`,
-  goBack: 'Go Back'
+  goBack: 'Go Back',
 };
 
 export default en;
