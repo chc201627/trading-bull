@@ -9,11 +9,8 @@ import CopyClipboard from '../../../../components/CopyClipboardQR';
 import Iconify from '../../../../components/Iconify';
 import tronIcon from '../../../../assets/icons/ic_tron.svg';
 
-const HEIGHT = '100%';
-
 const RootStyle = styled('div')(({ theme }) => ({
   position: 'relative',
-  height: HEIGHT,
   '& .slick-list': {
     borderRadius: Number(theme.shape.borderRadius) * 2,
   },
@@ -21,7 +18,6 @@ const RootStyle = styled('div')(({ theme }) => ({
 
 const CardItemStyle = styled('div')(({ theme }) => ({
   position: 'relative',
-  height: HEIGHT - 16,
   backgroundSize: 'cover',
   padding: theme.spacing(3),
   backgroundRepeat: 'no-repeat',
@@ -31,7 +27,6 @@ const CardItemStyle = styled('div')(({ theme }) => ({
 const shadowStyle = {
   mx: 'auto',
   width: 'calc(100% - 16px)',
-  height: HEIGHT,
   zIndex: 8,
   bgcolor: 'grey.500',
   background: 'linear-gradient(120deg, #3366FF 0%, #04297A 70%)',
@@ -139,7 +134,7 @@ function CardItem({ card }) {
       </Box>
       </Box>
       <Divider sx={{my:2}} />
-      <Grid container direction={'row-reverse'}>
+      <Grid container direction={'row'} justifyContent={'space-between'}>
         <Box>
       <CopyClipboard value={address} show={show} />
       </Box>

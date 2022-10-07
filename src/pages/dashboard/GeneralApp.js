@@ -28,7 +28,8 @@ import {
   // AppTopInstalledCountries,
   AppTotalInvestments,
   AppAreaInstalled,
-  AppWalletInformation
+  AppWalletInformation,
+  TradingInformationCard
 } from '../../sections/@dashboard/general/home';
 // assets
 import { MotivationIllustration } from '../../assets';
@@ -128,6 +129,10 @@ export default function GeneralApp() {
 
           <Grid item xs={12} md={6} lg={6} xl={4}>
               <AppWalletInformation tron={{ currency, balance, address }} sx={{backgroundColor:'info'}} />
+          </Grid>
+
+          <Grid item xs={12} md={6} lg={6} xl={4}>
+              <TradingInformationCard/>
           </Grid>
           
           <Grid item xs={12} md={12} lg={12}>   
