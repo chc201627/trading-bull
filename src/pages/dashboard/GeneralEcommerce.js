@@ -152,7 +152,7 @@ export default function GeneralEcommerce() {
               title="Best Salesman"
               tableData={_ecommerceBestSalesman}
               tableLabels={[
-                { id: 'seller', label: 'Seller' },
+                { id: 'sel', label: 'Sooo' },
                 { id: 'product', label: 'Product' },
                 { id: 'country', label: 'Country', align: 'center' },
                 { id: 'total', label: 'Total' },

@@ -2,7 +2,7 @@
 import { Link as RouterLink } from 'react-router-dom';
 // @mui
 import { useTheme } from '@mui/material/styles';
-import { Container, Grid, Stack, Button, Typography } from '@mui/material';
+import { Container, Grid, Stack, Button, Typography, Divider } from '@mui/material';
 // hooks
 import useAuth from '../../hooks/useAuth';
 import useSettings from '../../hooks/useSettings';
@@ -29,6 +29,7 @@ import {
 } from '../../sections/@dashboard/general/home';
 // assets
 import { MotivationIllustration } from '../../assets';
+import TradingDeskCard from '../../components/TradingDeskCard';
 
 // ----------------------------------------------------------------------
 
@@ -74,9 +75,30 @@ export default function GeneralApp() {
             <AppTotalInvestments
               title={translate('dashboard.home.totalInvestments.title')}
             />
+
           </Grid>
-          <Grid item xs={12} md={6} lg={4}>
-            <></>
+
+
+
+
+
+          <Grid item xs={12} md={12} lg={12}>   
+            <Divider/>
+
+            <Typography py={2} variant="h5" sx={{color:'text.secondary'}}>
+              My Trading Desk
+            </Typography>
+          </Grid>
+        
+          <Grid item xs={12} md={4} lg={4}> 
+            <TradingDeskCard type={1}/>
+          </Grid>
+
+          <Grid item xs={12} md={4} lg={4}>   
+            <TradingDeskCard type={2}/>
+          </Grid>
+          <Grid item xs={12} md={4} lg={4}>   
+            <TradingDeskCard type={3}/>
           </Grid>
 
           {/* <Grid item xs={12} md={6} lg={4}>
