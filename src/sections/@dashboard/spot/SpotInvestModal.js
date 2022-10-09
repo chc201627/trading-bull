@@ -31,6 +31,7 @@ PendingAction.propTypes = {
     onClose: PropTypes.func
 }
 
+
 const RootStyle = styled(Card)(({ theme }) => ({
     background: theme.palette.grey[900],
     boxShadow: 'none',
@@ -43,7 +44,9 @@ const RootStyle = styled(Card)(({ theme }) => ({
     },
 }));
 
-const PendingAction = (props) => {
+
+
+function PendingAction(props) {
 
     const { onClose } = props
 
@@ -110,11 +113,11 @@ const PendingAction = (props) => {
 
 
                 <Grid item sm={12}>
-                    <Button 
-                        sx={{ my: 2 }} 
-                        variant='outlined' 
+                    <Button
+                        sx={{ my: 2 }}
+                        variant='outlined'
                         fullWidth
-                        onClick={()=> onClose()}
+                        onClick={() => onClose()}
                     >
                         {translate('goBack')}
                     </Button>
@@ -127,7 +130,7 @@ const PendingAction = (props) => {
     )
 }
 
-const ConfirmingAction = () => {
+function ConfirmingAction() {
     const { translate } = useLocales();
 
     return (
@@ -192,7 +195,7 @@ const ConfirmingAction = () => {
     )
 }
 
-const ConfirmedAction = () => {
+function ConfirmedAction() {
     const { translate } = useLocales();
     return (
         <Grid container>
@@ -216,20 +219,20 @@ const ConfirmedAction = () => {
                 </Typography>
             </Grid>
             <WalletInfo />
-            <Button sx={{ my: 2 }} variant='contained'  fullWidth>
+            <Button sx={{ my: 2 }} variant='contained' fullWidth>
                 {translate('dashboard.spot.return_profile')}
             </Button>
         </Grid>
     )
 }
 
-const CancelledAction = () => {
+function CancelledAction() {
     const { translate } = useLocales();
     return (
         <Grid container >
             <Grid item sm={12} >
                 <Typography variant='h3' textAlign='center' >
-                    { translate('dashboard.spot.cancelled_title')}
+                    {translate('dashboard.spot.cancelled_title')}
                 </Typography>
             </Grid>
 
@@ -244,7 +247,7 @@ const CancelledAction = () => {
     )
 }
 
-const WalletInfo = () => {
+function WalletInfo() {
     const { translate } = useLocales();
     return (<>
         <Grid item xs={4} mt={2} container justifyContent='flex-start' alignItems='center' >
