@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 
 const useTronLink = () => {
 
+    const trc20USDTContractAddress = 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t';
+
     useEffect(() => {
         window.addEventListener('message', eventHandler);
 
@@ -64,7 +66,44 @@ const useTronLink = () => {
         try {
             const hexStr = window.tronLink.tronWeb.toHex(messageString);
             const signature = await window.tronLink.tronWeb.trx.sign(hexStr);
-            return { status: true, data: {signature, deadline} };
+            return { status: true, data: { signature, deadline } };
+        } catch (error) {
+            return { status: false, message: error };
+        }
+    }
+
+    const getCurrentWalletAddress = () => {
+        try {
+            return window.tronWeb.defaultAddress.base58;
+        } catch (error) {
+            console.log(error);
+            return ''
+        }
+    }
+
+    const trimAddress = (address = '', charSize = 8) => `${address.slice(0, charSize)}...${address.slice(address.length - charSize, address.length)}`
+
+    // Return BIGINT usdt balance
+    const getUsdtBalance = async (address) => {
+        try {
+            const usdtContract = await window.tronWeb.contract().at(trc20USDTContractAddress);
+            const result = await usdtContract.balanceOf(address).call();
+            return { status: true, data: result };
+        } catch (error) {
+            return { status: false, message: error };
+        }
+    }
+
+    const transferTronUSDT = async (amount, destination) => {
+        const tronLinkStatus = hasTronLinkReady();
+        if (!tronLinkStatus.status) return tronLinkStatus;
+        if (!window.tronLink.ready) return { status: false, message: 'TronLink is not connected' };
+
+        try {
+            const usdtContract = await window.tronWeb.contract().at(trc20USDTContractAddress);
+            const result = await usdtContract.transfer(destination, amount * 1000000).send();
+
+            return { status: true, data: result };
         } catch (error) {
             return { status: false, message: error };
         }
@@ -74,6 +113,10 @@ const useTronLink = () => {
         tronLinkConnect,
         tronSignMessage,
         hasTronLinkReady,
+        getCurrentWalletAddress,
+        trimAddress,
+        getUsdtBalance,
+        transferTronUSDT
     }
 }
 

@@ -156,7 +156,7 @@ const es = {
       news: {
         title: 'Novedades',
         cardTitle: 'Nuevas posiciones disponibles',
-        cardContent:`Agosto viene con muchas sorpresas incluyendo nuevas posiciones, mensuales y semestrales, echa un vistazo`,
+        cardContent: `Agosto viene con muchas sorpresas incluyendo nuevas posiciones, mensuales y semestrales, echa un vistazo`,
         action: 'Ir ahora'
       },
       totalInvestments: {
@@ -170,7 +170,7 @@ const es = {
         ]
       }
     },
-    spot:{
+    spot: {
       amount_invest: 'Cantidad de inversión',
       deposits_available: 'Depositos disponibles',
       inversation_rate: 'Tasa de inversión',
@@ -202,8 +202,7 @@ const es = {
       return_profile: 'Return profile',
       // modal state - cancelled
       cancelled_title: 'Inversión cancelada! Cuentanos que pasó',
-      send_return_profile:'Send & Return Profile',
-
+      send_return_profile: 'Send & Return Profile',
     }
   },
   wallet: {

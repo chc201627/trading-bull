@@ -3,6 +3,10 @@ export const AUTH = {
     signUp: '/auth/local/register',
 }
 
+export const REFERRAL = {
+    referralCodes: '/referral-codes',
+}
+
 export const SPOTS = {
-    getSpots: '/spots'
+    generalSpots: '/generalspots'
 }

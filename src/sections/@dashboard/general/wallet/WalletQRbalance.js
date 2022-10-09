@@ -7,6 +7,7 @@ import { Box, Tooltip, IconButton } from '@mui/material';
 import CopyClipboard from '../../../../components/CopyClipboardQR';
 // ----------------------------------------------------------------------
 import Iconify from '../../../../components/Iconify';
+import tronIcon from '../../../../assets/icons/ic_tron.svg';
 
 const HEIGHT = '100%';
 
@@ -80,7 +81,7 @@ CardItem.propTypes = {
 };
 
 function CardItem({ card }) {
-  const { balance, currency, value } = card;
+  const { balance, currency, address } = card;
   const [show, setShow] = useState(false);
   return (
     <CardItemStyle>
@@ -89,8 +90,8 @@ function CardItem({ card }) {
           <Iconify icon={'eva:eye-fill'} width={24} height={24} />
         </IconButton>
       </Tooltip>
-      <Box>
-        <QRCode value={value} size={250} bgColor="transparent" fgColor="#97A8B9" level="L" />
+      <Box sx={{padding: 2, backgroundColor: 'common.white', borderRadius: 2}}>
+        <QRCode value={address} size={200} bgColor="white" fgColor="#000" level="L" />
       </Box>
       <Box sx={qrDesriptionbox}>
         <p
@@ -106,9 +107,9 @@ function CardItem({ card }) {
             color: ' #FFFFFF',
           }}
         >
-          {show ? balance : '******'} {currency.value}
+          {show ? balance / 1000000 : '******'} {currency.value}
         </p>
-        <p
+        <span
           style={{
             fontFamily: 'Public Sans',
             fontStyle: 'normal',
@@ -116,13 +117,23 @@ function CardItem({ card }) {
             fontSize: '20px',
             lineHeight: '30px',
             color: '#FFFFFF',
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'flex-start',
           }}
         >
-          {' '}
+          <img
+            alt="trinicon"
+            width="5%"
+            src={tronIcon}
+            style={{
+              marginRight: '2%',
+            }}
+          />
           {currency.value} {currency.label}
-        </p>
+        </span>
 
-        <CopyClipboard value={value} show={show} />
+        <CopyClipboard value={address} show={show} />
       </Box>
     </CardItemStyle>
   );

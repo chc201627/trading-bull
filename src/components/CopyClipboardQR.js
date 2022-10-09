@@ -6,6 +6,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Tooltip, TextField, IconButton, InputAdornment } from '@mui/material';
 //
 import Iconify from './Iconify';
+import useTronLink from '../hooks/useTronLink';
 
 // ----------------------------------------------------------------------
 
@@ -15,18 +16,20 @@ CopyClipboard.propTypes = {
 
 export default function CopyClipboard({ value, show, ...other }) {
   const { enqueueSnackbar } = useSnackbar();
+  const { trimAddress } = useTronLink();
   const [state, setState] = useState({
     value,
     copied: false,
   });
-  const showValue = show ? state.value : '************************';
+
+  const showValue = show ? trimAddress(value, 8) : '************************';
   const handleChange = (event) => {
     setState({ value: event.target.value, copied: false });
   };
 
   const onCopy = () => {
     setState({ ...state, copied: true });
-    if (state.value) {
+    if (value) {
       enqueueSnackbar('Copied!');
     }
   };
@@ -51,7 +54,7 @@ export default function CopyClipboard({ value, show, ...other }) {
       InputProps={{
         endAdornment: (
           <InputAdornment position="end">
-            <CopyToClipboard text={state.value} onCopy={onCopy}>
+            <CopyToClipboard text={value} onCopy={onCopy}>
               <Tooltip title="Copy">
                 <IconButton>
                   <Iconify icon={'eva:copy-fill'} width={24} height={24} />

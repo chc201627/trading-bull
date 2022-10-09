@@ -20,14 +20,6 @@ const cardStyle = {
   borderRadius: 2,
   height: '75%',
   zIndex: 8,
-  padding: '6.7%',
-  background: 'rgba(22, 28, 36, 0.5)',
-  backgroundImage: `url(${background})`,
-  backgroundRepeat: 'no-repeat',
-  backgroundSize: 'cover',
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'space-around',
 };
 const title = {
   fontFamily: 'Public Sans',
@@ -37,8 +29,8 @@ const title = {
   lineHeight: '22px',
   color: '#FFFFFF',
   mixBlendMode: 'normal',
-  opacity: 0.72,
   width: '90%',
+  opacity: '0.72',
 };
 const linkTronScan = {
   textDecoration: 'none',
@@ -53,6 +45,19 @@ const linkTronScan = {
   alignItems: 'center',
   justifyContent: 'center',
 };
+const linkStyle = {
+  fontFamily: 'Public Sans',
+  fontStyle: 'normal',
+  fontHeight: 500,
+  fontSize: '14px',
+  lineHeight: '22px',
+  width: '90%',
+  textAlign: 'justify',
+  textJustify: 'inter-word',
+  inlineSize: '90%',
+  overflowWrap: 'break-word',
+  zIndex: 9,
+};
 // ----------------------------------------------------------------------
 
 TronNavigation.propTypes = {
@@ -61,33 +66,44 @@ TronNavigation.propTypes = {
 };
 
 export default function TronNavigation({ link, handleLogout }) {
-  const theme = useTheme();
   const { translate } = useLocales();
 
   return (
     <CardItemStyle>
       <Card sx={{ ...cardStyle }}>
-        <h2 style={title}>TRONSCAN</h2>
-        <h5 style={title}> {translate('wallet.navigation.history')}</h5>
-        <p
+        <img
+          alt="trinicon"
+          src={background}
           style={{
-            fontFamily: 'Public Sans',
-            fontStyle: 'normal',
-            fontHeight: 500,
-            fontSize: '14px',
-            lineHeight: '22px',
-            width: '90%',
-            textAlign: 'justify',
-            textJustify: 'inter-word',
-            inlineSize: '90%',
-            overflowWrap: 'break-word',
+            position: 'absolute',
+            left: 0,
+            top: 0,
+            width: '100%',
+            height: 'auto',
+          }}
+        />
+        <div
+          style={{
+            position: 'relative',
+            left: 0,
+            top: 0,
+            width: '100%',
+            height: '100%',
+            background: 'rgba(22, 28, 36,0.8)',
+            borderRadius: 2,
+            padding: '6.7%',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-around',
           }}
         >
-          {link}
-        </p>
-        <a style={linkTronScan} href={link} target="_blank" rel="noreferrer">
-          {translate('wallet.navigation.openButton')}
-        </a>
+          <h2 style={title}>TRONSCAN</h2>
+          <h5 style={title}> {translate('wallet.navigation.history')}</h5>
+          <p style={linkStyle}>{link}</p>
+          <a style={linkTronScan} href={link} target="_blank" rel="noreferrer">
+            {translate('wallet.navigation.openButton')}
+          </a>{' '}
+        </div>
       </Card>
       <Button
         onClick={handleLogout}
