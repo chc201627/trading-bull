@@ -224,7 +224,7 @@ function TradingSpotCard({ option }) {
           href="#"
           endIcon={<Iconify icon="ic:outline-add-shopping-cart" width={20} height={20}/>}
         >
-          Invest
+          {translate('invest')}
         </Button>
     </Card >
   )
