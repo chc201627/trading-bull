@@ -134,7 +134,7 @@ function AuthProvider({ children }) {
     try {
       const response = await Auth.login({ ...signatureResponse.data, ...body });
       console.log(response);
-      // localStorage.setItem('jwt', response.jwt);
+      localStorage.setItem('jwt', response.jwt);
       const { jwt, user } = response;
 
       setSession(jwt);
