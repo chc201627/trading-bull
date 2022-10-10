@@ -155,8 +155,8 @@ const es = {
     home: {
       news: {
         title: 'Novedades',
-        cardTitle: 'New Spots Available',
-        cardContent:`August come with many surprises Including new Spots, monthly and semestral, let's take a look`,
+        cardTitle: 'Nuevas posiciones disponibles',
+        cardContent: `Agosto viene con muchas sorpresas incluyendo nuevas posiciones, mensuales y semestrales, echa un vistazo`,
         action: 'Ir ahora'
       },
       totalInvestments: {
@@ -170,19 +170,58 @@ const es = {
         ]
       }
     },
-    spot:{
-      amount_invest: 'Cantidad de inversión'
+    spot: {
+      amount_invest: 'Cantidad de inversión',
+      deposits_available: 'Depositos disponibles',
+      inversation_rate: 'Tasa de inversión',
+      rentability: 'Rentabilidad',
+      rate_per_month: 'Tasa por mes',
+      rate_per_year: 'Tasa por año',
+      investment_type: 'Tipo de inversión',
+      sector: 'Sector',
+      amount_to_invest: 'Monto a invertir',
+      investment_value: 'Valor de inversión',
+      block_periods: 'Periodos de bloqueo',
+      month: 'Un Mes',
+      year: 'Un Año',
+      // modal state -  pending
+      please_confirm: 'Por favor! Confirma tu inversión',
+      total_to_pay: 'Total to pay',
+      commision_alert: 'Debes pagar una comisión del 2.5% en cada nuevo depósito',
+      make_you_invest: 'Haz tu inversion',
+      // modal state -  confirming
+      time_remaining: 'Tiempo restante',
+      minutes: 'Minutos',
+      seconds: 'Segundos',
+      your_invert: 'Tu inversion',
+      have_issue: '¿Presentas algún problema? Puedes continuar la transacción de forma externa con el QR de arriba',
+      cancel_order: 'Cancelar orden',
+      // modal state - confirmed
+      confirm_title: '¡Nueva inversión enviada correctamente! Revisa tu correo',
+      confirm_message: 'Por favor, tenga en cuenta, su inversión se verá reflejada 24 horas hábiles después del envío de este mensaje, mensaje enviado el 12/05 15:00:54. Después de eso, revise la sección de posiciones en su perfil.',
+      return_profile: 'Return profile',
+      // modal state - cancelled
+      cancelled_title: 'Inversión cancelada! Cuentanos que pasó',
+      send_return_profile: 'Send & Return Profile',
     }
   },
   wallet: {
     title: 'Billetera',
+    wallet: 'Billetera',
+    wallet_status: 'Estado de billetera',
+    destination: 'Destino',
+    network: 'Red',
+    status: {
+      connected: 'Conectado'
+    },
     navigation: {
       history: 'Movimiento historico de transacciones',
       openButton: 'Abrir Tronscan',
       signOut: 'Salir',
     },
   },
-  goBack: 'Volver'
+  goBack: 'Volver',
+  invest: 'Invertir',
 };
 
 export default es;

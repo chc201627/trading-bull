@@ -138,7 +138,7 @@ function AuthProvider({ children }) {
             const response = await auth.login({ ...signatureResponse.data, ...body })
             console.log(response);
             const { jwt, user } = response.data;
-
+            console.log(jwt)
             setSession(jwt);
 
             dispatch({

@@ -186,12 +186,50 @@ const en = {
         ]
       }
     },
-    spot:{
-      amount_invest: 'Amount Invest'
+    spot: {
+      amount_invest: 'Amount Invest',
+      deposits_available: 'Deposits available',
+      inversation_rate: 'Inversation rate',
+      rentability: 'Rentability',
+      rate_per_month: 'Rate per month',
+      rate_per_year: 'Rate per year',
+      investment_type: 'Investment type',
+      sector: 'Sector',
+      investment_value: 'Investment value',
+      amount_to_invest: 'Amount to invest',
+      block_periods: 'Block periods',
+      month: 'A month',
+      year: 'A year',
+      // modal state -  pending
+      please_confirm: 'Please! Confirm your investment',
+      total_to_pay: 'Total to pay',
+      commision_alert: 'You must pay a 2.5% commision in each new deposit',
+      make_you_invest: 'Make your Invest',
+      // modal state -  confirming
+      time_remaining: 'Time remaining',
+      minutes: 'Minutes',
+      seconds: 'Seconds',
+      your_invert: 'Your invert',
+      have_issue: 'Are you having any issue? You can continue the transaction externally using the QR code above',
+      cancel_order: 'Cancel order',
+      // modal state - confirmed
+      confirm_title: 'New investment succesfully sent! Check your email',
+      confirm_message: 'Please, take note,  your inversion will be reflected 24 working hours after this message send, message send at 05/12 15:00:54. After that check your spots section in your profile',
+      return_profile: 'Return profile',
+      // modal state - cancelled
+      cancelled_title: 'Investment Cancelled! Let us know, What Happened',
+      send_return_profile:'Send & Return Profile',
     }
   },
   wallet: {
-    title: 'wallet',
+    title: 'Wallet',
+    wallet: 'Wallet',
+    wallet_status: 'Wallet Status',
+    destination: 'Destination',
+    network: 'Network',
+    status: {
+      connected: 'Connected'
+    },
     navigation: {
       history: 'Transction Movements History',
       openButton: 'Open Tronscan',
@@ -207,6 +245,7 @@ const en = {
     description: `Need help? \n Please check our docs.`,
     documentation: `documentation`,
   },
+  invest: 'Invest',
   app: `app`,
   user: `user`,
   list: `list`,
