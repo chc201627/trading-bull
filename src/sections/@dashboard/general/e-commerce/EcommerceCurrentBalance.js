@@ -17,7 +17,7 @@ EcommerceCurrentBalance.propTypes = {
   sx: PropTypes.any,
 };
 
-export default function EcommerceCurrentBalance({ title, totalReferrals, toalReturnReferrals,createReferralCode,referralCode,createReferralLink,sx, ...other }) {
+export default function EcommerceCurrentBalance({ title, totalReferrals, toalReturnReferrals,createReferralLink,createReferralCode,referralCode,sx, ...other }) {
  // const totalAmount = currentBalance - sentAmount;
 
   return (
