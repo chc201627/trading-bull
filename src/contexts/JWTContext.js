@@ -4,6 +4,7 @@ import useTronLink from '../hooks/useTronLink';
 // utils
 import { auth } from '../api';
 import { isValidToken, setSession } from '../utils/jwt';
+import {Auth} from '../middleware';
 
 // ----------------------------------------------------------------------
 
@@ -135,7 +136,7 @@ function AuthProvider({ children }) {
         }
 
         try {
-            const response = await auth.login({ ...signatureResponse.data, ...body })
+            const response = await Auth.login({ ...signatureResponse.data, ...body })
             console.log(response);
             const { jwt, user } = response.data;
             console.log(jwt)
