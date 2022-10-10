@@ -1,15 +1,30 @@
 import PropTypes from 'prop-types';
+import { styled } from '@mui/material/styles';
 import merge from 'lodash/merge';
 import { useState } from 'react';
 import { DesktopDatePicker } from '@mui/x-date-pickers';
 import ReactApexChart from 'react-apexcharts';
 // @mui
-import { Card, CardHeader, Box, TextField, Stack, Table, TableContainer, TableHead, TableRow, TableCell, TableBody } from '@mui/material';
+import { Card, CardHeader, Box, TextField, Stack, Table, TableContainer, TableHead, TableRow, TableCell, TableBody, Typography } from '@mui/material';
 // components
 import { BaseOptionChart } from '../../../../components/chart';
 import AppTotalInvestments from './AppTotalInvestments';
 
 // ----------------------------------------------------------------------
+
+const RootStyle = styled(TableCell)(({ theme }) => ({
+  '&:first-of-type': {
+    boxShadow: 'none',
+    borderRadius: 0,
+  },
+  '&:last-of-type': {
+    boxShadow: 'none',
+    borderRadius: 0,
+  },
+  color:theme.palette.grey[500],
+  borderRight: '1px solid #394859',
+  borderLeft: '1px solid #394859'
+}));
 
 AppAreaInstalled.propTypes = {
   title: PropTypes.string,
@@ -68,21 +83,22 @@ export default function AppAreaInstalled({ title, subheader, chartLabels, chartD
           )}
         </Box>
       ))}
+      <Typography variant='h6' sx={{ color: 'grey.500', mb:2 }}>Monthly Return</Typography>
       <TableContainer >
       <Table>
         <TableHead>
           <TableRow >
             {months.map((month) => (
-              <TableCell align='center'> {month} </TableCell>
+              <RootStyle align='center'> {month} </RootStyle>
             ))}
           </TableRow>
         </TableHead>
         <TableBody>
         {percents.map((value) => (
             value>0? 
-            <TableCell align='center' sx={{color: 'green'}}>{value}</TableCell> 
+            <RootStyle align='center' sx={{color: 'green'}}>{value}</RootStyle> 
             : 
-            <TableCell align='center' sx={{color:'red'}}>{value}</TableCell>
+            <RootStyle align='center' sx={{color:'red'}}>{value}</RootStyle>
             ))}
         </TableBody>
       </Table>
