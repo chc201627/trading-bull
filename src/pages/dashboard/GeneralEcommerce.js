@@ -33,10 +33,11 @@ import { ReferralCode } from '../../middleware';
 // ----------------------------------------------------------------------
 
 export default function GeneralEcommerce() {
+  const [totalReferrals, settotalReferrals] = useState(0);
 
-  const [ totalReferrals,settotalReferrals] = useState(0);
+  const [referralCode, setReferralCode] = useState('');
 
-  const [ toalReturnReferrals,settotalReturnReferrals] = useState(0);
+  const [toalReturnReferrals, settotalReturnReferrals] = useState(0);
 
   const { user } = useAuth();
 
@@ -45,28 +46,37 @@ export default function GeneralEcommerce() {
   const { themeStretch } = useSettings();
 
   const getCountRefers = async () => {
-  const response = await ReferralCode.getTotalReferrals()
-  settotalReferrals(response.totalReferrals)
-  settotalReturnReferrals(response.totalReturnReferrals)
-  console.log (response)
-  }
+    const response = await ReferralCode.getTotalReferrals();
+    settotalReferrals(response.totalReferrals);
+    settotalReturnReferrals(response.totalReturnReferrals);
+  };
 
-  useEffect(()=>{
-    getCountRefers()
-  },[])
-  
+  const createReferralCode = async () => {
+    const createCode = await ReferralCode.create({ data: {} });
+    setReferralCode(createCode.data.attributes.code);
+    await navigator.clipboard.writeText(createCode.data.attributes.code);
+    console.log(referralCode);
+    alert('Code Copied');
+  };
+
+  const createReferralLink = async () => {
+    // const createCode = await ReferralCode.create({data:{}})
+    // await navigator.clipboard.writeText(createCode.data.attributes.code);
+    // alert('Link Copied');
+    const domain = `${window.location.protocol}//${window.location.hostname}:${window.location.port}/auth/register`;
+  };
+  useEffect(() => {
+    getCountRefers();
+  }, []);
+
   return (
     <Page title="Refers">
       <Container maxWidth={themeStretch ? false : 'xl'}>
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <Stack direction="row" justifyContent="space-between">
-              <Typography
-                sx={{ fontSize: 20 }}
-              >
-                Refer Program
-              </Typography>
-              <Button variant='contained'>  Share in social web</Button>
+              <Typography sx={{ fontSize: 20 }}>Refer Program</Typography>
+              <Button variant="contained"> Share in social web</Button>
             </Stack>
           </Grid>
           {/* <Grid item xs={12} md={12}>
@@ -164,7 +174,14 @@ export default function GeneralEcommerce() {
           </Grid> */}
 
           <Grid item xs={12}>
-            <EcommerceCurrentBalance title="Current Balance" totalReferrals={totalReferrals} toalReturnReferrals={toalReturnReferrals} />
+            <EcommerceCurrentBalance
+              title="Current Balance"
+              totalReferrals={totalReferrals}
+              toalReturnReferrals={toalReturnReferrals}
+              createReferralCode={createReferralCode}
+              createReferralLink={createReferralLink}
+              referralCode={referralCode}
+            />
           </Grid>
           <Grid item xs={12}>
             <Divider sx={{ color: 'white' }} />
@@ -179,7 +196,7 @@ export default function GeneralEcommerce() {
                 { id: 'product', label: 'Money returned' },
                 { id: 'country', label: 'Arrive at', align: 'center' },
                 { id: 'total', label: 'Off Date', align: 'center' },
-                { id: 'rank', label: 'Average total return'},
+                { id: 'rank', label: 'Average total return' },
                 { id: 'rank', label: 'Status', align: 'right' },
               ]}
             />
