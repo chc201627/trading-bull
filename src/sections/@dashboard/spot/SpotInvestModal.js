@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 // @mui
 import {
@@ -18,6 +18,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 
 // Hooks
 import useLocales from '../../../hooks/useLocales';
+import useTronLink from '../../../hooks/useTronLink';
 
 // components
 import Iconify from '../../../components/Iconify';
@@ -50,7 +51,11 @@ function PendingAction(props) {
 
     const { onClose } = props
 
+    const [investAmount, setinvestAmount] = useState(0);
+
     const { translate } = useLocales();
+
+    const { transferTronUSDT } = useTronLink()
 
     return (
         <>
@@ -69,6 +74,7 @@ function PendingAction(props) {
                 <Grid item xs={6} mt={2} container justifyContent='flex-end' >
                     <TextField
                         label={translate('dashboard.spot.investment_value')}
+                        onChange={(e)=>setinvestAmount(e.target.value)}
                         InputProps={{
                             startAdornment: (
                                 <InputAdornment position="start">
@@ -95,7 +101,7 @@ function PendingAction(props) {
                 </Grid>
                 <Grid item sm={12} >
                     <Typography variant='h3' textAlign='center' >
-                        {`$1.025 USDT`}
+                        {`$${(investAmount * 1.025).toFixed(2)} USDT`}
                     </Typography>
                 </Grid>
 
@@ -121,7 +127,11 @@ function PendingAction(props) {
                     >
                         {translate('goBack')}
                     </Button>
-                    <Button variant='contained' fullWidth>
+                    <Button 
+                        variant='contained' 
+                        fullWidth
+                        onClick={()=> transferTronUSDT(1, 'TUCTz55gieAdL4e3awMPgDt6QwDbMEJTUy')}
+                    >
                         {translate('dashboard.spot.make_you_invest')}
                     </Button>
                 </Grid>
