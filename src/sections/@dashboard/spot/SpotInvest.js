@@ -18,6 +18,7 @@ import { styled } from '@mui/material/styles';
 import InputAdornment from '@mui/material/InputAdornment';
 // Hooks
 import useLocales from '../../../hooks/useLocales';
+import useSpots from '../../../hooks/useSpots';
 // components
 import Iconify from '../../../components/Iconify';
 import SpotInvestModal from './SpotInvestModal'
@@ -35,6 +36,8 @@ export default function SpotInvest(props) {
     const { translate } = useLocales();
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
+
+    const { handleCurrentInvest } = useSpots()
 
     return (
         <>
@@ -151,6 +154,7 @@ export default function SpotInvest(props) {
                     <Grid item xs={6} mt={2} container justifyContent='flex-end' >
                         <TextField
                             label={translate('dashboard.spot.investment_value')}
+                            onChange={(e)=> handleCurrentInvest(e.target.value, 'total_payed')}
                             InputProps={{
                                 startAdornment: (
                                     <InputAdornment position="start">

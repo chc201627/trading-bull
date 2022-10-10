@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 // @mui
 import {
@@ -17,6 +17,7 @@ import { styled } from '@mui/material/styles';
 import InputAdornment from '@mui/material/InputAdornment';
 
 // Hooks
+import useSpots from '../../../hooks/useSpots';
 import useLocales from '../../../hooks/useLocales';
 import useTronLink from '../../../hooks/useTronLink';
 
@@ -55,7 +56,11 @@ function PendingAction(props) {
 
     const { translate } = useLocales();
 
-    const { transferTronUSDT } = useTronLink()
+    const { currentInvest } = useSpots();
+    const {
+        transferTronUSDT,
+        getCurrentWalletAddress,
+    } = useTronLink()
 
     return (
         <>
@@ -74,7 +79,7 @@ function PendingAction(props) {
                 <Grid item xs={6} mt={2} container justifyContent='flex-end' >
                     <TextField
                         label={translate('dashboard.spot.investment_value')}
-                        onChange={(e)=>setinvestAmount(e.target.value)}
+                        onChange={(e) => setinvestAmount(e.target.value)}
                         InputProps={{
                             startAdornment: (
                                 <InputAdornment position="start">
@@ -127,10 +132,11 @@ function PendingAction(props) {
                     >
                         {translate('goBack')}
                     </Button>
-                    <Button 
-                        variant='contained' 
+                    <Button
+                        variant='contained'
                         fullWidth
-                        onClick={()=> transferTronUSDT(1, 'TUCTz55gieAdL4e3awMPgDt6QwDbMEJTUy')}
+                        onClick={() => transferTronUSDT(1, 'TUCTz55gieAdL4e3awMPgDt6QwDbMEJTUy')}
+                        disabled={currentInvest.total_payed < 1}
                     >
                         {translate('dashboard.spot.make_you_invest')}
                     </Button>
@@ -259,6 +265,7 @@ function CancelledAction() {
 
 function WalletInfo() {
     const { translate } = useLocales();
+    const { getCurrentWalletAddress } = useTronLink()
     return (<>
         <Grid item xs={4} mt={2} container justifyContent='flex-start' alignItems='center' >
             <Typography variant='subtitle2' sx={{ color: 'text.disabled' }}>
@@ -267,7 +274,7 @@ function WalletInfo() {
         </Grid>
         <Grid item xs={8} mt={2} container justifyContent='flex-end' alignItems='center' >
             <Typography variant='body2'>
-                480C9b...
+                { getCurrentWalletAddress()}
             </Typography>
         </Grid>
 
