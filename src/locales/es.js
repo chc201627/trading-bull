@@ -1,3 +1,23 @@
+const getMonth = () => {
+  const date = new Date();
+  const months = [
+    'Enero',
+    'Febrero',
+    'Marzo',
+    'Abril',
+    'Mayo',
+    'Junio',
+    'Julio',
+    'Agosto',
+    'Septiembre',
+    'Octubre',
+    'Noviembre',
+    'Diciembre',
+  ];
+  const month = date.getMonth();
+  return `${months[month]}`;
+};
+
 const es = {
   clientNav: {
     Home: 'Inicio',
@@ -155,24 +175,27 @@ const es = {
     home: {
       news: {
         title: 'Novedades',
-        cardTitle: 'New Spots Available',
-        cardContent:`August come with many surprises Including new Spots, monthly and semestral, let's take a look`,
-        action: 'Ir ahora'
+        cardTitle: 'Nuevos cupos disponibles',
+        cardContent: `${getMonth()} viene con muchas sorpresas, incluyendo nuevos cupos, mensuales y anuales. ¡Echa un vistazo!`,
+        action: 'Ir ahora',
       },
       totalInvestments: {
         title: 'Inversiones',
-        periods: [
-          'Todo',
-          'Año',
-          '6 meses',
-          '3 meses',
-          '1 mes'
-        ]
-      }
+        periods: ['Todo', 'Año', '6 meses', '3 meses', '1 mes'],
+      },
+      earnings: {
+        title: 'Total Ganancias',
+        value: 'Valor',
+        rentability: 'Rentabilidad',
+        lastUpdate: 'Última actualización el:',
+        lastDeposit: 'Último depósito:',
+        expectedReturn: 'Retorno de Inversión esperado',
+        depositStatus: 'Estado',
+      },
     },
-    spot:{
-      amount_invest: 'Cantidad de inversión'
-    }
+    spot: {
+      amountInvest: 'Cantidad de inversión',
+    },
   },
   login: {
     welcome: 'Hola, ¡Bienvenido de nuevo!',
@@ -191,7 +214,7 @@ const es = {
       signOut: 'Salir',
     },
   },
-  goBack: 'Volver'
+  goBack: 'Volver',
 };
 
 export default es;

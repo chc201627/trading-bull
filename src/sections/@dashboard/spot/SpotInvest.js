@@ -39,7 +39,7 @@ export default function SpotInvest(props) {
                 <Grid container>
 
                     <Grid item xs={6}>
-                        <Typography variant='subtitle1'>{translate('dashboard.spot.amount_invest')}</Typography>
+                        <Typography variant='subtitle1'>{translate('dashboard.spot.amountInvest')}</Typography>
                     </Grid>
                     <Grid container item xs={6} justifyContent="flex-end">
                         <Typography variant='subtitle1'>$10.000</Typography>
