@@ -60,12 +60,10 @@ export default function GeneralEcommerce() {
   };
 
   const createReferralLink = async () => {
-    const domain = `${window.location.protocol}//${window.location.hostname}:${window.location.port}/auth/register`;
-
-    console.log(domain);
     // const createCode = await ReferralCode.create({data:{}})
     // await navigator.clipboard.writeText(createCode.data.attributes.code);
     // alert('Link Copied');
+    const domain = `${window.location.protocol}//${window.location.hostname}:${window.location.port}/auth/register`;
   };
   useEffect(() => {
     getCountRefers();
