@@ -191,9 +191,6 @@ const en = {
     },
     spot: {
       amount_invest: 'Amount Invest',
-    },
-    spot: {
-      amount_invest: 'Amount Invest',
       deposits_available: 'Deposits available',
       inversation_rate: 'Inversation rate',
       rentability: 'Rentability',
