@@ -17,7 +17,7 @@ EcommerceCurrentBalance.propTypes = {
   sx: PropTypes.any,
 };
 
-export default function EcommerceCurrentBalance({ title, totalReferrals, toalReturnReferrals,createReferralCode,referralCode,sx, ...other }) {
+export default function EcommerceCurrentBalance({ title, totalReferrals, toalReturnReferrals,createReferralCode,referralCode,createReferralLink,sx, ...other }) {
  // const totalAmount = currentBalance - sentAmount;
 
   return (
@@ -62,13 +62,11 @@ export default function EcommerceCurrentBalance({ title, totalReferrals, toalRet
             </Stack>
 
             <Stack direction={{xs:'column', lg:'row'}} spacing={1}>
-              {/* <Button fullWidth variant="contained" sx={{ fontWeight: 0, fontSize: 13 }}> */}
-              <CopyToClipboard text={referralCode} onCopy={()=> {createReferralCode()}}>
+               <Button onClick={()=> {createReferralCode()}} fullWidth variant="contained" sx={{ fontWeight: 0, fontSize: 13 }}> 
                 Generate Code
-                </CopyToClipboard>
-              {/* </Button> */}
+              </Button>
 
-              <Button fullWidth variant="contained" sx={{ fontWeight: 0, fontSize: 13 }}>
+              <Button onClick={()=> {createReferralLink()}} fullWidth variant="contained" sx={{ fontWeight: 0, fontSize: 13 }}>
                 Generate Link
               </Button>
             </Stack>

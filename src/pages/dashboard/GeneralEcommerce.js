@@ -53,8 +53,16 @@ export default function GeneralEcommerce() {
 
   const createReferralCode = async () => {
   const createCode = await ReferralCode.create({data:{}})
-  setreferralcode(createCode.attributes.code)
-  console.log(createCode)
+  await navigator.clipboard.writeText(createCode.data.attributes.code);
+  alert('Code Copied');
+}
+
+  const createReferralLink = async () => {
+  const domain = window.location.hostname
+  console.log(domain)
+  // const createCode = await ReferralCode.create({data:{}})
+  // await navigator.clipboard.writeText(createCode.data.attributes.code);
+  alert('Link Copied');
 }
   useEffect(()=>{
     getCountRefers()
@@ -171,7 +179,7 @@ export default function GeneralEcommerce() {
           </Grid> */}
 
           <Grid item xs={12}>
-            <EcommerceCurrentBalance title="Current Balance" totalReferrals={totalReferrals} toalReturnReferrals={toalReturnReferrals} createReferralCode={createReferralCode} referralCode={referralCode}/>
+            <EcommerceCurrentBalance title="Current Balance" totalReferrals={totalReferrals} toalReturnReferrals={toalReturnReferrals} createReferralCode={createReferralCode} createReferralLink={createReferralLink} referralCode={referralCode}/>
           </Grid>
           <Grid item xs={12}>
             <Divider sx={{ color: 'white' }} />
