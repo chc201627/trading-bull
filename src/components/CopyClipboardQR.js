@@ -40,11 +40,11 @@ export default function CopyClipboard({ value, show, ...other }) {
       value={showValue}
       onChange={handleChange}
       sx={{
-        background: '#4A176E',
+        background: '#3366FF',
         border: '1px solid #3366FF',
         boxShadow: '0px 8px 16px rgba(51, 102, 255, 0.24)',
         borderRadius: '8px',
-        color: '#fff',
+        color: '#ffffff',
         flex: 'none',
         order: 3,
         alignSelf: 'stretch',

@@ -1,6 +1,7 @@
+import { useEffect, useState } from 'react';
 // @mui
 import { useTheme } from '@mui/material/styles';
-import { Container, Grid, Button } from '@mui/material';
+import { Container, Grid, Button, Divider, Typography, Stack } from '@mui/material';
 // hooks
 import useAuth from '../../hooks/useAuth';
 import useSettings from '../../hooks/useSettings';
@@ -27,21 +28,48 @@ import {
 import { AppWelcome } from '../../sections/@dashboard/general/home';
 // assets
 import { MotivationIllustration } from '../../assets';
+import { ReferralCode } from '../../middleware';
 
 // ----------------------------------------------------------------------
 
 export default function GeneralEcommerce() {
+
+  const [ totalReferrals,settotalReferrals] = useState(0);
+
+  const [ toalReturnReferrals,settotalReturnReferrals] = useState(0);
+
   const { user } = useAuth();
 
   const theme = useTheme();
 
   const { themeStretch } = useSettings();
 
+  const getCountRefers = async () => {
+  const response = await ReferralCode.getTotalReferrals()
+  settotalReferrals(response.totalReferrals)
+  settotalReturnReferrals(response.totalReturnReferrals)
+  console.log (response)
+  }
+
+  useEffect(()=>{
+    getCountRefers()
+  },[])
+  
   return (
-    <Page title="General: E-commerce">
+    <Page title="Refers">
       <Container maxWidth={themeStretch ? false : 'xl'}>
         <Grid container spacing={3}>
-          <Grid item xs={12} md={8}>
+          <Grid item xs={12}>
+            <Stack direction="row" justifyContent="space-between">
+              <Typography
+                sx={{ fontSize: 20 }}
+              >
+                Refer Program
+              </Typography>
+              <Button variant='contained'>  Share in social web</Button>
+            </Stack>
+          </Grid>
+          {/* <Grid item xs={12} md={12}>
             <AppWelcome
               title={`Congratulations! \n ${user?.displayName}`}
               description="Best seller of the month You have done 57.6% more sales today."
@@ -56,8 +84,8 @@ export default function GeneralEcommerce() {
               }
               action={<Button variant="contained">Go Now</Button>}
             />
-          </Grid>
-
+          </Grid> 
+          
           <Grid item xs={12} md={4}>
             <EcommerceNewProducts list={_ecommerceNewProducts} />
           </Grid>
@@ -133,29 +161,33 @@ export default function GeneralEcommerce() {
 
           <Grid item xs={12} md={6} lg={8}>
             <EcommerceSalesOverview title="Sales Overview" data={_ecommerceSalesOverview} />
+          </Grid> */}
+
+          <Grid item xs={12}>
+            <EcommerceCurrentBalance title="Current Balance" totalReferrals={totalReferrals} toalReturnReferrals={toalReturnReferrals} />
+          </Grid>
+          <Grid item xs={12}>
+            <Divider sx={{ color: 'white' }} />
           </Grid>
 
-          <Grid item xs={12} md={6} lg={4}>
-            <EcommerceCurrentBalance title="Current Balance" currentBalance={187650} sentAmount={25500} />
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={8}>
+          <Grid item xs={12}>
             <EcommerceBestSalesman
-              title="Best Salesman"
+              title="Referred Details"
               tableData={_ecommerceBestSalesman}
               tableLabels={[
-                { id: 'seller', label: 'Seller' },
-                { id: 'product', label: 'Product' },
-                { id: 'country', label: 'Country', align: 'center' },
-                { id: 'total', label: 'Total' },
-                { id: 'rank', label: 'Rank', align: 'right' },
+                { id: 'seller', label: 'Booker' },
+                { id: 'product', label: 'Money returned' },
+                { id: 'country', label: 'Arrive at', align: 'center' },
+                { id: 'total', label: 'Off Date', align: 'center' },
+                { id: 'rank', label: 'Average total return'},
+                { id: 'rank', label: 'Status', align: 'right' },
               ]}
             />
           </Grid>
 
-          <Grid item xs={12} md={6} lg={4}>
+          {/* <Grid item xs={12} md={6} lg={4}>
             <EcommerceLatestProducts title="Latest Products" list={_ecommerceLatestProducts} />
-          </Grid>
+          </Grid> */}
         </Grid>
       </Container>
     </Page>

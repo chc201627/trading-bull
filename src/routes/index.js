@@ -85,7 +85,7 @@ export default function Router() {
       children: [
         { element: <Navigate to={PATH_AFTER_LOGIN} replace />, index: true },
         { path: 'app', element: <GeneralApp /> },
-        { path: 'ecommerce', element: <GeneralEcommerce /> },
+        { path: 'refers', element: <GeneralEcommerce /> },
         { path: 'analytics', element: <GeneralWallet /> },
         { path: 'wallet', element: <GeneralWallet /> },
         { path: 'booking', element: <GeneralBooking /> },
@@ -97,9 +97,9 @@ export default function Router() {
           ]
         },
         {
-          path: 'e-commerce',
+          path: 'referss',
           children: [
-            { element: <Navigate to="/dashboard/e-commerce/shop" replace />, index: true },
+            { element: <Navigate to="/dashboard/refers/shop" replace />, index: true },
             { path: 'shop', element: <EcommerceShop /> },
             { path: 'product/:name', element: <EcommerceProductDetails /> },
             { path: 'list', element: <EcommerceProductList /> },

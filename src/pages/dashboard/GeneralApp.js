@@ -1,8 +1,9 @@
+import { useEffect, useState } from 'react';
 // React 
 import { Link as RouterLink } from 'react-router-dom';
 // @mui
 import { useTheme } from '@mui/material/styles';
-import { Container, Grid, Stack, Button, Typography } from '@mui/material';
+import { Container, Grid, Stack, Button, Typography, Divider } from '@mui/material';
 // hooks
 import useAuth from '../../hooks/useAuth';
 import useSettings from '../../hooks/useSettings';
@@ -25,20 +26,51 @@ import {
   // AppAreaInstalled,
   // AppCurrentDownload,
   // AppTopInstalledCountries,
-  AppTotalInvestments
+  AppTotalInvestments,
+  AppAreaInstalled,
+  AppWalletInformation,
+  TradingInformationCard
 } from '../../sections/@dashboard/general/home';
 // assets
 import { MotivationIllustration } from '../../assets';
 
+import TradingDeskCard from '../../components/TradingDeskCard';
+import { EcommerceYearlySales } from '../../sections/@dashboard/general/e-commerce';
+import { WalletQRbalance } from '../../sections/@dashboard/general/wallet';
+import useTronLink from '../../hooks/useTronLink';
+
+
 // ----------------------------------------------------------------------
 
 export default function GeneralApp() {
+
+  const { getCurrentWalletAddress, getUsdtBalance, trimAddress } = useTronLink();
   const { user } = useAuth();
 
   const theme = useTheme();
   const { translate } = useLocales();
 
   const { themeStretch } = useSettings();
+
+  const [currency, setCurrency] = useState({
+    value: 'USDT',
+    label: '(TRON)',
+  });
+  const [balance, setBalance] = useState('0');
+  const [address, setAddress] = useState('');
+
+  useEffect(() => {
+    const address = getCurrentWalletAddress();
+    setAddress(address);
+
+    async function getBalance() {
+      const res = await getUsdtBalance(window.tronLink.tronWeb.defaultAddress.hex);
+      const balance = parseInt(res?.data?._hex, 16);
+      setBalance(balance);
+    }
+
+    getBalance();
+  }, []);
 
   return (
     <Page title="General: App">
@@ -70,14 +102,58 @@ export default function GeneralApp() {
               sx={{ backgroundColor: '#211D35', color: '#F6F6F6' }}
             />
           </Grid>
-          <Grid item xs={12} md={6} lg={8}>
-            <AppTotalInvestments
+
+          <Grid item xs={12} md={12} lg={12} xl={8}>
+            <AppAreaInstalled
               title={translate('dashboard.home.totalInvestments.title')}
+              subheader="(+43%) than last year"
+              chartLabels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep']}
+              chartData={[
+                {
+                  year: '2019',
+                  data: [
+                    { name: 'America', data: [10, 34, 13, 56, 77, 88, 99, 77, 45] },
+                  ],
+                },
+                {
+                  year: '2020',
+                  data: [
+                    { name: 'America', data: [45, 77, 99, 88, 77, 56, 13, 34, 10] },
+                  ],
+                },
+              ]}
             />
+
           </Grid>
-          <Grid item xs={12} md={6} lg={4}>
-            <></>
+
+
+          <Grid item xs={12} md={6} lg={6} xl={4}>
+              <AppWalletInformation tron={{ currency, balance, address }} sx={{backgroundColor:'info'}} />
           </Grid>
+
+          <Grid item xs={12} md={6} lg={6} xl={4}>
+              <TradingInformationCard/>
+          </Grid>
+          
+          <Grid item xs={12} md={12} lg={12}>   
+            <Divider/>
+
+            <Typography py={2} variant="h5" sx={{color:'text.secondary'}}>
+              My Trading Desk
+            </Typography>
+          </Grid>
+        
+          <Grid item xs={12} md={4} lg={4}> 
+            <TradingDeskCard type={1}/>
+          </Grid>
+
+          <Grid item xs={12} md={4} lg={4}>   
+            <TradingDeskCard type={2}/>
+          </Grid>
+          <Grid item xs={12} md={4} lg={4}>   
+            <TradingDeskCard type={3}/>
+            
+           </Grid> 
 
           {/* <Grid item xs={12} md={6} lg={4}>
             <AppCurrentDownload
@@ -93,30 +169,6 @@ export default function GeneralApp() {
                 { label: 'Window', value: 53345 },
                 { label: 'iOS', value: 44313 },
                 { label: 'Android', value: 78343 },
-              ]}
-            />
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={8}>
-            <AppAreaInstalled
-              title="Area Installed"
-              subheader="(+43%) than last year"
-              chartLabels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep']}
-              chartData={[
-                {
-                  year: '2019',
-                  data: [
-                    { name: 'Asia', data: [10, 41, 35, 51, 49, 62, 69, 91, 148] },
-                    { name: 'America', data: [10, 34, 13, 56, 77, 88, 99, 77, 45] },
-                  ],
-                },
-                {
-                  year: '2020',
-                  data: [
-                    { name: 'Asia', data: [148, 91, 69, 62, 49, 51, 35, 41, 10] },
-                    { name: 'America', data: [45, 77, 99, 88, 77, 56, 13, 34, 10] },
-                  ],
-                },
               ]}
             />
           </Grid>
