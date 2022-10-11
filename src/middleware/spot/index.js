@@ -7,6 +7,7 @@ const Spot = {
   create: (body) => serverRequests.post('/spots', body),
   update: (id, body) => serverRequests.put(`/spots/${id}`, body),
   delete: (id) => serverRequests.del(`/spots/${id}`),
+  getSpots: () => serverRequests.get('/spot/getallspots'),
 };
 
 export default Spot;

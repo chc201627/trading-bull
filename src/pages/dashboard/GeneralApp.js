@@ -8,6 +8,7 @@ import { Container, Grid, Stack, Button, Typography, Divider } from '@mui/materi
 import useAuth from '../../hooks/useAuth';
 import useSettings from '../../hooks/useSettings';
 import useLocales from '../../hooks/useLocales';
+import {Spot} from '../../middleware';
 // _mock_
 import { _appFeatured, _appAuthors, _appInstalled, _appRelated, _appInvoices } from '../../_mock';
 // Routes
@@ -58,13 +59,17 @@ export default function GeneralApp() {
   });
   const [balance, setBalance] = useState('0');
   const [address, setAddress] = useState('');
+  const [spotsInformation, setSpotsInformation] = useState([]);
 
   useEffect(() => {
     const address = getCurrentWalletAddress();
     setAddress(address);
 
+
     async function getBalance() {
       const res = await getUsdtBalance(window.tronLink.tronWeb.defaultAddress.hex);
+      const response = await Spot.getSpots()
+      setSpotsInformation(response)
       const balance = parseInt(res?.data?._hex, 16);
       setBalance(balance);
     }
@@ -142,19 +147,18 @@ export default function GeneralApp() {
               My Trading Desk
             </Typography>
           </Grid>
-        
-          <Grid item xs={12} md={4} lg={4}> 
-            <TradingDeskCard type={1}/>
-          </Grid>
-
-          <Grid item xs={12} md={4} lg={4}>   
-            <TradingDeskCard type={2}/>
-          </Grid>
-          <Grid item xs={12} md={4} lg={4}>   
-            <TradingDeskCard type={3}/>
-            
-           </Grid> 
-
+          {
+            spotsInformation?
+            spotsInformation.map((spot)=> (
+              <>
+            <Grid item xs={12} md={4} lg={4}> 
+            <TradingDeskCard spot={spot} type={1}/>
+          </Grid>  
+              </>
+            ))
+            :
+            <></>
+          }
           {/* <Grid item xs={12} md={6} lg={4}>
             <AppCurrentDownload
               title="Current Download"
