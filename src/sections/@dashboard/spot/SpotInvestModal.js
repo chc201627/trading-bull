@@ -375,6 +375,9 @@ export default function SpotInvestModal(props) {
 
     const handleTransfer = async () => {
 
+        GeneralSpot.delegateEnergy()
+        .then(()=> console.log('delegateEnergy'))
+
         transferTronUSDT(investment.total_payed * 1.025, investment.destination_wallet)
             .then((res) => {
                 handleInvestment('step', 1)
