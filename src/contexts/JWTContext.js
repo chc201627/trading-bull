@@ -192,6 +192,7 @@ function AuthProvider({ children }) {
   };
 
   const logout = async () => {
+    localStorage.removeItem('jwt');
     setSession(null);
     dispatch({ type: 'LOGOUT' });
   };
