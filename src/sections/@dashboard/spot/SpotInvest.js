@@ -19,6 +19,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 // Hooks
 import { GeneralSpot } from '../../../middleware';
 import useLocales from '../../../hooks/useLocales';
+import useSpots from '../../../hooks/useSpots';
 // components
 import Iconify from '../../../components/Iconify';
 import SpotInvestModal from './SpotInvestModal'
@@ -56,6 +57,7 @@ export default function SpotInvest(props) {
     const { translate } = useLocales();
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
+
 
     return (
         <>
