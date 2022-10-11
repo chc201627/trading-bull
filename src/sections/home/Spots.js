@@ -24,22 +24,20 @@ const RootStyle = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function Spots() {
-
   const { translate, currentLang } = useLocales();
 
   const mockOption = {
-    name: "TRADING GOLD S&P 500",
+    name: 'TRADING GOLD S&P 500',
     goal: 10000,
-    lacking_amount: 4000,
-    inversation_rate: '$1,000-3,000',
-    rentability: 13.5,
+    lacking_amount: 1000000,
+    inversation_rate: '$1,000-10,000',
+    rentability: 8,
     total_investors: 23,
     deposits_buy: 6000,
-    next_activation: '30/08/2022'
-  }
+    next_activation: '30/08/2022',
+  };
 
-  const isEng = currentLang.value === 'en'
-
+  const isEng = currentLang.value === 'en';
 
   return (
     <RootStyle>
@@ -79,22 +77,22 @@ TradingSpotCard.propTypes = {
     rentability: PropTypes.number,
     total_investors: PropTypes.number,
     deposits_buy: PropTypes.number,
-    next_activation: PropTypes.string
-  })
-}
+    next_activation: PropTypes.string,
+  }),
+};
 
 function TradingSpotCard({ option }) {
-
   const { translate } = useLocales();
 
-  const progress = ((option.goal - option.lacking_amount) * 100) / option.goal
+  const progress = ((option.goal - option.lacking_amount) * 100) / option.goal;
 
   return (
     <Card
       sx={{
         p: 5,
         boxShadow: 0,
-        backgroundImage: 'linear-gradient(0deg, rgba(33, 43, 54, 1), rgba(33, 43, 54, 0.75)), url(https://minimal-assets-api-dev.vercel.app/assets/images/about/testimonials.jpg);',
+        backgroundImage:
+          'linear-gradient(0deg, rgba(33, 43, 54, 1), rgba(33, 43, 54, 0.75)), url(https://minimal-assets-api-dev.vercel.app/assets/images/about/testimonials.jpg);',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
@@ -103,131 +101,117 @@ function TradingSpotCard({ option }) {
       <Typography component="div" variant="overline" sx={{ mb: 2, color: 'text.disabled' }}>
         {translate('home.spots.title')}
       </Typography>
-      <Typography variant="h4">
-        {option.name}
-      </Typography>
-      <Box display='flex' justifyContent="space-between" mt={3}>
-        <Typography variant="subtitle1" >
-          {translate('home.spots.tradingSpot.goal')}
-        </Typography>
-        <Typography variant="subtitle1" >
-          {`$${option.goal.toLocaleString('en-US')}`}
-        </Typography>
+      <Typography variant="h4">{option.name}</Typography>
+      <Box display="flex" justifyContent="space-between" mt={3}>
+        <Typography variant="subtitle1">{translate('home.spots.tradingSpot.goal')}</Typography>
+        <Typography variant="subtitle1">{`$${option.goal.toLocaleString('en-US')}`}</Typography>
       </Box>
-      <Grid
-        container
-        alignItems="center"
-        mt={3}
-        mb={2}
-      >
-        <Grid item sm={11} >
+      <Grid container alignItems="center" mt={3} mb={2}>
+        <Grid item sm={11}>
           <LinearProgress
             value={progress}
-            variant='determinate'
+            variant="determinate"
             sx={{
               height: 13,
               [`&.${linearProgressClasses.colorPrimary}`]: {
-                backgroundColor: 'primary.lighter'
-              }
-            }} />
+                backgroundColor: 'primary.lighter',
+              },
+            }}
+          />
         </Grid>
-        <Grid
-          item
-          container
-          sm={1}
-          justifyContent="flex-end"
-          alignItems="center">
-          <Typography variant="caption"
+        <Grid item container sm={1} justifyContent="flex-end" alignItems="center">
+          <Typography
+            variant="caption"
             sx={{
-              color: 'text.disabled'
-            }}>
+              color: 'text.disabled',
+            }}
+          >
             {`${progress}%`}
           </Typography>
         </Grid>
       </Grid>
       <Grid container>
-        <Grid item sm={6}  >
-          <Box display="flex" justifyContent="flex-start" alignItems='center' mb={1}>
-            <Typography variant="subtitle2" sx={{ color: 'text.disabled' }} >
+        <Grid item sm={6}>
+          <Box display="flex" justifyContent="flex-start" alignItems="center" mb={1}>
+            <Typography variant="subtitle2" sx={{ color: 'text.disabled' }}>
               {`${translate('home.spots.tradingSpot.lacking_amount')}:`}
             </Typography>
-            <Typography variant="h5" sx={{ ml: 2, mr: 1 }} >
+            <Typography variant="h5" sx={{ ml: 2, mr: 1 }}>
               {`$${option.lacking_amount.toLocaleString('en-US')}`}
             </Typography>
             <Iconify icon={'eva:inbox-fill'} width={20} height={20} />
           </Box>
 
-          <Box display="flex" justifyContent="flex-start" alignItems='center' mb={1}>
+          <Box display="flex" justifyContent="flex-start" alignItems="center" mb={1}>
             <Typography variant="subtitle2" sx={{ color: 'text.disabled' }}>
               {`${translate('home.spots.tradingSpot.inversation_rate')}:`}
             </Typography>
-            <Typography variant="h5" sx={{ ml: 2, mr: 1 }} >
+            <Typography variant="h5" sx={{ ml: 2, mr: 1 }}>
               {option.inversation_rate}
             </Typography>
             <Iconify icon={'bx:calendar-alt'} width={20} height={20} />
           </Box>
 
-          <Box display="flex" justifyContent="flex-start" alignItems='center' mb={1}>
+          <Box display="flex" justifyContent="flex-start" alignItems="center" mb={1}>
             <Typography variant="subtitle2" sx={{ color: 'text.disabled' }}>
               {translate('home.spots.tradingSpot.rentability')}
             </Typography>
-            <Typography variant="subtitle2" sx={{ ml: 2, mr: 1 }} >
+            <Typography variant="subtitle2" sx={{ ml: 2, mr: 1 }}>
               {`${option.rentability}%`}
             </Typography>
           </Box>
         </Grid>
 
-        <Grid item sm={6} spacing={2}  >
-          <Box display="flex" justifyContent="flex-end" alignItems='center' mb={1} >
-            <Typography variant="subtitle2" sx={{ color: 'text.disabled' }} >
+        <Grid item sm={6} spacing={2}>
+          <Box display="flex" justifyContent="flex-end" alignItems="center" mb={1}>
+            <Typography variant="subtitle2" sx={{ color: 'text.disabled' }}>
               {translate('home.spots.tradingSpot.total_investors')}
             </Typography>
-            <Typography variant="h5" sx={{ ml: 2, mr: 1 }} >
+            <Typography variant="h5" sx={{ ml: 2, mr: 1 }}>
               {option.total_investors}
             </Typography>
             <Iconify icon="bi:file-person-fill" width={20} height={20} />
           </Box>
 
-          <Box display="flex" justifyContent="flex-end" alignItems='center' mb={1} >
-            <Typography variant="subtitle2" sx={{ color: 'text.disabled' }} >
+          <Box display="flex" justifyContent="flex-end" alignItems="center" mb={1}>
+            <Typography variant="subtitle2" sx={{ color: 'text.disabled' }}>
               {translate('home.spots.tradingSpot.deposits_buy')}
             </Typography>
-            <Typography variant="h5" sx={{ ml: 2, mr: 1 }} >
+            <Typography variant="h5" sx={{ ml: 2, mr: 1 }}>
               {`$${option.deposits_buy.toLocaleString('en-US')}`}
             </Typography>
             <Iconify icon={'bx:calendar-alt'} width={20} height={20} />
           </Box>
 
-          <Box display="flex" justifyContent="flex-end" alignItems='center' mb={1} >
-            <Typography variant="subtitle2" sx={{ color: 'text.disabled' }} >
+          <Box display="flex" justifyContent="flex-end" alignItems="center" mb={1}>
+            <Typography variant="subtitle2" sx={{ color: 'text.disabled' }}>
               {`${translate('home.spots.tradingSpot.next_activation')}:`}
             </Typography>
-            <Typography variant="subtitle2" sx={{ ml: 2, mr: 1 }} >
+            <Typography variant="subtitle2" sx={{ ml: 2, mr: 1 }}>
               {option.next_activation}
             </Typography>
           </Box>
-
         </Grid>
       </Grid>
       <Box display="flex" justifyContent="flex-end" alignItems="center" mt={1} mb={2}>
-        <Typography variant="subtitle2" sx={{ color: 'text.disabled' }} >
+        <Typography variant="subtitle2" sx={{ color: 'text.disabled' }}>
           {translate('home.spots.tradingSpot.learn_more')}
         </Typography>
-        <Iconify icon='akar-icons:chevron-right' width={15} height={15} sx={{ ml: 2, color: 'text.disabled' }} />
+        <Iconify icon="akar-icons:chevron-right" width={15} height={15} sx={{ ml: 2, color: 'text.disabled' }} />
       </Box>
       <Button
-          size="large"
-          fullWidth
-          variant="contained"
-          target="_blank"
-          rel="noopener"
-          href="#"
-          endIcon={<Iconify icon="ic:outline-add-shopping-cart" width={20} height={20}/>}
-        >
-          {translate('invest')}
-        </Button>
-    </Card >
-  )
+        size="large"
+        fullWidth
+        variant="contained"
+        target="_blank"
+        rel="noopener"
+        href="#"
+        endIcon={<Iconify icon="ic:outline-add-shopping-cart" width={20} height={20} />}
+      >
+        {translate('invest')}
+      </Button>
+    </Card>
+  );
 }
 
 // ----------------------------------------------------------------------
@@ -255,11 +239,15 @@ function PlanCard({ plan, last }) {
     const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-    return [{ label: 'days', value: days }, { label: 'hours', value: hours }, { label: 'minutes', value: minutes }, { label: 'seconds', value: seconds }];
-  }
+    return [
+      { label: 'days', value: days },
+      { label: 'hours', value: hours },
+      { label: 'minutes', value: minutes },
+      { label: 'seconds', value: seconds },
+    ];
+  };
 
   // Get remaining time every second
-
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -268,9 +256,8 @@ function PlanCard({ plan, last }) {
 
     return () => {
       clearInterval(interval);
-    }
+    };
   }, []);
-
 
   return (
     <Card
@@ -280,7 +267,8 @@ function PlanCard({ plan, last }) {
         ...(plus && {
           boxShadow: (theme) => theme.customShadows.z24,
         }),
-        backgroundImage: 'linear-gradient(0deg, rgba(33, 43, 54, 1), rgba(33, 43, 54, 0.75)), url(https://minimal-assets-api-dev.vercel.app/assets/images/about/testimonials.jpg);',
+        backgroundImage:
+          'linear-gradient(0deg, rgba(33, 43, 54, 1), rgba(33, 43, 54, 0.75)), url(https://minimal-assets-api-dev.vercel.app/assets/images/about/testimonials.jpg);',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
@@ -293,44 +281,48 @@ function PlanCard({ plan, last }) {
           </Typography>
           <Typography variant="h4">
             {license}
-            {
-              last && <Typography component='span' sx={{ ml: 1, color: 'green' }}>Open</Typography>
-            }
+            {last && (
+              <Typography component="span" sx={{ ml: 1, color: 'green' }}>
+                Open
+              </Typography>
+            )}
           </Typography>
         </div>
-        {
-          last ?
-            <div>
-              <Box display='flex' alignItems='center' justifyContent='space-between'>
-                <Typography component='span' sx={{ color: 'text.disabled' }}>Spots Remaining :</Typography>
-                <Typography variant="h4">
-                  245
-                  <Typography component='span' sx={{ ml: 3 }}>
-                    / 1000
-                  </Typography>
-                </Typography>
-
-              </Box>
-              <LinearProgress value={80} variant='determinate' sx={{ mt: 3 }} />
-            </div>
-            :
-            <div>
-              <Typography component="small" sx={{ fontSize: 'small' }} >
-                Starts in
+        {last ? (
+          <div>
+            <Box display="flex" alignItems="center" justifyContent="space-between">
+              <Typography component="span" sx={{ color: 'text.disabled' }}>
+                Spots Remaining :
               </Typography>
-              <Box display='flex' justifyContent='space-between'>
-                {remainingTime.map((time, index) => (
-                  <>
-                    <Box key={index} display='flex' flexDirection='column' justifyContent='center' alignItems='center'>
-                      <Typography variant="h4">{time.value}</Typography>
-                      <Typography component="small" sx={{ color: 'text.disabled', fontSize: 'small' }}>{time.label}</Typography>
-                    </Box>
-                    {index !== remainingTime.length - 1 && <Typography variant="h4">:</Typography>}
-                  </>
-                ))}
-              </Box>
-            </div>
-        }
+              <Typography variant="h4">
+                245
+                <Typography component="span" sx={{ ml: 3 }}>
+                  / 1000
+                </Typography>
+              </Typography>
+            </Box>
+            <LinearProgress value={80} variant="determinate" sx={{ mt: 3 }} />
+          </div>
+        ) : (
+          <div>
+            <Typography component="small" sx={{ fontSize: 'small' }}>
+              Starts in
+            </Typography>
+            <Box display="flex" justifyContent="space-between">
+              {remainingTime.map((time, index) => (
+                <>
+                  <Box key={index} display="flex" flexDirection="column" justifyContent="center" alignItems="center">
+                    <Typography variant="h4">{time.value}</Typography>
+                    <Typography component="small" sx={{ color: 'text.disabled', fontSize: 'small' }}>
+                      {time.label}
+                    </Typography>
+                  </Box>
+                  {index !== remainingTime.length - 1 && <Typography variant="h4">:</Typography>}
+                </>
+              ))}
+            </Box>
+          </div>
+        )}
 
         <Stack spacing={2.5}>
           <Divider sx={{ borderStyle: 'dashed' }} />
@@ -339,21 +331,18 @@ function PlanCard({ plan, last }) {
             <Typography component="span" sx={{ color: 'white' }}>
               &nbsp;13.5%
             </Typography>
-
           </Typography>
           <Typography component="span" sx={{ mb: 2, color: 'text.disabled' }}>
             Inversition Rate:
-            <Typography component="span" sx={{ color: 'white' }} >
+            <Typography component="span" sx={{ color: 'white' }}>
               &nbsp;$1k - $3,5k
             </Typography>
           </Typography>
-
         </Stack>
 
-        <Stack direction="row" justifyContent={last ? "space-between" : "flex-end"}>
-          {
-            last &&
-            <Box display='flex' flexDirection='column'>
+        <Stack direction="row" justifyContent={last ? 'space-between' : 'flex-end'}>
+          {last && (
+            <Box display="flex" flexDirection="column">
               <Typography component="span" sx={{ color: 'text.disabled' }}>
                 Time Remaining
               </Typography>
@@ -361,7 +350,7 @@ function PlanCard({ plan, last }) {
                 12 Days
               </Typography>
             </Box>
-          }
+          )}
           <Link
             color="text.secondary"
             underline="always"
