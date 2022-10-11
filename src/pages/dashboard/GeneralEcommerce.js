@@ -34,19 +34,28 @@ import { ReferralCode } from '../../middleware';
 
 export default function GeneralEcommerce() {
   const [totalReferrals, settotalReferrals] = useState(0);
-
   const [referralCode, setReferralCode] = useState('');
-
   const [toalReturnReferrals, settotalReturnReferrals] = useState(0);
-
+  const [spotTableData, setspotTableData] = useState([]);
   const { user } = useAuth();
-
   const theme = useTheme();
-
   const { themeStretch } = useSettings();
 
   const getCountRefers = async () => {
     const response = await ReferralCode.getTotalReferrals();
+    const responseTable = await ReferralCode.getTableReferrals();
+    console.log(responseTable);
+    const table = responseTable.map((refer)=> ({
+      id:refer.id,
+      money:refer.money_return,
+      spot:refer.spot_value,
+      status:refer.status,
+      enable:refer.enabled_before_at,
+      off:refer.off_date,
+    }))
+    console.log(table);
+    console.log(_ecommerceBestSalesman);
+    setspotTableData(table);
     settotalReferrals(response.totalReferrals);
     settotalReturnReferrals(response.totalReturnReferrals);
   };
@@ -190,14 +199,14 @@ export default function GeneralEcommerce() {
           <Grid item xs={12}>
             <EcommerceBestSalesman
               title="Referred Details"
-              tableData={_ecommerceBestSalesman}
+              tableData={spotTableData}
               tableLabels={[
-                { id: 'seller', label: 'Booker' },
-                { id: 'product', label: 'Money returned' },
-                { id: 'country', label: 'Arrive at', align: 'center' },
-                { id: 'total', label: 'Off Date', align: 'center' },
-                { id: 'rank', label: 'Average total return' },
-                { id: 'rank', label: 'Status', align: 'right' },
+                { id: 'id', label: 'Booker' },
+                { id: 'money', label: 'Money returned' },
+                { id: 'spot', label: 'Spot value' },
+                { id: 'enable', label: 'Enable date' },
+                { id: 'off', label: 'Off date' },
+                { id: 'status', label: 'Status', align: 'right'},
               ]}
             />
           </Grid>

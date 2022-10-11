@@ -8,16 +8,6 @@ import SessionHistory from './sessionHistory';
 import Type from './type';
 import Status from './status';
 import Transaction from './transaction';
+import Rate from './rate';
 
-export {
-    Auth,
-    GeneralSpot,
-    Permanence,
-    ReferralCode,
-    Spot,
-    Type,
-    Session,
-    Status,
-    Transaction,
-    SessionHistory,
-}
+export { Auth, GeneralSpot, Permanence, ReferralCode, Spot, Type, Session, Status, Transaction, SessionHistory, Rate };
