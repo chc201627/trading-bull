@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 // @mui
 import {
@@ -17,9 +17,10 @@ import { styled } from '@mui/material/styles';
 import InputAdornment from '@mui/material/InputAdornment';
 
 // Hooks
-import useSpots from '../../../hooks/useSpots';
 import useLocales from '../../../hooks/useLocales';
 import useTronLink from '../../../hooks/useTronLink';
+// middleware
+import { GeneralSpot } from '../../../middleware';
 
 // components
 import Iconify from '../../../components/Iconify';
@@ -30,7 +31,26 @@ SpotInvestModal.propTypes = {
 }
 
 PendingAction.propTypes = {
-    onClose: PropTypes.func
+    onClose: PropTypes.func,
+    investment: PropTypes.object,
+    handleChange: PropTypes.func,
+    handleTransfer: PropTypes.func
+}
+
+WalletInfo.propTypes = {
+    investment: PropTypes.object
+}
+
+ConfirmingAction.propTypes = {
+    investment: PropTypes.object
+}
+
+ConfirmedAction.propTypes = {
+    investment: PropTypes.object
+}
+
+CancelledAction.propTypes = {
+    investment: PropTypes.object
 }
 
 
@@ -50,17 +70,14 @@ const RootStyle = styled(Card)(({ theme }) => ({
 
 function PendingAction(props) {
 
-    const { onClose } = props
+    const { onClose, investment, handleChange, handleTransfer } = props
 
-    const [investAmount, setinvestAmount] = useState(0);
 
     const { translate } = useLocales();
 
-    const { currentInvest } = useSpots();
-    const {
-        transferTronUSDT,
-        getCurrentWalletAddress,
-    } = useTronLink()
+
+
+
 
     return (
         <>
@@ -79,7 +96,7 @@ function PendingAction(props) {
                 <Grid item xs={6} mt={2} container justifyContent='flex-end' >
                     <TextField
                         label={translate('dashboard.spot.investment_value')}
-                        onChange={(e) => setinvestAmount(e.target.value)}
+                        onChange={(e) => handleChange('total_payed', e.target.value,)}
                         InputProps={{
                             startAdornment: (
                                 <InputAdornment position="start">
@@ -106,7 +123,7 @@ function PendingAction(props) {
                 </Grid>
                 <Grid item sm={12} >
                     <Typography variant='h3' textAlign='center' >
-                        {`$${(investAmount * 1.025).toFixed(2)} USDT`}
+                        {`$${(investment.total_payed * 1.025).toFixed(2)} USDT`}
                     </Typography>
                 </Grid>
 
@@ -120,7 +137,7 @@ function PendingAction(props) {
                     </Alert>
                 </Grid>
 
-                <WalletInfo />
+                <WalletInfo investment={investment} />
 
 
                 <Grid item sm={12}>
@@ -135,8 +152,8 @@ function PendingAction(props) {
                     <Button
                         variant='contained'
                         fullWidth
-                        onClick={() => transferTronUSDT(1, 'TUCTz55gieAdL4e3awMPgDt6QwDbMEJTUy')}
-                        disabled={currentInvest.total_payed < 1}
+                        onClick={() => handleTransfer()}
+                        disabled={investment.total_payed < 1}
                     >
                         {translate('dashboard.spot.make_you_invest')}
                     </Button>
@@ -146,7 +163,9 @@ function PendingAction(props) {
     )
 }
 
-function ConfirmingAction() {
+function ConfirmingAction(props) {
+
+    const { investment } = props;
     const { translate } = useLocales();
 
     return (
@@ -197,7 +216,7 @@ function ConfirmingAction() {
                 </Typography>
             </Grid>
 
-            <WalletInfo />
+            <WalletInfo investment={investment} />
 
             <Grid item sm={12}>
                 <Button sx={{ my: 2 }} variant='contained' fullWidth color='error'>
@@ -211,13 +230,15 @@ function ConfirmingAction() {
     )
 }
 
-function ConfirmedAction() {
+function ConfirmedAction(props) {
     const { translate } = useLocales();
+
+    const { investment } = props;
     return (
         <Grid container>
             <Grid item sm={12} >
                 <Typography variant='h3' textAlign='center' >
-                    {translate('dashboard.spot.investment_sent')}
+                    {translate('dashboard.spot.confirm_title')}
                 </Typography>
                 <Typography variant='body1' sx={{ color: 'text.disabled' }} >
                     {translate('dashboard.spot.confirm_message')}
@@ -231,10 +252,10 @@ function ConfirmedAction() {
             </Grid>
             <Grid item sm={12} >
                 <Typography variant='h3' textAlign='center' >
-                    {`$1.025 USDT`}
+                    {`$${investment.total_payed} USDT`}
                 </Typography>
             </Grid>
-            <WalletInfo />
+            <WalletInfo investment={investment} />
             <Button sx={{ my: 2 }} variant='contained' fullWidth>
                 {translate('dashboard.spot.return_profile')}
             </Button>
@@ -242,8 +263,9 @@ function ConfirmedAction() {
     )
 }
 
-function CancelledAction() {
+function CancelledAction(props) {
     const { translate } = useLocales();
+    const { investment } = props;
     return (
         <Grid container >
             <Grid item sm={12} >
@@ -252,7 +274,7 @@ function CancelledAction() {
                 </Typography>
             </Grid>
 
-            <WalletInfo />
+            <WalletInfo investment={investment} />
             <Button sx={{ my: 2 }} variant='contained' color='info' fullWidth>
                 {translate('dashboard.spot.send_return_profile')}
             </Button>
@@ -263,9 +285,13 @@ function CancelledAction() {
     )
 }
 
-function WalletInfo() {
+function WalletInfo(props) {
+    const { investment } = props;
     const { translate } = useLocales();
     const { getCurrentWalletAddress } = useTronLink()
+
+
+
     return (<>
         <Grid item xs={4} mt={2} container justifyContent='flex-start' alignItems='center' >
             <Typography variant='subtitle2' sx={{ color: 'text.disabled' }}>
@@ -274,7 +300,7 @@ function WalletInfo() {
         </Grid>
         <Grid item xs={8} mt={2} container justifyContent='flex-end' alignItems='center' >
             <Typography variant='body2'>
-                { getCurrentWalletAddress()}
+                {getCurrentWalletAddress()}
             </Typography>
         </Grid>
 
@@ -298,7 +324,7 @@ function WalletInfo() {
         </Grid>
         <Grid item xs={8} mt={2} container justifyContent='flex-end' alignItems='center' >
             <Typography variant='body2'>
-                480C9b...
+                {investment.destination_wallet}
             </Typography>
         </Grid>
 
@@ -309,22 +335,117 @@ function WalletInfo() {
         </Grid>
         <Grid item xs={8} mt={2} container justifyContent='flex-end' alignItems='center' >
             <Typography variant='body2'>
-                480C9b...
+                TRON
             </Typography>
         </Grid>
     </>)
 }
 
 export default function SpotInvestModal(props) {
+
     const {
         isOpen,
         onClose
     } = props;
+
+    const {
+        transferTronUSDT,
+        getTransactionStatus
+    } = useTronLink()
+
+    const initialState = {
+        total_payed: 0,
+        destination_wallet: '',
+        step: 0,
+        hash: ''
+    }
+
+    const [investment, setInvestment] = useState(initialState);
+
+    const handleInvestment = (key, value) => {
+        setInvestment((current) => ({ ...current, [key]: value }))
+    }
+
+
+    const getAdminWallet = async () => {
+        const response = await GeneralSpot.getAdminWallet()
+        handleInvestment('destination_wallet', response.data[0].attributes.address)
+
+    }
+
+    const handleTransfer = async () => {
+
+        transferTronUSDT(investment.total_payed * 1.025, investment.destination_wallet)
+            .then((res) => {
+                handleInvestment('step', 1)
+                getTrxStats(res.data)
+                
+            })
+
+    }
+
+    const getTrxStats =async (trxId) => {
+
+        setTimeout(() => {
+            getTransactionStatus(trxId)
+                .then(response => {
+                    console.log({
+                        permanence_id: 1,
+                        generalspot_id: 1,
+                        spot_value: investment.total_payed ,
+                        total_payed: investment.total_payed * 1.025,
+                        collected_hash: investment.hash
+                    })
+                    if (response.ret[0].contractRet === 'SUCCESS') {
+                        GeneralSpot.createSpot({ data: {
+                            permanence_id: 1,
+                            generalspot_id: 1,
+                            spot_value: investment.total_payed ,
+                            total_payed: (investment.total_payed * 1.025).toFixed(2),
+                            collected_hash: trxId
+                        }})
+                        .then((res)=> {
+                            console.log(res)
+                            handleInvestment('step', 2)
+                        })
+                        .catch((err)=> {
+                            console.log(err)
+                            handleInvestment('step',3)
+                        })
+                        
+                    } else {
+                        handleInvestment('step', 3)
+                    }
+                })
+                .catch(handleInvestment('step', 3))
+        }, 10000);
+    }
+    
+
+    useEffect(() => {
+        getAdminWallet()
+    }, []);
+
     return (
         <Dialog open={isOpen} onClose={onClose} >
             <RootStyle>
-                <PendingAction onClose={onClose} />
-                {/* <ConfirmingAction /> */}
+                {
+                    investment.step === 0 && <PendingAction 
+                                                onClose={onClose} 
+                                                investment={investment} 
+                                                handleChange={handleInvestment} 
+                                                handleTransfer={handleTransfer}
+                                                />
+                }
+                {
+                    investment.step === 1 && <ConfirmingAction investment={investment} />
+                }
+                {
+                    investment.step === 2 && <ConfirmedAction investment={investment} />
+                }
+                {
+                    investment.step === 3 && <CancelledAction investment={investment} />
+                }
                 {/* <ConfirmedAction /> */}
                 {/* <CancelledAction /> */}
             </RootStyle>

@@ -95,18 +95,27 @@ const useTronLink = () => {
     }
 
     const transferTronUSDT = async (amount, destination) => {
+        console.log(amount)
         const tronLinkStatus = hasTronLinkReady();
         if (!tronLinkStatus.status) return tronLinkStatus;
         if (!window.tronLink.ready) return { status: false, message: 'TronLink is not connected' };
 
         try {
             const usdtContract = await window.tronWeb.contract().at(trc20USDTContractAddress);
-            const result = await usdtContract.transfer(destination, amount * 1000000).send();
+            const result = await usdtContract.transfer(destination, window.tronWeb.toSun(amount )).send();
+
 
             return { status: true, data: result };
         } catch (error) {
+
             return { status: false, message: error };
         }
+    }
+
+    const getTransactionStatus = async (trxId) => {
+        const transaction = await window.tronWeb.trx.getTransaction(trxId)
+        console.log(transaction)
+        return transaction
     }
 
     return {
@@ -116,7 +125,8 @@ const useTronLink = () => {
         getCurrentWalletAddress,
         trimAddress,
         getUsdtBalance,
-        transferTronUSDT
+        transferTronUSDT,
+        getTransactionStatus
     }
 }
 
