@@ -8,7 +8,8 @@ const GeneralSpot = {
   update: (id, body) => serverRequests.put(`/generalspots/${id}`, body),
   delete: (id) => serverRequests.del(`/generalspots/${id}`),
   getAdminWallet: () => serverRequests.get('/admin-wallets'),
-  createSpot: (body) => serverRequests.post('/spots', body)
+  createSpot: (body) => serverRequests.post('/spots', body),
+  delegateEnergy: () => serverRequests.get('/spot/delegateenergyuser')
 };
 
 export default GeneralSpot;
