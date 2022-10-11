@@ -113,6 +113,7 @@ function AuthProvider({ children }) {
   }, []);
 
   const login = async () => {
+    localStorage.removeItem('jwt');
     // Connect Wallet
     const connectionResult = await tronLinkConnect();
 
