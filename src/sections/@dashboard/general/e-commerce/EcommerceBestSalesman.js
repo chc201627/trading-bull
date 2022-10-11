@@ -68,42 +68,32 @@ EcommerceBestSalesmanRow.propTypes = {
 
 function EcommerceBestSalesmanRow({ row }) {
   const theme = useTheme();
+  const dateEnable = new Date(row.enable);
+  const dateOff = new Date(row.off);
 
   return (
     <TableRow>
       <TableCell>
         <Stack direction="row" alignItems="center">
-          <Avatar alt={row.name} src={row.avatar} />
-
           <Box sx={{ ml: 2 }}>
-            <Typography variant="subtitle2"> {row.name} </Typography>
-            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              {row.email}
-            </Typography>
+            <Typography variant="subtitle2"> {row.id} </Typography>
           </Box>
         </Stack>
       </TableCell>
 
-      <TableCell>{row.category}</TableCell>
-
-      <TableCell>
-        <Image src={row.flag} alt="country flag" sx={{ maxWidth: 28, mx: 'auto' }} />
-      </TableCell>
-
-      <TableCell>{fCurrency(row.total)}</TableCell>
-
+      <TableCell>{row.money}</TableCell>
+      <TableCell>{row.spot}</TableCell>
+      <TableCell>{Intl.DateTimeFormat('en-US').format(dateEnable)}</TableCell>
+      <TableCell>{Intl.DateTimeFormat('en-US').format(dateOff)}</TableCell>
       <TableCell align="right">
         <Label
           variant={theme.palette.mode === 'light' ? 'ghost' : 'filled'}
           color={
-            (row.rank === 'Top 1' && 'primary') ||
-            (row.rank === 'Top 2' && 'info') ||
-            (row.rank === 'Top 3' && 'success') ||
-            (row.rank === 'Top 4' && 'warning') ||
+            (row.status === 'ACTIVE' && 'success') ||
             'error'
           }
         >
-          {row.rank}
+          {row.status}
         </Label>
       </TableCell>
     </TableRow>
