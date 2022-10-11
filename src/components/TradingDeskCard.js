@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useState, useEffect } from 'react';
 // @mui
 import {
   Box,
@@ -16,8 +17,7 @@ import {
   Alert
 } from '@mui/material';
 // utils
-
-
+import useTronLink from '../hooks/useTronLink';
 // components
 import { fCurrency } from '../utils/formatNumber';
 import Iconify from './Iconify'
@@ -49,9 +49,17 @@ export default function TradingDeskCard({
   enableEdit = false,
   enableDiscount = false,
   type,
+  spot,
 }) {
   const displayShipping = shipping !== null ? 'Free' : '-';
+  const date= new Date(spot.createdAt)
+  const { getCurrentWalletAddress, getUsdtBalance, trimAddress } = useTronLink();
+  const [address, setAddress] = useState('');
 
+  useEffect(() => {
+    const address = getCurrentWalletAddress();
+    setAddress(address);
+  }, []);
 
   const Card1 = () => {
     return(
@@ -75,7 +83,7 @@ export default function TradingDeskCard({
                         
                 </Stack>
                 <Typography variant="h4" sx={{ color: 'text.primary' }}>
-                    $ 12
+                    $ 0
                 </Typography> 
             </Stack>
             <Stack>
@@ -83,26 +91,20 @@ export default function TradingDeskCard({
                     <Typography variant="body1" sx={{ color: 'text.secondary' }}>
                     {'Deposit Wallet : '  }{' '}
                     </Typography>
-                    <Typography variant="body1"> &nbsp; D569776Y...323JG</Typography>
+                    <Typography variant="body1"> &nbsp; {address}</Typography>
                 </Stack>
 
                 <Stack direction="row" justifyContent="space-between">
                     <Typography variant="body1" sx={{ color: 'text.secondary' }}>
                     {'ROI : '  }{' '}
                     </Typography>
-                    <Typography variant="body1"> &nbsp; 10% - 13.5%</Typography>
+                    <Typography variant="body1"> &nbsp; 8%</Typography>
                 </Stack>
                 <Stack direction="row" justifyContent="space-between">
                     <Typography variant="body1" sx={{ color: 'text.secondary' }}>
                     {'Investment type : '  }{' '}
                     </Typography>
                     <Typography variant="body1"> &nbsp; TRADING</Typography>
-                </Stack>
-                <Stack direction="row" justifyContent="space-between">
-                    <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-                    {'Sector : '  }{' '}
-                    </Typography>
-                    <Typography variant="body1"> &nbsp; GOLD S&P 500</Typography>
                 </Stack>
             </Stack>
 
@@ -209,7 +211,7 @@ const typeCard ={
                 
                 <Stack direction="column" justifyContent="space-between">
                     <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-                        Deposit - 08/12/2002
+                        Deposit: {Intl.DateTimeFormat('en-US').format(date)}
                     </Typography>
                     <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                         Trading
@@ -231,10 +233,10 @@ const typeCard ={
                     <Typography variant="subtitle1" sx={{ color: 'text.secondary' }}>
                         Invest Value
                     </Typography>
-                    <Typography variant="h4"  sx={{ color: 'text.primary' }}>{discount ? fCurrency(discount) : '$100 USDT'}</Typography>      
+                    <Typography variant="h4"  sx={{ color: 'text.primary' }}>{spot.spot_value} USDT</Typography>      
                 </Stack>
                 <Typography color={'success'} variant="h5" sx={{ color: 'green' }}>
-                        ACTIVE
+                       {spot.status}
                     </Typography>
                 
             </Stack>
@@ -243,7 +245,7 @@ const typeCard ={
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
               {'Hash : '  }{' '}
             </Typography>
-        <Typography variant="body2"> &nbsp; P24567HGGHAH...JHATFATGF22</Typography>
+        <Typography variant="body2"> &nbsp; {spot.collected_hash}</Typography>
           </Stack>
        
           <Divider />
