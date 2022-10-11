@@ -74,7 +74,7 @@ CardItem.propTypes = {
 
 function CardItem({ card }) {
   const { balance, currency, address } = card;
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
   return (
     <CardItemStyle>
       <Tooltip title="Show">

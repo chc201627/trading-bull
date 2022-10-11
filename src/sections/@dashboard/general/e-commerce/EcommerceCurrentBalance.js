@@ -2,6 +2,8 @@
 import CopyToClipboard from 'react-copy-to-clipboard';
 import PropTypes from 'prop-types';
 import { Button, Card, Typography, Stack, Grid, TextField } from '@mui/material';
+
+import useLocales from '../../../../hooks/useLocales';
 import { InfoIcon } from '../../../../theme/overrides/CustomIcons';
 import Label from '../../../../components/Label';
 // utils
@@ -27,6 +29,7 @@ export default function EcommerceCurrentBalance({
   ...other
 }) {
   // const totalAmount = currentBalance - sentAmount;
+  const { translate } = useLocales();
 
   return (
     <Card sx={{ p: 3, ...sx }} {...other}>
@@ -38,10 +41,10 @@ export default function EcommerceCurrentBalance({
                 {toalReturnReferrals} USDT
               </Typography>
               <Typography variant="body1" align="center">
-                Total return for refers
+                {translate('refers.balance.total_return')}
               </Typography>
-              <Label color="primary" variant="outlined" startIcon={<InfoIcon />} sx={{ p: 1, mt: 1 }}>
-                This is money you will get each month for every refer
+              <Label color="secondary" variant="outlined" startIcon={<InfoIcon />} sx={{ p: 1, mt: 1 }}>
+              {translate('refers.balance.total_return_alert')}This is money you will get each month for every refer
               </Label>
             </Stack>
             <Stack>
@@ -49,10 +52,10 @@ export default function EcommerceCurrentBalance({
                 {totalReferrals}
               </Typography>
               <Typography variant="body1" align="center">
-                Total refers
+              {translate('refers.balance.total_refers')}
               </Typography>
-              <Label color="primary" variant="outlined" startIcon={<InfoIcon />} sx={{ p: 1, mt: 1 }}>
-                Last 30 days of refers link to the plattform by your code
+              <Label color="secondary" variant="outlined" startIcon={<InfoIcon />} sx={{ p: 1, mt: 1 }}>
+              {translate('refers.balance.total_refers_alert')}
               </Label>
             </Stack>
           </Stack>
@@ -60,8 +63,8 @@ export default function EcommerceCurrentBalance({
         <Grid item xs={12} md={4}>
           <Stack spacing={2}>
             <Stack>
-              <Label color="primary" variant="outlined" startIcon={<InfoIcon />} sx={{ p: 1 }}>
-                This code have a duration of 24 hours and cannot be used twice or more times
+              <Label color="secondary" variant="outlined" startIcon={<InfoIcon />} sx={{ p: 1 }}>
+              {translate('refers.balance.alert_code')}
               </Label>
             </Stack>
 
@@ -76,9 +79,10 @@ export default function EcommerceCurrentBalance({
                 }}
                 fullWidth
                 variant="contained"
-                sx={{ fontWeight: 0, fontSize: 13 }}
+                sx={{ fontWeight: 0, fontSize: 13}}
+                color="info"
               >
-                Generate Code
+                {translate('refers.balance.generate_code')}
               </Button>
 
               <Button
@@ -88,8 +92,9 @@ export default function EcommerceCurrentBalance({
                 fullWidth
                 variant="contained"
                 sx={{ fontWeight: 0, fontSize: 13 }}
+                color="primary"
               >
-                Generate Link
+                {translate('refers.balance.generate_link')}
               </Button>
             </Stack>
           </Stack>
