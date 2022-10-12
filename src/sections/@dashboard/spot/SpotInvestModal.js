@@ -212,7 +212,7 @@ function ConfirmingAction(props) {
             </Grid>
             <Grid item sm={12} >
                 <Typography variant='h3' textAlign='center' >
-                    {`$1.025 USDT`}
+                    {`$${investment.total_payed} USDT`}
                 </Typography>
             </Grid>
 
