@@ -55,6 +55,11 @@ export default function TradingDeskCard({
   const date= new Date(spot.createdAt)
   const { getCurrentWalletAddress, getUsdtBalance, trimAddress } = useTronLink();
   const [address, setAddress] = useState('');
+  const [checked, setChecked] = useState(false);
+
+  const handleChange = (event) => {
+    setChecked(event.target.checked);
+  };
 
   useEffect(() => {
     const address = getCurrentWalletAddress();
@@ -112,7 +117,10 @@ export default function TradingDeskCard({
                     
 
                     <Stack direction="column" justifyContent="center">
-                        <Switch />
+                        <Switch 
+                        checked={checked}
+                        onChange={handleChange}
+                        />
 
                         <Typography align="center" variant="body2" sx={{ color: 'text.primary' }}>
                         Reinvest Mode
@@ -121,7 +129,7 @@ export default function TradingDeskCard({
                         
                 </Stack>
                 <Alert severity="info">
-                    The Deposits will go directly to you wallet
+                    {checked ? "" : "The Deposits will go directly to you wallet"}
                     
                 </Alert> 
             </Stack>
