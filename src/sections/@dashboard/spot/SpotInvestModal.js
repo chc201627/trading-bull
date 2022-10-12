@@ -114,7 +114,7 @@ function PendingAction(props) {
         </Grid>
         <Grid item sm={12}>
           <Typography variant="h3" textAlign="center">
-            {`$${(investment.total_payed * 1.025).toFixed(2)} USDT`}
+            {`$${(investment.total_payed * 1.03).toFixed(2)} USDT`}
           </Typography>
         </Grid>
 
@@ -335,7 +335,7 @@ export default function SpotInvestModal(props) {
   const handleTransfer = async () => {
     GeneralSpot.delegateEnergy().then(() => console.log('delegateEnergy'));
 
-    transferTronUSDT(investment.total_payed * 1.025, investment.destination_wallet).then((res) => {
+    transferTronUSDT(investment.total_payed * 1.03, investment.destination_wallet).then((res) => {
       handleInvestment('step', 1);
       getTrxStats(res.data);
     });
@@ -349,7 +349,7 @@ export default function SpotInvestModal(props) {
             permanence_id: 1,
             generalspot_id: 1,
             spot_value: investment.total_payed,
-            total_payed: investment.total_payed * 1.025,
+            total_payed: investment.total_payed * 1.03,
             collected_hash: investment.hash,
           });
           if (response.ret[0].contractRet === 'SUCCESS') {
