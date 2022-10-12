@@ -157,18 +157,12 @@ const es = {
         title: 'Novedades',
         cardTitle: 'Nuevas posiciones disponibles',
         cardContent: `Agosto viene con muchas sorpresas incluyendo nuevas posiciones, mensuales y semestrales, echa un vistazo`,
-        action: 'Ir ahora'
+        action: 'Ir ahora',
       },
       totalInvestments: {
         title: 'Inversiones',
-        periods: [
-          'Todo',
-          'Año',
-          '6 meses',
-          '3 meses',
-          '1 mes'
-        ]
-      }
+        periods: ['Todo', 'Año', '6 meses', '3 meses', '1 mes'],
+      },
     },
     spot: {
       amount_invest: 'Cantidad de inversión',
@@ -187,7 +181,7 @@ const es = {
       // modal state -  pending
       please_confirm: 'Por favor! Confirma tu inversión',
       total_to_pay: 'Total to pay',
-      commision_alert: 'Debes pagar una comisión del 2.5% en cada nuevo depósito',
+      commision_alert: 'Debes pagar una comisión del 3% en cada nuevo depósito',
       make_you_invest: 'Haz tu inversion',
       // modal state -  confirming
       time_remaining: 'Tiempo restante',
@@ -198,12 +192,13 @@ const es = {
       cancel_order: 'Cancelar orden',
       // modal state - confirmed
       confirm_title: '¡Nueva inversión enviada correctamente! Revisa tu correo',
-      confirm_message: 'Por favor, tenga en cuenta, su inversión se verá reflejada 24 horas hábiles después del envío de este mensaje, mensaje enviado el 12/05 15:00:54. Después de eso, revise la sección de posiciones en su perfil.',
+      confirm_message:
+        'Por favor, tenga en cuenta, su inversión se verá reflejada 24 horas hábiles después del envío de este mensaje, mensaje enviado el 12/05 15:00:54. Después de eso, revise la sección de posiciones en su perfil.',
       return_profile: 'Return profile',
       // modal state - cancelled
       cancelled_title: 'Inversión cancelada! Cuentanos que pasó',
       send_return_profile: 'Send & Return Profile',
-    }
+    },
   },
   login: {
     welcome: 'Hola, ¡Bienvenido de nuevo!',
@@ -221,7 +216,7 @@ const es = {
     destination: 'Destino',
     network: 'Red',
     status: {
-      connected: 'Conectado'
+      connected: 'Conectado',
     },
     navigation: {
       history: 'Movimiento historico de transacciones',

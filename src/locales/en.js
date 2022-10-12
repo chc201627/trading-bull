@@ -206,7 +206,7 @@ const en = {
       // modal state -  pending
       please_confirm: 'Please! Confirm your investment',
       total_to_pay: 'Total to pay',
-      commision_alert: 'You must pay a 2.5% commision in each new deposit',
+      commision_alert: 'You must pay a 3% commision in each new deposit',
       make_you_invest: 'Make your Invest',
       // modal state -  confirming
       time_remaining: 'Time remaining',
@@ -217,12 +217,13 @@ const en = {
       cancel_order: 'Cancel order',
       // modal state - confirmed
       confirm_title: 'New investment succesfully sent! Check your email',
-      confirm_message: 'Please, take note,  your inversion will be reflected 24 working hours after this message send, message send at 05/12 15:00:54. After that check your spots section in your profile',
+      confirm_message:
+        'Please, take note,  your inversion will be reflected 24 working hours after this message send, message send at 05/12 15:00:54. After that check your spots section in your profile',
       return_profile: 'Return profile',
       // modal state - cancelled
       cancelled_title: 'Investment Cancelled! Let us know, What Happened',
-      send_return_profile:'Send & Return Profile',
-    }
+      send_return_profile: 'Send & Return Profile',
+    },
   },
   wallet: {
     title: 'Wallet',
@@ -231,7 +232,7 @@ const en = {
     destination: 'Destination',
     network: 'Network',
     status: {
-      connected: 'Connected'
+      connected: 'Connected',
     },
     navigation: {
       history: 'Transction Movements History',
