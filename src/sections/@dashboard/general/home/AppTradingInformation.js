@@ -72,7 +72,7 @@ export default function TradingInformationCard({
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
               {'Rentability : '  }{' '}
             </Typography>
-        <Typography variant="subtitle1" sx={{color:'green'}}> &nbsp; +14.46%</Typography>
+        <Typography variant="subtitle1" sx={{color:'green'}}> &nbsp; +8%</Typography>
           </Stack>
           <Stack direction="row" justifyContent="flex-start">
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>

@@ -151,9 +151,22 @@ export default function GeneralApp() {
             spotsInformation?
             spotsInformation.map((spot)=> (
               <>
-            <Grid item xs={12} md={4} lg={4}> 
+              { 
+              spot.status === "ACTIVE"?
+              <Grid item xs={12} md={4} lg={4}> 
             <TradingDeskCard spot={spot} type={1}/>
           </Grid>  
+          :
+          <> </>
+            }
+             { 
+              spot.status === "ACQUIRED"?
+              <Grid item xs={12} md={4} lg={4}> 
+            <TradingDeskCard spot={spot} type={2}/>
+          </Grid>  
+          :
+          <> </>
+            }
               </>
             ))
             :

@@ -199,8 +199,6 @@ const typeCard ={
     2:<Card2/>,
     3:<Card3/>
 }
-
-
   return (
     <Card sx={{ mb: 3 }}>
       
@@ -235,7 +233,7 @@ const typeCard ={
                     </Typography>
                     <Typography variant="h4"  sx={{ color: 'text.primary' }}>{spot.spot_value} USDT</Typography>      
                 </Stack>
-                <Typography color={'success'} variant="h5" sx={{ color: 'green' }}>
+                <Typography color={spot.status==="ACTIVE"?'green':'purple'} variant="h5">
                        {spot.status}
                     </Typography>
                 
