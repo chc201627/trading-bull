@@ -91,9 +91,8 @@ export default function TradingDeskCard({
                     <Typography variant="body1" sx={{ color: 'text.secondary' }}>
                     {'Deposit Wallet : '  }{' '}
                     </Typography>
-                    <Typography variant="body1"> &nbsp; {address}</Typography>
+                    <Typography variant="body1"> &nbsp; {`${address.substr(0, 6)}...${address.substr(-6)}`}</Typography>
                 </Stack>
-
                 <Stack direction="row" justifyContent="space-between">
                     <Typography variant="body1" sx={{ color: 'text.secondary' }}>
                     {'ROI : '  }{' '}
@@ -243,7 +242,7 @@ const typeCard ={
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
               {'Hash : '  }{' '}
             </Typography>
-        <Typography variant="body2"> &nbsp; {spot.collected_hash}</Typography>
+        <Typography variant="body2"> &nbsp; {`${spot.collected_hash.substr(0, 6)}...${spot.collected_hash.substr(-6)}`}</Typography>
           </Stack>
        
           <Divider />
