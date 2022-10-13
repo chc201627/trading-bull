@@ -32,7 +32,7 @@ const es = {
       seeDetails: 'Más información',
     },
     spots: {
-      title: 'Cupos',
+      title: 'Cupo',
       options: 'Opciones de',
       invest: 'Inversión',
       tradingSpot: {
@@ -143,7 +143,7 @@ const es = {
     disclaimer: {
       title: 'Aviso Legal',
       description1: 'Riesgos y',
-      description2: 'Precauciones',
+      description2: 'Advertencias',
       caption1:
         'Este sitio web no está dirigido a ninguna jurisdicción y no está destinado a ningún uso que sea contrario a la ley o regulación local.',
       caption2:
@@ -155,8 +155,8 @@ const es = {
     home: {
       news: {
         title: 'Novedades',
-        cardTitle: 'Nuevas posiciones disponibles',
-        cardContent: `Agosto viene con muchas sorpresas incluyendo nuevas posiciones, mensuales y semestrales, echa un vistazo`,
+        cardTitle: 'Nuevos cupos disponibles',
+        cardContent: `Un nuevo mes significa, un nuevo total en el cupo para invertir. Vamos a darle una mirada al nuevo balance del cupo.`,
         action: 'Ir ahora',
       },
       totalInvestments: {
@@ -165,12 +165,12 @@ const es = {
       },
     },
     spot: {
-      amount_invest: 'Cantidad de inversión',
-      deposits_available: 'Depositos disponibles',
+      amount_invest: 'Capital Administrado',
+      deposits_available: 'Depósitos disponibles',
       inversation_rate: 'Tasa de inversión',
-      rentability: 'Rentabilidad',
-      rate_per_month: 'Tasa por mes',
-      rate_per_year: 'Tasa por año',
+      rentability: 'ROI',
+      rate_per_month: 'Bloqueo Mensual',
+      rate_per_year: 'Bloqueo Anual',
       investment_type: 'Tipo de inversión',
       sector: 'Sector',
       amount_to_invest: 'Monto a invertir',
@@ -180,8 +180,8 @@ const es = {
       year: 'Un Año',
       // modal state -  pending
       please_confirm: 'Por favor! Confirma tu inversión',
-      total_to_pay: 'Total to pay',
-      commision_alert: 'Debes pagar una comisión del 3% en cada nuevo depósito',
+      total_to_pay: 'Total a Pagar',
+      commision_alert: 'Debes pagar una comisión del 2.5% en cada nuevo depósito',
       make_you_invest: 'Haz tu inversion',
       // modal state -  confirming
       time_remaining: 'Tiempo restante',
@@ -219,10 +219,25 @@ const es = {
       connected: 'Conectado',
     },
     navigation: {
-      history: 'Movimiento historico de transacciones',
+      history: 'Movimiento histórico de transacciones',
       openButton: 'Abrir Tronscan',
       signOut: 'Salir',
     },
+  },
+  refers: {
+    title: 'Referidos',
+    refers: 'Referidos',
+    refer_program: 'Programa de referidos',
+    balance: {
+      total_return: 'Retorno total de referidos',
+      total_return_alert: 'Este es el dinero que recibirá cada mes por cada referencia',
+      total_refers: 'Número total de referidos',
+      total_refers_alert: 'Número de personas referidas desde su cuenta',
+      alert_code: 'Este código tiene una duración de 24 horas, y no puede utilizarse más de una vez',
+      generate_code: 'Generar Código',
+      generate_link: 'Generar Link',
+    },
+    details: {},
   },
   goBack: 'Volver',
   invest: 'Invertir',

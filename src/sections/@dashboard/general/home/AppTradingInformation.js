@@ -56,7 +56,7 @@ export default function TradingInformationCard({
                 
                 <Stack direction="column" justifyContent="space-between">
                     <Typography variant="subtitle1" sx={{ color: 'text.secondary' }}>
-                        Total Ganance
+                        Total Profit
                     </Typography>     
                 </Stack>
                 {/* <Chip variant="filled"  label="Blocked" color='info'/> */}
@@ -66,19 +66,19 @@ export default function TradingInformationCard({
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
               {'Value : '  }{' '}
             </Typography>
-        <Typography variant="subtitle1"> &nbsp; $1,245.30</Typography>
+        <Typography variant="subtitle1"> &nbsp; $0.00</Typography>
           </Stack>
           <Stack direction="row" justifyContent="flex-start">
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              {'Rentability : '  }{' '}
+              {'ROI : '  }{' '}
             </Typography>
-        <Typography variant="subtitle1" sx={{color:'green'}}> &nbsp; +14.46%</Typography>
+        <Typography variant="subtitle1" sx={{color:'green'}}> &nbsp; 0%</Typography>
           </Stack>
           <Stack direction="row" justifyContent="flex-start">
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
               {'Last update at : '  }{' '}
             </Typography>
-        <Typography variant="subtitle2"> &nbsp; 07/31/2022 15:23 PM </Typography>
+        <Typography variant="subtitle2"> &nbsp; NO DATE AVAILABLE </Typography>
           </Stack>
        
           <Divider />
@@ -95,19 +95,19 @@ export default function TradingInformationCard({
 </Stack>
 
 <Stack direction="row" justifyContent="space-between">
-<Typography variant="subtitle1"> &nbsp; $1,245.30</Typography>
+<Typography variant="subtitle1"> &nbsp; $0.00</Typography>
 <Stack direction="row" justifyContent="flex-start">
 <Typography variant="body2" sx={{ color: 'text.secondary' }}>
 {'Status : '  }{' '}
 </Typography>
-<Typography variant="subtitle1" sx={{color:'green'}}> &nbsp; +14.46%</Typography>
+<Typography variant="subtitle1" sx={{color:'green'}}> &nbsp; +0%</Typography>
 </Stack>
 </Stack>
 <Stack direction="row" justifyContent="flex-start">
 <Typography variant="body2" sx={{ color: 'text.secondary' }}>
 {'Expected return : '  }{' '}
 </Typography>
-<Typography variant="subtitle2"> &nbsp; 12% </Typography>
+<Typography variant="subtitle2"> &nbsp; 0% </Typography>
 </Stack>
        
         </Stack>

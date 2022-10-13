@@ -39,7 +39,7 @@ const en = {
       seeDetails: 'See details',
     },
     spots: {
-      title: 'Spots',
+      title: 'Spot',
       options: 'Options',
       invest: 'Invest',
       tradingSpot: {
@@ -148,7 +148,7 @@ const en = {
     disclaimer: {
       title: 'Disclaimer',
       description1: 'Risks and',
-      description2: 'concerns',
+      description2: 'warnings',
       caption1:
         'This website is not directed at any jurisdiction and is not intended for any use that would be contrary to local law or regulation.',
       caption2:
@@ -181,7 +181,7 @@ const en = {
       news: {
         title: 'News',
         cardTitle: 'New Spots Available',
-        cardContent: `August come with many surprises \n Including new Spots, monthly and semestral, let's take a look`,
+        cardContent: `A new month means, a new total in the quota to invest. Let's take a look at the new quota balance.`,
         action: 'Go Now',
       },
       totalInvestments: {
@@ -193,9 +193,9 @@ const en = {
       amount_invest: 'Amount Invest',
       deposits_available: 'Deposits available',
       inversation_rate: 'Inversation rate',
-      rentability: 'Rentability',
-      rate_per_month: 'Rate per month',
-      rate_per_year: 'Rate per year',
+      rentability: 'ROI',
+      rate_per_month: 'Monthly Block',
+      rate_per_year: 'Yearly Block',
       investment_type: 'Investment type',
       sector: 'Sector',
       investment_value: 'Investment value',
@@ -239,6 +239,23 @@ const en = {
       openButton: 'Open Tronscan',
       signOut: 'Sign out',
     },
+  },
+  refers: {
+    title: 'Refers',
+    refers: 'Refers',
+    refer_program: 'Refers Program',
+    balance: {
+      total_return: 'Total return for refers',
+      total_return_alert: 'This is money you will get each month for every refer',
+      total_refers: 'Total refers',
+      total_refers_alert: 'Last 30 days of refers link to the plattform by your code',
+      alert_code: 'This code have a duration of 24 hours and cannot be used twice or more times',
+      generate_code: 'Generate Code',
+      generate_link: 'Generate Link'
+    },
+    details: {
+
+    }
   },
   demo: {
     title: `English`,
