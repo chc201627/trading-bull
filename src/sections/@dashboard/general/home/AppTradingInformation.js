@@ -15,7 +15,9 @@ import {
   Switch,
   Alert,
 } from '@mui/material';
+
 // utils
+import useLocales from '../../../../hooks/useLocales';
 
 // ----------------------------------------------------------------------
 
@@ -43,6 +45,7 @@ export default function TradingInformationCard({
 }) {
   const displayShipping = shipping !== null ? 'Free' : '-';
 
+  const { translate } = useLocales();
   return (
     <Card sx={{ mb: 3 }}>
       <CardContent>
@@ -50,7 +53,7 @@ export default function TradingInformationCard({
           <Stack direction="row" justifyContent="space-between">
             <Stack direction="column" justifyContent="space-between">
               <Typography variant="subtitle1" sx={{ color: 'text.secondary' }}>
-                Total Profit
+                {translate('dashboard.home.earnings.title')}
               </Typography>
             </Stack>
             {/* <Chip variant="filled"  label="Blocked" color='info'/> */}
@@ -58,24 +61,24 @@ export default function TradingInformationCard({
 
           <Stack direction="row" justifyContent="flex-start">
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              {'Value : '}{' '}
+              {translate('dashboard.home.earnings.value')}{' '}
             </Typography>
-            <Typography variant="subtitle1"> &nbsp; $0.00</Typography>
+            <Typography variant="subtitle1"> &nbsp; $1,245.30</Typography>
           </Stack>
           <Stack direction="row" justifyContent="flex-start">
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              {'ROI : '}{' '}
+              {translate('dashboard.home.earnings.rentability')}{' '}
             </Typography>
             <Typography variant="subtitle1" sx={{ color: 'green' }}>
               {' '}
-              &nbsp; +8%
+              &nbsp; +14.46%
             </Typography>
           </Stack>
           <Stack direction="row" justifyContent="flex-start">
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              {'Last update at : '}{' '}
+              {translate('dashboard.home.earnings.lastUpdate')}{' '}
             </Typography>
-            <Typography variant="subtitle2"> &nbsp; NO DATE AVAILABLE </Typography>
+            <Typography variant="subtitle2"> &nbsp; 07/31/2022 15:23 PM </Typography>
           </Stack>
 
           <Divider />
@@ -83,29 +86,29 @@ export default function TradingInformationCard({
           <Stack direction="row" justifyContent="space-between">
             <Stack direction="column" justifyContent="space-between">
               <Typography variant="subtitle1" sx={{ color: 'text.secondary' }}>
-                Last Deposit
+                {translate('dashboard.home.earnings.lastDeposit')}
               </Typography>
             </Stack>
             {/* <Chip variant="filled"  label="Blocked" color='info'/> */}
           </Stack>
 
           <Stack direction="row" justifyContent="space-between">
-            <Typography variant="subtitle1"> &nbsp; $0.00</Typography>
+            <Typography variant="subtitle1"> &nbsp; $1,245.30</Typography>
             <Stack direction="row" justifyContent="flex-start">
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                {'Status : '}{' '}
+                {translate('dashboard.home.earnings.depositStatus')}{' '}
               </Typography>
               <Typography variant="subtitle1" sx={{ color: 'green' }}>
                 {' '}
-                &nbsp; +0%
+                &nbsp; +14.46%
               </Typography>
             </Stack>
           </Stack>
           <Stack direction="row" justifyContent="flex-start">
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              {'Expected return : '}{' '}
+              {translate('dashboard.home.earnings.expectedReturn')}{' '}
             </Typography>
-            <Typography variant="subtitle2"> &nbsp; 0% </Typography>
+            <Typography variant="subtitle2"> &nbsp; 12% </Typography>
           </Stack>
         </Stack>
       </CardContent>

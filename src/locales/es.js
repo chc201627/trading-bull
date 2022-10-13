@@ -1,3 +1,23 @@
+const getMonth = () => {
+  const date = new Date();
+  const months = [
+    'Enero',
+    'Febrero',
+    'Marzo',
+    'Abril',
+    'Mayo',
+    'Junio',
+    'Julio',
+    'Agosto',
+    'Septiembre',
+    'Octubre',
+    'Noviembre',
+    'Diciembre',
+  ];
+  const month = date.getMonth();
+  return `${months[month]}`;
+};
+
 const es = {
   clientNav: {
     Home: 'Inicio',
@@ -156,7 +176,7 @@ const es = {
       news: {
         title: 'Novedades',
         cardTitle: 'Nuevos cupos disponibles',
-        cardContent: `Un nuevo mes significa, un nuevo total en el cupo para invertir. Vamos a darle una mirada al nuevo balance del cupo.`,
+        cardContent: `${getMonth()} viene con muchas sorpresas, incluyendo nuevos cupos, mensuales y anuales. ¡Echa un vistazo!`,
         action: 'Ir ahora',
       },
       totalInvestments: {

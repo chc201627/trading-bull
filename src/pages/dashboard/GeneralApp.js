@@ -17,7 +17,7 @@ import { PATH_DASHBOARD } from '../../routes/paths';
 import Page from '../../components/Page';
 // sections
 import {
-  AppWidget,
+  // AppWidget,
   AppNews,
   // AppFeatured,
   // AppWidgetSummary,
@@ -36,8 +36,8 @@ import {
 import { MotivationIllustration } from '../../assets';
 
 import TradingDeskCard from '../../components/TradingDeskCard';
-import { EcommerceYearlySales } from '../../sections/@dashboard/general/e-commerce';
-import { WalletQRbalance } from '../../sections/@dashboard/general/wallet';
+// import { EcommerceYearlySales } from '../../sections/@dashboard/general/e-commerce';
+// import { WalletQRbalance } from '../../sections/@dashboard/general/wallet';
 import useTronLink from '../../hooks/useTronLink';
 
 

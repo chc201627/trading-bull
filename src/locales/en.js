@@ -1,9 +1,22 @@
-// ----------------------------------------------------------------------
-
-// IF THIS TRANSLATION IS INCORRECT PLEASE IGNORE THIS AS THIS TRANSLATION IS FOR DEMO PURPOSES ONLY
-// We are happy if you can help improve the translation by sending an email to support@minimals.cc.
-
-// ----------------------------------------------------------------------
+const getMonth = () => {
+  const date = new Date();
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+  const month = date.getMonth();
+  return `${months[month]}`;
+};
 
 const en = {
   clientNav: {
@@ -176,18 +189,30 @@ const en = {
     errorCodeRequired: 'Referral code required',
   },
   dashboard: {
-    title: 'dashboard',
+    title: 'Dashboard',
     home: {
       news: {
         title: 'News',
         cardTitle: 'New Spots Available',
-        cardContent: `A new month means, a new total in the quota to invest. Let's take a look at the new quota balance.`,
+        cardContent: `${getMonth()} comes with many surprises, including new Spots, monthly and annual. Let's take a look!`,
         action: 'Go Now',
       },
       totalInvestments: {
         title: 'Total Investments',
         periods: ['All time', 'Year', '6 months', '3 months', '1 month'],
       },
+      earnings: {
+        title: 'Total Earnings',
+        value: 'Value',
+        rentability: 'Rentability',
+        lastUpdate: 'Last update at:',
+        lastDeposit: 'Last deposit at',
+        expectedReturn: 'Expected return',
+        depositStatus: 'Status',
+      },
+    },
+    refers: {
+      title: 'Refers',
     },
     spot: {
       amount_invest: 'Amount Invest',
@@ -235,7 +260,7 @@ const en = {
       connected: 'Connected',
     },
     navigation: {
-      history: 'Transction Movements History',
+      history: 'Transaction Movements History',
       openButton: 'Open Tronscan',
       signOut: 'Sign out',
     },
@@ -251,11 +276,9 @@ const en = {
       total_refers_alert: 'Last 30 days of refers link to the plattform by your code',
       alert_code: 'This code have a duration of 24 hours and cannot be used twice or more times',
       generate_code: 'Generate Code',
-      generate_link: 'Generate Link'
+      generate_link: 'Generate Link',
     },
-    details: {
-
-    }
+    details: {},
   },
   demo: {
     title: `English`,
