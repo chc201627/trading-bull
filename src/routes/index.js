@@ -36,7 +36,7 @@ function useQuery() {
 export default function Router() {
   const query = useQuery();
 
-  const { onChangeLang } = useLocales();
+  const { onChangeLang, translate } = useLocales();
 
   useEffect(() => {
     const lang = query.get('lang');

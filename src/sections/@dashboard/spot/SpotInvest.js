@@ -61,7 +61,10 @@ export default function SpotInvest(props) {
   const { translate } = useLocales();
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
-
+  const handleModal = () => {
+    GeneralSpot.delegateEnergy().then(() => console.log('delegateEnergy'));
+    setModalIsOpen(true);
+  };
   return (
     <>
       <SpotInvestModal isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)} />
@@ -166,7 +169,7 @@ export default function SpotInvest(props) {
             </Typography>
           </Grid>
           <Grid item xs={6} mt={2} container justifyContent="flex-end">
-            <Typography variant="subtitle2">INDICE-FOREX-CRYPTO</Typography>
+            <Typography variant="subtitle2">INDICES-FOREX-CRYPTO</Typography>
           </Grid>
 
           <Grid item xs={12} mt={2}>
@@ -208,7 +211,7 @@ export default function SpotInvest(props) {
               variant="contained"
               type="button"
               endIcon={<Iconify icon="ic:outline-add-shopping-cart" width={20} height={20} />}
-              onClick={() => setModalIsOpen(true)}
+              onClick={() => handleModal()}
             >
               {translate('invest')}
             </Button>

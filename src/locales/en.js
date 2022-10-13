@@ -1,9 +1,22 @@
-// ----------------------------------------------------------------------
-
-// IF THIS TRANSLATION IS INCORRECT PLEASE IGNORE THIS AS THIS TRANSLATION IS FOR DEMO PURPOSES ONLY
-// We are happy if you can help improve the translation by sending an email to support@minimals.cc.
-
-// ----------------------------------------------------------------------
+const getMonth = () => {
+  const date = new Date();
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+  const month = date.getMonth();
+  return `${months[month]}`;
+};
 
 const en = {
   clientNav: {
@@ -39,7 +52,7 @@ const en = {
       seeDetails: 'See details',
     },
     spots: {
-      title: 'Spots',
+      title: 'Spot',
       options: 'Options',
       invest: 'Invest',
       tradingSpot: {
@@ -148,7 +161,7 @@ const en = {
     disclaimer: {
       title: 'Disclaimer',
       description1: 'Risks and',
-      description2: 'concerns',
+      description2: 'warnings',
       caption1:
         'This website is not directed at any jurisdiction and is not intended for any use that would be contrary to local law or regulation.',
       caption2:
@@ -176,26 +189,38 @@ const en = {
     errorCodeRequired: 'Referral code required',
   },
   dashboard: {
-    title: 'dashboard',
+    title: 'Dashboard',
     home: {
       news: {
         title: 'News',
         cardTitle: 'New Spots Available',
-        cardContent: `August come with many surprises \n Including new Spots, monthly and semestral, let's take a look`,
+        cardContent: `${getMonth()} comes with many surprises, including new Spots, monthly and annual. Let's take a look!`,
         action: 'Go Now',
       },
       totalInvestments: {
         title: 'Total Investments',
         periods: ['All time', 'Year', '6 months', '3 months', '1 month'],
       },
+      earnings: {
+        title: 'Total Earnings',
+        value: 'Value',
+        rentability: 'Rentability',
+        lastUpdate: 'Last update at:',
+        lastDeposit: 'Last deposit at',
+        expectedReturn: 'Expected return',
+        depositStatus: 'Status',
+      },
+    },
+    refers: {
+      title: 'Refers',
     },
     spot: {
       amount_invest: 'Amount Invest',
       deposits_available: 'Deposits available',
       inversation_rate: 'Inversation rate',
-      rentability: 'Rentability',
-      rate_per_month: 'Rate per month',
-      rate_per_year: 'Rate per year',
+      rentability: 'ROI',
+      rate_per_month: 'Monthly Block',
+      rate_per_year: 'Yearly Block',
       investment_type: 'Investment type',
       sector: 'Sector',
       investment_value: 'Investment value',
@@ -235,10 +260,25 @@ const en = {
       connected: 'Connected',
     },
     navigation: {
-      history: 'Transction Movements History',
+      history: 'Transaction Movements History',
       openButton: 'Open Tronscan',
       signOut: 'Sign out',
     },
+  },
+  refers: {
+    title: 'Refers',
+    refers: 'Refers',
+    refer_program: 'Refers Program',
+    balance: {
+      total_return: 'Total return for refers',
+      total_return_alert: 'This is money you will get each month for every refer',
+      total_refers: 'Total refers',
+      total_refers_alert: 'Last 30 days of refers link to the plattform by your code',
+      alert_code: 'This code have a duration of 24 hours and cannot be used twice or more times',
+      generate_code: 'Generate Code',
+      generate_link: 'Generate Link',
+    },
+    details: {},
   },
   demo: {
     title: `English`,

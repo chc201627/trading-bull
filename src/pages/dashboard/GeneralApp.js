@@ -17,7 +17,7 @@ import { PATH_DASHBOARD } from '../../routes/paths';
 import Page from '../../components/Page';
 // sections
 import {
-  AppWidget,
+  // AppWidget,
   AppNews,
   // AppFeatured,
   // AppWidgetSummary,
@@ -36,8 +36,8 @@ import {
 import { MotivationIllustration } from '../../assets';
 
 import TradingDeskCard from '../../components/TradingDeskCard';
-import { EcommerceYearlySales } from '../../sections/@dashboard/general/e-commerce';
-import { WalletQRbalance } from '../../sections/@dashboard/general/wallet';
+// import { EcommerceYearlySales } from '../../sections/@dashboard/general/e-commerce';
+// import { WalletQRbalance } from '../../sections/@dashboard/general/wallet';
 import useTronLink from '../../hooks/useTronLink';
 
 
@@ -151,9 +151,22 @@ export default function GeneralApp() {
             spotsInformation?
             spotsInformation.map((spot)=> (
               <>
-            <Grid item xs={12} md={4} lg={4}> 
+              { 
+              spot.status === "ACTIVE"?
+              <Grid item xs={12} md={4} lg={4}> 
             <TradingDeskCard spot={spot} type={1}/>
           </Grid>  
+          :
+          <> </>
+            }
+             { 
+              spot.status === "ACQUIRED"?
+              <Grid item xs={12} md={4} lg={4}> 
+            <TradingDeskCard spot={spot} type={2}/>
+          </Grid>  
+          :
+          <> </>
+            }
               </>
             ))
             :

@@ -14,6 +14,7 @@ import {
 } from '../../_mock';
 // components
 import Page from '../../components/Page';
+import useLocales from '../../hooks/useLocales';
 // sections
 import {
   EcommerceNewProducts,
@@ -33,6 +34,7 @@ import { ReferralCode } from '../../middleware';
 // ----------------------------------------------------------------------
 
 export default function GeneralEcommerce() {
+  const {translate} = useLocales();
   const [totalReferrals, settotalReferrals] = useState(0);
   const [referralCode, setReferralCode] = useState('');
   const [toalReturnReferrals, settotalReturnReferrals] = useState(0);
@@ -84,8 +86,8 @@ export default function GeneralEcommerce() {
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <Stack direction="row" justifyContent="space-between">
-              <Typography sx={{ fontSize: 20 }}>Refer Program</Typography>
-              <Button variant="contained"> Share in social web</Button>
+              <Typography sx={{ fontSize: 20 }}>{translate('refers.refer_program')}</Typography>
+              {/* <Button variant="contained"> Share in social web</Button> */}
             </Stack>
           </Grid>
           {/* <Grid item xs={12} md={12}>

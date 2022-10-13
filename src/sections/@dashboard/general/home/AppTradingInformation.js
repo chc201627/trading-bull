@@ -13,11 +13,11 @@ import {
   InputAdornment,
   Chip,
   Switch,
-  Alert
+  Alert,
 } from '@mui/material';
+
 // utils
-
-
+import useLocales from '../../../../hooks/useLocales';
 
 // ----------------------------------------------------------------------
 
@@ -45,71 +45,71 @@ export default function TradingInformationCard({
 }) {
   const displayShipping = shipping !== null ? 'Free' : '-';
 
-
+  const { translate } = useLocales();
   return (
     <Card sx={{ mb: 3 }}>
-      
       <CardContent>
         <Stack spacing={2}>
-            <Stack direction="row" justifyContent="space-between">
-
-                
-                <Stack direction="column" justifyContent="space-between">
-                    <Typography variant="subtitle1" sx={{ color: 'text.secondary' }}>
-                        Total Ganance
-                    </Typography>     
-                </Stack>
-                {/* <Chip variant="filled"  label="Blocked" color='info'/> */}
+          <Stack direction="row" justifyContent="space-between">
+            <Stack direction="column" justifyContent="space-between">
+              <Typography variant="subtitle1" sx={{ color: 'text.secondary' }}>
+                {translate('dashboard.home.earnings.title')}
+              </Typography>
             </Stack>
+            {/* <Chip variant="filled"  label="Blocked" color='info'/> */}
+          </Stack>
 
-        <Stack direction="row" justifyContent="flex-start">
+          <Stack direction="row" justifyContent="flex-start">
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              {'Value : '  }{' '}
+              {translate('dashboard.home.earnings.value')}{' '}
             </Typography>
-        <Typography variant="subtitle1"> &nbsp; $1,245.30</Typography>
+            <Typography variant="subtitle1"> &nbsp; $1,245.30</Typography>
           </Stack>
           <Stack direction="row" justifyContent="flex-start">
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              {'Rentability : '  }{' '}
+              {translate('dashboard.home.earnings.rentability')}{' '}
             </Typography>
-        <Typography variant="subtitle1" sx={{color:'green'}}> &nbsp; +14.46%</Typography>
+            <Typography variant="subtitle1" sx={{ color: 'green' }}>
+              {' '}
+              &nbsp; +14.46%
+            </Typography>
           </Stack>
           <Stack direction="row" justifyContent="flex-start">
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              {'Last update at : '  }{' '}
+              {translate('dashboard.home.earnings.lastUpdate')}{' '}
             </Typography>
-        <Typography variant="subtitle2"> &nbsp; 07/31/2022 15:23 PM </Typography>
+            <Typography variant="subtitle2"> &nbsp; 07/31/2022 15:23 PM </Typography>
           </Stack>
-       
+
           <Divider />
 
           <Stack direction="row" justifyContent="space-between">
+            <Stack direction="column" justifyContent="space-between">
+              <Typography variant="subtitle1" sx={{ color: 'text.secondary' }}>
+                {translate('dashboard.home.earnings.lastDeposit')}
+              </Typography>
+            </Stack>
+            {/* <Chip variant="filled"  label="Blocked" color='info'/> */}
+          </Stack>
 
-                
-<Stack direction="column" justifyContent="space-between">
-    <Typography variant="subtitle1" sx={{ color: 'text.secondary' }}>
-        Last Deposit
-    </Typography>     
-</Stack>
-{/* <Chip variant="filled"  label="Blocked" color='info'/> */}
-</Stack>
-
-<Stack direction="row" justifyContent="space-between">
-<Typography variant="subtitle1"> &nbsp; $1,245.30</Typography>
-<Stack direction="row" justifyContent="flex-start">
-<Typography variant="body2" sx={{ color: 'text.secondary' }}>
-{'Status : '  }{' '}
-</Typography>
-<Typography variant="subtitle1" sx={{color:'green'}}> &nbsp; +14.46%</Typography>
-</Stack>
-</Stack>
-<Stack direction="row" justifyContent="flex-start">
-<Typography variant="body2" sx={{ color: 'text.secondary' }}>
-{'Expected return : '  }{' '}
-</Typography>
-<Typography variant="subtitle2"> &nbsp; 12% </Typography>
-</Stack>
-       
+          <Stack direction="row" justifyContent="space-between">
+            <Typography variant="subtitle1"> &nbsp; $1,245.30</Typography>
+            <Stack direction="row" justifyContent="flex-start">
+              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                {translate('dashboard.home.earnings.depositStatus')}{' '}
+              </Typography>
+              <Typography variant="subtitle1" sx={{ color: 'green' }}>
+                {' '}
+                &nbsp; +14.46%
+              </Typography>
+            </Stack>
+          </Stack>
+          <Stack direction="row" justifyContent="flex-start">
+            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+              {translate('dashboard.home.earnings.expectedReturn')}{' '}
+            </Typography>
+            <Typography variant="subtitle2"> &nbsp; 12% </Typography>
+          </Stack>
         </Stack>
       </CardContent>
     </Card>
