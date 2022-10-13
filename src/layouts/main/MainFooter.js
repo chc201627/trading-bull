@@ -50,52 +50,27 @@ export default function MainFooter() {
       <Container sx={{ pt: 10 }}>
         <Grid
           container
-          justifyContent={{ xs: 'center', md: 'space-between' }}
-          sx={{ textAlign: { xs: 'center', md: 'left' } }}
+          justifyContent={{ xs: 'center', md: 'center' }}
+          sx={{ textAlign: { xs: 'center', md: 'center' } }}
         >
-          <Grid item xs={12} sx={{ mb: 3 }}>
-            <Logo sx={{ mx: { xs: 'auto', md: 'inherit' } }} />
+          <Grid item xs={12} sx={{ mb: 3, textAlign: { xs: 'auto', md: 'auto' }, width: '100%' }}>
+            <Logo sx={{ mx: { xs: 'auto', md: 'auto' } }} svgWidth={100} />
           </Grid>
 
-          <Grid item xs={8} md={3}>
-            <Typography variant="body2" sx={{ pr: { md: 5 } }}>
-              The starting point for your next project with Minimal UI Kit, built on the newest version of Material-UI
-              ©, ready to be customized to your style.
+          <Grid item xs={8} md={3} justifyContent={{ xs: 'center', md: 'center' }}>
+            <Typography variant="body2" sx={{  }}>
+            This website is not directed at any jurisdiction and is not intended for any use that would be contrary to local law or regulation.
             </Typography>
 
             <Stack
               direction="row"
-              justifyContent={{ xs: 'center', md: 'flex-start' }}
+              justifyContent={{ xs: 'center', md: 'center' }}
               sx={{ mt: 5, mb: { xs: 5, md: 0 } }}
             >
-              <SocialsButton sx={{ mx: 0.5 }} />
+              <SocialsButton sx={{ mx: 0.5 }} justifyContent={{ xs: 'center', md: 'center' }} />
             </Stack>
           </Grid>
-
-          <Grid item xs={12} md={7}>
-            <Stack spacing={5} direction={{ xs: 'column', md: 'row' }} justifyContent="space-between">
-              {LINKS.map((list) => (
-                <Stack key={list.headline} spacing={2}>
-                  <Typography component="p" variant="overline">
-                    {list.headline}
-                  </Typography>
-
-                  {list.children.map((link) => (
-                    <Link
-                      to={link.href}
-                      key={link.name}
-                      color="inherit"
-                      variant="body2"
-                      component={RouterLink}
-                      sx={{ display: 'block' }}
-                    >
-                      {link.name}
-                    </Link>
-                  ))}
-                </Stack>
-              ))}
-            </Stack>
-          </Grid>
+          
         </Grid>
 
         <Typography
@@ -105,10 +80,10 @@ export default function MainFooter() {
             mt: 10,
             pb: 5,
             fontSize: 13,
-            textAlign: { xs: 'center', md: 'left' },
+            textAlign: { xs: 'center', md: 'center',  },
           }}
         >
-          © 2021. All rights reserved
+          © 2022. All rights reserved
         </Typography>
       </Container>
     </RootStyle>
