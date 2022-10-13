@@ -55,6 +55,11 @@ export default function TradingDeskCard({
   const date= new Date(spot.createdAt)
   const { getCurrentWalletAddress, getUsdtBalance, trimAddress } = useTronLink();
   const [address, setAddress] = useState('');
+  const [checked, setChecked] = useState(false);
+
+  const handleChange = (event) => {
+    setChecked(event.target.checked);
+  };
 
   useEffect(() => {
     const address = getCurrentWalletAddress();
@@ -91,9 +96,8 @@ export default function TradingDeskCard({
                     <Typography variant="body1" sx={{ color: 'text.secondary' }}>
                     {'Deposit Wallet : '  }{' '}
                     </Typography>
-                    <Typography variant="body1"> &nbsp; {address}</Typography>
+                    <Typography variant="body1"> &nbsp; {`${address.substr(0, 6)}...${address.substr(-6)}`}</Typography>
                 </Stack>
-
                 <Stack direction="row" justifyContent="space-between">
                     <Typography variant="body1" sx={{ color: 'text.secondary' }}>
                     {'ROI : '  }{' '}
@@ -113,7 +117,10 @@ export default function TradingDeskCard({
                     
 
                     <Stack direction="column" justifyContent="center">
-                        <Switch />
+                        <Switch 
+                        checked={checked}
+                        onChange={handleChange}
+                        />
 
                         <Typography align="center" variant="body2" sx={{ color: 'text.primary' }}>
                         Reinvest Mode
@@ -122,7 +129,7 @@ export default function TradingDeskCard({
                         
                 </Stack>
                 <Alert severity="info">
-                    The Deposits will go directly to you wallet
+                    {checked ? "" : "The Deposits will go directly to you wallet"}
                     
                 </Alert> 
             </Stack>
@@ -199,8 +206,6 @@ const typeCard ={
     2:<Card2/>,
     3:<Card3/>
 }
-
-
   return (
     <Card sx={{ mb: 3 }}>
       
@@ -235,7 +240,7 @@ const typeCard ={
                     </Typography>
                     <Typography variant="h4"  sx={{ color: 'text.primary' }}>{spot.spot_value} USDT</Typography>      
                 </Stack>
-                <Typography color={'success'} variant="h5" sx={{ color: 'green' }}>
+                <Typography color={spot.status==="ACTIVE"?'green':'purple'} variant="h5">
                        {spot.status}
                     </Typography>
                 
@@ -245,7 +250,7 @@ const typeCard ={
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
               {'Hash : '  }{' '}
             </Typography>
-        <Typography variant="body2"> &nbsp; {spot.collected_hash}</Typography>
+        <Typography variant="body2"> &nbsp; {`${spot.collected_hash.substr(0, 6)}...${spot.collected_hash.substr(-6)}`}</Typography>
           </Stack>
        
           <Divider />
