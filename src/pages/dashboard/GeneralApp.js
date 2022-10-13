@@ -117,13 +117,13 @@ export default function GeneralApp() {
                 {
                   year: '2019',
                   data: [
-                    { name: 'America', data: [10, 34, 13, 56, 77, 88, 99, 77, 45] },
+                    { name: 'Monthly Profit', data: [8.3, 7.5, 9.1, 9.3, 7.4, 8.6, 6.9, 7.1, 8.6] },
                   ],
                 },
                 {
                   year: '2020',
                   data: [
-                    { name: 'America', data: [45, 77, 99, 88, 77, 56, 13, 34, 10] },
+                    { name: 'Monthly Profit', data: [8.3, 7.5, 9.1, 9.3, 7.4, 8.6, 6.9, 7.1, 8.6] },
                   ],
                 },
               ]}

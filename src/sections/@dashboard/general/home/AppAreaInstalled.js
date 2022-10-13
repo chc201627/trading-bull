@@ -38,8 +38,8 @@ export default function AppAreaInstalled({ title, subheader, chartLabels, chartD
 
   const [value, setValue] = useState(new Date('2022-10-06T21:11:54'));
 
-  const months = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
-  const percents = ['+14.1', '-3.5', '+15', '+12', '-1', '+4.2', '+6.7', '-3.9', '-1.5', '+7.1', '+9.4', '+12']
+  const months = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep']
+  const percents = [8.3, 7.5, 9.1, 9.3, 7.4, 8.6, 6.9, 7.1, 8.6];
 
   const handleChange = (newValue) => {
     setValue(newValue);
