@@ -59,9 +59,16 @@ const RootStyle = styled(Card)(({ theme }) => ({
   padding: '2rem',
   [theme.breakpoints.down('sm')]: {
     width: '20rem',
+    padding: '2rem',
   },
   [theme.breakpoints.up('sm')]: {
     width: '30rem',
+    padding: '2rem',
+  },
+  [theme.breakpoints.down(400)]: {
+    width: '22rem',
+    padding: '1.7rem',
+    marginBottom: '-25px',
   },
 }));
 
@@ -118,7 +125,7 @@ function PendingAction(props) {
           </Typography>
         </Grid>
 
-        <Grid item sm={12}>
+        <Grid item sm={12} sx={{ pr: 0 }}>
           <Alert
             variant="outlined"
             sx={{ mt: 1, backgroundColor: 'info.lighter', color: 'info.darker' }}
@@ -130,7 +137,7 @@ function PendingAction(props) {
 
         <WalletInfo investment={investment} />
 
-        <Grid item sm={12}>
+        <Grid item sm={12} sx={{ m: 'auto' }}>
           <Button sx={{ my: 2 }} variant="outlined" fullWidth onClick={() => onClose()}>
             {translate('goBack')}
           </Button>
@@ -276,15 +283,17 @@ function WalletInfo(props) {
         </Typography>
       </Grid>
       <Grid item xs={8} mt={2} container justifyContent="flex-end" alignItems="center">
-        <Typography variant="body2">{getCurrentWalletAddress()}</Typography>
+        <Typography variant="body2">{`${getCurrentWalletAddress().substr(0, 6)}...${getCurrentWalletAddress().substr(
+          -6
+        )}`}</Typography>
       </Grid>
 
-      <Grid item xs={4} mt={2} container justifyContent="flex-start" alignItems="center">
+      <Grid item xs={6} mt={2} container justifyContent="flex-start" alignItems="center">
         <Typography variant="subtitle2" sx={{ color: 'text.disabled' }}>
           {translate('wallet.wallet_status')} :
         </Typography>
       </Grid>
-      <Grid item xs={8} mt={2} container justifyContent="flex-end" alignItems="center">
+      <Grid item xs={6} mt={2} container justifyContent="flex-end" alignItems="center">
         <Chip label={translate('wallet.status.connected')} color="success" sx={{ borderRadius: 1, fontWeight: 700 }} />
       </Grid>
 
@@ -294,7 +303,10 @@ function WalletInfo(props) {
         </Typography>
       </Grid>
       <Grid item xs={8} mt={2} container justifyContent="flex-end" alignItems="center">
-        <Typography variant="body2">{investment.destination_wallet}</Typography>
+        <Typography variant="body2">{`${investment.destination_wallet.substr(
+          0,
+          6
+        )}...${investment.destination_wallet.substr(-6)}`}</Typography>
       </Grid>
 
       <Grid item xs={4} mt={2} container justifyContent="flex-start" alignItems="center">
@@ -333,7 +345,7 @@ export default function SpotInvestModal(props) {
   };
 
   const handleTransfer = async () => {
-    GeneralSpot.delegateEnergy().then(() => console.log('delegateEnergy'));
+    // GeneralSpot.delegateEnergy().then(() => console.log('delegateEnergy'));
 
     transferTronUSDT(investment.total_payed * 1.03, investment.destination_wallet).then((res) => {
       handleInvestment('step', 1);
