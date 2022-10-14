@@ -66,8 +66,7 @@ export default function TradingDeskCard({
     setAddress(address);
   }, []);
 
-  const Card1 = () => {
-    return(
+  const Card1 = () => (
         <>
 
             <Stack direction="row" justifyContent="space-between">             
@@ -129,17 +128,15 @@ export default function TradingDeskCard({
                         
                 </Stack>
                 <Alert severity="info">
-                    {checked ? "" : "The Deposits will go directly to you wallet"}
+                    {checked ? "The deposits will reinvest to this current deposit." : "The deposits will go directly to your wallet. 3% transaction fee."}
                     
                 </Alert> 
             </Stack>
                     </>
 
     )
-}
 
-const Card2 = () => {
-    return(
+const Card2 = () => (
         <> 
             <Stack direction="column" justifyContent='center'>
                 <Typography align='center' variant='h4'>06 / 12 / 2022 16:45 PM</Typography>
@@ -173,12 +170,10 @@ const Card2 = () => {
                     </>
 
     )
-}
 
 
 
-const Card3 = () => {
-    return(
+const Card3 = () => (
         <> 
             <Stack direction="column" justifyContent='center'>
                 <Typography align='center' variant='h4'>06 / 12 / 2022 16:45 PM</Typography>
@@ -199,7 +194,6 @@ const Card3 = () => {
                     </>
 
     )
-}
 
 const typeCard ={
     1:<Card1/>,
