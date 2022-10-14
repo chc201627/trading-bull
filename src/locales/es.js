@@ -201,7 +201,7 @@ const es = {
       // modal state -  pending
       please_confirm: 'Por favor! Confirma tu inversión',
       total_to_pay: 'Total a Pagar',
-      commision_alert: 'Debes pagar una comisión del 2.5% en cada nuevo depósito',
+      commision_alert: 'Debes pagar una comisión del 3% en cada nuevo depósito',
       make_you_invest: 'Haz tu inversion',
       // modal state -  confirming
       time_remaining: 'Tiempo restante',
