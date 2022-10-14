@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-// React 
+// React
 import { Link as RouterLink } from 'react-router-dom';
 // @mui
 import { useTheme } from '@mui/material/styles';
@@ -8,7 +8,7 @@ import { Container, Grid, Stack, Button, Typography, Divider } from '@mui/materi
 import useAuth from '../../hooks/useAuth';
 import useSettings from '../../hooks/useSettings';
 import useLocales from '../../hooks/useLocales';
-import {Spot} from '../../middleware';
+import { Spot } from '../../middleware';
 // _mock_
 import { _appFeatured, _appAuthors, _appInstalled, _appRelated, _appInvoices } from '../../_mock';
 // Routes
@@ -30,7 +30,7 @@ import {
   AppTotalInvestments,
   AppAreaInstalled,
   AppWalletInformation,
-  TradingInformationCard
+  TradingInformationCard,
 } from '../../sections/@dashboard/general/home';
 // assets
 import { MotivationIllustration } from '../../assets';
@@ -40,11 +40,9 @@ import TradingDeskCard from '../../components/TradingDeskCard';
 // import { WalletQRbalance } from '../../sections/@dashboard/general/wallet';
 import useTronLink from '../../hooks/useTronLink';
 
-
 // ----------------------------------------------------------------------
 
 export default function GeneralApp() {
-
   const { getCurrentWalletAddress, getUsdtBalance, trimAddress } = useTronLink();
   const { user } = useAuth();
 
@@ -65,11 +63,10 @@ export default function GeneralApp() {
     const address = getCurrentWalletAddress();
     setAddress(address);
 
-
     async function getBalance() {
       const res = await getUsdtBalance(window.tronLink.tronWeb.defaultAddress.hex);
-      const response = await Spot.getSpots()
-      setSpotsInformation(response)
+      const response = await Spot.getSpots();
+      setSpotsInformation(response);
       const balance = parseInt(res?.data?._hex, 16);
       setBalance(balance);
     }
@@ -80,11 +77,11 @@ export default function GeneralApp() {
   return (
     <Page title="General: App">
       <Container maxWidth={themeStretch ? false : 'xl'}>
-        <Typography variant='h6' sx={{ color: 'grey.500', mb: 2 }}>
+        <Typography variant="h6" sx={{ color: 'grey.500', mb: 2 }}>
           {translate('dashboard.home.news.title')}
         </Typography>
         <Grid container spacing={3}>
-          <Grid item xs={12} >
+          <Grid item xs={12}>
             <AppNews
               title={translate('dashboard.home.news.cardTitle')}
               description={translate('dashboard.home.news.cardContent')}
@@ -99,9 +96,7 @@ export default function GeneralApp() {
               }
               action={
                 <RouterLink to={PATH_DASHBOARD.spot.all}>
-                  <Button variant="contained">
-                    {translate('dashboard.home.news.action')}
-                  </Button>
+                  <Button variant="contained">{translate('dashboard.home.news.action')}</Button>
                 </RouterLink>
               }
               sx={{ backgroundColor: '#211D35', color: '#F6F6F6' }}
@@ -116,62 +111,53 @@ export default function GeneralApp() {
               chartData={[
                 {
                   year: '2019',
-                  data: [
-                    { name: 'America', data: [10, 34, 13, 56, 77, 88, 99, 77, 45] },
-                  ],
+                  data: [{ name: 'Monthly Profit', data: [8.3, 7.5, 9.1, 9.3, 7.4, 8.6, 9.9, 11.1, 8.6] }],
                 },
                 {
                   year: '2020',
-                  data: [
-                    { name: 'America', data: [45, 77, 99, 88, 77, 56, 13, 34, 10] },
-                  ],
+                  data: [{ name: 'Monthly Profit', data: [8.3, 7.5, 9.1, 9.3, 7.4, 8.6, 10.9, 7.1, 8.6] }],
                 },
               ]}
             />
-
-          </Grid>
-
-
-          <Grid item xs={12} md={6} lg={6} xl={4}>
-              <AppWalletInformation tron={{ currency, balance, address }} sx={{backgroundColor:'info'}} />
           </Grid>
 
           <Grid item xs={12} md={6} lg={6} xl={4}>
-              <TradingInformationCard/>
+            <AppWalletInformation tron={{ currency, balance, address }} sx={{ backgroundColor: 'info' }} />
           </Grid>
-          
-          <Grid item xs={12} md={12} lg={12}>   
-            <Divider/>
 
-            <Typography py={2} variant="h5" sx={{color:'text.secondary'}}>
+          <Grid item xs={12} md={6} lg={6} xl={4}>
+            <TradingInformationCard />
+          </Grid>
+
+          <Grid item xs={12} md={12} lg={12}>
+            <Divider />
+
+            <Typography py={2} variant="h5" sx={{ color: 'text.secondary' }}>
               My Trading Desk
             </Typography>
           </Grid>
-          {
-            spotsInformation?
-            spotsInformation.map((spot)=> (
+          {spotsInformation ? (
+            spotsInformation.map((spot) => (
               <>
-              { 
-              spot.status === "ACTIVE"?
-              <Grid item xs={12} md={4} lg={4}> 
-            <TradingDeskCard spot={spot} type={1}/>
-          </Grid>  
-          :
-          <> </>
-            }
-             { 
-              spot.status === "ACQUIRED"?
-              <Grid item xs={12} md={4} lg={4}> 
-            <TradingDeskCard spot={spot} type={2}/>
-          </Grid>  
-          :
-          <> </>
-            }
+                {spot.status === 'ACTIVE' ? (
+                  <Grid item xs={12} md={4} lg={4}>
+                    <TradingDeskCard spot={spot} type={1} />
+                  </Grid>
+                ) : (
+                  <> </>
+                )}
+                {spot.status === 'ACQUIRED' ? (
+                  <Grid item xs={12} md={4} lg={4}>
+                    <TradingDeskCard spot={spot} type={2} />
+                  </Grid>
+                ) : (
+                  <> </>
+                )}
               </>
             ))
-            :
+          ) : (
             <></>
-          }
+          )}
           {/* <Grid item xs={12} md={6} lg={4}>
             <AppCurrentDownload
               title="Current Download"

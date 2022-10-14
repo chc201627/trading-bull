@@ -5,7 +5,20 @@ import { useState } from 'react';
 import { DesktopDatePicker } from '@mui/x-date-pickers';
 import ReactApexChart from 'react-apexcharts';
 // @mui
-import { Card, CardHeader, Box, TextField, Stack, Table, TableContainer, TableHead, TableRow, TableCell, TableBody, Typography } from '@mui/material';
+import {
+  Card,
+  CardHeader,
+  Box,
+  TextField,
+  Stack,
+  Table,
+  TableContainer,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+  Typography,
+} from '@mui/material';
 // components
 import { BaseOptionChart } from '../../../../components/chart';
 import AppTotalInvestments from './AppTotalInvestments';
@@ -21,9 +34,9 @@ const RootStyle = styled(TableCell)(({ theme }) => ({
     boxShadow: 'none',
     borderRadius: 0,
   },
-  color:theme.palette.grey[500],
+  color: theme.palette.grey[500],
   borderRight: '1px solid #394859',
-  borderLeft: '1px solid #394859'
+  borderLeft: '1px solid #394859',
 }));
 
 AppAreaInstalled.propTypes = {
@@ -38,8 +51,8 @@ export default function AppAreaInstalled({ title, subheader, chartLabels, chartD
 
   const [value, setValue] = useState(new Date('2022-10-06T21:11:54'));
 
-  const months = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
-  const percents = ['+14.1', '-3.5', '+15', '+12', '-1', '+4.2', '+6.7', '-3.9', '-1.5', '+7.1', '+9.4', '+12']
+  const months = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep'];
+  const percents = [8.3, 9.5, 9.1, 9.3, 7.4, 8.6, 10.9, 7.1, 11.6];
 
   const handleChange = (newValue) => {
     setValue(newValue);
@@ -56,24 +69,24 @@ export default function AppAreaInstalled({ title, subheader, chartLabels, chartD
   });
 
   return (
-    <Card {...other} sx={{ px: 3, py:2 }}>
-      <Stack direction={{xs:'column', md:'row'}} alignItems="center" justifyContent={'space-between'}>
-      <AppTotalInvestments/>
-      <Stack direction={{xs:'column', md:'row'}} spacing={1} >
-      <DesktopDatePicker
-          label="Date desktop"
-          inputFormat="MM/dd/yyyy"
-          value={value}
-          onChange={handleChange}
-          renderInput={(params) => <TextField {...params} />}
-        />
-        <DesktopDatePicker     
-          label="Date desktop"
-          inputFormat="MM/dd/yyyy"
-          value={value}
-          onChange={handleChange}
-          renderInput={(params) => <TextField {...params} />}
-        />
+    <Card {...other} sx={{ px: 3, py: 2 }}>
+      <Stack direction={{ xs: 'column', md: 'row' }} alignItems="center" justifyContent={'space-between'}>
+        <AppTotalInvestments />
+        <Stack direction={{ xs: 'column', md: 'row' }} spacing={1}>
+          <DesktopDatePicker
+            label="Date desktop"
+            inputFormat="MM/dd/yyyy"
+            value={value}
+            onChange={handleChange}
+            renderInput={(params) => <TextField {...params} />}
+          />
+          <DesktopDatePicker
+            label="Date desktop"
+            inputFormat="MM/dd/yyyy"
+            value={value}
+            onChange={handleChange}
+            renderInput={(params) => <TextField {...params} />}
+          />
         </Stack>
       </Stack>
       {chartData.map((item) => (
@@ -83,25 +96,32 @@ export default function AppAreaInstalled({ title, subheader, chartLabels, chartD
           )}
         </Box>
       ))}
-      <Typography variant='h6' sx={{ color: 'grey.500', mb:2 }}>Monthly Return</Typography>
-      <TableContainer >
-      <Table>
-        <TableHead>
-          <TableRow >
-            {months.map((month) => (
-              <RootStyle align='center'> {month} </RootStyle>
-            ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-        {percents.map((value) => (
-            value>0? 
-            <RootStyle align='center' sx={{color: 'green'}}>{value}</RootStyle> 
-            : 
-            <RootStyle align='center' sx={{color:'red'}}>{value}</RootStyle>
-            ))}
-        </TableBody>
-      </Table>
+      <Typography variant="h6" sx={{ color: 'grey.500', mb: 2 }}>
+        Monthly Return
+      </Typography>
+      <TableContainer>
+        <Table>
+          <TableHead>
+            <TableRow>
+              {months.map((month) => (
+                <RootStyle align="center"> {month} </RootStyle>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {percents.map((value) =>
+              value > 0 ? (
+                <RootStyle align="center" sx={{ color: 'green' }}>
+                  {value}
+                </RootStyle>
+              ) : (
+                <RootStyle align="center" sx={{ color: 'red' }}>
+                  {value}
+                </RootStyle>
+              )
+            )}
+          </TableBody>
+        </Table>
       </TableContainer>
     </Card>
   );
