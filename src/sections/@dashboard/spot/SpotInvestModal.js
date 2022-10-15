@@ -386,7 +386,10 @@ export default function SpotInvestModal(props) {
             handleInvestment('step', 3);
           }
         })
-        .catch(handleInvestment('step', 3));
+        .catch((err) => {
+          console.log('step3 ', err);
+          handleInvestment('step', 3);
+        });
     }, 10000);
   };
 

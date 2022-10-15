@@ -241,9 +241,9 @@ const en = {
       have_issue: 'Are you having any issue? You can continue the transaction externally using the QR code above',
       cancel_order: 'Cancel order',
       // modal state - confirmed
-      confirm_title: 'New investment succesfully sent! Check your email',
+      confirm_title: 'New investment succesfully sent!',
       confirm_message:
-        'Please, take note,  your inversion will be reflected 24 working hours after this message send, message send at 05/12 15:00:54. After that check your spots section in your profile',
+        'Please, take note,  your inversion will be reflected 3 business days after this message send. After that check your spots section in your profile',
       return_profile: 'Return profile',
       // modal state - cancelled
       cancelled_title: 'Investment Cancelled! Let us know, What Happened',

@@ -211,9 +211,9 @@ const es = {
       have_issue: '¿Presentas algún problema? Puedes continuar la transacción de forma externa con el QR de arriba',
       cancel_order: 'Cancelar orden',
       // modal state - confirmed
-      confirm_title: '¡Nueva inversión enviada correctamente! Revisa tu correo',
+      confirm_title: '¡Nueva inversión enviada correctamente!.',
       confirm_message:
-        'Por favor, tenga en cuenta, su inversión se verá reflejada 24 horas hábiles después del envío de este mensaje, mensaje enviado el 12/05 15:00:54. Después de eso, revise la sección de posiciones en su perfil.',
+        'Por favor, tenga en cuenta, su inversión se verá reflejada en 3 dias hábiles después del envío de este mensaje. Después de eso, revise la sección de posiciones en su perfil.',
       return_profile: 'Return profile',
       // modal state - cancelled
       cancelled_title: 'Inversión cancelada! Cuentanos que pasó',
