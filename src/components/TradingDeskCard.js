@@ -53,8 +53,19 @@ export default function TradingDeskCard({
 }) {
   const displayShipping = shipping !== null ? 'Free' : '-';
   const date= new Date(spot.createdAt)
+  const dateac= new Date(spot.enabled_before_at)
+  const options = {
+    year: 'numeric', month: 'numeric', day: 'numeric',
+    hour: 'numeric', minute: 'numeric',
+    hour12: false,
+  };
+  const optionsTime = {
+    hour: 'numeric', minute: 'numeric', second: 'numeric',
+    hour12: false,
+  };
   const { getCurrentWalletAddress, getUsdtBalance, trimAddress } = useTronLink();
   const [address, setAddress] = useState('');
+  
 
   useEffect(() => {
     const address = getCurrentWalletAddress();
@@ -134,11 +145,13 @@ const Card2 = () => {
     return(
         <> 
             <Stack direction="column" justifyContent='center'>
-                <Typography align='center' variant='h4'>06 / 12 / 2022 16:45 PM</Typography>
-                <Typography align='center' variant='body2' sx={{ color: 'text.secondary' }}>Activation date</Typography>
+                <Typography align='center' variant='h4'>{Intl.DateTimeFormat('default', options).format(dateac)}</Typography>
+                <Typography align='center' variant='body2' sx={{ color: 'text.secondary' }}>
+                    Activation date: {Intl.DateTimeFormat().format(dateac)}
+                    </Typography>
             </Stack>
             <Stack direction="column" justifyContent='center'>
-                <Typography align='center' variant='h4'>19 : 15 : 32 : 09</Typography>
+                <Typography align='center' variant='h4'>{Intl.DateTimeFormat('default', optionsTime).format(dateac)}</Typography>
                 <Typography align='center' variant='body2' sx={{ color: 'text.secondary', }}>Time</Typography>
             </Stack>
 
@@ -147,7 +160,7 @@ const Card2 = () => {
                     <Typography variant="body1" sx={{ color: 'text.secondary' }}>
                     {'Rentability : '  }{' '}
                     </Typography>
-                    <Typography variant="body1"> &nbsp; 10% - 13.5%</Typography>
+                    <Typography variant="body1"> &nbsp; 0% - 13%</Typography>
                 </Stack>
                 <Stack direction="row" justifyContent="space-between">
                     <Typography variant="body1" sx={{ color: 'text.secondary' }}>
@@ -159,7 +172,7 @@ const Card2 = () => {
                     <Typography variant="body1" sx={{ color: 'text.secondary' }}>
                     {'Sector : '  }{' '}
                     </Typography>
-                    <Typography variant="body1"> &nbsp; GOLD S&P 500</Typography>
+                    <Typography variant="body1"> &nbsp; Indices - Forex - Crypto</Typography>
                 </Stack>
             </Stack>
                     </>
@@ -208,7 +221,7 @@ const typeCard ={
                 
                 <Stack direction="column" justifyContent="space-between">
                     <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-                        Deposit: {Intl.DateTimeFormat('en-US').format(date)}
+                        Deposit: {Intl.DateTimeFormat().format(date)}
                     </Typography>
                     <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                         Trading
