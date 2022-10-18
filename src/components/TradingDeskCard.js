@@ -63,6 +63,19 @@ export default function TradingDeskCard({
     hour: 'numeric', minute: 'numeric', second: 'numeric',
     hour12: false,
   };
+
+  const dateReturn = new Date()
+  if (dateReturn.getMonth()+1>12){
+    dateReturn.setMonth(1)
+  }else{
+    dateReturn.setMonth(dateReturn.getMonth()+1)
+  }
+  dateReturn.setDate(1)
+//   logic next payment
+  const dateNow = new Date().toLocaleDateString("default", {
+    "month": "numeric"
+});
+
   const { getCurrentWalletAddress, getUsdtBalance, trimAddress } = useTronLink();
   const [address, setAddress] = useState('');
   
@@ -83,13 +96,9 @@ export default function TradingDeskCard({
                     </Typography>
 
                     <Stack direction="row">
-                        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                        Next payment at: &nbsp;
-                        </Typography>
+                        <Typography variant="body2" sx={{ color: 'text.secondary' }}> Next payment at: &nbsp;  </Typography>
 
-                        <Typography variant="body2" sx={{ color: 'text.primary' }}>
-                        07/31/2022
-                        </Typography> 
+                        <Typography variant="body2" sx={{ color: 'text.primary' }}>{Intl.DateTimeFormat('default').format(dateReturn)}</Typography> 
                     </Stack>
                         
                 </Stack>
