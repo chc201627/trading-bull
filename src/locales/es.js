@@ -105,7 +105,7 @@ const es = {
                             they're running and how to resolve approval issues.`,
         },
         {
-          label: 'Obtén adicionalmente 1.5% - 2.0%* de acciones compartidas por cada compra de tus referidos',
+          label: 'Obtén adicionalmente 1.5% - 2.0%* de comisiones por cada compra de tus referidos',
           description: `Try out different ad text to see what brings in the most customers,
                             and learn how to enhance your ads using features like ad extensions.
                             If you run into any problems with your ads, find out how to tell if
@@ -142,9 +142,9 @@ const es = {
             'Debido a la naturaleza del entorno de inversión de alto riesgo de Forex, Streak Bull no garantiza ningún rendimiento pasado como un retorno futuro, usted está comprando una parte de una cartera de dinero para el comercio en Forex, materias primas e índices, el valor de la cartera puede variar con el tiempo.',
         },
         {
-          title: '¿Cual es la reducción máxima?',
+          title: '¿Cual es la reducción máxima o Drawdown ?',
           answer:
-            'El Drawdown máximo en un día ha sido del 67 %, el drawdown medio por operación es del 0,75 % con un VaR del 1 % por operación.',
+            'El Drawdown o reducción máximo en un día ha sido del 15 %, el drawdown medio por operación es del 0,75 % con un VaR del 1 % por operación.',
         },
         {
           title: '¿Cual es la influencia de las posiciones?',

@@ -90,76 +90,6 @@ export default function TradingDeskCard({
     setAddress(address);
   }, []);
 
-<<<<<<< HEAD
-  const Card1 = () => {
-    return(
-        <>
-
-            <Stack direction="row" justifyContent="space-between">             
-                <Stack direction="column" justifyContent="space-between">
-                    <Typography variant="body1" sx={{ color: 'text.primary' }}>
-                        Expected Bonus
-                    </Typography>
-
-                    <Stack direction="row">
-                        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                        Next payment at: &nbsp;
-                        </Typography>
-
-                        <Typography variant="body2" sx={{ color: 'text.primary' }}>
-                        07/31/2022
-                        </Typography> 
-                    </Stack>
-                        
-                </Stack>
-                <Typography variant="h4" sx={{ color: 'text.primary' }}>
-                    $ 0
-                </Typography> 
-            </Stack>
-            <Stack>
-                <Stack direction="row" justifyContent="space-between">
-                    <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-                    {'Deposit Wallet : '  }{' '}
-                    </Typography>
-                    <Typography variant="body1"> &nbsp; {`${address.substr(0, 6)}...${address.substr(-6)}`}</Typography>
-                </Stack>
-                <Stack direction="row" justifyContent="space-between">
-                    <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-                    {'ROI : '  }{' '}
-                    </Typography>
-                    <Typography variant="body1"> &nbsp; 8%</Typography>
-                </Stack>
-                <Stack direction="row" justifyContent="space-between">
-                    <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-                    {'Investment type : '  }{' '}
-                    </Typography>
-                    <Typography variant="body1"> &nbsp; TRADING</Typography>
-                </Stack>
-            </Stack>
-
-            <Stack direction="row" justifyContent="space-between">             
-                <Stack direction="column" justifyContent="space-around">
-                    
-
-                    <Stack direction="column" justifyContent="center">
-                        <Switch 
-                        checked={checked}
-                        onChange={handleChange}
-                        />
-
-                        <Typography align="center" variant="body2" sx={{ color: 'text.primary' }}>
-                        Reinvest Mode
-                        </Typography> 
-                    </Stack>
-                        
-                </Stack>
-                <Alert severity="info">
-                    {checked ? "" : "The Deposits will go directly to you wallet"}
-                    
-                </Alert> 
-            </Stack>
-                    </>
-=======
   const Card1 = () => (
     <>
       <Stack direction="row" justifyContent="space-between">
@@ -167,7 +97,6 @@ export default function TradingDeskCard({
           <Typography variant="body1" sx={{ color: 'text.primary' }}>
             Expected Bonus
           </Typography>
->>>>>>> local
 
           <Stack direction="row">
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
