@@ -65,12 +65,17 @@ export default function SpotInvest(props) {
   const handleModal = (event) => {
     setDisable(true);
     GeneralSpot.delegateEnergy().then((data) => {
-      getTransactionStatus(data.txid).then((response) => {
-        if (response.ret[0].contractRet === 'SUCCESS') {
-          setDisable(false);
-          setModalIsOpen(true);
-        }
-      });
+      if (data === 'User has enough resources to pay usdt transfer') {
+        setModalIsOpen(true);
+        setDisable(false);
+      } else {
+        getTransactionStatus(data.txid).then((response) => {
+          if (response.ret[0].contractRet === 'SUCCESS') {
+            setDisable(false);
+            setModalIsOpen(true);
+          }
+        });
+      }
     });
   };
   return (
