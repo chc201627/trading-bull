@@ -44,7 +44,7 @@ export default function EcommerceCurrentBalance({
                 {translate('refers.balance.total_return')}
               </Typography>
               <Label color="secondary" variant="outlined" startIcon={<InfoIcon />} sx={{ p: 1, mt: 1 }}>
-              {translate('refers.balance.total_return_alert')}This is money you will get each month for every refer
+              {translate('refers.balance.total_return_alert')}
               </Label>
             </Stack>
             <Stack>

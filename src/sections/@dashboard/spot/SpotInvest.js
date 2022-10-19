@@ -23,6 +23,7 @@ import useSpots from '../../../hooks/useSpots';
 // components
 import Iconify from '../../../components/Iconify';
 import SpotInvestModal from './SpotInvestModal';
+import useTronLink from '../../../hooks/useTronLink';
 
 const RootStyle = styled(Card)(({ theme }) => ({
   background: theme.palette.grey[900],
@@ -40,7 +41,7 @@ export default function SpotInvest(props) {
   const [totalValue, setTotalValue] = useState(0);
   const [ratesMonth, setRatesMonth] = useState(0);
   const [ratesYear, setRatesYear] = useState(0);
-
+  const [disable, setDisable] = React.useState(false);
   const getInformation = async () => {
     const response = await GeneralSpot.getAll();
     const responseRate = await Rate.getAll();
@@ -59,11 +60,23 @@ export default function SpotInvest(props) {
   }, []);
 
   const { translate } = useLocales();
-
+  const { transferTronUSDT, getTransactionStatus } = useTronLink();
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const handleModal = () => {
-    GeneralSpot.delegateEnergy().then(() => console.log('delegateEnergy'));
-    setModalIsOpen(true);
+  const handleModal = (event) => {
+    setDisable(true);
+    GeneralSpot.delegateEnergy().then((data) => {
+      if (data === 'User has enough resources to pay usdt transfer') {
+        setModalIsOpen(true);
+        setDisable(false);
+      } else {
+        getTransactionStatus(data.txid).then((response) => {
+          if (response.ret[0].contractRet === 'SUCCESS') {
+            setDisable(false);
+            setModalIsOpen(true);
+          }
+        });
+      }
+    });
   };
   return (
     <>
@@ -211,7 +224,8 @@ export default function SpotInvest(props) {
               variant="contained"
               type="button"
               endIcon={<Iconify icon="ic:outline-add-shopping-cart" width={20} height={20} />}
-              onClick={() => handleModal()}
+              onClick={(event) => handleModal(event)}
+              disabled={disable}
             >
               {translate('invest')}
             </Button>

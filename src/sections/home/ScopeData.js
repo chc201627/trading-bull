@@ -11,7 +11,7 @@ import useLocales from '../../hooks/useLocales';
 
 const infoCards = [
   {
-    title: '+15',
+    title: '+5',
     description: 'home.scopeData.card0Description',
   },
   {
