@@ -212,7 +212,6 @@ export default function GeneralEcommerce() {
               ]}
             />
           </Grid>
-
           {/* <Grid item xs={12} md={6} lg={4}>
             <EcommerceLatestProducts title="Latest Products" list={_ecommerceLatestProducts} />
           </Grid> */}
