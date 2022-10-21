@@ -71,10 +71,6 @@ export default function TradingDeskCard({
     dateReturn.setMonth(dateReturn.getMonth()+1)
   }
   dateReturn.setDate(1)
-//   logic next payment
-  const dateNow = new Date().toLocaleDateString("default", {
-    "month": "numeric"
-});
 
   const { getCurrentWalletAddress, getUsdtBalance, trimAddress } = useTronLink();
   const [address, setAddress] = useState('');

@@ -1,4 +1,7 @@
 // @mui
+import * as React from 'react';
+import { useState } from 'react';
+import TablePagination from '@mui/material/TablePagination';
 import PropTypes from 'prop-types';
 import { useTheme } from '@mui/material/styles';
 import {
@@ -14,6 +17,7 @@ import {
   Typography,
   TableContainer,
 } from '@mui/material';
+import Pagination from '@mui/material/Pagination';
 // utils
 import { fCurrency } from '../../../../utils/formatNumber';
 // components
@@ -21,6 +25,7 @@ import Label from '../../../../components/Label';
 import Image from '../../../../components/Image';
 import Scrollbar from '../../../../components/Scrollbar';
 import { TableHeadCustom } from '../../../../components/table';
+
 
 // ----------------------------------------------------------------------
 
@@ -30,16 +35,26 @@ EcommerceBestSalesman.propTypes = {
   tableData: PropTypes.array.isRequired,
   tableLabels: PropTypes.array.isRequired,
 };
-
 export default function EcommerceBestSalesman({ title, subheader, tableData, tableLabels, ...other }) {
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(tableData.length);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
   return (
     <Card {...other}>
       <CardHeader title={title} subheader={subheader} sx={{ mb: 3 }} />
       <Scrollbar>
-        <TableContainer sx={{ minWidth: 720 }}>
+        <TableContainer  sx={{ minHeight : 150 }}>
           <Table>
             <TableHeadCustom headLabel={tableLabels} />
-
             <TableBody>
               {tableData.map((row) => (
                 <EcommerceBestSalesmanRow key={row.id} row={row} />
@@ -48,6 +63,14 @@ export default function EcommerceBestSalesman({ title, subheader, tableData, tab
           </Table>
         </TableContainer>
       </Scrollbar>
+      <TablePagination
+      component="div"
+      count={tableData.length}
+      page={page}
+      onPageChange={handleChangePage}
+      rowsPerPage={rowsPerPage}
+      onRowsPerPageChange={handleChangeRowsPerPage}
+    />
     </Card>
   );
 }
