@@ -36,17 +36,18 @@ EcommerceBestSalesman.propTypes = {
   tableLabels: PropTypes.array.isRequired,
 };
 export default function EcommerceBestSalesman({ title, subheader, tableData, tableLabels, ...other }) {
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(tableData.length);
-
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = (event) => {
+  const handleChangeRowsPerPage = event => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
+  const emptyRows =
+    rowsPerPage - Math.min(rowsPerPage, tableData.length - page * rowsPerPage);
 
   return (
     <Card {...other}>
@@ -56,21 +57,29 @@ export default function EcommerceBestSalesman({ title, subheader, tableData, tab
           <Table>
             <TableHeadCustom headLabel={tableLabels} />
             <TableBody>
-              {tableData.map((row) => (
+              {tableData
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((row) => (
                 <EcommerceBestSalesmanRow key={row.id} row={row} />
               ))}
+            {emptyRows > 0 && (
+            <TableRow style={{ height: 53 * emptyRows }}>
+              <TableCell colSpan={6} />
+            </TableRow>
+          )}
             </TableBody>
           </Table>
+          <TablePagination
+        rowsPerPageOptions={[5, 10, 25]}
+        component="div"
+        count={tableData.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange ={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      />
         </TableContainer>
       </Scrollbar>
-      <TablePagination
-      component="div"
-      count={tableData.length}
-      page={page}
-      onPageChange={handleChangePage}
-      rowsPerPage={rowsPerPage}
-      onRowsPerPageChange={handleChangeRowsPerPage}
-    />
     </Card>
   );
 }
