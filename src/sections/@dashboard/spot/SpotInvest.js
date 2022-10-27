@@ -14,6 +14,7 @@ import {
   FormControlLabel,
 } from '@mui/material';
 import { linearProgressClasses } from '@mui/material/LinearProgress';
+import IsoIcon from '@mui/icons-material/Iso';
 import { styled } from '@mui/material/styles';
 import InputAdornment from '@mui/material/InputAdornment';
 // Hooks
@@ -147,17 +148,23 @@ export default function SpotInvest(props) {
           </Grid>
 
           <Grid item xs={6} mt={2} container flexDirection="column" alignItems="center">
-            <Typography variant="h5" mr={1}>
-              {ratesMonth}%
-            </Typography>
+            <Grid item xs={6} container flexDirection="row" alignItems="center" justifyContent="space-around">
+              <IsoIcon fontSize="small" color="disabled" />
+              <Typography variant="h5" mr={1}>
+                {ratesMonth}%
+              </Typography>
+            </Grid>
             <Typography variant="subtitle2" sx={{ color: 'text.disabled' }}>
               {translate('dashboard.spot.rate_per_month')}
             </Typography>
           </Grid>
           <Grid item xs={6} mt={2} container flexDirection="column" alignItems="center">
-            <Typography variant="h5" mr={1}>
-              {ratesYear}%
-            </Typography>
+            <Grid item xs={6} container flexDirection="row" alignItems="center" justifyContent="space-around">
+              <IsoIcon fontSize="small" color="disabled" />
+              <Typography variant="h5" mr={1}>
+                {ratesYear}%
+              </Typography>
+            </Grid>
             <Typography variant="subtitle2" sx={{ color: 'text.disabled' }}>
               {translate('dashboard.spot.rate_per_year')}
             </Typography>
