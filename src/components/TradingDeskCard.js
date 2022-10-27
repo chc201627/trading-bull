@@ -140,7 +140,7 @@ export default function TradingDeskCard({
             </Typography>
           </Stack>
         </Stack>
-        <Alert severity="info">The Deposits will go directly to you wallet</Alert>
+        <Alert severity="info">Deposits will go directly to your wallet</Alert>
       </Stack>
     </>
   );

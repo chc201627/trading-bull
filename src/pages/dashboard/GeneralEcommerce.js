@@ -34,7 +34,7 @@ import { ReferralCode } from '../../middleware';
 // ----------------------------------------------------------------------
 
 export default function GeneralEcommerce() {
-  const {translate} = useLocales();
+  const { translate } = useLocales();
   const [totalReferrals, settotalReferrals] = useState(0);
   const [referralCode, setReferralCode] = useState('');
   const [toalReturnReferrals, settotalReturnReferrals] = useState(0);
@@ -47,14 +47,14 @@ export default function GeneralEcommerce() {
     const response = await ReferralCode.getTotalReferrals();
     const responseTable = await ReferralCode.getTableReferrals();
     console.log(responseTable);
-    const table = responseTable.map((refer)=> ({
-      id:refer.id,
-      money:refer.money_return,
-      spot:refer.spot_value,
-      status:refer.status,
-      enable:refer.enabled_before_at,
-      off:refer.off_date,
-    }))
+    const table = responseTable.map((refer) => ({
+      id: refer.id,
+      money: refer.money_return,
+      spot: refer.spot_value,
+      status: refer.status,
+      enable: refer.enabled_before_at,
+      off: refer.off_date,
+    }));
     console.log(table);
     console.log(_ecommerceBestSalesman);
     setspotTableData(table);
@@ -204,11 +204,11 @@ export default function GeneralEcommerce() {
               tableData={spotTableData}
               tableLabels={[
                 { id: 'id', label: 'Booker' },
-                { id: 'money', label: 'Money returned' },
+                { id: 'money', label: 'Expected Money returned' },
                 { id: 'spot', label: 'Spot value' },
                 { id: 'enable', label: 'Enable date' },
                 { id: 'off', label: 'Off date' },
-                { id: 'status', label: 'Status', align: 'right'},
+                { id: 'status', label: 'Status', align: 'right' },
               ]}
             />
           </Grid>
