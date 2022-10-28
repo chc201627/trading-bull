@@ -35,6 +35,8 @@ PendingAction.propTypes = {
   investment: PropTypes.object,
   handleChange: PropTypes.func,
   handleTransfer: PropTypes.func,
+  handleSpotCheckBox: PropTypes.func,
+  checkboxesState: PropTypes.string,
 };
 
 WalletInfo.propTypes = {
@@ -73,7 +75,7 @@ const RootStyle = styled(Card)(({ theme }) => ({
 }));
 
 function PendingAction(props) {
-  const { onClose, investment, handleChange, handleTransfer } = props;
+  const { onClose, investment, handleChange, handleTransfer, handleSpotCheckBox, checkboxesState } = props;
 
   const { translate } = useLocales();
 
@@ -110,8 +112,14 @@ function PendingAction(props) {
           </Typography>
         </Grid>
         <Grid item xs={8} mt={2} container justifyContent="space-around" alignItems="center">
-          <FormControlLabel control={<Checkbox defaultChecked />} label={translate('dashboard.spot.month')} />
-          <FormControlLabel control={<Checkbox />} label={translate('dashboard.spot.year')} />
+          <FormControlLabel
+            control={<Checkbox checked={checkboxesState === '1'} onChange={handleSpotCheckBox} name={'1'} />}
+            label={translate('dashboard.spot.month')}
+          />
+          <FormControlLabel
+            control={<Checkbox checked={checkboxesState === '2'} onChange={handleSpotCheckBox} name={'2'} />}
+            label={translate('dashboard.spot.year')}
+          />
         </Grid>
 
         <Grid item sm={12}>
@@ -141,7 +149,12 @@ function PendingAction(props) {
           <Button sx={{ my: 2 }} variant="outlined" fullWidth onClick={() => onClose()}>
             {translate('goBack')}
           </Button>
-          <Button variant="contained" fullWidth onClick={() => handleTransfer()} disabled={investment.total_payed < 1}>
+          <Button
+            variant="contained"
+            fullWidth
+            onClick={() => handleTransfer()}
+            disabled={investment.total_payed < 1 || checkboxesState === -1}
+          >
             {translate('dashboard.spot.make_you_invest')}
           </Button>
         </Grid>
@@ -323,7 +336,7 @@ function WalletInfo(props) {
 
 export default function SpotInvestModal(props) {
   const { isOpen, onClose } = props;
-
+  const [checkboxesState, setCheckboxesState] = useState(-1);
   const { transferTronUSDT, getTransactionStatus } = useTronLink();
 
   const initialState = {
@@ -337,6 +350,10 @@ export default function SpotInvestModal(props) {
 
   const handleInvestment = (key, value) => {
     setInvestment((current) => ({ ...current, [key]: value }));
+  };
+
+  const handleSpotCheckBox = (e) => {
+    setCheckboxesState(e.target.name);
   };
 
   const getAdminWallet = async () => {
@@ -358,7 +375,7 @@ export default function SpotInvestModal(props) {
       getTransactionStatus(trxId)
         .then((response) => {
           console.log({
-            permanence_id: 1,
+            permanence_id: Number(checkboxesState),
             generalspot_id: 1,
             spot_value: investment.total_payed,
             total_payed: investment.total_payed * 1.03,
@@ -367,7 +384,7 @@ export default function SpotInvestModal(props) {
           if (response.ret[0].contractRet === 'SUCCESS') {
             GeneralSpot.createSpot({
               data: {
-                permanence_id: 1,
+                permanence_id: Number(checkboxesState),
                 generalspot_id: 1,
                 spot_value: investment.total_payed,
                 total_payed: (investment.total_payed * 1.03).toFixed(2),
@@ -406,6 +423,8 @@ export default function SpotInvestModal(props) {
             investment={investment}
             handleChange={handleInvestment}
             handleTransfer={handleTransfer}
+            handleSpotCheckBox={handleSpotCheckBox}
+            checkboxesState={checkboxesState}
           />
         )}
         {investment.step === 1 && <ConfirmingAction investment={investment} />}

@@ -120,7 +120,7 @@ export default function TradingDeskCard({
           <Typography variant="body1" sx={{ color: 'text.secondary' }}>
             {'ROI : '}{' '}
           </Typography>
-          <Typography variant="body1"> &nbsp; 8%</Typography>
+          <Typography variant="body1"> &nbsp; 6%</Typography>
         </Stack>
         <Stack direction="row" justifyContent="space-between">
           <Typography variant="body1" sx={{ color: 'text.secondary' }}>
@@ -237,7 +237,7 @@ export default function TradingDeskCard({
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
               {'Block Type : '}{' '}
             </Typography>
-            <Typography variant="subtitle2"> &nbsp; Month</Typography>
+            <Typography variant="subtitle2"> &nbsp; {spot.permanence_id.name} </Typography>
           </Stack>
 
           <Stack direction="row" justifyContent="space-between">
