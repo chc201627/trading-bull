@@ -20,9 +20,7 @@ server.interceptors.request.use(async (request) => {
     }
     return request;
   } catch (err) {
-    throw new Error(
-      `axios# Problem with request during pre-flight phase: ${err}.`,
-    );
+    throw new Error(`axios# Problem with request during pre-flight phase: ${err}.`);
   }
 });
 

@@ -15,12 +15,12 @@ import {
   Chip,
   Switch,
   Alert,
+  FormControlLabel,
 } from '@mui/material';
 // utils
 import useTronLink from '../hooks/useTronLink';
 // components
-import { fCurrency } from '../utils/formatNumber';
-import Iconify from './Iconify';
+import { Spot } from '../middleware';
 
 // ----------------------------------------------------------------------
 
@@ -76,16 +76,28 @@ export default function TradingDeskCard({
   const { getCurrentWalletAddress, getUsdtBalance, trimAddress } = useTronLink();
   const [address, setAddress] = useState('');
   const [checked, setChecked] = useState(false);
-
+  const [reinvest, setReinvest] = useState(spot.is_reinvest);
   const handleChange = (event) => {
     setChecked(event.target.checked);
   };
-
+  const handleChangeSwitch = (event) => {
+    setReinvest(event.target.checked);
+  };
   useEffect(() => {
     const address = getCurrentWalletAddress();
     setAddress(address);
   }, []);
 
+  useEffect(() => {
+    async function updateReinvestMode() {
+      const response = Spot.update(spot.id, {
+        data: {
+          is_reinvest: reinvest,
+        },
+      });
+    }
+    updateReinvestMode();
+  }, [reinvest]);
   const Card1 = () => (
     <>
       <Stack direction="row" justifyContent="space-between">
@@ -133,14 +145,20 @@ export default function TradingDeskCard({
       <Stack direction="row" justifyContent="space-between">
         <Stack direction="column" justifyContent="space-around">
           <Stack direction="column" justifyContent="center">
-            <Switch />
+            <FormControlLabel control={<Switch onChange={handleChangeSwitch} checked={reinvest} />} label="Label" />
 
             <Typography align="center" variant="body2" sx={{ color: 'text.primary' }}>
               Reinvest Mode
             </Typography>
           </Stack>
         </Stack>
-        <Alert severity="info">Deposits will go directly to your wallet</Alert>
+        {reinvest ? (
+          <Alert severity="info">Deposits will go directly to your spot</Alert>
+        ) : (
+          <Alert variant="filled" severity="success">
+            Deposits will go directly to your wallet - Fee 3%
+          </Alert>
+        )}
       </Stack>
     </>
   );
