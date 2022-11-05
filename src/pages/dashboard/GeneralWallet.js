@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 // @mui
 import { useTheme } from '@mui/material/styles';
-import { Grid, Container } from '@mui/material';
+import { Grid, Container, Divider } from '@mui/material';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
 // hooks
@@ -17,7 +17,8 @@ import Page from '../../components/Page';
 // sections
 import { TronNavigation, WalletQRbalance } from '../../sections/@dashboard/general/wallet';
 import useTronLink from '../../hooks/useTronLink';
-
+import { EcommerceBestSalesman } from '../../sections/@dashboard/general/e-commerce';
+import { ReferralCode } from '../../middleware';
 // ----------------------------------------------------------------------
 
 export default function GeneralWallet() {
@@ -32,6 +33,7 @@ export default function GeneralWallet() {
   });
   const [balance, setBalance] = useState('0');
   const [address, setAddress] = useState('');
+  const [spotTableData, setspotTableData] = useState([]);
 
   const { themeStretch } = useSettings();
   const handleLogout = async () => {
@@ -48,6 +50,21 @@ export default function GeneralWallet() {
     }
   };
 
+  const getCountRefers = async () => {
+    const response = await ReferralCode.getTotalReferrals();
+    const responseTable = await ReferralCode.getTableReferrals();
+    console.log(responseTable);
+    const table = responseTable.map((refer) => ({
+      id: refer.id,
+      money: refer.money_return,
+      spot: refer.spot_value,
+      status: refer.status,
+      enable: refer.enabled_before_at,
+      off: refer.off_date,
+    }));
+
+    setspotTableData(table);
+  };
   useEffect(() => {
     const address = getCurrentWalletAddress();
     setAddress(address);
@@ -71,6 +88,23 @@ export default function GeneralWallet() {
           <Grid item xs={12} md={4}>
             <TronNavigation link={`https://tronscan.org/#/address/${address}`} handleLogout={handleLogout} />
           </Grid>
+        </Grid>
+        <Grid item xs={12} mt={3} mb={3}>
+          <Divider sx={{ color: 'white' }} />
+        </Grid>
+        <Grid item xs={12} md={8}>
+          <EcommerceBestSalesman
+            title="Movements"
+            tableData={spotTableData}
+            tableLabels={[
+              { id: 'Spot', label: 'Spot' },
+              { id: 'Actual Balance', label: 'Actual Balance' },
+              { id: 'spot', label: 'Spot value' },
+              { id: 'Generate', label: 'Generate' },
+              { id: 'Type', label: 'Type' },
+              { id: 'Transaction_hash', label: 'Transaction_hash' },
+            ]}
+          />
         </Grid>
       </Container>
     </Page>
