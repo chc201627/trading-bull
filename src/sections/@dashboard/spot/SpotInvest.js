@@ -151,7 +151,7 @@ export default function SpotInvest(props) {
             <Grid item xs={6} container flexDirection="row" alignItems="center" justifyContent="space-around">
               <IsoIcon fontSize="small" color="disabled" />
               <Typography variant="h5" mr={1}>
-                {ratesMonth}%
+                6%
               </Typography>
             </Grid>
             <Typography variant="subtitle2" sx={{ color: 'text.disabled' }}>
@@ -162,7 +162,7 @@ export default function SpotInvest(props) {
             <Grid item xs={6} container flexDirection="row" alignItems="center" justifyContent="space-around">
               <IsoIcon fontSize="small" color="disabled" />
               <Typography variant="h5" mr={1}>
-                {ratesYear}%
+                8%
               </Typography>
             </Grid>
             <Typography variant="subtitle2" sx={{ color: 'text.disabled' }}>
