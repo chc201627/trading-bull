@@ -17,8 +17,8 @@ import Page from '../../components/Page';
 // sections
 import { TronNavigation, WalletQRbalance } from '../../sections/@dashboard/general/wallet';
 import useTronLink from '../../hooks/useTronLink';
-import { EcommerceBestSalesman } from '../../sections/@dashboard/general/e-commerce';
-import { ReferralCode } from '../../middleware';
+import { EcommerceBestTransaction } from '../../sections/@dashboard/general/e-commerce';
+import { Transaction } from '../../middleware';
 // ----------------------------------------------------------------------
 
 export default function GeneralWallet() {
@@ -33,7 +33,7 @@ export default function GeneralWallet() {
   });
   const [balance, setBalance] = useState('0');
   const [address, setAddress] = useState('');
-  const [spotTableData, setspotTableData] = useState([]);
+  const [transactionTableData, setTransactionTableData] = useState([]);
 
   const { themeStretch } = useSettings();
   const handleLogout = async () => {
@@ -49,21 +49,11 @@ export default function GeneralWallet() {
       // enqueueSnackbar('Unable to logout!', { variant: 'error' });
     }
   };
+  console.log(transactionTableData);
+  const getTransaction = async () => {
+    const response = await Transaction.allTransactionsByUser();
 
-  const getCountRefers = async () => {
-    const response = await ReferralCode.getTotalReferrals();
-    const responseTable = await ReferralCode.getTableReferrals();
-    console.log(responseTable);
-    const table = responseTable.map((refer) => ({
-      id: refer.id,
-      money: refer.money_return,
-      spot: refer.spot_value,
-      status: refer.status,
-      enable: refer.enabled_before_at,
-      off: refer.off_date,
-    }));
-
-    setspotTableData(table);
+    setTransactionTableData(response);
   };
   useEffect(() => {
     const address = getCurrentWalletAddress();
@@ -74,7 +64,7 @@ export default function GeneralWallet() {
       const balance = parseInt(res?.data?._hex, 16);
       setBalance(balance);
     }
-
+    getTransaction();
     getBalance();
   }, []);
 
@@ -93,16 +83,16 @@ export default function GeneralWallet() {
           <Divider sx={{ color: 'white' }} />
         </Grid>
         <Grid item xs={12} md={8}>
-          <EcommerceBestSalesman
+          <EcommerceBestTransaction
             title="Movements"
-            tableData={spotTableData}
+            tableData={transactionTableData}
             tableLabels={[
-              { id: 'Spot', label: 'Spot' },
-              { id: 'Actual Balance', label: 'Actual Balance' },
-              { id: 'spot', label: 'Spot value' },
-              { id: 'Generate', label: 'Generate' },
+              { id: 'Spot Value', label: 'Spot Value' },
+              { id: 'Hash', label: 'Hash' },
+              { id: 'Earns Genereta', label: 'Earns Genereta' },
+              { id: 'Earns Beneficiary', label: 'Earns Beneficiary' },
+              { id: 'Earns Total', label: 'Earns Total' },
               { id: 'Type', label: 'Type' },
-              { id: 'Transaction_hash', label: 'Transaction_hash' },
             ]}
           />
         </Grid>

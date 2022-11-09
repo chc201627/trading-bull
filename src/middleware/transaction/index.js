@@ -7,6 +7,7 @@ const Transaction = {
   create: (body) => serverRequests.post('/transactions', body),
   update: (id, body) => serverRequests.put(`/transactions/${id}`, body),
   delete: (id) => serverRequests.del(`/transactions/${id}`),
+  allTransactionsByUser: () => serverRequests.get('/transaction/allTransactionsByUser'),
 };
 
 export default Transaction;
