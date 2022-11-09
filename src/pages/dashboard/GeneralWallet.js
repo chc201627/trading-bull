@@ -90,8 +90,8 @@ export default function GeneralWallet() {
               { id: 'Spot Value', label: 'Spot Value' },
               { id: 'Spot Value', label: 'Previous Balance' },
               { id: 'Hash', label: 'Hash' },
-              { id: 'Earns Genereta', label: 'Generete Earns' },
-              { id: 'Earns Beneficiary', label: 'Beneficiary Earns' },
+              { id: 'Earnings Generated', label: 'Earnings Generated' },
+              { id: 'Earnings Beneficiary', label: 'Earnings for Beneficiaries' },
               { id: 'Earns Total', label: 'Total Earnings' },
               { id: 'Type', label: 'Type' },
             ]}
