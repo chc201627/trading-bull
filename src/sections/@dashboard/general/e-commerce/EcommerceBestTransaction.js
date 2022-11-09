@@ -86,6 +86,7 @@ EcommerceBestTransactionRow.propTypes = {
   row: PropTypes.shape({
     balance: PropTypes.number,
     transaction_hash: PropTypes.string,
+    balance_pre_transaction: PropTypes.number,
     settlement_generated: PropTypes.number,
     settlement_beneficiary: PropTypes.number,
     settlement_total: PropTypes.number,
@@ -108,6 +109,7 @@ function EcommerceBestTransactionRow({ row }) {
         </Stack>
       </TableCell>
 
+      <TableCell>{row.balance_pre_transaction}</TableCell>
       <TableCell>
         {' '}
         {row.transaction_hash

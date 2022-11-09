@@ -88,10 +88,11 @@ export default function GeneralWallet() {
             tableData={transactionTableData}
             tableLabels={[
               { id: 'Spot Value', label: 'Spot Value' },
+              { id: 'Spot Value', label: 'Previous Balance' },
               { id: 'Hash', label: 'Hash' },
-              { id: 'Earns Genereta', label: 'Earns Genereta' },
-              { id: 'Earns Beneficiary', label: 'Earns Beneficiary' },
-              { id: 'Earns Total', label: 'Earns Total' },
+              { id: 'Earns Genereta', label: 'Generete Earns' },
+              { id: 'Earns Beneficiary', label: 'Beneficiary Earns' },
+              { id: 'Earns Total', label: 'Total Earnings' },
               { id: 'Type', label: 'Type' },
             ]}
           />
