@@ -8,7 +8,7 @@ import { Container, Grid, Stack, Button, Typography, Divider } from '@mui/materi
 import useAuth from '../../hooks/useAuth';
 import useSettings from '../../hooks/useSettings';
 import useLocales from '../../hooks/useLocales';
-import { Spot } from '../../middleware';
+import { Spot, Profit } from '../../middleware';
 // _mock_
 import { _appFeatured, _appAuthors, _appInstalled, _appRelated, _appInvoices } from '../../_mock';
 // Routes
@@ -55,6 +55,7 @@ export default function GeneralApp() {
     value: 'USDT',
     label: '(TRON)',
   });
+  const [totalEarning, setTotalEarning] = useState(' ');
   const [balance, setBalance] = useState('0');
   const [address, setAddress] = useState('');
   const [spotsInformation, setSpotsInformation] = useState([]);
@@ -62,6 +63,10 @@ export default function GeneralApp() {
   useEffect(() => {
     const address = getCurrentWalletAddress();
     setAddress(address);
+    async function getTotalEaring() {
+      const res = await Profit.totalEarnings();
+      setTotalEarning(res);
+    }
 
     async function getBalance() {
       const res = await getUsdtBalance(window.tronLink.tronWeb.defaultAddress.hex);
@@ -72,6 +77,7 @@ export default function GeneralApp() {
     }
 
     getBalance();
+    getTotalEaring();
   }, []);
 
   return (
@@ -107,15 +113,11 @@ export default function GeneralApp() {
             <AppAreaInstalled
               title={translate('dashboard.home.totalInvestments.title')}
               subheader="(+43%) than last year"
-              chartLabels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep']}
+              chartLabels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct']}
               chartData={[
                 {
-                  year: '2019',
-                  data: [{ name: 'Monthly Profit', data: [8.3, 7.5, 9.1, 9.3, 7.4, 8.6, 9.9, 11.1, 8.6] }],
-                },
-                {
-                  year: '2020',
-                  data: [{ name: 'Monthly Profit', data: [8.3, 7.5, 9.1, 9.3, 7.4, 8.6, 10.9, 7.1, 8.6] }],
+                  year: '2022',
+                  data: [{ name: 'Monthly Profit', data: [8.3, 9.5, 9.1, 9.3, 7.4, 8.6, 10.9, 7.1, 11.6, 9] }],
                 },
               ]}
             />
@@ -126,7 +128,7 @@ export default function GeneralApp() {
           </Grid>
 
           <Grid item xs={12} md={6} lg={6} xl={4}>
-            <TradingInformationCard />
+            <TradingInformationCard totalEarning={totalEarning} />
           </Grid>
 
           <Grid item xs={12} md={12} lg={12}>

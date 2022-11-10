@@ -206,7 +206,7 @@ const en = {
         value: 'Value',
         rentability: 'Rentability',
         lastUpdate: 'Last update at:',
-        lastDeposit: 'Last deposit at',
+        lastDeposit: 'All deposit',
         expectedReturn: 'Expected return',
         depositStatus: 'Status',
       },

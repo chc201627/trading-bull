@@ -9,5 +9,19 @@ import Type from './type';
 import Status from './status';
 import Transaction from './transaction';
 import Rate from './rate';
+import Profit from './profit';
 
-export { Auth, GeneralSpot, Permanence, ReferralCode, Spot, Type, Session, Status, Transaction, SessionHistory, Rate };
+export {
+  Auth,
+  Profit,
+  GeneralSpot,
+  Permanence,
+  ReferralCode,
+  Spot,
+  Type,
+  Session,
+  Status,
+  Transaction,
+  SessionHistory,
+  Rate,
+};
