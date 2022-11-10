@@ -47,7 +47,7 @@ AppAreaInstalled.propTypes = {
 };
 
 export default function AppAreaInstalled({ title, subheader, chartLabels, chartData, ...other }) {
-  const [seriesData, setSeriesData] = useState('2019');
+  const [seriesData, setSeriesData] = useState('2022');
 
   const [value, setValue] = useState(new Date('2022-10-06T21:11:54'));
 
