@@ -250,6 +250,7 @@ const en = {
       send_return_profile: 'Send & Return Profile',
     },
   },
+
   wallet: {
     title: 'Wallet',
     wallet: 'Wallet',
@@ -258,6 +259,17 @@ const en = {
     network: 'Network',
     status: {
       connected: 'Connected',
+    },
+    movements: {
+      title: 'Movements',
+      spotValue: 'Spot Value',
+      previousBalance: 'Previous Balance',
+      hash: 'Hash',
+      earnsGenerata: 'Earns Generate',
+      earnsBeneficiary: 'Earns Beneficiary',
+      earnsTotal: 'Earns Total',
+      transactionDate: 'Transaction date',
+      type: ' Type',
     },
     navigation: {
       history: 'Transaction Movements History',
@@ -277,6 +289,15 @@ const en = {
       alert_code: 'This code have a duration of 24 hours and cannot be used twice or more times',
       generate_code: 'Generate Code',
       generate_link: 'Generate Link',
+    },
+    referredDetails: {
+      title: 'Referred Details',
+      id: '#',
+      expectReturned: 'Expected money returned',
+      spotValue: 'Spot value',
+      enbaleDate: 'Enable date',
+      offDate: 'Expiration',
+      status: 'Status',
     },
     details: {},
   },

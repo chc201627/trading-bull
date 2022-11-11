@@ -65,7 +65,7 @@ export default function TradingInformationCard({
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
               {translate('dashboard.home.earnings.value')}{' '}
             </Typography>
-            <Typography variant="subtitle1"> &nbsp; ${totalEarning[0].totalEarnings}</Typography>
+            <Typography variant="subtitle1"> &nbsp; ${totalEarning[0].totalEarnings || 0}</Typography>
           </Stack>
           <Stack direction="row" justifyContent="flex-start">
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
@@ -73,7 +73,7 @@ export default function TradingInformationCard({
             </Typography>
             <Typography variant="subtitle1" sx={{ color: 'green' }}>
               {' '}
-              &nbsp; +/- &nbsp; {totalEarning[0].rentability}%
+              &nbsp; +/- &nbsp; {totalEarning[0].rentability || 0}%
             </Typography>
           </Stack>
           <Stack direction="row" justifyContent="flex-start">
@@ -95,14 +95,14 @@ export default function TradingInformationCard({
           </Stack>
 
           <Stack direction="row" justifyContent="space-between">
-            <Typography variant="subtitle1"> &nbsp; $ &nbsp; {totalEarning[0].totalDeposits}</Typography>
+            <Typography variant="subtitle1"> &nbsp; $ &nbsp; {totalEarning[0].totalDeposits || 0}</Typography>
             <Stack direction="row" justifyContent="flex-start">
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                 {translate('dashboard.home.earnings.depositStatus')}{' '}
               </Typography>
               <Typography variant="subtitle1" sx={{ color: 'green' }}>
                 {' '}
-                &nbsp; +/- &nbsp; {totalEarning[0].rentability}%
+                &nbsp; +/- &nbsp; {totalEarning[0].rentability || 0}%
               </Typography>
             </Stack>
           </Stack>

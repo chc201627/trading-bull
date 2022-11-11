@@ -111,9 +111,10 @@ function EcommerceBestTransactionRow({ row }) {
       <TableCell>
         <Stack direction="row" alignItems="center">
           <Typography variant="subtitle2">
-            {row.transaction_hash
+            {/* {row.transaction_hash
               ? `${row.transaction_hash.substr(0, 6)}...${row.transaction_hash.substr(-6)}`
-              : row.transaction_hash}
+              : row.transaction_hash} */}
+            {row.transaction_hash}
           </Typography>
         </Stack>
       </TableCell>

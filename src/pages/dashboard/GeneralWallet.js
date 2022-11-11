@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useTheme } from '@mui/material/styles';
 import { Grid, Container, Divider } from '@mui/material';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
-
+import useLocales from '../../hooks/useLocales';
 // hooks
 import useSettings from '../../hooks/useSettings';
 // routes
@@ -23,7 +23,7 @@ import { Transaction } from '../../middleware';
 
 export default function GeneralWallet() {
   const navigate = useNavigate();
-
+  const { translate } = useLocales();
   const { logout } = useAuth();
   const { getCurrentWalletAddress, getUsdtBalance, trimAddress } = useTronLink();
 
@@ -49,7 +49,7 @@ export default function GeneralWallet() {
       // enqueueSnackbar('Unable to logout!', { variant: 'error' });
     }
   };
-  console.log(transactionTableData);
+
   const getTransaction = async () => {
     const response = await Transaction.allTransactionsByUser();
 
@@ -84,17 +84,17 @@ export default function GeneralWallet() {
         </Grid>
         <Grid item xs={12} md={8}>
           <EcommerceBestTransaction
-            title="Movements"
+            title={translate('wallet.movements.title')}
             tableData={transactionTableData}
             tableLabels={[
-              { id: 'Spot Value', label: 'Spot Value' },
-              { id: 'Spot Value', label: 'Previous Balance' },
-              { id: 'Hash', label: 'Hash' },
-              { id: 'Genereta', label: 'Earns Genereta' },
-              { id: 'Earns Beneficiary', label: 'Earns Beneficiary' },
-              { id: 'Earns Total', label: 'Earns Total' },
-              { id: 'Date of', label: ' Transaction date ' },
-              { id: 'Type', label: 'Type', align: 'right' },
+              { id: 'Spot Value', label: translate('wallet.movements.spotValue') },
+              { id: 'Spot Value', label: translate('wallet.movements.previousBalance') },
+              { id: 'Hash', label: translate('wallet.movements.hash') },
+              { id: 'Genereta', label: translate('wallet.movements.earnsGenerata') },
+              { id: 'Earns Beneficiary', label: translate('wallet.movements.earnsBeneficiary') },
+              { id: 'Earns Total', label: translate('wallet.movements.earnsTotal') },
+              { id: 'Date of', label: translate('wallet.movements.transactionDate') },
+              { id: 'Type', label: translate('wallet.movements.type'), align: 'right' },
             ]}
           />
         </Grid>

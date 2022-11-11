@@ -55,8 +55,7 @@ export default function GeneralEcommerce() {
       enable: refer.enabled_before_at,
       off: refer.off_date,
     }));
-    console.log(table);
-    console.log(_ecommerceBestSalesman);
+
     setspotTableData(table);
     settotalReferrals(response.totalReferrals);
     settotalReturnReferrals(response.totalReturnReferrals);
@@ -66,7 +65,7 @@ export default function GeneralEcommerce() {
     const createCode = await ReferralCode.create({ data: {} });
     setReferralCode(createCode.data.attributes.code);
     await navigator.clipboard.writeText(createCode.data.attributes.code);
-    console.log(referralCode);
+
     alert('Code Copied');
   };
 
@@ -200,15 +199,15 @@ export default function GeneralEcommerce() {
 
           <Grid item xs={12}>
             <EcommerceBestSalesman
-              title="Referred Details"
+              title={translate('refers.referredDetails.title')}
               tableData={spotTableData}
               tableLabels={[
-                { id: 'id', label: 'Booker' },
-                { id: 'money', label: 'Expected Money returned' },
-                { id: 'spot', label: 'Spot value' },
-                { id: 'enable', label: 'Enable date' },
-                { id: 'off', label: 'Off date' },
-                { id: 'status', label: 'Status', align: 'right' },
+                { id: 'id', label: translate('refers.referredDetails.id') },
+                { id: 'money', label: translate('refers.referredDetails.expectReturned') },
+                { id: 'spot', label: translate('refers.referredDetails.spotValue') },
+                { id: 'enable', label: translate('refers.referredDetails.enbaleDate') },
+                { id: 'off', label: translate('refers.referredDetails.offDate') },
+                { id: 'status', label: translate('refers.referredDetails.status'), align: 'right' },
               ]}
             />
           </Grid>
