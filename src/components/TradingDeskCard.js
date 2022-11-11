@@ -50,6 +50,15 @@ export default function TradingDeskCard({
   const displayShipping = shipping !== null ? 'Free' : '-';
   const date = new Date(spot.createdAt);
   const dateac = new Date(spot.enabled_before_at);
+  const fecha = new Date(spot.enabled_before_at)
+  const fechaActtual = new Date()
+  fecha.setDate(dateac.getDate() + 30)
+  const [checkedSell, setCheckedSell] = useState(false);
+
+  const handleChangeSell = (event) => {
+    setCheckedSell(event.target.checked);
+  };
+
   const options = {
     year: 'numeric',
     month: 'numeric',
@@ -77,6 +86,7 @@ export default function TradingDeskCard({
   const [address, setAddress] = useState('');
   const [checked, setChecked] = useState(false);
   const [reinvest, setReinvest] = useState(spot.is_reinvest);
+  const [sellSpot, setSellSpot] = useState(false)
   const handleChange = (event) => {
     setChecked(event.target.checked);
   };
@@ -160,6 +170,34 @@ export default function TradingDeskCard({
           </Alert>
         )}
       </Stack>
+
+            <Stack direction="row" justifyContent="space-between">             
+                <Stack direction="column" justifyContent="space-around">
+                    
+                    <Stack direction="column" justifyContent="center">
+                        <Switch 
+                        checked={checkedSell}
+                        onChange={handleChangeSell}
+                        disabled={fechaActtual<fecha}
+                        />
+
+                        <Typography align="center" variant="body2" sx={{ color: 'text.primary' }}>
+                        Sell
+                        </Typography> 
+                    </Stack>
+                        
+                </Stack>
+
+                {sellSpot ? (
+                    <Alert variant="filled" severity="success">Your withdraw</Alert>
+                    ) : (
+                    <Alert variant="filled" severity="info">
+                        This option will be avaliable {Intl.DateTimeFormat('default', optionsTime).format(fecha)}
+                    </Alert>
+                )}
+
+            </Stack>
+
     </>
   );
 
