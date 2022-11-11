@@ -90,10 +90,11 @@ export default function GeneralWallet() {
               { id: 'Spot Value', label: 'Spot Value' },
               { id: 'Spot Value', label: 'Previous Balance' },
               { id: 'Hash', label: 'Hash' },
-              { id: 'Earnings Generated', label: 'Earnings Generated' },
-              { id: 'Earnings Beneficiary', label: 'Earnings for Beneficiaries' },
-              { id: 'Earns Total', label: 'Total Earnings' },
-              { id: 'Type', label: 'Type' },
+              { id: 'Genereta', label: 'Earns Genereta' },
+              { id: 'Earns Beneficiary', label: 'Earns Beneficiary' },
+              { id: 'Earns Total', label: 'Earns Total' },
+              { id: 'Date of', label: ' Transaction date ' },
+              { id: 'Type', label: 'Type', align: 'right' },
             ]}
           />
         </Grid>
