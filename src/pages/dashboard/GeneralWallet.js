@@ -89,10 +89,11 @@ export default function GeneralWallet() {
             tableLabels={[
               { id: 'Spot Value', label: 'Spot Value' },
               { id: 'Hash', label: 'Hash' },
-              { id: 'Earns Genereta', label: 'Earns Genereta' },
+              { id: 'Genereta', label: 'Earns Genereta' },
               { id: 'Earns Beneficiary', label: 'Earns Beneficiary' },
               { id: 'Earns Total', label: 'Earns Total' },
-              { id: 'Type', label: 'Type' },
+              { id: 'Date of', label: ' Transaction date ' },
+              { id: 'Type', label: 'Type', align: 'right' },
             ]}
           />
         </Grid>

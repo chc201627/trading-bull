@@ -95,35 +95,57 @@ EcommerceBestTransactionRow.propTypes = {
 
 function EcommerceBestTransactionRow({ row }) {
   const theme = useTheme();
-  const dateEnable = new Date(row.enable);
+  const dateEnable = new Date(row.createdAt);
   const dateOff = new Date(row.off);
 
   return (
     <TableRow>
-      <TableCell>
-        <Stack direction="row" alignItems="center">
-          <Box sx={{ ml: 2 }}>
-            <Typography variant="subtitle2"> {row.balance} </Typography>
-          </Box>
+      <TableCell align="left">
+        <Stack direction="row" alignSelf="left">
+          <Typography variant="subtitle2"> {row.balance} </Typography>
         </Stack>
       </TableCell>
 
       <TableCell>
-        {' '}
-        {row.transaction_hash
-          ? `${row.transaction_hash.substr(0, 6)}...${row.transaction_hash.substr(-6)}`
-          : row.transaction_hash}
+        <Stack direction="row" alignItems="center">
+          <Typography variant="subtitle2">
+            {row.transaction_hash
+              ? `${row.transaction_hash.substr(0, 6)}...${row.transaction_hash.substr(-6)}`
+              : row.transaction_hash}
+          </Typography>
+        </Stack>
       </TableCell>
-      <TableCell>{row.settlement_generated}</TableCell>
-      <TableCell>{row.settlement_beneficiary}</TableCell>
-      <TableCell>{row.settlement_total}</TableCell>
+      <TableCell>
+        <Stack direction="row" alignItems="center">
+          <Typography variant="subtitle2">{row.settlement_generated}</Typography>
+        </Stack>
+      </TableCell>
+      <TableCell>
+        <Stack direction="row" alignItems="center">
+          <Typography variant="subtitle2">{row.settlement_beneficiary}</Typography>
+        </Stack>
+      </TableCell>
+      <TableCell>
+        <Stack direction="row" alignItems="center">
+          <Typography variant="subtitle2">{row.settlement_total}</Typography>
+        </Stack>
+      </TableCell>
+      <TableCell>
+        <Stack direction="row" alignItems="center">
+          <Typography variant="subtitle2">{Intl.DateTimeFormat('en-US').format(dateEnable)}</Typography>
+        </Stack>
+      </TableCell>
       <TableCell align="right">
-        <Label
-          variant={theme.palette.mode === 'light' ? 'ghost' : 'filled'}
-          color={(row.type === 'BUY' && 'success') || (row.type === 'REINVESTED' && 'info') || 'error'}
-        >
-          {row.type}
-        </Label>
+        <Stack>
+          <Typography variant="subtitle2">
+            <Label
+              variant={theme.palette.mode === 'light' ? 'ghost' : 'filled'}
+              color={(row.type === 'BUY' && 'success') || (row.type === 'REINVESTED' && 'info') || 'error'}
+            >
+              {row.type}
+            </Label>
+          </Typography>
+        </Stack>
       </TableCell>
     </TableRow>
   );
