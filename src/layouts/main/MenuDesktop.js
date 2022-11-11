@@ -33,11 +33,7 @@ export default function MenuDesktop({ navConfig }) {
   return (
     <Stack direction="row">
       {navConfig.map((link, i) => (
-        <MenuDesktopItem
-          key={link.title}
-          item={link}
-          index={i}
-        />
+        <MenuDesktopItem key={link.title} item={link} index={i} />
       ))}
     </Stack>
   );
@@ -55,7 +51,6 @@ MenuDesktopItem.propTypes = {
 };
 
 function MenuDesktopItem({ item, index }) {
-
   const { scrollToRef } = useContext(SettingsContext);
   const { pathname, hash } = useLocation();
   const { translate } = useLocales();

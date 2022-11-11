@@ -280,7 +280,7 @@ const es = {
     referredDetails: {
       title: 'Detalles de Referidos',
       id: '#',
-      expectReturned: 'Expected Money returned',
+      expectReturned: 'Retorno Referido',
       spotValue: 'Valor Spot',
       enbaleDate: 'Fecha Activación',
       offDate: 'Vencimiento',
