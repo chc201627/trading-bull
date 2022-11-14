@@ -164,7 +164,7 @@ export default function TradingDeskCard({
         </Stack>
       </Stack>
 
-      <Stack direction="row" justifyContent="space-between">
+      <Stack direction="column" justifyContent="space-between">
         <Stack direction="column" justifyContent="space-around">
           <Stack direction="column" justifyContent="center">
             <FormControlLabel
@@ -173,18 +173,34 @@ export default function TradingDeskCard({
             />
           </Stack>
         </Stack>
-        {reinvest ? (
-          <Alert variant="filled" severity="success">
+        {(() => {
+          if (!reinvest && checkedSell) {
+            return <></>;
+          }
+          if (reinvest && !checkedSell) {
+            return (
+              <Alert variant="filled" severity="success" hidden>
+                Deposits will go directly to your spot
+              </Alert>
+            );
+          }
+          return (
+            <Alert variant="filled" severity="warning" hidden>
+              Deposits will go directly to your wallet - Fee 3%
+            </Alert>
+          );
+        })()}
+
+        {/* {reinvest && !checkedSell ? (
+          <Alert variant="filled" severity="success" hidden>
             Deposits will go directly to your spot
           </Alert>
         ) : (
-          <Alert variant="filled" severity="warning">
-            Deposits will go directly to your wallet - Fee 3%
-          </Alert>
-        )}
+          <></>
+        )} */}
       </Stack>
 
-      <Stack direction="row" justifyContent="space-between">
+      <Stack direction="column" justifyContent="space-between">
         <Stack direction="column" justifyContent="space-around">
           <Stack direction="column" justifyContent="center">
             <FormControlLabel
@@ -202,7 +218,8 @@ export default function TradingDeskCard({
           </Alert>
         ) : (
           <Alert variant="filled" severity="success">
-            Your withdraw
+            Your withdrawal request has being activated, the spot will be sold at the end of the month and the payment
+            will be executed within the first 5 business days of the next month. Please beware the withdrawal fee is 3%.
           </Alert>
         )}
       </Stack>
