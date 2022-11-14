@@ -6,11 +6,7 @@ import { PATH_DASHBOARD } from './routes/paths';
 // API
 // ----------------------------------------------------------------------
 
-<<<<<<< HEAD
-export const HOST_API = process.env.REACT_APP_HOST_API || 'https://aplication.streakbull.com/api/';
-=======
 export const HOST_API = process.env.REACT_APP_HOST_API || 'https://dev-api.streakbull.com/api/';
->>>>>>> 81d1da2118799eddec7c35e9fb9c84e00112d55b
 
 export const FIREBASE_API = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,

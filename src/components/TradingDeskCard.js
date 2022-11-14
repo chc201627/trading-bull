@@ -50,14 +50,9 @@ export default function TradingDeskCard({
   const displayShipping = shipping !== null ? 'Free' : '-';
   const date = new Date(spot.createdAt);
   const dateac = new Date(spot.enabled_before_at);
-  const fecha = new Date(spot.enabled_before_at)
-  const fechaActtual = new Date()
-  fecha.setDate(dateac.getDate() + 30)
-  const [checkedSell, setCheckedSell] = useState(false);
-
-  const handleChangeSell = (event) => {
-    setCheckedSell(event.target.checked);
-  };
+  const fecha = new Date(spot.enabled_before_at);
+  const fechaActual = new Date();
+  fecha.setDate(dateac.getDate() + 30);
 
   const options = {
     year: 'numeric',
@@ -86,17 +81,34 @@ export default function TradingDeskCard({
   const [address, setAddress] = useState('');
   const [checked, setChecked] = useState(false);
   const [reinvest, setReinvest] = useState(spot.is_reinvest);
-  const [sellSpot, setSellSpot] = useState(false)
-  const handleChange = (event) => {
-    setChecked(event.target.checked);
-  };
+
+  const [checkedSell, setCheckedSell] = useState(spot.is_sell);
+
   const handleChangeSwitch = (event) => {
     setReinvest(event.target.checked);
+  };
+  const handleChangeSwitchSell = (event) => {
+    setCheckedSell(event.target.checked);
+    console.log(checkedSell);
   };
   useEffect(() => {
     const address = getCurrentWalletAddress();
     setAddress(address);
   }, []);
+  useEffect(() => {
+    async function updateSellMode() {
+      const response = Spot.update(spot.id, {
+        data: {
+          is_reinvest: false,
+          is_sell: checkedSell,
+        },
+      });
+    }
+    if (checkedSell) {
+      setReinvest(false);
+    }
+    updateSellMode();
+  }, [checkedSell]);
 
   useEffect(() => {
     async function updateReinvestMode() {
@@ -155,49 +167,45 @@ export default function TradingDeskCard({
       <Stack direction="row" justifyContent="space-between">
         <Stack direction="column" justifyContent="space-around">
           <Stack direction="column" justifyContent="center">
-            <FormControlLabel control={<Switch onChange={handleChangeSwitch} checked={reinvest} />} label="Label" />
-
-            <Typography align="center" variant="body2" sx={{ color: 'text.primary' }}>
-              Reinvest Mode
-            </Typography>
+            <FormControlLabel
+              control={<Switch onChange={handleChangeSwitch} checked={reinvest} disabled={checkedSell} />}
+              label="Reinvest Mode"
+            />
           </Stack>
         </Stack>
         {reinvest ? (
-          <Alert severity="info">Deposits will go directly to your spot</Alert>
-        ) : (
           <Alert variant="filled" severity="success">
+            Deposits will go directly to your spot
+          </Alert>
+        ) : (
+          <Alert variant="filled" severity="warning">
             Deposits will go directly to your wallet - Fee 3%
           </Alert>
         )}
       </Stack>
 
-            <Stack direction="row" justifyContent="space-between">             
-                <Stack direction="column" justifyContent="space-around">
-                    
-                    <Stack direction="column" justifyContent="center">
-                        <Switch 
-                        checked={checkedSell}
-                        onChange={handleChangeSell}
-                        disabled={fechaActtual<fecha}
-                        />
+      <Stack direction="row" justifyContent="space-between">
+        <Stack direction="column" justifyContent="space-around">
+          <Stack direction="column" justifyContent="center">
+            <FormControlLabel
+              control={
+                <Switch onChange={handleChangeSwitchSell} checked={checkedSell} disabled={fechaActual < fecha} />
+              }
+              label="Sell"
+            />
+          </Stack>
+        </Stack>
 
-                        <Typography align="center" variant="body2" sx={{ color: 'text.primary' }}>
-                        Sell
-                        </Typography> 
-                    </Stack>
-                        
-                </Stack>
-
-                {sellSpot ? (
-                    <Alert variant="filled" severity="success">Your withdraw</Alert>
-                    ) : (
-                    <Alert variant="filled" severity="info">
-                        This option will be avaliable {Intl.DateTimeFormat('default', optionsTime).format(fecha)}
-                    </Alert>
-                )}
-
-            </Stack>
-
+        {!checkedSell ? (
+          <Alert variant="filled" severity="warning">
+            This option will be avaliable {Intl.DateTimeFormat('en-US').format(fecha)}
+          </Alert>
+        ) : (
+          <Alert variant="filled" severity="success">
+            Your withdraw
+          </Alert>
+        )}
+      </Stack>
     </>
   );
 
