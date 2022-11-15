@@ -199,7 +199,7 @@ const es = {
         blockTypeMontlhy: 'Mensual',
         blockTypeYearly: 'Anual',
         investValue: 'Valor inversión',
-        expectedBonus: 'Bonificación esperada',
+        expectedBonus: 'Bonificación esperada por mes',
         nextPaymentAt: 'Próximo pago',
         depostiWallet: 'Wallet de depósito',
         investmentType: 'Tipo de inversión',

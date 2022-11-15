@@ -141,7 +141,9 @@ export default function TradingDeskCard({
           </Stack>
         </Stack>
         <Typography variant="h4" sx={{ color: 'text.primary' }}>
-          $ 0
+          {spot.permanence_id.name === 'Monthly'
+            ? Math.floor((spot.spot_value * 6) / 100)
+            : Math.floor((spot.spot_value * 8) / 100)}
         </Typography>
       </Stack>
       <Stack>

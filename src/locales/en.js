@@ -217,7 +217,7 @@ const en = {
         blockTypeMontlhy: 'Monthly',
         blockTypeYearly: 'Yearly',
         investValue: 'Invest Value',
-        expectedBonus: 'Expected Bonus',
+        expectedBonus: 'Expected Bonus for month',
         nextPaymentAt: 'Next payment at',
         depostiWallet: 'Deposit Wallet',
         investmentType: 'Investment type',
