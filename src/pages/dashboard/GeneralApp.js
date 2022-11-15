@@ -135,7 +135,7 @@ export default function GeneralApp() {
             <Divider />
 
             <Typography py={2} variant="h5" sx={{ color: 'text.secondary' }}>
-              My Trading Desk
+              {translate('dashboard.home.spots.title')}
             </Typography>
           </Grid>
           {spotsInformation ? (
