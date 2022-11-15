@@ -19,6 +19,7 @@ import {
 } from '@mui/material';
 // utils
 import useTronLink from '../hooks/useTronLink';
+import useLocales from '../hooks/useLocales';
 // components
 import { Spot } from '../middleware';
 
@@ -76,10 +77,10 @@ export default function TradingDeskCard({
     dateReturn.setMonth(dateReturn.getMonth() + 1);
   }
   dateReturn.setDate(1);
-
+  const { translate } = useLocales();
   const { getCurrentWalletAddress, getUsdtBalance, trimAddress } = useTronLink();
   const [address, setAddress] = useState('');
-  const [checked, setChecked] = useState(false);
+
   const [reinvest, setReinvest] = useState(spot.is_reinvest);
 
   const [checkedSell, setCheckedSell] = useState(spot.is_sell);
@@ -125,13 +126,13 @@ export default function TradingDeskCard({
       <Stack direction="row" justifyContent="space-between">
         <Stack direction="column" justifyContent="space-between">
           <Typography variant="body1" sx={{ color: 'text.primary' }}>
-            Expected Bonus
+            {translate('dashboard.home.spots.expectedBonus')}
           </Typography>
 
           <Stack direction="row">
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
               {' '}
-              Next payment at: &nbsp;{' '}
+              {translate('dashboard.home.spots.nextPaymentAt')}: &nbsp;{' '}
             </Typography>
 
             <Typography variant="body2" sx={{ color: 'text.primary' }}>
@@ -146,7 +147,7 @@ export default function TradingDeskCard({
       <Stack>
         <Stack direction="row" justifyContent="space-between">
           <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-            {'Deposit Wallet : '}{' '}
+            {translate('dashboard.home.spots.depostiWallet')}:{' '}
           </Typography>
           <Typography variant="body1"> &nbsp; {`${address.substr(0, 6)}...${address.substr(-6)}`}</Typography>
         </Stack>
@@ -158,7 +159,7 @@ export default function TradingDeskCard({
         </Stack>
         <Stack direction="row" justifyContent="space-between">
           <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-            {'Investment type : '}{' '}
+            {translate('dashboard.home.spots.investmentType')}:{' '}
           </Typography>
           <Typography variant="body1"> &nbsp; TRADING</Typography>
         </Stack>
@@ -169,7 +170,7 @@ export default function TradingDeskCard({
           <Stack direction="column" justifyContent="center">
             <FormControlLabel
               control={<Switch onChange={handleChangeSwitch} checked={reinvest} disabled={checkedSell} />}
-              label="Reinvest Mode"
+              label={translate('dashboard.home.spots.reinvestMode')}
             />
           </Stack>
         </Stack>
@@ -180,24 +181,16 @@ export default function TradingDeskCard({
           if (reinvest && !checkedSell) {
             return (
               <Alert variant="filled" severity="success" hidden>
-                Deposits will go directly to your spot
+                {translate('dashboard.home.spots.reinvestModeTrue')}
               </Alert>
             );
           }
           return (
             <Alert variant="filled" severity="warning" hidden>
-              Deposits will go directly to your wallet - Fee 3%
+              {translate('dashboard.home.spots.reinvestModeFalse')}
             </Alert>
           );
         })()}
-
-        {/* {reinvest && !checkedSell ? (
-          <Alert variant="filled" severity="success" hidden>
-            Deposits will go directly to your spot
-          </Alert>
-        ) : (
-          <></>
-        )} */}
       </Stack>
 
       <Stack direction="column" justifyContent="space-between">
@@ -207,19 +200,18 @@ export default function TradingDeskCard({
               control={
                 <Switch onChange={handleChangeSwitchSell} checked={checkedSell} disabled={fechaActual < fecha} />
               }
-              label="Sell"
+              label={translate('dashboard.home.spots.sell')}
             />
           </Stack>
         </Stack>
 
         {!checkedSell ? (
           <Alert variant="filled" severity="warning">
-            This option will be avaliable {Intl.DateTimeFormat('en-US').format(fecha)}
+            {translate('dashboard.home.spots.sellFalse')} {Intl.DateTimeFormat('en-US').format(fecha)}
           </Alert>
         ) : (
           <Alert variant="filled" severity="success">
-            Your withdrawal request has being activated, the spot will be sold at the end of the month and the payment
-            will be executed within the first 5 business days of the next month. Please beware the withdrawal fee is 3%.
+            {translate('dashboard.home.spots.sellTrue')}
           </Alert>
         )}
       </Stack>
@@ -305,7 +297,7 @@ export default function TradingDeskCard({
           <Stack direction="row" justifyContent="space-between">
             <Stack direction="column" justifyContent="space-between">
               <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-                Deposit: {Intl.DateTimeFormat().format(date)}
+                {translate('dashboard.home.spots.deposit')}: {Intl.DateTimeFormat().format(date)}
               </Typography>
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                 Trading
@@ -316,15 +308,21 @@ export default function TradingDeskCard({
 
           <Stack direction="row" justifyContent="flex-start">
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              {'Block Type : '}{' '}
+              {translate('dashboard.home.spots.blockType')}:{' '}
             </Typography>
-            <Typography variant="subtitle2"> &nbsp; {spot.permanence_id.name} </Typography>
+            <Typography variant="subtitle2">
+              {' '}
+              &nbsp;{' '}
+              {spot.permanence_id.name === 'Monthly'
+                ? translate('dashboard.home.spots.blockTypeMontlhy')
+                : translate('dashboard.home.spots.blockTypeYearly')}{' '}
+            </Typography>
           </Stack>
 
           <Stack direction="row" justifyContent="space-between">
             <Stack direction="column" justifyContent="space-between">
               <Typography variant="subtitle1" sx={{ color: 'text.secondary' }}>
-                Invest Value
+                {translate('dashboard.home.spots.investValue')}
               </Typography>
               <Typography variant="h4" sx={{ color: 'text.primary' }}>
                 {spot.spot_value} USDT
