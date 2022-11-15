@@ -44,7 +44,7 @@ export default function EcommerceCurrentBalance({
                 {translate('refers.balance.total_return')}
               </Typography>
               <Label color="secondary" variant="outlined" startIcon={<InfoIcon />} sx={{ p: 1, mt: 1 }}>
-              {translate('refers.balance.total_return_alert')}
+                {translate('refers.balance.total_return_alert')}
               </Label>
             </Stack>
             <Stack>
@@ -52,10 +52,10 @@ export default function EcommerceCurrentBalance({
                 {totalReferrals}
               </Typography>
               <Typography variant="body1" align="center">
-              {translate('refers.balance.total_refers')}
+                {translate('refers.balance.total_refers')}
               </Typography>
               <Label color="secondary" variant="outlined" startIcon={<InfoIcon />} sx={{ p: 1, mt: 1 }}>
-              {translate('refers.balance.total_refers_alert')}
+                {translate('refers.balance.total_refers_alert')}
               </Label>
             </Stack>
           </Stack>
@@ -64,7 +64,7 @@ export default function EcommerceCurrentBalance({
           <Stack spacing={2}>
             <Stack>
               <Label color="secondary" variant="outlined" startIcon={<InfoIcon />} sx={{ p: 1 }}>
-              {translate('refers.balance.alert_code')}
+                {translate('refers.balance.alert_code')}
               </Label>
             </Stack>
 
@@ -79,22 +79,10 @@ export default function EcommerceCurrentBalance({
                 }}
                 fullWidth
                 variant="contained"
-                sx={{ fontWeight: 0, fontSize: 13}}
+                sx={{ fontWeight: 0, fontSize: 13 }}
                 color="info"
               >
                 {translate('refers.balance.generate_code')}
-              </Button>
-
-              <Button
-                onClick={() => {
-                  createReferralLink();
-                }}
-                fullWidth
-                variant="contained"
-                sx={{ fontWeight: 0, fontSize: 13 }}
-                color="primary"
-              >
-                {translate('refers.balance.generate_link')}
               </Button>
             </Stack>
           </Stack>
