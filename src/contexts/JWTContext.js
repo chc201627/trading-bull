@@ -175,10 +175,8 @@ function AuthProvider({ children }) {
     try {
       const response = await auth.signUp({ ...signatureResponse.data, ...body });
 
-      console.log(response.data);
-
       const { jwt, user } = response.data;
-
+      localStorage.setItem('jwt', jwt);
       setSession(jwt);
 
       dispatch({
