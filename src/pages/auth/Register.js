@@ -73,8 +73,8 @@ export default function Register() {
         <HeaderStyle>
           <Logo />
           {smUp && (
-            <Box display='flex' alignItems='center' >
-              <Typography variant="body2" >
+            <Box display="flex" alignItems="center">
+              <Typography variant="body2">
                 Already have an account? {''}
                 <Link variant="subtitle2" component={RouterLink} to={PATH_AUTH.login}>
                   Login
@@ -114,9 +114,9 @@ export default function Register() {
 
             <Divider />
 
-            <Alert severity='info' sx={{ mt: 2, mb: 2 }}>
+            <Alert severity="info" sx={{ mt: 2, mb: 2 }}>
               {translate('register.faqs')}
-              <Button color='inherit' variant='outlined' size='small' sx={{ ml: 1 }}>
+              <Button color="inherit" variant="outlined" size="small" sx={{ ml: 1 }}>
                 {translate('register.goToFaqs')}
               </Button>
             </Alert>
@@ -145,7 +145,7 @@ export default function Register() {
                     Login
                   </Link>
                 </Typography>
-                <Box display='flex' justifyContent='center' sx={{mt: 2}}>
+                <Box display="flex" justifyContent="center" sx={{ mt: 2 }}>
                   <ChangeLanguaje />
                 </Box>
               </>
