@@ -227,7 +227,7 @@ export default function TradingDeskCard({
           {Intl.DateTimeFormat('default', options).format(dateac)}
         </Typography>
         <Typography align="center" variant="body2" sx={{ color: 'text.secondary' }}>
-          Activation date: {Intl.DateTimeFormat().format(dateac)}
+          {translate('dashboard.home.spots.activationDate')}: {Intl.DateTimeFormat().format(dateac)}
         </Typography>
       </Stack>
       <Stack direction="column" justifyContent="center">
@@ -235,26 +235,26 @@ export default function TradingDeskCard({
           {Intl.DateTimeFormat('default', optionsTime).format(dateac)}
         </Typography>
         <Typography align="center" variant="body2" sx={{ color: 'text.secondary' }}>
-          Time
+          {translate('dashboard.home.spots.time')}
         </Typography>
       </Stack>
 
       <Stack>
         <Stack direction="row" justifyContent="space-between">
           <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-            {'Rentability : '}{' '}
+            {translate('dashboard.home.spots.rentability')}:{' '}
           </Typography>
           <Typography variant="body1"> &nbsp; 0% - 13%</Typography>
         </Stack>
         <Stack direction="row" justifyContent="space-between">
           <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-            {'Investment type : '}{' '}
+            {translate('dashboard.home.spots.investmentType')}:{' '}
           </Typography>
           <Typography variant="body1"> &nbsp; TRADING</Typography>
         </Stack>
         <Stack direction="row" justifyContent="space-between">
           <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-            {'Sector : '}{' '}
+            {translate('dashboard.home.spots.sector')}:{' '}
           </Typography>
           <Typography variant="body1"> &nbsp; Indices - Forex - Crypto</Typography>
         </Stack>

@@ -228,6 +228,10 @@ const en = {
         sellFalse: 'This option will be avaliable',
         sellTrue:
           'Your withdrawal request has being activated, the spot will be sold at the end of the month and the payment will be executed within the first 5 business days of the next month. Please beware the withdrawal fee is 3%.',
+        activationDate: 'Activation Date',
+        time: 'Time',
+        rentability: 'Rentability',
+        sector: 'Sector',
       },
     },
     refers: {
