@@ -210,6 +210,10 @@ const es = {
         sellFalse: 'Esta opción estará activa a partir de ',
         sellTrue:
           'Su solicitud de retiro ha sido activada, el spot se venderá a fin de mes y el pago se ejecutará dentro de los primeros 5 días hábiles del próximo mes. Tenga en cuenta que la tarifa de retiro es del 3%.',
+        activationDate: 'Fecha de activación',
+        time: 'Hora',
+        rentability: 'Rentabilidad',
+        sector: 'Sectór',
       },
     },
     spot: {
