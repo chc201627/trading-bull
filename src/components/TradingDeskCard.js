@@ -53,7 +53,11 @@ export default function TradingDeskCard({
   const dateac = new Date(spot.enabled_before_at);
   const fecha = new Date(spot.enabled_before_at);
   const fechaActual = new Date();
-  fecha.setDate(dateac.getDate() + 30);
+  if (spot.permanence_id.name === 'Monthly') {
+    fecha.setDate(dateac.getDate() + 30);
+  } else {
+    fecha.setDate(dateac.getDate() + 365);
+  }
 
   const options = {
     year: 'numeric',
