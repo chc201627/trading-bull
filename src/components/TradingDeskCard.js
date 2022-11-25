@@ -161,7 +161,7 @@ export default function TradingDeskCard({
           <Typography variant="body1" sx={{ color: 'text.secondary' }}>
             {'ROI : '}{' '}
           </Typography>
-          <Typography variant="body1"> &nbsp; 6%</Typography>
+          <Typography variant="body1"> &nbsp; {spot.permanence_id.name === 'Monthly' ? 6 : 8}%</Typography>
         </Stack>
         <Stack direction="row" justifyContent="space-between">
           <Typography variant="body1" sx={{ color: 'text.secondary' }}>
