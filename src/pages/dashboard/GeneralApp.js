@@ -113,11 +113,11 @@ export default function GeneralApp() {
             <AppAreaInstalled
               title={translate('dashboard.home.totalInvestments.title')}
               subheader="(+43%) than last year"
-              chartLabels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct']}
+              chartLabels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov']}
               chartData={[
                 {
                   year: '2022',
-                  data: [{ name: 'Monthly Profit', data: [8.3, 9.5, 9.1, 9.3, 7.4, 8.6, 10.9, 7.1, 11.6, 9] }],
+                  data: [{ name: 'Monthly Profit', data: [8.3, 9.5, 9.1, 9.3, 7.4, 8.6, 10.9, 7.1, 11.6, 9, 10.8] }],
                 },
               ]}
             />
