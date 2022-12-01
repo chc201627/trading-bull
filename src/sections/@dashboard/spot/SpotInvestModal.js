@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router'
 // @mui
-import {
+import { 
   Dialog,
   Card,
   Grid,
@@ -24,6 +25,10 @@ import { GeneralSpot } from '../../../middleware';
 
 // components
 import Iconify from '../../../components/Iconify';
+import Counterback from '../../../components/counter/Counterback';
+
+// routes
+import { PATH_DASHBOARD } from '../../../routes/paths';
 
 SpotInvestModal.propTypes = {
   isOpen: PropTypes.bool,
@@ -53,6 +58,7 @@ ConfirmedAction.propTypes = {
 
 CancelledAction.propTypes = {
   investment: PropTypes.object,
+  onCancel: PropTypes.func,
 };
 
 const RootStyle = styled(Card)(({ theme }) => ({
@@ -164,32 +170,12 @@ function PendingAction(props) {
 }
 
 function ConfirmingAction(props) {
-  const { investment } = props;
+  const { investment, onCancel } = props;
   const { translate } = useLocales();
 
   return (
     <Grid container>
-      <Grid item sm={5.5}>
-        <Typography variant="h3" textAlign="right">
-          15
-        </Typography>
-        <Typography textAlign="right" variant="subtitle2" sx={{ color: 'text.disabled' }}>
-          {translate('dashboard.spot.minutes')}
-        </Typography>
-      </Grid>
-      <Grid item sm={1}>
-        <Typography variant="h3" textAlign="center">
-          :
-        </Typography>
-      </Grid>
-      <Grid item sm={5.5}>
-        <Typography variant="h3" textAlign="left">
-          15
-        </Typography>
-        <Typography variant="subtitle2" sx={{ color: 'text.disabled' }}>
-          {translate('dashboard.spot.seconds')}
-        </Typography>
-      </Grid>
+      <Counterback />
       <Grid item sm={12}>
         <Typography variant="subtitle2" textAlign="center">
           {translate('dashboard.spot.time_remaining')}
@@ -218,7 +204,7 @@ function ConfirmingAction(props) {
       <WalletInfo investment={investment} />
 
       <Grid item sm={12}>
-        <Button sx={{ my: 2 }} variant="contained" fullWidth color="error">
+        <Button sx={{ my: 2 }} variant="contained" fullWidth color="error" onClick={()=>onCancel()}>
           {translate('dashboard.spot.cancel_order')}
         </Button>
         <Button variant="contained" fullWidth>
@@ -262,8 +248,9 @@ function ConfirmedAction(props) {
 }
 
 function CancelledAction(props) {
+  const  navigate  = useNavigate()
   const { translate } = useLocales();
-  const { investment } = props;
+  const { investment, onCancel } = props;
   return (
     <Grid container>
       <Grid item sm={12}>
@@ -273,10 +260,10 @@ function CancelledAction(props) {
       </Grid>
 
       <WalletInfo investment={investment} />
-      <Button sx={{ my: 2 }} variant="contained" color="info" fullWidth>
+      <Button sx={{ my: 2 }} variant="contained" color="info" fullWidth onClick={()=>onCancel()}>
         {translate('dashboard.spot.send_return_profile')}
       </Button>
-      <Button variant="contained" fullWidth>
+      <Button variant="contained" fullWidth onClick={()=> navigate(PATH_DASHBOARD.general.app)}>
         {translate('dashboard.spot.return_profile')}
       </Button>
     </Grid>
@@ -427,9 +414,9 @@ export default function SpotInvestModal(props) {
             checkboxesState={checkboxesState}
           />
         )}
-        {investment.step === 1 && <ConfirmingAction investment={investment} />}
+        {investment.step === 1 && <ConfirmingAction investment={investment} onCancel={onClose} />}
         {investment.step === 2 && <ConfirmedAction investment={investment} />}
-        {investment.step === 3 && <CancelledAction investment={investment} />}
+        {investment.step === 3 && <CancelledAction investment={investment} onCancel={onClose} />}
         {/* <ConfirmedAction /> */}
         {/* <CancelledAction /> */}
       </RootStyle>
