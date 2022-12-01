@@ -216,6 +216,7 @@ function ConfirmingAction(props) {
 }
 
 function ConfirmedAction(props) {
+  const  navigate  = useNavigate()
   const { translate } = useLocales();
 
   const { investment } = props;
@@ -240,7 +241,7 @@ function ConfirmedAction(props) {
         </Typography>
       </Grid>
       <WalletInfo investment={investment} />
-      <Button sx={{ my: 2 }} variant="contained" fullWidth>
+      <Button sx={{ my: 2 }} variant="contained" fullWidth onClick={()=> navigate(PATH_DASHBOARD.general.app)}>
         {translate('dashboard.spot.return_profile')}
       </Button>
     </Grid>
