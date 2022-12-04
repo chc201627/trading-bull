@@ -204,10 +204,10 @@ function ConfirmingAction(props) {
       <WalletInfo investment={investment} />
 
       <Grid item sm={12}>
-        <Button sx={{ my: 2 }} variant="contained" fullWidth color="error" onClick={()=>onCancel()}>
+        {/* <Button sx={{ my: 2 }} variant="contained" fullWidth color="error" onClick={()=>onCancel()}>
           {translate('dashboard.spot.cancel_order')}
-        </Button>
-        <Button variant="contained" fullWidth>
+        </Button> */}
+        <Button sx={{ my: 2 }} variant="contained" fullWidth>
           {translate('invest')}
         </Button>
       </Grid>
@@ -401,6 +401,12 @@ export default function SpotInvestModal(props) {
   useEffect(() => {
     getAdminWallet();
   }, []);
+
+  useEffect(() => {
+    if(!isOpen && investment.step === 3){
+      setInvestment({...investment, step: 0})
+    }
+  }, [isOpen]);
 
   return (
     <Dialog open={isOpen} onClose={onClose}>
