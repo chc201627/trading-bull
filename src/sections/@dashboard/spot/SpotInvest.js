@@ -1,18 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 // @mui
-import {
-  Card,
-  Grid,
-  LinearProgress,
-  Typography,
-  Box,
-  Divider,
-  Button,
-  TextField,
-  Checkbox,
-  FormControlLabel,
-} from '@mui/material';
+import { Card, Grid, LinearProgress, Typography, Box, Divider, Button } from '@mui/material';
+import LoadingButton from '@mui/lab/LoadingButton';
 import { linearProgressClasses } from '@mui/material/LinearProgress';
 import Skeleton from '@mui/material/Skeleton';
 import IsoIcon from '@mui/icons-material/Iso';
@@ -261,7 +251,7 @@ export default function SpotInvest(props) {
           </Grid> */}
 
               <Grid item xs={12} mt={2}>
-                <Button
+                <LoadingButton
                   size="large"
                   fullWidth
                   variant="contained"
@@ -269,9 +259,11 @@ export default function SpotInvest(props) {
                   endIcon={<Iconify icon="ic:outline-add-shopping-cart" width={20} height={20} />}
                   onClick={(event) => handleModal(event)}
                   disabled={disable}
+                  loading={disable}
+                  loadingPosition={'end'}
                 >
                   {translate('invest')}
-                </Button>
+                </LoadingButton>
               </Grid>
             </Grid>
           </RootStyle>
