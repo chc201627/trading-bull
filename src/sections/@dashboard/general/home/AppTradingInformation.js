@@ -110,7 +110,7 @@ export default function TradingInformationCard({
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
               {translate('dashboard.home.earnings.expectedReturn')}{' '}
             </Typography>
-            <Typography variant="subtitle2"> &nbsp; 6% </Typography>
+            <Typography variant="subtitle2"> &nbsp; 3% - 13% </Typography>
           </Stack>
         </Stack>
       </CardContent>

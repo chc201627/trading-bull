@@ -213,7 +213,7 @@ export default function TradingDeskCard({
 
         {!checkedSell ? (
           <Alert variant="filled" severity="warning">
-            {translate('dashboard.home.spots.sellFalse')} {Intl.DateTimeFormat('en-US').format(fecha)}
+            {translate('dashboard.home.spots.sellFalse')} {Intl.DateTimeFormat().format(fecha)}
           </Alert>
         ) : (
           <Alert variant="filled" severity="success">
