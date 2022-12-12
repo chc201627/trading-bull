@@ -204,7 +204,8 @@ const es = {
         depostiWallet: 'Wallet de depósito',
         investmentType: 'Tipo de inversión',
         reinvestMode: 'Reinversión',
-        reinvestModeFalse: 'Tu bonificación irá directo a tu wallet - tarifa 3%',
+        reinvestModeFalse:
+          'Tu bonificación irá directo a tu wallet - tarifa 3%, el pago se ejecutará dentro de los primeros 5 días hábiles del próximo mes.',
         reinvestModeTrue: 'Tu bonificación irá directo a tu spot',
         sell: 'Retiro',
         sellFalse: 'Esta opción estará activa a partir de ',
