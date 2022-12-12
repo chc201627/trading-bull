@@ -222,7 +222,8 @@ const en = {
         depostiWallet: 'Deposit Wallet',
         investmentType: 'Investment type',
         reinvestMode: 'Reinvest Mode',
-        reinvestModeFalse: 'Deposits will go directly to your wallet - Fee 3%',
+        reinvestModeFalse:
+          'Deposits will go directly to your wallet - Fee 3%, the payment will be executed within the first 5 business days of the next month.',
         reinvestModeTrue: 'Deposits will go directly to your spot',
         sell: 'Sell',
         sellFalse: 'This option will be avaliable',
