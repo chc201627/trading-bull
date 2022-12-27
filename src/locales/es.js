@@ -179,9 +179,15 @@ const es = {
         cardContent: `${getMonth()} viene con muchas sorpresas, incluyendo nuevos cupos, mensuales y anuales. ¡Echa un vistazo!`,
         action: 'Ir ahora',
       },
-      totalInvestments: {
+      totalInvestmentsYearly: {
+        blockType: 'Bloqueo Anual',
         title: 'Inversiones',
-        periods: ['Todo', 'Año', '6 meses', '3 meses', '1 mes'],
+        periods: ['Todo el año', 'Año'],
+      },
+      totalInvestmentsMonthly: {
+        blockType: 'Bloqueo Mensual',
+        title: 'Inversiones',
+        periods: ['Todo el año', 'Año'],
       },
       earnings: {
         title: 'Ganancias Totales',

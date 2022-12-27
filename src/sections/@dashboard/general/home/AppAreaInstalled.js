@@ -46,13 +46,13 @@ AppAreaInstalled.propTypes = {
   chartLabels: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
-export default function AppAreaInstalled({ title, subheader, chartLabels, chartData, ...other }) {
+export default function AppAreaInstalled({ title, subheader, chartLabels, chartData, investmentBlock, ...other }) {
   const [seriesData, setSeriesData] = useState('2022');
 
   const [value, setValue] = useState(new Date('2022-10-06T21:11:54'));
 
   const months = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov'];
-  const percents = [8.3, 9.5, 9.1, 9.3, 7.4, 8.6, 10.9, 7.1, 11.6, 9, 10.8];
+  const percents = chartData[0].data[0].data;
 
   const handleChange = (newValue) => {
     setValue(newValue);
@@ -97,7 +97,7 @@ export default function AppAreaInstalled({ title, subheader, chartLabels, chartD
         </Box>
       ))}
       <Typography variant="h6" sx={{ color: 'grey.500', mb: 2 }}>
-        Yearly Block
+        {investmentBlock}
       </Typography>
       <TableContainer>
         <Table>

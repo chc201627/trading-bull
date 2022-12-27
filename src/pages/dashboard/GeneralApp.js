@@ -27,7 +27,6 @@ import {
   // AppAreaInstalled,
   // AppCurrentDownload,
   // AppTopInstalledCountries,
-  AppTotalInvestments,
   AppAreaInstalled,
   AppWalletInformation,
   TradingInformationCard,
@@ -109,11 +108,27 @@ export default function GeneralApp() {
             />
           </Grid>
 
-          <Grid item xs={12} md={12} lg={12} xl={8}>
+          <Grid item xs={12} md={6} lg={6} xl={6}>
             <AppAreaInstalled
-              title={translate('dashboard.home.totalInvestments.title')}
+              title={translate('dashboard.home.totalInvestmentsMonthly')}
               subheader="(+43%) than last year"
               chartLabels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov']}
+              investmentBlock={translate('dashboard.home.totalInvestmentsMonthly.blockType')}
+              chartData={[
+                {
+                  year: '2022',
+                  data: [{ name: 'Monthly Profit', data: [5.3, 6.5, 6.1, 6.3, 4.4, 5.6, 7.9, 4.1, 8.6, 7, 8.8] }],
+                },
+              ]}
+            />
+          </Grid>
+
+          <Grid item xs={12} md={6} lg={6} xl={6}>
+            <AppAreaInstalled
+              title={translate('dashboard.home.totalInvestmentsYearly')}
+              subheader="(+43%) than last year"
+              chartLabels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov']}
+              investmentBlock={translate('dashboard.home.totalInvestmentsYearly.blockType')}
               chartData={[
                 {
                   year: '2022',
@@ -124,11 +139,10 @@ export default function GeneralApp() {
           </Grid>
 
           <Grid item xs={12} md={6} lg={6} xl={4}>
-            <AppWalletInformation tron={{ currency, balance, address }} sx={{ backgroundColor: 'info' }} />
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={6} xl={4}>
             <TradingInformationCard totalEarning={totalEarning} />
+          </Grid>
+          <Grid item xs={12} md={6} lg={6} xl={4}>
+            <AppWalletInformation tron={{ currency, balance, address }} sx={{ backgroundColor: 'info' }} />
           </Grid>
 
           <Grid item xs={12} md={12} lg={12}>
