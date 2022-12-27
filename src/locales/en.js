@@ -197,9 +197,15 @@ const en = {
         cardContent: `${getMonth()} comes with many surprises, including new Spots, monthly and annual. Let's take a look!`,
         action: 'Go Now',
       },
-      totalInvestments: {
-        title: 'Total Investments',
-        periods: ['All time', 'Year', '6 months', '3 months', '1 month'],
+      totalInvestmentsYearly: {
+        blockType: 'Yearly Block',
+        title: 'Total Investments yearly',
+        periods: ['All time', 'Year'],
+      },
+      totalInvestmentsMonthly: {
+        blockType: 'Montlhy Block',
+        title: 'Total Investments monthly',
+        periods: ['All time', 'Year'],
       },
       earnings: {
         title: 'Total Earnings',
