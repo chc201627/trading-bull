@@ -341,6 +341,7 @@ const en = {
     documentation: `documentation`,
   },
   invest: 'Invest',
+  cancelInvest: 'You must recharge TRX',
   app: `app`,
   user: `user`,
   list: `list`,
