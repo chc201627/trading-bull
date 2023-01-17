@@ -35,17 +35,17 @@ export default function SpotInvest(props) {
   const [ratesMonth, setRatesMonth] = useState(0);
   const [ratesYear, setRatesYear] = useState(0);
   const [disable, setDisable] = React.useState(false);
+  const [failledDelegate, setFailledDelegate] = React.useState(false);
   const getInformation = async () => {
     setisLoading(true);
     const response = await GeneralSpot.getAll();
     const responseRate = await Rate.getAll();
     setisLoading(false);
-    console.log(responseRate.data[0].attributes);
+
     setMinValue(response.data[0].attributes.min_value);
     setRatesYear(responseRate.data[0].attributes.yearly_rate);
     setRatesMonth(responseRate.data[0].attributes.monthly_rate);
     setAvailableValue(response.data[0].attributes.total_value - response.data[0].attributes.value_used);
-    console.log(response.data[0].attributes.total_value - response.data[0].attributes.value_used);
     setMaxValue(response.data[0].attributes.max_value);
     setValueUsed(response.data[0].attributes.value_used);
     setTotalValue(response.data[0].attributes.total_value);
@@ -59,19 +59,26 @@ export default function SpotInvest(props) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const handleModal = (event) => {
     setDisable(true);
-    GeneralSpot.delegateEnergy().then((data) => {
-      if (data === 'User has enough resources to pay usdt transfer') {
-        setModalIsOpen(true);
-        setDisable(false);
-      } else {
-        getTransactionStatus(data.txid).then((response) => {
-          if (response.ret[0].contractRet === 'SUCCESS') {
-            setDisable(false);
-            setModalIsOpen(true);
-          }
-        });
-      }
-    });
+    GeneralSpot.delegateEnergy()
+      .then((data) => {
+        if (data === 'User has enough resources to pay usdt transfer') {
+          setModalIsOpen(true);
+          setDisable(false);
+        }
+        if (data === 'User should recharge TRX.') {
+          setModalIsOpen(false);
+          setDisable(false);
+          setFailledDelegate(true);
+        } else {
+          getTransactionStatus(data.txid).then((response) => {
+            if (response.ret[0].contractRet === 'SUCCESS') {
+              setDisable(false);
+              setModalIsOpen(true);
+            }
+          });
+        }
+      })
+      .catch((error) => console.log(error));
   };
   return (
     <>
@@ -262,7 +269,7 @@ export default function SpotInvest(props) {
                   loading={disable}
                   loadingPosition={'end'}
                 >
-                  {translate('invest')}
+                  {failledDelegate ? translate('cancelInvest') : translate('invest')}
                 </LoadingButton>
               </Grid>
             </Grid>

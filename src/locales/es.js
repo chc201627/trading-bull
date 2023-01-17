@@ -320,6 +320,7 @@ const es = {
   },
   goBack: 'Volver',
   invest: 'Invertir',
+  cancelInvest: 'Debes de recargar TRX',
 };
 
 export default es;
