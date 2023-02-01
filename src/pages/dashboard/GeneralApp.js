@@ -112,12 +112,18 @@ export default function GeneralApp() {
             <AppAreaInstalled
               title={translate('dashboard.home.totalInvestmentsMonthly')}
               subheader="(+43%) than last year"
-              chartLabels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']}
+              chartLabels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan']}
               investmentBlock={translate('dashboard.home.totalInvestmentsMonthly.blockType')}
               chartData={[
                 {
                   year: '2022',
-                  data: [{ name: 'Monthly Profit', data: [5.3, 6.5, 6.1, 6.3, 4.4, 5.6, 7.9, 4.1, 8.6, 7, 8.8, 3.5] }],
+                  data: [
+                    { name: 'Monthly Profit', data: [5.3, 6.5, 6.1, 6.3, 4.4, 5.6, 7.9, 4.1, 8.6, 7, 8.8, 5.5, 3.9] },
+                  ],
+                },
+                {
+                  year: '2023',
+                  data: [{ name: 'Monthly Profit', data: [3.9] }],
                 },
               ]}
             />
@@ -127,14 +133,21 @@ export default function GeneralApp() {
             <AppAreaInstalled
               title={translate('dashboard.home.totalInvestmentsYearly')}
               subheader="(+43%) than last year"
-              chartLabels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']}
+              chartLabels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan']}
               investmentBlock={translate('dashboard.home.totalInvestmentsYearly.blockType')}
               chartData={[
                 {
                   year: '2022',
                   data: [
-                    { name: 'Monthly Profit', data: [8.3, 9.5, 9.1, 9.3, 7.4, 8.6, 10.9, 7.1, 11.6, 9, 10.8, 5.5] },
+                    {
+                      name: 'Monthly Profit',
+                      data: [8.3, 9.5, 9.1, 9.3, 7.4, 8.6, 10.9, 7.1, 11.6, 9, 10.8, 3.5, 5.9],
+                    },
                   ],
+                },
+                {
+                  year: '2023',
+                  data: [{ name: 'Monthly Profit', data: [5.9] }],
                 },
               ]}
             />
