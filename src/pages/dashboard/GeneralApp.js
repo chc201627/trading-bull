@@ -112,7 +112,7 @@ export default function GeneralApp() {
             <AppAreaInstalled
               title={translate('dashboard.home.totalInvestmentsMonthly')}
               subheader="(+43%) than last year"
-              chartLabels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan']}
+              chartLabels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']}
               investmentBlock={translate('dashboard.home.totalInvestmentsMonthly.blockType')}
               chartData={[
                 {
@@ -133,7 +133,7 @@ export default function GeneralApp() {
             <AppAreaInstalled
               title={translate('dashboard.home.totalInvestmentsYearly')}
               subheader="(+43%) than last year"
-              chartLabels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan']}
+              chartLabels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']}
               investmentBlock={translate('dashboard.home.totalInvestmentsYearly.blockType')}
               chartData={[
                 {

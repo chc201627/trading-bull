@@ -47,12 +47,12 @@ AppAreaInstalled.propTypes = {
 };
 
 export default function AppAreaInstalled({ title, subheader, chartLabels, chartData, investmentBlock, ...other }) {
-  const [seriesData, setSeriesData] = useState('2022');
+  const [seriesData, setSeriesData] = useState('2023');
 
-  const [value, setValue] = useState(new Date('2022-10-06T21:11:54'));
+  const [value, setValue] = useState(new Date('2023-01-01T21:11:54'));
 
-  const months = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dec', 'Ene'];
-  const percents = chartData[0].data[0].data;
+  const months = ['Jan', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const percents = chartData[1].data[0].data;
 
   const handleChange = (newValue) => {
     setValue(newValue);
