@@ -121,7 +121,7 @@ export default function GeneralApp() {
           <Grid item xs={12} lg={12} xl={12}>
             <BankingBalanceStatistics
               title={translate('dashboard.home.totalInvestmentsMonthly.title')}
-              subheader="(+12% Yeraly | +9% Monthly) than last year"
+              subheader="(+12% Yearly | +9% Monthly) than last year"
               chartLabels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']}
               chartData={[
                 {
