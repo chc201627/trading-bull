@@ -93,8 +93,8 @@ export default function Router() {
           path: 'spot',
           children: [
             { element: <Navigate to="/dashboard/spot/all" replace />, index: true },
-            { path: 'all', element: <SpotsAll /> }
-          ]
+            { path: 'all', element: <SpotsAll /> },
+          ],
         },
         {
           path: 'referss',

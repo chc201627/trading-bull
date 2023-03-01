@@ -199,12 +199,12 @@ const en = {
       },
       totalInvestmentsYearly: {
         blockType: 'Yearly Block',
-        title: 'Total Investments yearly',
+        title: 'Total Investments ',
         periods: ['All time', 'Year'],
       },
       totalInvestmentsMonthly: {
         blockType: 'Montlhy Block',
-        title: 'Total Investments monthly',
+        title: 'Total Investments',
         periods: ['All time', 'Year'],
       },
       earnings: {

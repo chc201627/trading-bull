@@ -15,6 +15,16 @@ import { _appFeatured, _appAuthors, _appInstalled, _appRelated, _appInvoices } f
 import { PATH_DASHBOARD } from '../../routes/paths';
 // components
 import Page from '../../components/Page';
+import {
+  BankingContacts,
+  BankingWidgetSummary,
+  BankingInviteFriends,
+  BankingQuickTransfer,
+  BankingCurrentBalance,
+  BankingBalanceStatistics,
+  BankingRecentTransitions,
+  BankingExpensesCategories,
+} from '../../sections/@dashboard/general/banking';
 // sections
 import {
   // AppWidget,
@@ -108,46 +118,25 @@ export default function GeneralApp() {
             />
           </Grid>
 
-          <Grid item xs={12} md={6} lg={6} xl={6}>
-            <AppAreaInstalled
-              title={translate('dashboard.home.totalInvestmentsMonthly')}
-              subheader="(+43%) than last year"
+          <Grid item xs={12} lg={12} xl={12}>
+            <BankingBalanceStatistics
+              title={translate('dashboard.home.totalInvestmentsMonthly.title')}
+              subheader="(+12% Yeraly | +9% Monthly) than last year"
               chartLabels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']}
-              investmentBlock={translate('dashboard.home.totalInvestmentsMonthly.blockType')}
               chartData={[
                 {
-                  year: '2022',
+                  year: 2022,
                   data: [
-                    { name: 'Monthly Profit', data: [5.3, 6.5, 6.1, 6.3, 4.4, 5.6, 7.9, 4.1, 8.6, 7, 8.8, 5.5, 3.9] },
+                    { name: 'Monthly', data: [5.3, 6.5, 6.1, 6.3, 4.4, 5.6, 7.9, 4.1, 8.6, 7, 8.8, 5.5, 3.9] },
+                    { name: 'Yeraly', data: [8.3, 9.5, 9.1, 9.3, 7.4, 8.6, 10.9, 7.1, 11.6, 9, 10.8, 3.5, 5.9] },
                   ],
                 },
                 {
-                  year: '2023',
-                  data: [{ name: 'Monthly Profit', data: [3.9] }],
-                },
-              ]}
-            />
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={6} xl={6}>
-            <AppAreaInstalled
-              title={translate('dashboard.home.totalInvestmentsYearly')}
-              subheader="(+43%) than last year"
-              chartLabels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']}
-              investmentBlock={translate('dashboard.home.totalInvestmentsYearly.blockType')}
-              chartData={[
-                {
-                  year: '2022',
+                  year: 2023,
                   data: [
-                    {
-                      name: 'Monthly Profit',
-                      data: [8.3, 9.5, 9.1, 9.3, 7.4, 8.6, 10.9, 7.1, 11.6, 9, 10.8, 3.5, 5.9],
-                    },
+                    { name: 'Monthly', data: [3.9, 4.5] },
+                    { name: 'Yeraly', data: [5.9, 6.5] },
                   ],
-                },
-                {
-                  year: '2023',
-                  data: [{ name: 'Monthly Profit', data: [5.9] }],
                 },
               ]}
             />
