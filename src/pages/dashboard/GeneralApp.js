@@ -128,14 +128,14 @@ export default function GeneralApp() {
                   year: 2022,
                   data: [
                     { name: 'Monthly', data: [6.5, 6.1, 6.3, 4.4, 5.6, 7.9, 4.1, 8.6, 7, 8.8, 5.5, 3.9] },
-                    { name: 'Yeraly', data: [9.5, 9.1, 9.3, 7.4, 8.6, 10.9, 7.1, 11.6, 9, 10.8, 3.5, 5.9] },
+                    { name: 'Yearly', data: [9.5, 9.1, 9.3, 7.4, 8.6, 10.9, 7.1, 11.6, 9, 10.8, 3.5, 5.9] },
                   ],
                 },
                 {
                   year: 2023,
                   data: [
                     { name: 'Monthly', data: [3.9, 4.5] },
-                    { name: 'Yeraly', data: [5.9, 6.5] },
+                    { name: 'Yearly', data: [5.9, 6.5] },
                   ],
                 },
               ]}
