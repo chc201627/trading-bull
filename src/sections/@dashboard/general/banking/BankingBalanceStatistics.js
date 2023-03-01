@@ -17,10 +17,10 @@ BankingBalanceStatistics.propTypes = {
 };
 
 export default function BankingBalanceStatistics({ title, subheader, chartLabels, chartData, ...other }) {
-  const [seriesData, setSeriesData] = useState('Year');
+  const [seriesData, setSeriesData] = useState(2023);
 
   const handleChangeSeriesData = (event) => {
-    setSeriesData(event.target.value);
+    setSeriesData(Number(event.target.value));
   };
 
   const chartOptions = merge(BaseOptionChart(), {
@@ -29,12 +29,13 @@ export default function BankingBalanceStatistics({ title, subheader, chartLabels
       width: 2,
       colors: ['transparent'],
     },
+    colors: ['#84A9FF', '#4A176E'],
     xaxis: {
       categories: chartLabels,
     },
     tooltip: {
       y: {
-        formatter: (val) => `$${val}`,
+        formatter: (val) => `%${val}`,
       },
     },
   });
@@ -54,7 +55,7 @@ export default function BankingBalanceStatistics({ title, subheader, chartLabels
             sx={{
               '& fieldset': { border: '0 !important' },
               '& select': { pl: 1, py: 0.5, pr: '24px !important', typography: 'subtitle2' },
-              '& .MuiOutlinedInput-root': { borderRadius: 0.75, bgcolor: 'background.neutral' },
+              '& .MuiOutlinedInput-root': { borderRadius: 0.75, bgcolor: 'background.dark' },
               '& .MuiNativeSelect-icon': { top: 4, right: 0, width: 20, height: 20 },
             }}
           >
