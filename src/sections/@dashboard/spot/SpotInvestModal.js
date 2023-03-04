@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router';
+
 // import DiscordIcon from '@mui/icons-material';
 // @mui
 import {
@@ -252,6 +253,8 @@ function ConfirmedAction(props) {
           window.open(url, '_blank');
         }}
       >
+        {/* <FontAwesomeIcon icon={{ name: 'coffee', style: 'solid' }} /> */}
+        {/* <FontAwesomeIcon icon="fa-brands fa-discord" /> */}
         {translate('dashboard.spot.discord_profile')}
       </Button>
       <Button sx={{ my: 2 }} variant="contained" fullWidth onClick={() => navigate(PATH_DASHBOARD.general.app)}>
@@ -424,7 +427,7 @@ export default function SpotInvestModal(props) {
   return (
     <Dialog open={isOpen} onClose={onClose}>
       <RootStyle>
-        {/* {investment.step === 0 && (
+        {investment.step === 0 && (
           <PendingAction
             onClose={onClose}
             investment={investment}
@@ -433,9 +436,9 @@ export default function SpotInvestModal(props) {
             handleSpotCheckBox={handleSpotCheckBox}
             checkboxesState={checkboxesState}
           />
-        )} */}
+        )}
         {investment.step === 1 && <ConfirmingAction investment={investment} onCancel={onClose} />}
-        {investment.step === 0 && <ConfirmedAction investment={investment} />}
+        {investment.step === 2 && <ConfirmedAction investment={investment} />}
         {investment.step === 3 && <CancelledAction investment={investment} onCancel={onClose} />}
         {/* <ConfirmedAction /> */}
         {/* <CancelledAction /> */}
