@@ -275,6 +275,7 @@ const en = {
       confirm_message:
         'Please, take note,  your inversion will be reflected 3 business days after this message send. After that check your spots section in your profile',
       return_profile: 'Return profile',
+      discord_profile: 'Access the comunity',
       // modal state - cancelled
       cancelled_title: 'Investment Cancelled! Let us know, What Happened',
       send_return_profile: 'Send & Return Profile',
