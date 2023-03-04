@@ -38,6 +38,7 @@ export const PATH_DASHBOARD = {
   root: ROOTS_DASHBOARD,
   general: {
     app: path(ROOTS_DASHBOARD, '/app'),
+    discord: 'https://discord.gg/fXCj9nFpZZ',
     refers: path(ROOTS_DASHBOARD, '/refers'),
     analytics: path(ROOTS_DASHBOARD, '/analytics'),
     wallet: path(ROOTS_DASHBOARD, '/wallet'),
@@ -45,7 +46,7 @@ export const PATH_DASHBOARD = {
   },
   spot: {
     root: path(ROOTS_DASHBOARD, '/spot'),
-    all: path(ROOTS_DASHBOARD, '/spot/all')
+    all: path(ROOTS_DASHBOARD, '/spot/all'),
   },
   mail: {
     root: path(ROOTS_DASHBOARD, '/mail'),

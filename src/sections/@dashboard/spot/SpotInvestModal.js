@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router'
+import { useNavigate } from 'react-router';
+// import DiscordIcon from '@mui/icons-material';
 // @mui
-import { 
+import {
   Dialog,
   Card,
   Grid,
@@ -216,7 +217,8 @@ function ConfirmingAction(props) {
 }
 
 function ConfirmedAction(props) {
-  const  navigate  = useNavigate()
+  const url = ' https://discord.gg/fXCj9nFpZZ';
+  const navigate = useNavigate();
   const { translate } = useLocales();
 
   const { investment } = props;
@@ -241,7 +243,18 @@ function ConfirmedAction(props) {
         </Typography>
       </Grid>
       <WalletInfo investment={investment} />
-      <Button sx={{ my: 2 }} variant="contained" fullWidth onClick={()=> navigate(PATH_DASHBOARD.general.app)}>
+      <Button
+        // startIcon={<DiscordIcon />}
+        sx={{ my: 2 }}
+        variant="contained"
+        fullWidth
+        onClick={() => {
+          window.open(url, '_blank');
+        }}
+      >
+        {translate('dashboard.spot.discord_profile')}
+      </Button>
+      <Button sx={{ my: 2 }} variant="contained" fullWidth onClick={() => navigate(PATH_DASHBOARD.general.app)}>
         {translate('dashboard.spot.return_profile')}
       </Button>
     </Grid>
@@ -249,7 +262,7 @@ function ConfirmedAction(props) {
 }
 
 function CancelledAction(props) {
-  const  navigate  = useNavigate()
+  const navigate = useNavigate();
   const { translate } = useLocales();
   const { investment, onCancel } = props;
   return (
@@ -261,10 +274,10 @@ function CancelledAction(props) {
       </Grid>
 
       <WalletInfo investment={investment} />
-      <Button sx={{ my: 2 }} variant="contained" color="info" fullWidth onClick={()=>onCancel()}>
+      <Button sx={{ my: 2 }} variant="contained" color="info" fullWidth onClick={() => onCancel()}>
         {translate('dashboard.spot.send_return_profile')}
       </Button>
-      <Button variant="contained" fullWidth onClick={()=> navigate(PATH_DASHBOARD.general.app)}>
+      <Button variant="contained" fullWidth onClick={() => navigate(PATH_DASHBOARD.general.app)}>
         {translate('dashboard.spot.return_profile')}
       </Button>
     </Grid>
@@ -403,15 +416,15 @@ export default function SpotInvestModal(props) {
   }, []);
 
   useEffect(() => {
-    if(!isOpen && investment.step === 3){
-      setInvestment({...investment, step: 0})
+    if (!isOpen && investment.step === 3) {
+      setInvestment({ ...investment, step: 0 });
     }
   }, [isOpen]);
 
   return (
     <Dialog open={isOpen} onClose={onClose}>
       <RootStyle>
-        {investment.step === 0 && (
+        {/* {investment.step === 0 && (
           <PendingAction
             onClose={onClose}
             investment={investment}
@@ -420,9 +433,9 @@ export default function SpotInvestModal(props) {
             handleSpotCheckBox={handleSpotCheckBox}
             checkboxesState={checkboxesState}
           />
-        )}
+        )} */}
         {investment.step === 1 && <ConfirmingAction investment={investment} onCancel={onClose} />}
-        {investment.step === 2 && <ConfirmedAction investment={investment} />}
+        {investment.step === 0 && <ConfirmedAction investment={investment} />}
         {investment.step === 3 && <CancelledAction investment={investment} onCancel={onClose} />}
         {/* <ConfirmedAction /> */}
         {/* <CancelledAction /> */}
