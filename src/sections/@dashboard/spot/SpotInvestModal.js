@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router';
+import Icon from '@mui/material/Icon';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { faDiscord } from '@fortawesome/free-brands-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
 
+// <-- import styles to be used
 // import DiscordIcon from '@mui/icons-material';
 // @mui
 import {
@@ -18,7 +24,7 @@ import {
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import InputAdornment from '@mui/material/InputAdornment';
-
+import ReplyIcon from '@mui/icons-material/Reply';
 // Hooks
 import useLocales from '../../../hooks/useLocales';
 import useTronLink from '../../../hooks/useTronLink';
@@ -218,6 +224,7 @@ function ConfirmingAction(props) {
 }
 
 function ConfirmedAction(props) {
+  library.add(fas, faDiscord);
   const url = ' https://discord.gg/fXCj9nFpZZ';
   const navigate = useNavigate();
   const { translate } = useLocales();
@@ -226,24 +233,30 @@ function ConfirmedAction(props) {
   return (
     <Grid container>
       <Grid item sm={12}>
-        <Typography variant="h3" textAlign="center">
+        <Typography variant="h4" textAlign="center" textTransform="uppercase">
           {translate('dashboard.spot.confirm_title')}
         </Typography>
-        <Typography variant="body1" sx={{ color: 'text.disabled' }}>
+        <Typography variant="body1" textAlign="center" sx={{ color: 'text.disabled' }}>
           {translate('dashboard.spot.confirm_message')}
         </Typography>
-      </Grid>
-      <Grid item sm={12}>
-        <Typography variant="subtitle2" textAlign="center" mt={3}>
-          {translate('dashboard.spot.your_invert')}
-        </Typography>
-      </Grid>
-      <Grid item sm={12}>
         <Typography variant="h3" textAlign="center">
           {`$${investment.total_payed} USDT`}
         </Typography>
+        <Typography variant="subtitle2" textAlign="center">
+          {translate('dashboard.spot.your_invert')}
+        </Typography>
       </Grid>
+
       <WalletInfo investment={investment} />
+      <Grid item sm={12} m={1}>
+        <Typography variant="subtitle2" textAlign="center" textTransform="uppercase">
+          {translate('dashboard.spot.important_message')}
+        </Typography>
+
+        <Typography variant="body2" textAlign="center">
+          {translate('dashboard.spot.important_message_description')}
+        </Typography>
+      </Grid>
       <Button
         // startIcon={<DiscordIcon />}
         sx={{ my: 2 }}
@@ -252,12 +265,17 @@ function ConfirmedAction(props) {
         onClick={() => {
           window.open(url, '_blank');
         }}
+        startIcon={<FontAwesomeIcon icon={faDiscord} />}
       >
-        {/* <FontAwesomeIcon icon={{ name: 'coffee', style: 'solid' }} /> */}
-        {/* <FontAwesomeIcon icon="fa-brands fa-discord" /> */}
         {translate('dashboard.spot.discord_profile')}
       </Button>
-      <Button sx={{ my: 2 }} variant="contained" fullWidth onClick={() => navigate(PATH_DASHBOARD.general.app)}>
+      <Button
+        startIcon={<ReplyIcon />}
+        sx={{ my: 2 }}
+        variant="contained"
+        fullWidth
+        onClick={() => navigate(PATH_DASHBOARD.general.app)}
+      >
         {translate('dashboard.spot.return_profile')}
       </Button>
     </Grid>

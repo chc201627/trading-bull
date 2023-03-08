@@ -252,9 +252,12 @@ const es = {
       // modal state - confirmed
       confirm_title: '¡Nueva inversión enviada correctamente!.',
       confirm_message:
-        'Por favor, tenga en cuenta, su inversión se verá reflejada en 3 dias hábiles después del envío de este mensaje. Después de eso, revise la sección de posiciones en su perfil.',
+        'Por favor tenga en cuenta que su inversión se verá reflejada en 3 dias hábiles después del recibir este mensaje. Una vez cumplido el lapso, revise la sección de posiciones en su perfil.',
       return_profile: 'Regresar al perfil',
       discord_profile: 'Acceder a la comunidad',
+      important_message: 'importante',
+      important_message_description:
+        'Ingresa a nuestra comunidad en DISCORD para mantener informado y recibir soporte en caso de necesitarlo.',
       // modal state - cancelled
       cancelled_title: 'Inversión cancelada! Cuentanos que pasó',
       send_return_profile: 'Send & Return Profile',
