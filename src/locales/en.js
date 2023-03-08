@@ -267,15 +267,17 @@ const en = {
       time_remaining: 'Time remaining',
       minutes: 'Minutes',
       seconds: 'Seconds',
-      your_invert: 'Your invert',
+      your_invert: 'Your investment',
       have_issue: 'Are you having any issue? You can continue the transaction externally using the QR code above',
       cancel_order: 'Cancel order',
       // modal state - confirmed
-      confirm_title: 'New investment succesfully sent!',
+      confirm_title: '¡Your investment has been received!',
       confirm_message:
-        'Please, take note,  your inversion will be reflected 3 business days after this message send. After that check your spots section in your profile',
+        'Please note,  your investment will be reflected 3 business days after this message. This will be posted in your positions tab once is running.',
       return_profile: 'Return profile',
-      discord_profile: 'Access the comunity',
+      discord_profile: 'Join the community',
+      important_message: 'important',
+      important_message_description: 'For more information and and support join our community in DISCORD.',
       // modal state - cancelled
       cancelled_title: 'Investment Cancelled! Let us know, What Happened',
       send_return_profile: 'Send & Return Profile',
