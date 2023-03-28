@@ -318,7 +318,7 @@ const en = {
       total_return: 'Total return for refers',
       total_return_alert: 'This is money you will get each month for every refer',
       total_refers: 'Total refers',
-      total_refers_alert: 'Last 30 days of refers link to the plattform by your code',
+      total_refers_alert: 'Number of people referred from your account',
       alert_code: 'This code have a duration of 24 hours and cannot be used twice or more times',
       generate_code: 'Generate Code',
       generate_link: 'Generate Link',
