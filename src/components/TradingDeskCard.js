@@ -104,7 +104,6 @@ export default function TradingDeskCard({
     async function updateSellMode() {
       const response = Spot.update(spot.id, {
         data: {
-          is_reinvest: false,
           is_sell: checkedSell,
         },
       });
@@ -146,8 +145,8 @@ export default function TradingDeskCard({
         </Stack>
         <Typography variant="h4" sx={{ color: 'text.primary' }}>
           {spot.permanence_id.name === 'Monthly'
-            ? Math.floor((spot.spot_value * 6) / 100)
-            : Math.floor((spot.spot_value * 8) / 100)}
+            ? Math.floor((spot.spot_value * 4) / 100)
+            : Math.floor((spot.spot_value * 7) / 100)}
         </Typography>
       </Stack>
       <Stack>
@@ -161,7 +160,7 @@ export default function TradingDeskCard({
           <Typography variant="body1" sx={{ color: 'text.secondary' }}>
             {'ROI : '}{' '}
           </Typography>
-          <Typography variant="body1"> &nbsp; {spot.permanence_id.name === 'Monthly' ? 6 : 8}%</Typography>
+          <Typography variant="body1"> &nbsp; {spot.permanence_id.name === 'Monthly' ? '1 - 5' : '2 - 10'}%</Typography>
         </Stack>
         <Stack direction="row" justifyContent="space-between">
           <Typography variant="body1" sx={{ color: 'text.secondary' }}>

@@ -141,6 +141,7 @@ export default function SpotInvest(props) {
                   sx={{
                     color: 'text.disabled',
                   }}
+                  ml={1}
                 >
                   {(valueUsed * 100) / totalValue}%
                 </Typography>
@@ -180,22 +181,22 @@ export default function SpotInvest(props) {
                 <Iconify icon="ant-design:info-circle-filled" width={20} height={20} sx={{ color: 'text.disabled' }} />
               </Grid>
 
-              <Grid item xs={6} mt={2} container flexDirection="column" alignItems="center">
-                <Grid item xs={6} container flexDirection="row" alignItems="center" justifyContent="space-around">
+              <Grid item xs={6} mt={2} container direction="column" alignItems="center">
+                <Grid item xs={6} container direction="row" alignItems="center" justifyContent="center">
                   <IsoIcon fontSize="small" color="disabled" />
-                  <Typography variant="h5" mr={1}>
-                    5%
+                  <Typography variant="h5" ml={1}>
+                    1-5%
                   </Typography>
                 </Grid>
                 <Typography variant="subtitle2" sx={{ color: 'text.disabled' }}>
                   {translate('dashboard.spot.rate_per_month')}
                 </Typography>
               </Grid>
-              <Grid item xs={6} mt={2} container flexDirection="column" alignItems="center">
-                <Grid item xs={6} container flexDirection="row" alignItems="center" justifyContent="space-around">
+              <Grid item xs={6} mt={2} container direction="column" alignItems="center">
+                <Grid item xs={6} container direction="row" alignItems="center" justifyContent="center">
                   <IsoIcon fontSize="small" color="disabled" />
-                  <Typography variant="h5" mr={1}>
-                    7%
+                  <Typography variant="h5" ml={1}>
+                    2-10%
                   </Typography>
                 </Grid>
                 <Typography variant="subtitle2" sx={{ color: 'text.disabled' }}>
@@ -213,7 +214,7 @@ export default function SpotInvest(props) {
                 </Typography>
               </Grid>
               <Grid item xs={6} mt={2} container justifyContent="flex-end">
-                <Typography variant="subtitle2">PAMM TRADING</Typography>
+                <Typography variant="subtitle2">TRADING</Typography>
               </Grid>
 
               <Grid item xs={6} mt={2} container justifyContent="flex-start">
