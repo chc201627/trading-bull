@@ -124,7 +124,7 @@ export default function SpotInvest(props) {
                 <Typography variant="subtitle1">${valueUsed}</Typography>
               </Grid>
 
-              <Grid item xs={9} mt={2} pt={1}>
+              <Grid item xs={10} mt={2} pt={1}>
                 <LinearProgress
                   value={(valueUsed * 100) / totalValue}
                   variant="determinate"
@@ -135,7 +135,7 @@ export default function SpotInvest(props) {
                   }}
                 />
               </Grid>
-              <Grid item xs={3} mt={2} container justifyContent="center">
+              <Grid item xs={1} mt={1} pt={1} container justifyContent="center">
                 <Typography
                   variant="caption"
                   sx={{
