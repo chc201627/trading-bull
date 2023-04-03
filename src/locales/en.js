@@ -59,7 +59,7 @@ const en = {
         title: 'TRADING.SPOT',
         goal: 'Goal',
         lacking_amount: 'Lacking amount',
-        inversation_rate: 'Inversation Rate',
+        inversation_rate: 'Investment Rate',
         rentability: 'Rentability',
         total_investors: 'Total Investors',
         deposits_buy: 'Deposits Buy',
